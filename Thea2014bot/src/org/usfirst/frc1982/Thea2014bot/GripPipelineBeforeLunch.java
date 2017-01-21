@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.vision.VisionPipeline;
 *
 * @author GRIP
 */
-public class GripPipeline implements VisionPipeline {
+public class GripPipelineBeforeLunch implements VisionPipeline {
 
 	//Outputs
 	private Mat hslThresholdOutput = new Mat();
@@ -40,9 +40,9 @@ public class GripPipeline implements VisionPipeline {
 	@Override	public void process(Mat source0) {
 		// Step HSL_Threshold0:
 		Mat hslThresholdInput = source0;
-//		double[] hslThresholdHue = {58.27338129496402, 113.9590443686007};
-//		double[] hslThresholdSaturation = {181.16007194244605, 255.0};
-//		double[] hslThresholdLuminance = {142.17625899280577, 255.0};
+//		double[] hslThresholdHue = {77.6978417266187, 97.06484641638225};
+//		double[] hslThresholdSaturation = {229.31654676258992, 255.0};
+//		double[] hslThresholdLuminance = {199.50539568345323, 255.0};
 		
 		double[] hslThresholdHue = {80.93525179856115, 97.06484641638225};
 		double[] hslThresholdSaturation = {236.19604316546764, 255.0};

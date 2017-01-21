@@ -2,6 +2,7 @@ package org.usfirst.frc1982.Thea2014bot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import org.opencv.core.Core;
@@ -24,7 +25,7 @@ import edu.wpi.first.wpilibj.vision.VisionPipeline;
 *
 * @author GRIP
 */
-public class GripPipeline implements VisionPipeline {
+public class GripPipelineTooMuch implements VisionPipeline {
 
 	//Outputs
 	private Mat rgbThresholdOutput = new Mat();
@@ -34,6 +35,8 @@ public class GripPipeline implements VisionPipeline {
 	private ArrayList<MatOfPoint> findContoursOutput = new ArrayList<MatOfPoint>();
 	private ArrayList<MatOfPoint> convexHullsOutput = new ArrayList<MatOfPoint>();
 	private ArrayList<MatOfPoint> filterContoursOutput = new ArrayList<MatOfPoint>();
+	
+	private AtomicInteger ctr = new AtomicInteger();
 
 	static {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -51,44 +54,45 @@ public class GripPipeline implements VisionPipeline {
 		rgbThreshold(rgbThresholdInput, rgbThresholdRed, rgbThresholdGreen, rgbThresholdBlue, rgbThresholdOutput);
 
 		// Step Mask0:
-		Mat maskInput = source0;
-		Mat maskMask = rgbThresholdOutput;
-		mask(maskInput, maskMask, maskOutput);
+//		Mat maskInput = source0;
+//		Mat maskMask = rgbThresholdOutput;
+//		mask(maskInput, maskMask, maskOutput);
+//
+//		// Step Find_Lines0:
+//		Mat findLinesInput = rgbThresholdOutput;
+//		findLines(findLinesInput, findLinesOutput);
+//
+//		// Step Filter_Lines0:
+//		ArrayList<Line> filterLinesLines = findLinesOutput;
+//		double filterLinesMinLength = 12.0;
+//		double[] filterLinesAngle = {0, 360};
+//		filterLines(filterLinesLines, filterLinesMinLength, filterLinesAngle, filterLinesOutput);
+//
+//		// Step Find_Contours0:
+//		Mat findContoursInput = rgbThresholdOutput;
+//		boolean findContoursExternalOnly = false;
+//		findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
+//
+//		// Step Convex_Hulls0:
+//		ArrayList<MatOfPoint> convexHullsContours = findContoursOutput;
+//		convexHulls(convexHullsContours, convexHullsOutput);
+//
+//		// Step Filter_Contours0:
+//		ArrayList<MatOfPoint> filterContoursContours = convexHullsOutput;
+//		double filterContoursMinArea = 25.0;
+//		double filterContoursMinPerimeter = 0.0;
+//		double filterContoursMinWidth = 7.0;
+//		double filterContoursMaxWidth = 1000.0;
+//		double filterContoursMinHeight = 15.0;
+//		double filterContoursMaxHeight = 1000.0;
+//		double[] filterContoursSolidity = {0, 100};
+//		double filterContoursMaxVertices = 1000000.0;
+//		double filterContoursMinVertices = 0.0;
+//		double filterContoursMinRatio = 0.0;
+//		double filterContoursMaxRatio = 1000.0;
+//		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
-		// Step Find_Lines0:
-		Mat findLinesInput = rgbThresholdOutput;
-		findLines(findLinesInput, findLinesOutput);
-
-		// Step Filter_Lines0:
-		ArrayList<Line> filterLinesLines = findLinesOutput;
-		double filterLinesMinLength = 12.0;
-		double[] filterLinesAngle = {0, 360};
-		filterLines(filterLinesLines, filterLinesMinLength, filterLinesAngle, filterLinesOutput);
-
-		// Step Find_Contours0:
-		Mat findContoursInput = rgbThresholdOutput;
-		boolean findContoursExternalOnly = false;
-		findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
-
-		// Step Convex_Hulls0:
-		ArrayList<MatOfPoint> convexHullsContours = findContoursOutput;
-		convexHulls(convexHullsContours, convexHullsOutput);
-
-		// Step Filter_Contours0:
-		ArrayList<MatOfPoint> filterContoursContours = convexHullsOutput;
-		double filterContoursMinArea = 25.0;
-		double filterContoursMinPerimeter = 0.0;
-		double filterContoursMinWidth = 7.0;
-		double filterContoursMaxWidth = 1000.0;
-		double filterContoursMinHeight = 15.0;
-		double filterContoursMaxHeight = 1000.0;
-		double[] filterContoursSolidity = {0, 100};
-		double filterContoursMaxVertices = 1000000.0;
-		double filterContoursMinVertices = 0.0;
-		double filterContoursMinRatio = 0.0;
-		double filterContoursMaxRatio = 1000.0;
-		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
-
+		System.out.println( "GripPipeline process next frame... (" + ctr.incrementAndGet() + ")" );
 	}
 
 	/**
