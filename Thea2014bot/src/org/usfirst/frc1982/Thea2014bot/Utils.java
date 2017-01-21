@@ -16,10 +16,28 @@ class Utils
 		
 		for (MatOfPoint next : arrayList)
 		{
-			List<Point> pList = next.toList();
-			ostr.append( "\n\tList<Point> size = " ).append( pList.size() );
+			ostr.append( show( next.toList() ));
+			
 		}
 		
 		System.out.println( ostr.toString() );
+	}
+	
+	private static String show( List<Point> pList )
+	{
+		StringBuilder ostr = new StringBuilder();
+		
+		ostr.append( "\n\tList<Point> size = " ).append( pList.size() );
+		
+		if (pList.size() > 0) ostr.append( " :: " );
+		boolean first = true;
+		for (Point p : pList)
+		{
+			if (!first) ostr.append(", " );
+			ostr.append( "(" ).append( p.x ).append(", " ).append( p.y ).append( ")" );
+			first = false;
+		}
+		
+		return ostr.toString();
 	}
 }

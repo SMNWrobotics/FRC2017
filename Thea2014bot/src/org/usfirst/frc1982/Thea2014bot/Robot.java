@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.vision.VisionThread;
+import gripp.GripPipeline;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,13 +35,14 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	private static final ImageResolution iRes = ImageResolution.SMALL;
+	private static final ImageResolution iRes = ImageResolution.MEDIUM;
+	public static final Object LOCK = new Integer( 0 );
 	
     private AtomicInteger ctr = new AtomicInteger();
 	private VisionThread visionThread;
 	
     Command autonomousCommand;
-    GripPipelineTooMuch gripPipeline;
+//    GripPipelineTooMuch gripPipeline;
 
     
     
@@ -80,17 +82,22 @@ public class Robot extends IterativeRobot {
 
         CvSource outputStream = CameraServer.getInstance().putVideo( "Blur", iRes.getWidth(), iRes.getHeight() );
         GripPipeline gp = new GripPipeline();
-        
-        visionThread = new VisionThread( camera, gp, pipeline -> {
-        	if (0 == ctr.incrementAndGet() % 50)
-        	{
-        		System.out.println( "Current frame... (" + ctr.get() + ")" );
-//        		Utils.show( gp.filterContoursOutput() );
-        	}
 
-        	outputStream.putFrame( gp.hslThresholdOutput() );
-//        		outputStream.putFrame( gp.maskOutput() );
-//        		outputStream.putFrame( gp.rgbThresholdOutput() );
+        visionThread = new VisionThread( camera, gp, pipeline -> {
+        		if (0 == ctr.incrementAndGet() % 50)
+        		{
+//        			synchronized( Robot.LOCK )
+//                	{
+        			System.out.println( "Current frame... (" + ctr.get() + ")" );
+        			Utils.show( gp.filterContoursOutput() );
+//        			outputStream.putFrame( gp.hslThresholdOutput() );
+//                	}
+        		}
+
+        		outputStream.putFrame( gp.hslThresholdOutput() );
+        		//        		outputStream.putFrame( gp.maskOutput() );
+        		//        		outputStream.putFrame( gp.rgbThresholdOutput() );
+
         });
         
         visionThread.start();

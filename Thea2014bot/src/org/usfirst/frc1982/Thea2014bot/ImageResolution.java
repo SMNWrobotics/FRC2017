@@ -1,8 +1,10 @@
 package org.usfirst.frc1982.Thea2014bot;
 
 public enum ImageResolution {
-	  SMALL( 320, 240 )
+	  SMALL( 160, 120 )
+	, MEDIUM( 320, 240 )
 	, LARGE( 640, 480 )
+	, TOO_LARGE( 1280, 720 )
 	;
 	
 	private final int width;
