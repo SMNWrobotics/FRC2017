@@ -15,6 +15,8 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgproc.LineSegmentDetector;
 
+import edu.wpi.first.wpilibj.vision.VisionPipeline;
+
 /**
 * GripPipeline class.
 *
@@ -22,7 +24,7 @@ import org.opencv.imgproc.LineSegmentDetector;
 *
 * @author GRIP
 */
-public class GripPipeline {
+public class GripPipeline implements VisionPipeline {
 
 	//Outputs
 	private Mat rgbThresholdOutput = new Mat();
@@ -40,11 +42,11 @@ public class GripPipeline {
 	/**
 	 * This is the primary method that runs the entire pipeline and updates the outputs.
 	 */
-	public void process(Mat source0) {
+	@Override	public void process(Mat source0) {
 		// Step RGB_Threshold0:
 		Mat rgbThresholdInput = source0;
-		double[] rgbThresholdRed = {0.0, 181.0238907849829};
-		double[] rgbThresholdGreen = {216.93345323741002, 255.0};
+		double[] rgbThresholdRed = {0.0, 212.84207260316472};
+		double[] rgbThresholdGreen = {224.13684306791848, 255.0};
 		double[] rgbThresholdBlue = {0.0, 255.0};
 		rgbThreshold(rgbThresholdInput, rgbThresholdRed, rgbThresholdGreen, rgbThresholdBlue, rgbThresholdOutput);
 
@@ -74,17 +76,17 @@ public class GripPipeline {
 
 		// Step Filter_Contours0:
 		ArrayList<MatOfPoint> filterContoursContours = convexHullsOutput;
-		double filterContoursMinArea = 0.0;
+		double filterContoursMinArea = 25.0;
 		double filterContoursMinPerimeter = 0.0;
 		double filterContoursMinWidth = 7.0;
 		double filterContoursMaxWidth = 1000.0;
 		double filterContoursMinHeight = 15.0;
 		double filterContoursMaxHeight = 1000.0;
 		double[] filterContoursSolidity = {0, 100};
-		double filterContoursMaxVertices = 1000000;
-		double filterContoursMinVertices = 0;
-		double filterContoursMinRatio = 0;
-		double filterContoursMaxRatio = 1000;
+		double filterContoursMaxVertices = 1000000.0;
+		double filterContoursMinVertices = 0.0;
+		double filterContoursMinRatio = 0.0;
+		double filterContoursMaxRatio = 1000.0;
 		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
 	}
