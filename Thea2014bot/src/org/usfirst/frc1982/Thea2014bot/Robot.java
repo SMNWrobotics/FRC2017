@@ -13,12 +13,10 @@ package org.usfirst.frc1982.Thea2014bot;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.opencv.core.Mat;
 import org.usfirst.frc1982.Thea2014bot.commands.AutonomousCommand;
 import org.usfirst.frc1982.Thea2014bot.subsystems.Drive;
 import org.usfirst.frc1982.Thea2014bot.subsystems.lift;
 
-import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -39,11 +37,11 @@ public class Robot extends IterativeRobot {
 	private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
 	
+    private AtomicInteger ctr = new AtomicInteger();
 	private VisionThread visionThread;
-	private double centerX = 0.0;
 	
     Command autonomousCommand;
-    GripPipeline gripPipeline;
+    GripPipelineOriginal gripPipeline;
 
     
     
@@ -107,21 +105,16 @@ public class Robot extends IterativeRobot {
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution( IMG_WIDTH, IMG_HEIGHT );
         
-//        CvSink cvSink = CameraServer.getInstance().getVideo();
-//        Mat source = new Mat();
-        AtomicInteger ctr = new AtomicInteger();
+
         
         CvSource outputStream = CameraServer.getInstance().putVideo( "Blur", IMG_WIDTH, IMG_HEIGHT );
         GripPipeline gp = new GripPipeline();
         
         visionThread = new VisionThread( camera, gp, pipeline -> {
-        	while(true) {
-//        		cvSink.grabFrame(source);
-//        		gripPipeline.process(source);
-        		System.out.println( "Get next frame... (" + ctr.incrementAndGet() + ")" );
-        		outputStream.putFrame( gp.maskOutput() );
+//        		System.out.println( "Get next frame... (" + ctr.incrementAndGet() + ")" );
+        	outputStream.putFrame( gp.hslThresholdOutput() );
+//        		outputStream.putFrame( gp.maskOutput() );
 //        		outputStream.putFrame( gp.rgbThresholdOutput() );
-        	}
         });
         
         visionThread.start();
