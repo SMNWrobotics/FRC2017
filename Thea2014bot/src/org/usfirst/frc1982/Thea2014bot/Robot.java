@@ -25,7 +25,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.vision.VisionThread;
-import gripp.GripPipeline;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -90,6 +89,7 @@ public class Robot extends IterativeRobot {
 //                	{
         			System.out.println( "Current frame... (" + ctr.get() + ")" );
         			Utils.show( gp.filterContoursOutput() );
+        			
 //        			outputStream.putFrame( gp.hslThresholdOutput() );
 //                	}
         		}
