@@ -1,5 +1,5 @@
 #tag Window
-Begin ContainerControl ccCheckbox Implements itrRowDesign
+Begin ContainerControl ccPopup Implements itrRowDesign
    AcceptFocus     =   False
    AcceptTabs      =   True
    AutoDeactivate  =   True
@@ -24,7 +24,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
    Transparent     =   True
    UseFocusRing    =   False
    Visible         =   True
-   Width           =   316
+   Width           =   300
    Begin Label lblData
       AutoDeactivate  =   True
       Bold            =   True
@@ -36,7 +36,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   7
+      Left            =   5
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -45,7 +45,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       Multiline       =   False
       Scope           =   0
       Selectable      =   False
-      TabIndex        =   1
+      TabIndex        =   0
       TabPanelIndex   =   0
       Text            =   "Untitled"
       TextAlign       =   0
@@ -53,16 +53,15 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   4
+      Top             =   3
       Transparent     =   True
       Underline       =   False
       Visible         =   True
-      Width           =   187
+      Width           =   154
    End
-   Begin CheckBox chkData
+   Begin PopupMenu pmData
       AutoDeactivate  =   True
       Bold            =   False
-      Caption         =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -70,16 +69,17 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
+      InitialValue    =   ""
       Italic          =   False
-      Left            =   200
+      Left            =   160
+      ListIndex       =   0
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   False
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
-      State           =   0
-      TabIndex        =   2
+      TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
       TextFont        =   "System"
@@ -87,9 +87,8 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       TextUnit        =   0
       Top             =   4
       Underline       =   False
-      Value           =   False
       Visible         =   True
-      Width           =   29
+      Width           =   133
    End
 End
 #tag EndWindow
@@ -97,12 +96,36 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
+		  // Part of the itrRowDesign interface.
+		  
 		  lblData.text = oData.sVariableName
+		  
+		  pmData.DeleteAllRows
+		  
+		  if oData.sForeignTable <> "" then
+		    dim s as string = "Select * from " + oData.sForeignTable
+		    dim rs as RecordSet = gDB.SQLSelect(s)
+		    if gdb.error then return
+		    
+		    while rs.eof = false
+		      pmData.AddRow rs.Field("Name").StringValue
+		      rs.MoveNext
+		    wend
+		    
+		    
+		  elseif oData.sList <> "" then
+		    dim ars() as string = oData.sLIst.Split(";")
+		    for each s as string in ars
+		      pmData.AddRow s.trim
+		    next
+		  end
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  // Part of the itrRowDesign interface.
+		  
 		  
 		End Sub
 	#tag EndMethod

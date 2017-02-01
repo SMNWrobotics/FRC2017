@@ -178,7 +178,8 @@ Inherits Data.ActiveRecordBase
 		#tag ViewProperty
 			Name="sTeam_number"
 			Group="Behavior"
-			Type="Integer"
+			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

@@ -26,56 +26,6 @@ Begin WindowMenuWindow WinRobotDesign
    Title           =   "Untitled"
    Visible         =   True
    Width           =   600
-   Begin AlternatingList lst
-      AutoDeactivate  =   True
-      AutoHideScrollbars=   True
-      Bold            =   False
-      Border          =   True
-      ColumnCount     =   1
-      ColumnsResizable=   False
-      ColumnWidths    =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      DefaultRowHeight=   30
-      Enabled         =   True
-      EnableDrag      =   False
-      EnableDragReorder=   False
-      GridLinesHorizontal=   0
-      GridLinesVertical=   0
-      HasHeading      =   True
-      HeadingIndex    =   -1
-      Height          =   360
-      HelpTag         =   ""
-      Hierarchical    =   False
-      Index           =   -2147483648
-      InitialParent   =   ""
-      InitialValue    =   "Variable Name"
-      Italic          =   False
-      Left            =   20
-      LockBottom      =   True
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   True
-      LockTop         =   True
-      RequiresSelection=   False
-      Scope           =   2
-      ScrollbarHorizontal=   False
-      ScrollBarVertical=   True
-      SelectionType   =   0
-      TabIndex        =   0
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   14.0
-      TextUnit        =   0
-      Top             =   20
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   276
-      _ScrollOffset   =   0
-      _ScrollWidth    =   -1
-   End
    Begin ccOKCancel ccOKCancel1
       AcceptFocus     =   False
       AcceptTabs      =   False
@@ -104,6 +54,34 @@ Begin WindowMenuWindow WinRobotDesign
       Visible         =   True
       Width           =   172
    End
+   Begin ccRepeatingList lst
+      AcceptFocus     =   False
+      AcceptTabs      =   True
+      AutoDeactivate  =   True
+      BackColor       =   &cFFFFFF00
+      Backdrop        =   0
+      Enabled         =   True
+      EraseBackground =   True
+      HasBackColor    =   False
+      Height          =   321
+      HelpTag         =   ""
+      InitialParent   =   ""
+      Left            =   20
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   2
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   20
+      Transparent     =   False
+      UseFocusRing    =   False
+      Visible         =   True
+      Width           =   560
+   End
 End
 #tag EndWindow
 
@@ -125,9 +103,10 @@ End
 		  lst.DeleteAllRows
 		  
 		  for each oDesignVariable as Data.T_DesignVariables in moTeam.GetDesignVariables
-		    lst.AddRow oDesignVariable.sVariableName
+		    oCurrentRow = oDesignVariable
 		    
-		    lst.RowTag(lst.LastIndex) = oDesignVariable
+		    lst.AddNewRow
+		    
 		  next
 		End Sub
 	#tag EndMethod
@@ -137,9 +116,45 @@ End
 		moTeam As Data.t_team
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private oCurrentRow As Data.T_DesignVariables
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
+#tag Events lst
+	#tag Event
+		Function AddRow() As itrRowDesign
+		  dim oRow as itrRowDesign
+		  
+		  select case oCurrentRow.sDataType
+		  case "checkbox"
+		    oRow = new ccCheckbox
+		    
+		  case "popup"
+		    oRow = new ccPopup
+		    
+		  case "textarea"
+		    oRow = new ccTextArea
+		    
+		  case "numbers"
+		    oRow = new ccNumbersOnly
+		    
+		  case "textfield"
+		    oRow = new ccText
+		    
+		  case else
+		    break //not handled
+		  end
+		  
+		  oRow.load(oCurrentRow, moTeam.sTeam_Number)
+		  
+		  Return oRow
+		  
+		End Function
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="BackColor"

@@ -148,6 +148,7 @@ Begin WindowMenuWindow winMatchView
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Blue Alliance Teams"
       TextAlign       =   1
       TextColor       =   &c00000000
@@ -182,6 +183,7 @@ Begin WindowMenuWindow winMatchView
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Red Alliance Teams"
       TextAlign       =   1
       TextColor       =   &c00000000

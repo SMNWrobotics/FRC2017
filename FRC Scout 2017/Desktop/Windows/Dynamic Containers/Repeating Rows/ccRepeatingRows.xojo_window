@@ -1,5 +1,5 @@
 #tag Window
-Begin ContainerControl ccCheckbox Implements itrRowDesign
+Begin ContainerControl ccRepeatingRows
    AcceptFocus     =   False
    AcceptTabs      =   True
    AutoDeactivate  =   True
@@ -9,7 +9,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
    Enabled         =   True
    EraseBackground =   True
    HasBackColor    =   False
-   Height          =   28
+   Height          =   300
    HelpTag         =   ""
    InitialParent   =   ""
    Left            =   0
@@ -21,95 +21,265 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
    TabPanelIndex   =   0
    TabStop         =   True
    Top             =   0
-   Transparent     =   True
+   Transparent     =   False
    UseFocusRing    =   False
    Visible         =   True
-   Width           =   316
-   Begin Label lblData
+   Width           =   300
+   Begin ScrollBar vScroll
+      AcceptFocus     =   True
       AutoDeactivate  =   True
-      Bold            =   True
-      DataField       =   ""
-      DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Height          =   300
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   False
-      Left            =   7
-      LockBottom      =   False
+      Left            =   285
+      LineStep        =   1
+      LiveScroll      =   True
+      LockBottom      =   True
       LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
+      LockLeft        =   False
+      LockRight       =   True
       LockTop         =   True
-      Multiline       =   False
+      Maximum         =   100
+      Minimum         =   0
+      PageStep        =   20
       Scope           =   0
-      Selectable      =   False
-      TabIndex        =   1
-      TabPanelIndex   =   0
-      Text            =   "Untitled"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   4
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   187
-   End
-   Begin CheckBox chkData
-      AutoDeactivate  =   True
-      Bold            =   False
-      Caption         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   200
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      State           =   0
-      TabIndex        =   2
+      TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   4
-      Underline       =   False
-      Value           =   False
+      Top             =   0
+      Value           =   0
+      Visible         =   False
+      Width           =   15
+   End
+   Begin ccList ccList1
+      AcceptFocus     =   False
+      AcceptTabs      =   True
+      AutoDeactivate  =   True
+      BackColor       =   &cFFFF00FF
+      Backdrop        =   0
+      Enabled         =   True
+      EraseBackground =   True
+      HasBackColor    =   False
+      Height          =   300
+      HelpTag         =   ""
+      InitialParent   =   ""
+      Left            =   0
+      ListIndex       =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   1
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   0
+      Transparent     =   True
+      UseFocusRing    =   False
       Visible         =   True
-      Width           =   29
+      Width           =   287
+   End
+   Begin Timer tmrRefresh
+      Index           =   -2147483648
+      InitialParent   =   ""
+      LockedInPosition=   False
+      Mode            =   0
+      Period          =   100
+      Scope           =   0
+      TabPanelIndex   =   0
    End
 End
 #tag EndWindow
 
 #tag WindowCode
-	#tag Method, Flags = &h0
-		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
-		  lblData.text = oData.sVariableName
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  if ccList1.HandleMousedown(x, y) then
+		    return true
+		  end
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Function MouseWheel(X As Integer, Y As Integer, DeltaX as Integer, DeltaY as Integer) As Boolean
+		  vScroll.value = vScroll.value + deltaY
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub Open()
+		  vScroll.top = 0
+		  vScroll.Height = self.Height
+		  vScroll.left = self.width - vScroll.Width
+		  
+		  
 		End Sub
-	#tag EndMethod
+	#tag EndEvent
+
+	#tag Event
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  g.ClearRect 0, 0, g.Width, g.Height
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resized()
+		  HandleResize
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resizing()
+		  HandleResize
+		End Sub
+	#tag EndEvent
+
 
 	#tag Method, Flags = &h0
-		Sub Save()
+		Sub Action(oRow as itrRowDesign)
 		  
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub AddRow(oRow as itrRowDesign)
+		  ccList1.AddRow oRow
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub DeleteAllRows()
+		  ccList1.DeleteAllRows
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetRow(index as Integer) As itrRowDesign
+		  return ccList1.GetRow(index)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub HandleResize()
+		  if ccList1.Height > self.Height then
+		    vScroll.Visible = true
+		    
+		    vScroll.Maximum = ccList1.Height - self.Height
+		    vScroll.PageStep = vScroll.Maximum/20
+		  else
+		    vScroll.Visible = false
+		    ccList1.top = 0
+		  end
+		  
+		  
+		  if bScrollLastState <> vScroll.Visible then
+		    bScrollLastState = vScroll.Visible
+		    
+		    ccList1.AdjustWidth bScrollLastState
+		    
+		  end
+		  
+		  RaiseEvent ListResize
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub HandleScroll()
+		  ccList1.top = -vScroll.value
+		  
+		  self.Invalidate false
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ListIndex() As Integer
+		  return ccList1.ListIndex
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ListIndex(assigns Value as Integer)
+		  ccList1.ListIndex = Value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowCount() As Integer
+		  return ccList1.RowCount
+		End Function
+	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event AddRow() As itrRowDesign
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event Change()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event ListResize()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event RowCountChange()
+	#tag EndHook
+
+
+	#tag Property, Flags = &h21
+		Private bScrollLastState As boolean
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
+#tag Events vScroll
+	#tag Event
+		Sub ValueChanged()
+		  HandleScroll
+		  
+		  ' if tmrRefresh.mode = timer.ModeOff then
+		  ' tmrRefresh.mode = timer.ModeSingle
+		  ' else
+		  ' tmrRefresh.Reset
+		  ' end
+		  
+		  self.Invalidate false
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events ccList1
+	#tag Event
+		Sub RowCountChange()
+		  RaiseEvent RowCountChange
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  RaiseEvent Change
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub ListResize()
+		  HandleResize
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events tmrRefresh
+	#tag Event
+		Sub Action()
+		  me.mode = timer.ModeOff
+		  
+		  
+		  self.Refresh false
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="AcceptFocus"
@@ -137,14 +307,14 @@ End
 	#tag ViewProperty
 		Name="BackColor"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		InitialValue="&hFFFFFF"
 		Type="Color"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Backdrop"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		Type="Picture"
 		EditorType="Picture"
 	#tag EndViewProperty
@@ -167,14 +337,14 @@ End
 	#tag ViewProperty
 		Name="HasBackColor"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Height"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="300"
 		Type="Integer"
 	#tag EndViewProperty
@@ -287,7 +457,7 @@ End
 	#tag ViewProperty
 		Name="Width"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="300"
 		Type="Integer"
 	#tag EndViewProperty

@@ -1,5 +1,5 @@
 #tag Window
-Begin ContainerControl ccCheckbox Implements itrRowDesign
+Begin ContainerControl ccText Implements itrRowDesign
    AcceptFocus     =   False
    AcceptTabs      =   True
    AutoDeactivate  =   True
@@ -24,7 +24,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
    Transparent     =   True
    UseFocusRing    =   False
    Visible         =   True
-   Width           =   316
+   Width           =   300
    Begin Label lblData
       AutoDeactivate  =   True
       Bold            =   True
@@ -36,7 +36,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   7
+      Left            =   5
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -45,51 +45,62 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       Multiline       =   False
       Scope           =   0
       Selectable      =   False
-      TabIndex        =   1
+      TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Untitled"
       TextAlign       =   0
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   4
+      Top             =   3
       Transparent     =   True
       Underline       =   False
       Visible         =   True
-      Width           =   187
+      Width           =   207
    End
-   Begin CheckBox chkData
+   Begin TextField txtData
+      AcceptTabs      =   False
+      Alignment       =   0
       AutoDeactivate  =   True
+      AutomaticallyCheckSpelling=   False
+      BackColor       =   &cFFFFFF00
       Bold            =   False
-      Caption         =   ""
+      Border          =   True
+      CueText         =   ""
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
-      Height          =   20
+      Format          =   ""
+      Height          =   22
       HelpTag         =   ""
       Index           =   -2147483648
-      InitialParent   =   ""
       Italic          =   False
-      Left            =   200
+      Left            =   214
+      LimitText       =   0
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      Mask            =   ""
+      Password        =   False
+      ReadOnly        =   False
       Scope           =   0
-      State           =   0
-      TabIndex        =   2
+      TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
+      Text            =   ""
+      TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   4
+      Top             =   3
       Underline       =   False
-      Value           =   False
+      UseFocusRing    =   True
       Visible         =   True
-      Width           =   29
+      Width           =   80
    End
 End
 #tag EndWindow
@@ -97,12 +108,16 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
+		  // Part of the itrRowDesign interface.
+		  
 		  lblData.text = oData.sVariableName
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  // Part of the itrRowDesign interface.
+		  
 		  
 		End Sub
 	#tag EndMethod

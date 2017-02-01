@@ -128,6 +128,7 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Match"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -193,6 +194,7 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Level"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -449,6 +451,7 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   2
+         TabStop         =   True
          Text            =   "Autonomous"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -483,6 +486,7 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   4
          TabPanelIndex   =   2
+         TabStop         =   True
          Text            =   "Manual"
          TextAlign       =   0
          TextColor       =   &c00000000

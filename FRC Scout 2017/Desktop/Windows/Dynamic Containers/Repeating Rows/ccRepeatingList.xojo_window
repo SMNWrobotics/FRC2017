@@ -1,5 +1,5 @@
 #tag Window
-Begin ContainerControl ccCheckbox Implements itrRowDesign
+Begin ContainerControl ccRepeatingList
    AcceptFocus     =   False
    AcceptTabs      =   True
    AutoDeactivate  =   True
@@ -9,7 +9,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
    Enabled         =   True
    EraseBackground =   True
    HasBackColor    =   False
-   Height          =   28
+   Height          =   300
    HelpTag         =   ""
    InitialParent   =   ""
    Left            =   0
@@ -21,95 +21,161 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
    TabPanelIndex   =   0
    TabStop         =   True
    Top             =   0
-   Transparent     =   True
+   Transparent     =   False
    UseFocusRing    =   False
    Visible         =   True
-   Width           =   316
-   Begin Label lblData
+   Width           =   300
+   Begin ccRepeatingRows ccRepeatingRows1
+      AcceptFocus     =   False
+      AcceptTabs      =   True
       AutoDeactivate  =   True
-      Bold            =   True
-      DataField       =   ""
-      DataSource      =   ""
+      BackColor       =   &cFFFF00FF
+      Backdrop        =   0
       Enabled         =   True
-      Height          =   20
+      EraseBackground =   True
+      HasBackColor    =   False
+      Height          =   300
       HelpTag         =   ""
-      Index           =   -2147483648
       InitialParent   =   ""
-      Italic          =   False
-      Left            =   7
-      LockBottom      =   False
+      Left            =   0
+      LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   1
-      TabPanelIndex   =   0
-      Text            =   "Untitled"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   4
-      Transparent     =   True
-      Underline       =   False
-      Visible         =   True
-      Width           =   187
-   End
-   Begin CheckBox chkData
-      AutoDeactivate  =   True
-      Bold            =   False
-      Caption         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   200
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
+      LockRight       =   True
       LockTop         =   True
       Scope           =   0
-      State           =   0
-      TabIndex        =   2
+      TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   4
-      Underline       =   False
-      Value           =   False
+      Top             =   0
+      Transparent     =   False
+      UseFocusRing    =   False
       Visible         =   True
-      Width           =   29
+      Width           =   300
    End
 End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Open()
+		  ccRepeatingRows1.top = 1
+		  ccRepeatingRows1.left = 1
+		  
+		  ccRepeatingRows1.width = self.width - 2
+		  ccRepeatingRows1.height = self.Height - 2
+		  
+		  Me.DeleteAllRows
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  'g.ForeColor = &cFFFFFF
+		  'g.FillRect 0, 0, g.Width, g.Height
+		  g.ClearRect 0, 0, g.Width, g.Height
+		  
+		  'g.ForeColor = &c000000
+		  'g.PenWidth = 1
+		  'g.PenHeight = 1
+		  'g.DrawRect 0, 0, g.Width, g.Height
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resized()
+		  self.Refresh true
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Resizing()
+		  self.Refresh false
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
-		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
-		  lblData.text = oData.sVariableName
+		Sub AddNewRow()
+		  ' ccList1.AddRow oRow
+		  
+		  //Raise the AddRow Event
+		  
+		  dim oRow as itrRowDesign = AddRow
+		  
+		  bks_debug.Assert oRow <> nil, "Could not create list row."
+		  
+		  ccRepeatingRows1.AddRow oRow
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Save()
-		  
+		Sub DeleteAllRows()
+		  ccRepeatingRows1.DeleteAllRows
 		End Sub
 	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function GetRow(index as Integer) As itrRowDesign
+		  return ccRepeatingRows1.GetRow(index)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function ListIndex() As Integer
+		  return ccRepeatingRows1.ListIndex
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ListIndex(assigns Value as Integer)
+		  ccRepeatingRows1.ListIndex = Value
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function RowCount() As Integer
+		  return ccRepeatingRows1.RowCount
+		End Function
+	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event AddRow() As itrRowDesign
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event Change()
+	#tag EndHook
+
+	#tag Hook, Flags = &h0
+		Event RowCountChange()
+	#tag EndHook
 
 
 #tag EndWindowCode
 
+#tag Events ccRepeatingRows1
+	#tag Event
+		Function AddRow() As itrRowDesign
+		  dim oRow as itrRowDesign = AddRow
+		  
+		  ccRepeatingRows1.AddRow oRow
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  RaiseEvent Change
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub RowCountChange()
+		  Self.refresh false
+		  
+		  RaiseEvent RowCountChange
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="AcceptFocus"
@@ -137,14 +203,14 @@ End
 	#tag ViewProperty
 		Name="BackColor"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		InitialValue="&hFFFFFF"
 		Type="Color"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Backdrop"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		Type="Picture"
 		EditorType="Picture"
 	#tag EndViewProperty
@@ -167,14 +233,14 @@ End
 	#tag ViewProperty
 		Name="HasBackColor"
 		Visible=true
-		Group="Background"
+		Group="Appearance"
 		InitialValue="False"
 		Type="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Height"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="300"
 		Type="Integer"
 	#tag EndViewProperty
@@ -287,7 +353,7 @@ End
 	#tag ViewProperty
 		Name="Width"
 		Visible=true
-		Group="Size"
+		Group="Position"
 		InitialValue="300"
 		Type="Integer"
 	#tag EndViewProperty

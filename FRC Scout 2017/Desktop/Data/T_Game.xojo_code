@@ -225,11 +225,6 @@ Inherits Data.ActiveRecordBase
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="iteam_number"
-			Group="Behavior"
-			Type="Integer"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Left"
 			Visible=true
 			Group="Position"
@@ -240,6 +235,36 @@ Inherits Data.ActiveRecordBase
 			Name="Name"
 			Visible=true
 			Group="ID"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sGameUUID"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sMatchKey"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sscoutName"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sScoutTeamKey"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sTeamKey"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="sTeamNumber"
+			Group="Behavior"
 			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty

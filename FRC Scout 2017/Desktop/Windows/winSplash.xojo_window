@@ -27,6 +27,7 @@ Begin Window winSplash
    Visible         =   True
    Width           =   600
    Begin Timer Timer1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Mode            =   1
@@ -56,6 +57,7 @@ Begin Window winSplash
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Team 1982 Cougar Robotics\nScouting Application\nFor 2017\nFIRST SteamWorks"
       TextAlign       =   1
       TextColor       =   &c00000000
@@ -90,6 +92,7 @@ Begin Window winSplash
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "© 2017 Cougar Robotics\nwith help from BKeeney Software Inc.\n\nAll rights reserved"
       TextAlign       =   1
       TextColor       =   &c00000000
