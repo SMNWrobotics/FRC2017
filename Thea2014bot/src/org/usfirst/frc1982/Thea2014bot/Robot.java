@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 /**
@@ -40,7 +41,7 @@ public class Robot extends IterativeRobot {
 //    private AtomicInteger ctr = new AtomicInteger();
 //	private VisionThread visionThread;
 	
-	ADIS16448_IMU gyro;
+	public static ADIS16448_IMU gyro;
 	
     Command autonomousCommand;
 //    GripPipelineTooMuch gripPipeline;
@@ -121,8 +122,16 @@ public class Robot extends IterativeRobot {
     
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        System.out.println("Angle X: " + gyro.getAngleX() + ", Angle Y: " + gyro.getAngleY() + ", Angle Y: " + gyro.getAngleZ());
-        
+//        System.out.println("Angle X: " + gyro.getAngleX() + ", Angle Y: " + gyro.getAngleY() + ", Angle Z: " + gyro.getAngleZ());
+        SmartDashboard.putNumber("Angle X", Math.round(gyro.getAngleX()/4));
+        SmartDashboard.putNumber("Angle Y", Math.round(gyro.getAngleY()/4));
+        SmartDashboard.putNumber("Angle Z", Math.round(gyro.getAngleZ()/4));
+        SmartDashboard.putNumber("AccelX", gyro.getAccelX());
+        SmartDashboard.putNumber("AccelY", gyro.getAccelY());
+        SmartDashboard.putNumber("AccelZ", gyro.getAccelZ());
+        SmartDashboard.putNumber("MagX", gyro.getMagX());
+        SmartDashboard.putNumber("MagY", gyro.getMagY());
+        SmartDashboard.putNumber("MagZ", gyro.getMagZ());
 //        double driftX, driftY, driftZ;
 //        driftX = Math.round((gyro.getAngleX() - oldX)*10000);
 //        driftY = Math.round((gyro.getAngleY() - oldY)*10000);
@@ -153,6 +162,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        gyro.calibrate();
+        gyro.reset();
     }
 
     /**
@@ -160,7 +171,17 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        System.out.println("Angle X: " + gyro.getAngleX() + ", Angle Y: " + gyro.getAngleY() + ", Angle Z: " + gyro.getAngleZ());
+//        System.out.println("Angle X: " + gyro.getAngleX() + ", Angle Y: " + gyro.getAngleY() + ", Angle Z: " + gyro.getAngleZ());
+        SmartDashboard.putNumber("Angle X", Math.round(gyro.getAngleX()/4));
+        SmartDashboard.putNumber("Angle Y", Math.round(gyro.getAngleY()/4));
+        SmartDashboard.putNumber("Angle Z", Math.round(gyro.getAngleZ()/4));
+        SmartDashboard.putNumber("AccelX", gyro.getAccelX());
+        SmartDashboard.putNumber("AccelY", gyro.getAccelY());
+        SmartDashboard.putNumber("AccelZ", gyro.getAccelZ());
+        SmartDashboard.putNumber("MagX", gyro.getMagX());
+        SmartDashboard.putNumber("MagY", gyro.getMagY());
+        SmartDashboard.putNumber("MagZ", gyro.getMagZ());
+        System.out.println("Accel X: " + Math.round(gyro.getAccelX()*100) + ", Accel Y: " + Math.round(gyro.getAccelY()*100) + ", Accel Z: " + Math.round(gyro.getAccelZ()*100));
     }
 
     /**
