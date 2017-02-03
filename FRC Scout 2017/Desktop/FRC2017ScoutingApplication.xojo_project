@@ -1,5 +1,5 @@
 Type=Desktop
-RBProjectVersion=2016.03
+RBProjectVersion=2016.041
 MinIDEVersion=20070100
 Module=Data;Data.xojo_code;&h46D3A62F;&h0;false
 Class=App;App.xojo_code;&h2724EFFF;&h0;false
@@ -147,5 +147,6 @@ DebuggerCommandLine=
 UseGDIPlus=False
 UseBuildsFolder=True
 HiDPI=True
+CopyRedistNextToWindowsEXE=False
 IsWebProject=False
 OptimizationLevel=0

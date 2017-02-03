@@ -82,14 +82,6 @@ Begin WindowMenuWindow WinRobotDesign
       Visible         =   True
       Width           =   560
    End
-   Begin Timer tmrDelayLoad
-      Index           =   -2147483648
-      LockedInPosition=   False
-      Mode            =   1
-      Period          =   100
-      Scope           =   0
-      TabPanelIndex   =   0
-   End
 End
 #tag EndWindow
 
@@ -102,7 +94,7 @@ End
 		  
 		  self.Show
 		  
-		  
+		  LoadList
 		End Sub
 	#tag EndMethod
 
@@ -193,16 +185,6 @@ End
 		  Return oRow
 		  
 		End Function
-	#tag EndEvent
-#tag EndEvents
-#tag Events tmrDelayLoad
-	#tag Event
-		Sub Action()
-		  //Reason for the time is that PopupMenu's don't like their listindex set so soon.
-		  me.mode = timer.ModeOff
-		  
-		  LoadList
-		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior

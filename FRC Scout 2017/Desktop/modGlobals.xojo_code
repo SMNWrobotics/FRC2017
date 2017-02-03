@@ -137,6 +137,17 @@ Protected Module modGlobals
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetText(extends pm as PopupMenu, assigns sValue as String)
+		  for i as integer = 0 to pm.ListCount-1
+		    if pm.list(i) = sValue then
+		      pm.ListIndex = i
+		      return
+		    end
+		  next
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function ToString(Extends b as Boolean) As String
 		  if b= true then
 		    return "Yes"

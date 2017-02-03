@@ -98,10 +98,14 @@ End
 		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
 		  // Part of the itrRowDesign interface.
 		  oValue = oData.GetValue(TeamNumber)
+		  dim sTest as string = oValue.sValue
 		  
 		  lblData.text = oData.sVariableName
 		  
 		  pmData.DeleteAllRows
+		  
+		  dim iListIndex as integer = -1
+		  dim iCount as integer
 		  
 		  if oData.sForeignTable <> "" and oData.sForeignField <> "" then
 		    dim s as string = "Select * from " + oData.sForeignTable
@@ -112,8 +116,9 @@ End
 		      s = rs.Field(oData.sForeignField).StringValue
 		      pmData.AddRow s
 		      if s = oValue.sValue then
-		        pmData.ListIndex = pmData.ListCount-1
+		        iListIndex = iCount
 		      end
+		      iCount = iCount + 1
 		      rs.MoveNext
 		    wend
 		    
@@ -124,10 +129,14 @@ End
 		      pmData.AddRow s.trim
 		      
 		      if s = oValue.sValue then
-		        pmData.ListIndex = pmData.ListCount-1
+		        iListIndex = iCount
 		      end
+		      
+		      iCount = iCount + 1
 		    next
 		  end
+		  
+		  pmData.ListIndex = iListIndex
 		End Sub
 	#tag EndMethod
 
