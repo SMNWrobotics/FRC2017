@@ -42,7 +42,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   1232420863
+      Icon            =   211861503
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -92,7 +92,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Use this selection to import data from The Blue Alliance website for Events, Teams, and Matches.  Use to select the event you are at."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -121,7 +120,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   818677759
+      Icon            =   431806463
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -171,7 +170,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Feel the love!  Import Scouting Data From Other FRC teams at your tournament.   Drag and Drop the File onto this Window to Import or Select by using the button on the left."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -200,7 +198,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   1428953087
+      Icon            =   762103807
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -250,7 +248,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Information want to be free!  Export your scouting data so other FRC teams at your tournament can participate."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -270,7 +267,7 @@ Begin WindowMenuWindow winStartup
       Bevel           =   0
       Bold            =   False
       ButtonType      =   0
-      Caption         =   "Scout"
+      Caption         =   "Match Scout"
       CaptionAlign    =   3
       CaptionDelta    =   0
       CaptionPlacement=   4
@@ -279,7 +276,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   2121066495
+      Icon            =   665655295
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -329,7 +326,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Scout a match at ^1.  Keep track of one robot in a match and score how it does."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -358,7 +354,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   899551231
+      Icon            =   963747839
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -408,7 +404,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   10
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "What teams have and haven’t been scouted yet?  What teams do you need to look at?"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -443,7 +438,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Untitled"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -472,7 +466,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   1181816831
+      Icon            =   1297633279
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -522,7 +516,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   12
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Get Statistics for Teams in upcoming matches"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -551,7 +544,7 @@ Begin WindowMenuWindow winStartup
       HasMenu         =   0
       Height          =   64
       HelpTag         =   ""
-      Icon            =   2121066495
+      Icon            =   295403519
       IconAlign       =   4
       IconDX          =   0
       IconDY          =   0
@@ -601,7 +594,6 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   14
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Scout the robot designs."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -666,7 +658,7 @@ End
 		  
 		  dim sKey as string = preferences.StringValue("EventKey")
 		  
-		  sKey = "2017mokc"
+		  ' sKey = "2016mokc"
 		  
 		  if sKey <> "" then
 		    moEvent = Data.T_event.FindByKey(sKey)
@@ -755,9 +747,7 @@ End
 #tag Events bbList
 	#tag Event
 		Sub Action()
-		  dim w as new winMatchList
-		  
-		  w.Display moEvent
+		  Msgbox "To Do"
 		  
 		End Sub
 	#tag EndEvent

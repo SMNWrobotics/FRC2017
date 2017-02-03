@@ -148,7 +148,6 @@ Begin WindowMenuWindow winMatchView
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Blue Alliance Teams"
       TextAlign       =   1
       TextColor       =   &c00000000
@@ -183,7 +182,6 @@ Begin WindowMenuWindow winMatchView
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Red Alliance Teams"
       TextAlign       =   1
       TextColor       =   &c00000000
@@ -662,23 +660,24 @@ End
 	#tag EndEvent
 	#tag Event
 		Function CellClick(row as Integer, column as Integer, x as Integer, y as Integer) As Boolean
-		  if row = me.ListCount-1 then
-		    dim oGame as Data.t_game
-		    oGame = me.celltag(0, column)
-		    
-		    if oGame = nil then
-		      oGame = new Data.t_game
-		      oGame.sGameUUID = modGlobals.GetGUID
-		      oGame.sMatchKey = moMatch.skey
-		      oGame.sTeamKey = me.heading(column)
-		    end
-		    
-		    dim w as new winGame
-		    w.Display(oGame)
-		    
-		    
-		    return true
-		  end
+		  ' if row = me.ListCount-1 then
+		  ' dim oGame as Data.t_game
+		  ' oGame = me.celltag(0, column)
+		  ' 
+		  ' if oGame = nil then
+		  ' oGame = new Data.t_game
+		  ' oGame.sGameUUID = modGlobals.GetGUID
+		  ' oGame.sMatchKey = moMatch.skey
+		  ' oGame.sTeamKey = me.heading(column)
+		  ' end
+		  ' 
+		  ' break //fix
+		  ' ' dim w as new winGame
+		  ' ' w.Display(oGame, "Blue")
+		  ' 
+		  ' 
+		  ' return true
+		  ' end
 		End Function
 	#tag EndEvent
 #tag EndEvents
@@ -734,23 +733,24 @@ End
 	#tag EndEvent
 	#tag Event
 		Function CellClick(row as Integer, column as Integer, x as Integer, y as Integer) As Boolean
-		  if row = me.ListCount-1 then
-		    dim oGame as Data.t_game
-		    oGame = me.celltag(0, column)
-		    
-		    if oGame = nil then
-		      oGame = new Data.t_game
-		      oGame.sGameUUID = modGlobals.GetGUID
-		      oGame.sMatchKey = moMatch.skey
-		      oGame.sTeamKey = me.heading(column)
-		    end
-		    
-		    dim w as new winGame
-		    w.Display(oGame)
-		    
-		    
-		    return true
-		  end
+		  ' if row = me.ListCount-1 then
+		  ' dim oGame as Data.t_game
+		  ' oGame = me.celltag(0, column)
+		  ' 
+		  ' if oGame = nil then
+		  ' oGame = new Data.t_game
+		  ' oGame.sGameUUID = modGlobals.GetGUID
+		  ' oGame.sMatchKey = moMatch.skey
+		  ' oGame.sTeamKey = me.heading(column)
+		  ' end
+		  ' 
+		  ' break //fix
+		  ' ' dim w as new winGame
+		  ' ' w.Display(oGame, "Red")
+		  ' 
+		  ' 
+		  ' return true
+		  ' end
 		End Function
 	#tag EndEvent
 #tag EndEvents

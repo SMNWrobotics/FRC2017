@@ -141,7 +141,6 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Match"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -176,7 +175,6 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Alliance"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -211,7 +209,6 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Team Number"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -273,7 +270,6 @@ Begin Window dlgScoutSelect
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Scout Name"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -382,7 +378,6 @@ Begin Window dlgScoutSelect
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Scout Team Number"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -449,7 +444,6 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Level"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -473,7 +467,6 @@ Begin Window dlgScoutSelect
       HasBackColor    =   False
       Height          =   27
       HelpTag         =   ""
-      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   408
       LockBottom      =   True
@@ -499,16 +492,11 @@ End
 		Sub Display(oEvent as Data.t_event)
 		  moEvent = oEvent
 		  
-		  pmCompLevel.DeleteAllRows
-		  
-		  pmCompLevel.addRowAndTag "Qualifier Match", "qm"
-		  pmCompLevel.addRowAndTag "Quarter Finals", "qf"
-		  pmCompLevel.addRowAndTag "Semi-Finals", "sf"
-		  pmCompLevel.addRowAndTag "Finals", "f"
-		  
 		  LoadScoutTeams
 		  
-		  pmCompLevel.ListIndex = iLastLevel
+		  if iLastLevel <= pmCompLevel.ListCount-1 then
+		    pmCompLevel.ListIndex = iLastLevel
+		  end
 		  
 		  self.ShowModal
 		End Sub
@@ -535,13 +523,16 @@ End
 	#tag Method, Flags = &h0
 		Sub LoadScoutTeams()
 		  pmScout.DeleteAllRows
+		  dim iCount as integer
 		  
 		  for each oTeam as Data.t_team in moEvent.GetTeams
 		    pmScout.addRowAndTag oTeam.sTeam_Number, oTeam
 		    
 		    if preferences.StringValue("LastScoutTeam") = oTeam.sTeam_Number then
-		      pmScout.ListIndex = pmScout.ListCount-1
+		      pmScout.ListIndex = iCount
 		    end
+		    
+		    iCount = iCount + 1
 		  next
 		End Sub
 	#tag EndMethod
@@ -549,6 +540,8 @@ End
 	#tag Method, Flags = &h0
 		Sub LoadTeams()
 		  pmTeam.DeleteAllRows
+		  
+		  if pmMatch.ListIndex = -1 then return
 		  
 		  dim oMatch as Data.t_matches = pmMatch.RowTag(pmMatch.ListIndex)
 		  
@@ -561,6 +554,10 @@ End
 		    pmTeam.AddRow oMatch.sRed_Team_1
 		    pmTeam.AddRow oMatch.sRed_Team_2
 		    pmTeam.AddRow oMatch.sRed_team_3
+		  end
+		  
+		  if iLastAlliancePosition <> -1 then
+		    pmTeam.ListIndex = iLastAlliancePosition
 		  end
 		End Sub
 	#tag EndMethod
@@ -586,9 +583,13 @@ End
 		  dim oMatch as Data.t_matches = pmMatch.RowTag(pmMatch.ListIndex)
 		  dim oTeam as Data.t_team = Data.t_team.FindByKey(pmTeam.text)
 		  
-		  if Data.t_game.TeamFoundForMatch(oMatch.sKey, oTeam.sKey) then
-		    msgbox "Validation Error" + EndOfLine + "There is a record for the selected team in this match already.  Check your settings."
-		    return false
+		  if Data.t_game.TeamFoundForMatchAndTeam(oMatch.sKey, oTeam.sTeam_Number) then
+		    dim iRes as integer
+		    
+		    iRes = Alert(AlertTypes.kCaution, "Data Already Exists for this Team and Match." , "Do you really want to edit this data?", "Cancel", "Edit", "")
+		    if iRes = 1 then
+		      return false
+		    end
 		  end
 		  
 		  return true
@@ -628,7 +629,7 @@ End
 #tag Events pmTeam
 	#tag Event
 		Sub Change()
-		  
+		  iLastAlliancePosition = me.ListIndex
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -667,6 +668,16 @@ End
 		  iLastLevel = me.ListIndex
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  me.DeleteAllRows
+		  
+		  me.addRowAndTag "Qualifier Match", "qm"
+		  me.addRowAndTag "Quarter Finals", "qf"
+		  me.addRowAndTag "Semi-Finals", "sf"
+		  me.addRowAndTag "Finals", "f"
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events ccOKCancel1
 	#tag Event
@@ -678,25 +689,24 @@ End
 		Sub OKClicked()
 		  if validate = false then return
 		  
-		  dim oNewEvent as new Data.t_game
+		  dim oNewGame as new Data.t_game
 		  
 		  //Match Data
 		  dim oMatch as Data.t_matches = pmMatch.RowTag(pmMatch.ListIndex)
-		  oNewEvent.sMatchKey = oMatch.skey
+		  oNewGame.sMatchKey = oMatch.skey
 		  
-		  oNewEvent.sTeamKey = pmTeam.Text
-		  dim oTeam as Data.t_team = Data.t_team.FindByKey(oNewEvent.sTeamKey)
-		  oNewEvent.sTeamNumber = oTeam.sTeam_Number
+		  oNewGame.sTeamNumber = pmTeam.Text
+		  dim oTeam as Data.t_team = Data.t_team.FindByKey(pmTeam.Text)
+		  oNewGame.sTeamNumber = oTeam.sTeam_Number
+		  
+		  dim sAllianceColor as string = pmAlliance.text
 		  
 		  
 		  //Scout Data
-		  oNewEvent.sscoutName = txtScoutName.text.trim
-		  
-		  dim oScoutTeam as Data.t_team = pmScout.RowTag(pmScout.ListIndex)
-		  oNewEvent.sScoutTeamKey = oScoutTeam.sKey
+		  oNewGame.sscoutName = txtScoutName.text.trim
 		  
 		  dim w as new winGame
-		  w.display oNewEvent
+		  w.display oMatch, oTeam
 		  
 		  self.close
 		End Sub

@@ -100,7 +100,7 @@ Protected Module Preferences
 		  
 		  f = modGlobals.GetPrefsFolder
 		  
-		  dim sName as string = "com.frcteam1982.frcscout." + FileExtension
+		  dim sName as string = "com.frcteam1982.frcscout2017." + FileExtension
 		  return f.Child(sName)
 		End Function
 	#tag EndMethod

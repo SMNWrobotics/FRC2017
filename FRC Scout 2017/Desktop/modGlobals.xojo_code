@@ -187,6 +187,10 @@ Protected Module modGlobals
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		iLastAlliancePosition As Integer = -1
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		iLastLevel As Integer = 0
 	#tag EndProperty
 

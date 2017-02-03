@@ -1,6 +1,20 @@
 #tag Class
 Protected Class T_Game
 Inherits Data.ActiveRecordBase
+	#tag Event
+		Sub BeforeSave()
+		  if me.sscoutName = "" then
+		    me.sscoutName = Preferences.StringValue("LastScoutName")
+		  end
+		  
+		  if me.sScoutTeamNumber = "" then
+		    me.sScoutTeamNumber = Preferences.StringValue("LastScoutTeam")
+		  end
+		  
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
 		Shared Function BaseSQL(bAsCount as Boolean = false) As String
 		  dim ars() as string
@@ -132,6 +146,31 @@ Inherits Data.ActiveRecordBase
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Shared Function LoadMatchValue(MatchKey as string, TeamNumber as string, Variable as String) As Data.T_Game
+		  dim oValue as new Data.T_Game
+		  
+		  //Let's try and load it from the database
+		  dim s as string = "Select * from T_Game where " + _
+		  " MatchKey = " + MatchKey.SQLizeText + _
+		  " AND TeamNumber = " + TeamNumber.SQLizeText + _
+		  " AND Variable = " + Variable.SQLizeText
+		  dim rs as RecordSet = gdb.SQLSelectRaiseOnError(s)
+		  
+		  if rs.RecordCount = 0 then
+		    //Name made yet.
+		    oValue.sMatchKey = MatchKey
+		    oValue.sTeamNumber = TeamNumber
+		    oValue.sVariable = Variable
+		    oValue.save
+		  else
+		    oValue.ReadRecord(rs)
+		  end
+		  
+		  return oValue
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Shared Function TeamForMatch(MatchKey as string, TeamKey as String) As Data.T_Game
 		  dim s as string
 		  
@@ -162,10 +201,10 @@ Inherits Data.ActiveRecordBase
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Shared Function TeamFoundForMatch(MatchKey as string, TeamKey as String) As boolean
+		Shared Function TeamFoundForMatchAndTeam(MatchKey as string, TeamNumber as String) As boolean
 		  dim s as string
 		  
-		  s = "Select Count(*) from t_game where MatchKey = " + MatchKey.SQLizeText + " AND TeamKey = " + teamKey.SQLizeText
+		  s = "Select Count(*) from t_game where MatchKey = " + MatchKey.SQLizeText + " AND TeamNumber = " + TeamNumber.SQLizeText
 		  
 		  dim rs as RecordSet = gDB.SQLSelectRaiseOnError(s)
 		  
@@ -191,11 +230,7 @@ Inherits Data.ActiveRecordBase
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		sScoutTeamKey As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		sTeamKey As String
+		sScoutTeamNumber As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -241,31 +276,37 @@ Inherits Data.ActiveRecordBase
 			Name="sGameUUID"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sMatchKey"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sscoutName"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sScoutTeamKey"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sTeamKey"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sTeamNumber"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

@@ -110,7 +110,7 @@ Begin Window winGame
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   275
+      Left            =   295
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -169,7 +169,7 @@ Begin Window winGame
    End
    Begin Label txtTeamNumber
       AutoDeactivate  =   True
-      Bold            =   True
+      Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   False
@@ -237,7 +237,7 @@ Begin Window winGame
    End
    Begin Label txtRound
       AutoDeactivate  =   True
-      Bold            =   True
+      Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   False
@@ -305,7 +305,7 @@ Begin Window winGame
    End
    Begin Label txtMatch
       AutoDeactivate  =   True
-      Bold            =   True
+      Bold            =   False
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   False
@@ -367,667 +367,102 @@ Begin Window winGame
       Value           =   0
       Visible         =   True
       Width           =   731
-      Begin Label Label8
+      Begin ccAutonomous ccAutonomous1
+         AcceptFocus     =   False
+         AcceptTabs      =   True
          AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
+         BackColor       =   &cFFFFFF00
+         Backdrop        =   0
          Enabled         =   True
-         Height          =   20
+         EraseBackground =   True
+         HasBackColor    =   False
+         Height          =   382
          HelpTag         =   ""
-         Index           =   -2147483648
          InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
+         Left            =   29
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
-         Multiline       =   False
          Scope           =   0
-         Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   1
-         Text            =   "Starting Position:"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   81
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   122
-      End
-      Begin Label Label3
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   1
-         TabPanelIndex   =   1
-         Text            =   "Gear 1:"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   122
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   52
-      End
-      Begin Label Label4
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   2
-         TabPanelIndex   =   1
-         Text            =   "Gear 2:"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   155
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   52
-      End
-      Begin Label Label5
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   3
-         TabPanelIndex   =   1
-         Text            =   "Gear 3:"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   187
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   52
-      End
-      Begin PopupMenu pmStartingPosition
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Far Left\nPosition 1 (Left)\nPosition 2 (Middle)\nPosition 3 (Right)\nFar Right\nOther"
-         Italic          =   False
-         Left            =   159
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   4
-         TabPanelIndex   =   1
          TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   81
-         Underline       =   False
-         Visible         =   True
-         Width           =   105
-      End
-      Begin PopupMenu pmGear2
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Not Attempted\nAttempted\nMade"
-         Italic          =   False
-         Left            =   93
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   5
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   154
-         Underline       =   False
-         Visible         =   True
-         Width           =   171
-      End
-      Begin PopupMenu pmGear3
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Not Attempted\nAttempted\nMade"
-         Italic          =   False
-         Left            =   93
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   6
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   186
-         Underline       =   False
-         Visible         =   True
-         Width           =   171
-      End
-      Begin PopupMenu pmGear1
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Not Attempted\nAttempted\nMade"
-         Italic          =   False
-         Left            =   93
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   7
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   122
-         Underline       =   False
-         Visible         =   True
-         Width           =   171
-      End
-      Begin Label Label9
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   8
-         TabPanelIndex   =   1
-         Text            =   "Passed Base Line:"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   249
+         Top             =   71
          Transparent     =   True
-         Underline       =   False
+         UseFocusRing    =   False
          Visible         =   True
-         Width           =   122
+         Width           =   704
       End
-      Begin PopupMenu pmBaseLine
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Not Attempted\nAttempted\nMade"
-         Italic          =   False
-         Left            =   159
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   9
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   248
-         Underline       =   False
-         Visible         =   True
-         Width           =   154
-      End
-      Begin Label Label10
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   10
-         TabPanelIndex   =   1
-         Text            =   "Low Goal Shooting"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   301
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   130
-      End
-      Begin PopupMenu pmLowGoal
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Not Attempted\nAttempted"
-         Italic          =   False
-         Left            =   194
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   11
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   301
-         Underline       =   False
-         Visible         =   True
-         Width           =   142
-      End
-      Begin Label Label11
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   37
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   12
-         TabPanelIndex   =   1
-         Text            =   "High Goal Shooting"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   367
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   130
-      End
-      Begin PopupMenu pmHighGoal
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         InitialValue    =   "Not Attempted\nAttempted"
-         Italic          =   False
-         Left            =   194
-         ListIndex       =   0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   13
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   367
-         Underline       =   False
-         Visible         =   True
-         Width           =   142
-      End
-      Begin Slider sldLowGoal
-         AutoDeactivate  =   True
-         Enabled         =   True
-         Height          =   23
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Left            =   37
-         LineStep        =   1
-         LiveScroll      =   False
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Maximum         =   10
-         Minimum         =   0
-         PageStep        =   5
-         Scope           =   0
-         TabIndex        =   14
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TickStyle       =   "0"
-         Top             =   333
-         Value           =   0
-         Visible         =   True
-         Width           =   237
-      End
-      Begin Slider sldHighGoal
-         AutoDeactivate  =   True
-         Enabled         =   True
-         Height          =   23
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Left            =   37
-         LineStep        =   1
-         LiveScroll      =   False
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Maximum         =   10
-         Minimum         =   0
-         PageStep        =   5
-         Scope           =   0
-         TabIndex        =   15
-         TabPanelIndex   =   1
-         TabStop         =   True
-         TickStyle       =   "0"
-         Top             =   399
-         Value           =   0
-         Visible         =   True
-         Width           =   237
-      End
-      Begin Label lblLowGoal
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   286
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   16
-         TabPanelIndex   =   1
-         Text            =   "0"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   333
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   50
-      End
-      Begin Label lblHighGoal
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   286
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   17
-         TabPanelIndex   =   1
-         Text            =   "0"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   399
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   50
-      End
-      Begin TextArea txtNotes
-         AcceptTabs      =   False
-         Alignment       =   0
-         AutoDeactivate  =   True
-         AutomaticallyCheckSpelling=   True
-         BackColor       =   &cFFFFFF00
-         Bold            =   False
-         Border          =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Format          =   ""
-         Height          =   219
-         HelpTag         =   ""
-         HideSelection   =   True
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   376
-         LimitText       =   0
-         LineHeight      =   0.0
-         LineSpacing     =   1.0
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Mask            =   ""
-         Multiline       =   True
-         ReadOnly        =   False
-         Scope           =   0
-         ScrollbarHorizontal=   False
-         ScrollbarVertical=   True
-         Styled          =   True
-         TabIndex        =   18
-         TabPanelIndex   =   1
-         TabStop         =   True
-         Text            =   ""
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   111
-         Underline       =   False
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   202
-      End
-      Begin Label Label14
-         AutoDeactivate  =   True
-         Bold            =   True
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   376
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   19
-         TabPanelIndex   =   1
-         Text            =   "Notes"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   80
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   100
-      End
+   End
+   Begin Label Label8
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   False
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   10
+      TabPanelIndex   =   0
+      Text            =   "Scout Team:"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   473
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   86
+   End
+   Begin Label lblScoutTeamNumber
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   118
+      LockBottom      =   True
+      LockedInPosition=   False
+      LockLeft        =   False
+      LockRight       =   True
+      LockTop         =   False
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   11
+      TabPanelIndex   =   0
+      Text            =   "*"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   473
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   86
    End
 End
 #tag EndWindow
@@ -1045,8 +480,12 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Display(Data as Data.T_Game)
-		  oGame = Data
+		Sub Display(oMatch as Data.T_Matches, oTeam as Data.T_Team)
+		  moMatch = oMatch
+		  moTeam = oTeam
+		  
+		  lblScoutTeamNumber.text = preferences.StringValue("LastScoutTeam")
+		  txtScoutName.text = Preferences.StringValue("LastScoutName")
 		  
 		  self.show
 		  
@@ -1058,18 +497,9 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Handle_Load()
-		  //Set the title
-		  dim oMatch as Data.t_matches = Data.t_matches.FindByKey(oGame.sMatchKey)
-		  
-		  
-		  dim oTeam as Data.t_team = Data.t_team.FindByKey(oGame.sTeamKey)
-		  if oGame.sTeamNumber = "" then
-		    oGame.sTeamNumber = oTeam.sTeam_Number
-		  end
-		  
-		  if oGame.sTeamKey = oMatch.sBlue_Team_1 OR _ 
-		    oGame.sTeamKey = oMatch.sBlue_Team_2 OR _
-		    oGame.sTeamKey = oMatch.sBlue_Team_3 then
+		  if moTeam.sKey = moMatch.sBlue_Team_1 OR _ 
+		    moTeam.sKey = moMatch.sBlue_Team_2 OR _
+		    moTeam.sKey = moMatch.sBlue_Team_3 then
 		    //Blue Alliance
 		    me.BackColor = &cC8D9FF00
 		  else
@@ -1077,12 +507,11 @@ End
 		    me.BackColor = &cFFCAC200
 		  end
 		  
-		  self.title = "Match # " + str(oMatch.imatch_number) + "  Team: " + oGame.sTeamNumber
+		  self.title = "Match # " + str(moMatch.imatch_number) + "  Team: " + moTeam.sTeam_Number
 		  
-		  txtScoutName.text = oGame.sScoutName
-		  txtTeamNumber.text = oGame.sTeamNumber 
-		  txtMatch.text = str(oMatch.imatch_number)
-		  select case omatch.sComp_Level
+		  txtTeamNumber.text = moTeam.sTeam_Number
+		  txtMatch.text = str(moMatch.imatch_number)
+		  select case momatch.sComp_Level
 		  case "qm"
 		    txtRound.text = "Qualifier Match"
 		  case "qf"
@@ -1095,16 +524,10 @@ End
 		    break
 		  end
 		  
-		  //Autonomous
-		  pmBaseLine.SetText = ""
-		  pmGear1.SetText = ""
-		  pmGear2.SetText = ""
-		  pmGear3.SetText = ""
-		  pmHighGoal.SetText = ""
-		  pmLowGoal.SetText = ""
-		  pmStartingPosition.SetText = ""
-		  sldHighGoal.value = 0
-		  sldLowGoal.value = 0
+		  txtScoutName.text = Preferences.StringValue("LastScoutName", "")
+		  
+		  
+		  ccAutonomous1.load moMatch.skey, moTeam.sTeam_Number
 		  
 		  //Teleop
 		  
@@ -1116,19 +539,11 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Handle_Save()
-		  ' oGame.sScoutName = txtScoutName.text
-		  ' oGame.sTeamNumber = txtTeamNumber.text
-		  ' 
-		  ' ' oGame.iDefenseType2_ID = pmDefense2.RowTag(pmDefense2.ListIndex)
-		  ' ' oGame.iDefenseType3_ID = pmDefense3.RowTag(pmDefense3.ListIndex)
-		  ' ' oGame.iDefenseType4_ID = pmDefense4.RowTag(pmDefense4.ListIndex)
-		  ' ' oGame.iDefenseType5_ID = pmDefense5.RowTag(pmDefense5.ListIndex)
-		  ' 
-		  ' 
-		  ' oGame.Save
-		  ' 
-		  ' btnSave.Enabled = false
-		  ' 
+		  ccAutonomous1.save
+		  ' ccTeleop.save
+		  
+		  btnSave.Enabled = false
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -1142,7 +557,11 @@ End
 
 
 	#tag Property, Flags = &h0
-		oGame As Data.T_Game
+		moMatch As Data.T_Matches
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		moTeam As Data.T_Team
 	#tag EndProperty
 
 

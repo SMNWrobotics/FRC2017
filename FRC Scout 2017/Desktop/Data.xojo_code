@@ -79,7 +79,6 @@ Protected Module Data
 		  BKS_ActiveRecord.Table( db, "T_Design", GetTypeInfo( T_Design ) )
 		  BKS_ActiveRecord.Table( db, "T_DesignVariables", GetTypeInfo( T_DesignVariables ) )
 		  BKS_ActiveRecord.Table( db, "T_Game", GetTypeInfo( T_Game ) )
-		  BKS_ActiveRecord.Table( db, "T_GameVariables", GetTypeInfo( T_GameVariables ) )
 		End Sub
 	#tag EndMethod
 

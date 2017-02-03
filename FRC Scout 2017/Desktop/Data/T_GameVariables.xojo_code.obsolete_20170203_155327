@@ -137,31 +137,11 @@ Inherits Data.ActiveRecordBase
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		bGamePlay As Boolean
+		bTelop As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		iGameVariables_ID As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		iMaximumNumber As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		iMinimumNumber As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		sDataType As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		sForeignTable As String
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		sList As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -176,7 +156,7 @@ Inherits Data.ActiveRecordBase
 			Type="Boolean"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="bGamePlay"
+			Name="bTelop"
 			Group="Behavior"
 			Type="Boolean"
 		#tag EndViewProperty
