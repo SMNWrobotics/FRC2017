@@ -116,6 +116,12 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetListHeight() As integer
+		  return ccRepeatingRows1.GetListHeight
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetRow(index as Integer) As itrRowDesign
 		  return ccRepeatingRows1.GetRow(index)
 		End Function

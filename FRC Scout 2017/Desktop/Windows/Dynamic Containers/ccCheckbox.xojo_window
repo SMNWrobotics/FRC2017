@@ -47,6 +47,7 @@ Begin ContainerControl ccCheckbox Implements itrRowDesign
       Selectable      =   False
       TabIndex        =   1
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Untitled"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -97,15 +98,23 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
+		  oValue = oData.GetValue(TeamNumber)
 		  lblData.text = oData.sVariableName
+		  chkData.value = cBool(oValue.sValue)
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
-		  
+		  oValue.sValue = str(chkData.value)
+		  oValue.save
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h21
+		Private oValue As Data.T_Design
+	#tag EndProperty
 
 
 #tag EndWindowCode

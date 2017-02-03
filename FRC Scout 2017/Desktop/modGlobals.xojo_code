@@ -69,6 +69,17 @@ Protected Module modGlobals
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function cBool(s as String) As boolean
+		  if s = "True" or s = "1" then
+		    return true
+		  else
+		    return false
+		  end
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1
 		Protected Function GetGUID() As string
 		  dim rs as RecordSet = gDB.SQLSelect("SELECT lower(hex(randomblob(16)))")

@@ -33,7 +33,7 @@ Begin WindowMenuWindow winRobotList
       Border          =   True
       ColumnCount     =   3
       ColumnsResizable=   False
-      ColumnWidths    =   "20%, *, 20%"
+      ColumnWidths    =   "20%,*,20%"
       DataField       =   ""
       DataSource      =   ""
       DefaultRowHeight=   -1
@@ -111,11 +111,16 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Activate()
+		  LoadList
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
 		Sub Display(oEvent as Data.t_event)
 		  moEvent = oEvent
-		  
-		  LoadList
 		End Sub
 	#tag EndMethod
 
@@ -128,15 +133,15 @@ End
 		  
 		  //see if we have it open already
 		  for i as integer = 0 to WindowCount-1
-		    if window(i) isa WinRobotDesign then
-		      if WinRobotDesign(window(i)).moTeam = oTeam then
+		    if window(i) isa winRobotDesign then
+		      if winRobotDesign(window(i)).moTeam = oTeam then
 		        window(i).show
 		        return
 		      end
 		    end
 		  next
 		  
-		  dim w as new WinRobotDesign
+		  dim w as new winRobotDesign
 		  w.Display(oTeam)
 		End Sub
 	#tag EndMethod
@@ -276,6 +281,12 @@ End
 		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="IsZoomed"
+		Group="Behavior"
+		InitialValue="0"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="LiveResize"
 		Visible=true
 		Group="Behavior"
@@ -355,6 +366,30 @@ End
 		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="OldHeight"
+		Group="Behavior"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="OldLeft"
+		Group="Behavior"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="OldTop"
+		Group="Behavior"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="OldWidth"
+		Group="Behavior"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Placement"
 		Visible=true
 		Group="Behavior"
@@ -376,6 +411,12 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="sName"
+		Group="Behavior"
+		Type="String"
+		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"

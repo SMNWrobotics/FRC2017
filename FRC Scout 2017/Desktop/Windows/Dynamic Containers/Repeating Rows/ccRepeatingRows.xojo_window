@@ -157,6 +157,12 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetListHeight() As integer
+		  return ccList1.Height
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function GetRow(index as Integer) As itrRowDesign
 		  return ccList1.GetRow(index)
 		End Function

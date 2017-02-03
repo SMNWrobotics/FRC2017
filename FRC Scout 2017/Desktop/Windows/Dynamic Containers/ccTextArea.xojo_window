@@ -113,9 +113,10 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
-		  // Part of the itrRowDesign interface.
+		  oValue = oData.GetValue(TeamNumber)
 		  
 		  lblData.text = oData.sVariableName
+		  txtData.text = oValue.sValue
 		End Sub
 	#tag EndMethod
 
@@ -123,9 +124,16 @@ End
 		Sub Save()
 		  // Part of the itrRowDesign interface.
 		  
+		  oValue.sValue = txtData.text
+		  oValue.save
 		  
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h21
+		Private oValue As Data.T_Design
+	#tag EndProperty
 
 
 #tag EndWindowCode

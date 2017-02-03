@@ -49,6 +49,16 @@ Inherits Data.ActiveRecordBase
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function GetValue(TeamNumber as String) As Data.T_Design
+		  if moValue = nil then
+		    moValue = Data.T_Design.LoadTeamValue(TeamNumber, sVariableName)
+		  end
+		  
+		  return moValue
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Shared Function List(stmt as PreparedSQLStatement) As Data.T_DesignVariables()
 		  //Note: You should use this method if your query contains user entered data. Using this method will help prevent SQL injection attacks
 		  dim aro() as Data.T_DesignVariables
@@ -82,7 +92,7 @@ Inherits Data.ActiveRecordBase
 		  if sOrder.trim <> "" then
 		    ars.append " ORDER BY " + sOrder
 		  else
-		    'ars.append "<Your Field Here>"
+		    ars.append " ORDER BY Indx"
 		  end if
 		  
 		  if iOffset > -1 then
@@ -137,7 +147,19 @@ Inherits Data.ActiveRecordBase
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		iIndx As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private moValue As Data.T_Design
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		sDataType As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		sForeignField As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

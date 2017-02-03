@@ -1,5 +1,5 @@
 #tag Window
-Begin Window winDesign
+Begin Window winDesign_Old
    BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
@@ -127,7 +127,6 @@ Begin Window winDesign
       Selectable      =   False
       TabIndex        =   2
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Notes"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -162,7 +161,6 @@ Begin Window winDesign
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Drive Train"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -293,7 +291,6 @@ Begin Window winDesign
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Carry Capacity"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -370,7 +367,6 @@ Begin Window winDesign
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Ball Feed"
       TextAlign       =   0
       TextColor       =   &c00000000

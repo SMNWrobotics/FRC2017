@@ -131,6 +131,27 @@ Inherits Data.ActiveRecordBase
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Shared Function LoadTeamValue(TeamNumber as string, Variable as String) As Data.T_Design
+		  dim oValue as new Data.T_Design
+		  
+		  //Let's try and load it from the database
+		  dim s as string = "Select * from T_Design where Team_Number = " + TeamNumber.SQLizeText + " AND Variable = " + Variable.SQLizeText
+		  dim rs as RecordSet = gdb.SQLSelectRaiseOnError(s)
+		  
+		  if rs.RecordCount = 0 then
+		    //Name made yet.
+		    oValue.sTeam_number = TeamNumber
+		    oValue.sVariable = Variable
+		    oValue.save
+		  else
+		    oValue.ReadRecord(rs)
+		  end
+		  
+		  return oValue
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		iDesign_ID As Integer

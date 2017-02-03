@@ -82,6 +82,14 @@ Begin WindowMenuWindow WinRobotDesign
       Visible         =   True
       Width           =   560
    End
+   Begin Timer tmrDelayLoad
+      Index           =   -2147483648
+      LockedInPosition=   False
+      Mode            =   1
+      Period          =   100
+      Scope           =   0
+      TabPanelIndex   =   0
+   End
 End
 #tag EndWindow
 
@@ -92,9 +100,9 @@ End
 		  
 		  self.Title = "Robot Design Scouting: " + oTeam.sTeam_Number + " - " + oteam.sNickName
 		  
-		  LoadList
-		  
 		  self.Show
+		  
+		  
 		End Sub
 	#tag EndMethod
 
@@ -103,10 +111,28 @@ End
 		  lst.DeleteAllRows
 		  
 		  for each oDesignVariable as Data.T_DesignVariables in moTeam.GetDesignVariables
+		    
 		    oCurrentRow = oDesignVariable
 		    
 		    lst.AddNewRow
 		    
+		  next
+		  
+		  //How big is my list?
+		  dim iMax as integer = lst.GetListHeight
+		  
+		  if iMax + 20 < screen(0).Height then
+		    self.Height = iMax + lst.top +80
+		  end
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub Save()
+		  for iRow as integer = 0 to lst.RowCount-1
+		    dim oRow as itrRowDesign = lst.GetRow(iRow)
+		    
+		    oRow.save
 		  next
 		End Sub
 	#tag EndMethod
@@ -123,6 +149,20 @@ End
 
 #tag EndWindowCode
 
+#tag Events ccOKCancel1
+	#tag Event
+		Sub CancelClicked()
+		  self.close
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub OKClicked()
+		  save
+		  
+		  self.close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events lst
 	#tag Event
 		Function AddRow() As itrRowDesign
@@ -141,7 +181,7 @@ End
 		  case "numbers"
 		    oRow = new ccNumbersOnly
 		    
-		  case "textfield"
+		  case "text"
 		    oRow = new ccText
 		    
 		  case else
@@ -153,6 +193,16 @@ End
 		  Return oRow
 		  
 		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events tmrDelayLoad
+	#tag Event
+		Sub Action()
+		  //Reason for the time is that PopupMenu's don't like their listindex set so soon.
+		  me.mode = timer.ModeOff
+		  
+		  LoadList
+		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior

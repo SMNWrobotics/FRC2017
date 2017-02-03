@@ -97,18 +97,23 @@ End
 	#tag Method, Flags = &h0
 		Sub Load(oData as Data.T_DesignVariables, TeamNumber as string)
 		  // Part of the itrRowDesign interface.
+		  oValue = oData.GetValue(TeamNumber)
 		  
 		  lblData.text = oData.sVariableName
 		  
 		  pmData.DeleteAllRows
 		  
-		  if oData.sForeignTable <> "" then
+		  if oData.sForeignTable <> "" and oData.sForeignField <> "" then
 		    dim s as string = "Select * from " + oData.sForeignTable
 		    dim rs as RecordSet = gDB.SQLSelect(s)
 		    if gdb.error then return
 		    
 		    while rs.eof = false
-		      pmData.AddRow rs.Field("Name").StringValue
+		      s = rs.Field(oData.sForeignField).StringValue
+		      pmData.AddRow s
+		      if s = oValue.sValue then
+		        pmData.ListIndex = pmData.ListCount-1
+		      end
 		      rs.MoveNext
 		    wend
 		    
@@ -117,6 +122,10 @@ End
 		    dim ars() as string = oData.sLIst.Split(";")
 		    for each s as string in ars
 		      pmData.AddRow s.trim
+		      
+		      if s = oValue.sValue then
+		        pmData.ListIndex = pmData.ListCount-1
+		      end
 		    next
 		  end
 		End Sub
@@ -126,9 +135,15 @@ End
 		Sub Save()
 		  // Part of the itrRowDesign interface.
 		  
-		  
+		  oValue.sValue = pmData.text
+		  oValue.save
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h21
+		Private oValue As Data.T_Design
+	#tag EndProperty
 
 
 #tag EndWindowCode
