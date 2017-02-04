@@ -8,90 +8,12 @@ Begin iosView vwIntro
    TabTitle        =   ""
    Title           =   ""
    Top             =   0
-   Begin iOSLibButton btnSetup
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      Alpha           =   1.0
-      AutoLayout      =   btnSetup, 8, , 0, False, +1.00, 1, 1, 32, 
-      AutoLayout      =   btnSetup, 3, Label1, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   btnSetup, 9, <Parent>, 9, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnSetup, 7, , 0, False, +1.00, 1, 1, 224, 
-      AutoresizesSubviews=   True
-      BackgroundColor =   &c66FF6600
-      CanBecomeFocused=   False
-      ClearsContextBeforeDrawing=   False
-      ClipsToBounds   =   True
-      ContentMode     =   ""
-      ContentScaleFactor=   1.0
-      DisabledTitle   =   ""
-      ExclusiveTouch  =   False
-      Focused         =   False
-      HasAmbiguousLayout=   False
-      Height          =   32.0
-      Hidden          =   False
-      HighlightedTitle=   ""
-      Left            =   48
-      LockedInPosition=   False
-      MultipleTouchEnabled=   False
-      NormalTitle     =   "Setup"
-      Opaque          =   False
-      PreservesSuperviewLayoutMargins=   False
-      Scope           =   0
-      SelectedTitle   =   ""
-      Tag             =   0
-      TintAdjustmentMode=   ""
-      Top             =   287
-      TranslatesAutoresizingMaskIntoConstraints=   False
-      UserInteractionEnabled=   True
-      Visible         =   True
-      Width           =   224.0
-   End
-   Begin iOSLIbImageView iOSLIbImageView1
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      Alpha           =   1.0
-      Animating       =   False
-      AnimationDuration=   0.0
-      AnimationRepeatCount=   0
-      AutoLayout      =   iOSLIbImageView1, 1, <Parent>, 1, False, +1.00, 1, 1, 20, 
-      AutoLayout      =   iOSLIbImageView1, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   iOSLIbImageView1, 3, <Parent>, 3, False, +1.00, 1, 1, 41, 
-      AutoLayout      =   iOSLIbImageView1, 8, , 0, False, +1.00, 1, 1, 200, 
-      AutoresizesSubviews=   True
-      BackgroundColor =   &cFFFFFF00
-      CanBecomeFocused=   False
-      ClearsContextBeforeDrawing=   False
-      ClipsToBounds   =   True
-      ContentMode     =   ""
-      ContentScaleFactor=   1.0
-      ExclusiveTouch  =   False
-      Focused         =   False
-      HasAmbiguousLayout=   False
-      Height          =   200.0
-      Hidden          =   False
-      Highlighted     =   False
-      HighlightedImage=   ""
-      Image           =   ""
-      Left            =   20
-      LockedInPosition=   False
-      MultipleTouchEnabled=   False
-      Opaque          =   False
-      PreservesSuperviewLayoutMargins=   False
-      Scope           =   0
-      Tag             =   0
-      TintAdjustmentMode=   ""
-      Top             =   41
-      TranslatesAutoresizingMaskIntoConstraints=   False
-      UserInteractionEnabled=   True
-      Visible         =   True
-      Width           =   280.0
-   End
    Begin iOSLabel Label1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Label1, 1, iOSLIbImageView1, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Label1, 2, iOSLIbImageView1, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Label1, 3, iOSLIbImageView1, 4, False, +1.00, 1, 1, *kStdControlGapV, 
+      AutoLayout      =   Label1, 1, , 0, False, +1.00, 1, 1, 20, 
+      AutoLayout      =   Label1, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
+      AutoLayout      =   Label1, 3, , 0, False, +1.00, 1, 1, 41, 
       AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, 
       Enabled         =   True
       Height          =   30.0
@@ -104,17 +26,17 @@ Begin iosView vwIntro
       TextColor       =   &c00000000
       TextFont        =   "System Bold		"
       TextSize        =   18
-      Top             =   249
+      Top             =   41
       Visible         =   True
-      Width           =   280.0
+      Width           =   335.0
    End
    Begin iOSLabel Label2
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   Label2, 1, Label1, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Label2, 7, , 0, False, +1.00, 1, 1, 280, 
-      AutoLayout      =   Label2, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Label2, 2, Label1, 2, False, +1.00, 1, 1, 0, 
       AutoLayout      =   Label2, 8, , 0, False, +1.00, 1, 1, 51, 
+      AutoLayout      =   Label2, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, 
       Enabled         =   True
       Height          =   51.0
       Left            =   20
@@ -126,85 +48,87 @@ Begin iosView vwIntro
       TextColor       =   &c00000000
       TextFont        =   "System		"
       TextSize        =   0
-      Top             =   429
+      Top             =   616
       Visible         =   True
-      Width           =   280.0
+      Width           =   335.0
    End
-   Begin iOSLibButton btnRobotScouting
+   Begin iOSImageView ImageView1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alpha           =   1.0
-      AutoLayout      =   btnRobotScouting, 8, , 0, False, +1.00, 1, 1, 32, 
-      AutoLayout      =   btnRobotScouting, 3, btnSetup, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   btnRobotScouting, 7, , 0, False, +1.00, 1, 1, 224, 
-      AutoLayout      =   btnRobotScouting, 1, btnSetup, 1, False, +1.00, 1, 1, 0, 
-      AutoresizesSubviews=   True
-      BackgroundColor =   &cFF666600
-      CanBecomeFocused=   False
-      ClearsContextBeforeDrawing=   False
-      ClipsToBounds   =   True
-      ContentMode     =   ""
-      ContentScaleFactor=   1.0
-      DisabledTitle   =   ""
-      ExclusiveTouch  =   False
-      Focused         =   False
-      HasAmbiguousLayout=   False
-      Height          =   32.0
-      Hidden          =   False
-      HighlightedTitle=   ""
-      Left            =   48
+      AutoLayout      =   ImageView1, 1, Label2, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   ImageView1, 2, Label2, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   ImageView1, 3, Label1, 4, False, +1.00, 1, 1, *kStdControlGapV, 
+      AutoLayout      =   ImageView1, 8, , 0, False, +1.00, 1, 1, 286, 
+      ContentMode     =   "0"
+      Height          =   286.0
+      Image           =   "1290786815"
+      Image           =   "1290786815"
+      Left            =   20
       LockedInPosition=   False
-      MultipleTouchEnabled=   False
-      NormalTitle     =   "Robots"
-      Opaque          =   False
-      PreservesSuperviewLayoutMargins=   False
-      Scope           =   0
-      SelectedTitle   =   ""
-      Tag             =   0
-      TintAdjustmentMode=   ""
-      Top             =   327
-      TranslatesAutoresizingMaskIntoConstraints=   False
-      UserInteractionEnabled=   True
+      Scope           =   2
+      Top             =   79
       Visible         =   True
-      Width           =   224.0
+      Width           =   335.0
    End
-   Begin iOSLibButton btnMatchScouting
+   Begin iOSButton btnMatch
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      Alpha           =   1.0
-      AutoLayout      =   btnMatchScouting, 8, , 0, False, +1.00, 1, 1, 32, 
-      AutoLayout      =   btnMatchScouting, 3, btnRobotScouting, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   btnMatchScouting, 7, , 0, False, +1.00, 1, 1, 224, 
-      AutoLayout      =   btnMatchScouting, 1, btnRobotScouting, 1, False, +1.00, 1, 1, 0, 
-      AutoresizesSubviews=   True
-      BackgroundColor =   &c66CCFF00
-      CanBecomeFocused=   False
-      ClearsContextBeforeDrawing=   False
-      ClipsToBounds   =   True
-      ContentMode     =   ""
-      ContentScaleFactor=   1.0
-      DisabledTitle   =   ""
-      ExclusiveTouch  =   False
-      Focused         =   False
-      HasAmbiguousLayout=   False
-      Height          =   32.0
-      Hidden          =   False
-      HighlightedTitle=   ""
-      Left            =   48
+      AutoLayout      =   btnMatch, 1, <Parent>, 1, False, +1.00, 1, 1, 103, 
+      AutoLayout      =   btnMatch, 7, , 0, False, +1.00, 1, 1, 171, 
+      AutoLayout      =   btnMatch, 3, <Parent>, 3, False, +1.00, 1, 1, 382, 
+      AutoLayout      =   btnMatch, 8, , 0, False, +1.00, 1, 1, 30, 
+      Caption         =   "Setup"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   103
       LockedInPosition=   False
-      MultipleTouchEnabled=   False
-      NormalTitle     =   "Matches"
-      Opaque          =   False
-      PreservesSuperviewLayoutMargins=   False
-      Scope           =   0
-      SelectedTitle   =   ""
-      Tag             =   0
-      TintAdjustmentMode=   ""
-      Top             =   367
-      TranslatesAutoresizingMaskIntoConstraints=   False
-      UserInteractionEnabled=   True
+      Scope           =   2
+      TextColor       =   &c00000000
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   382
       Visible         =   True
-      Width           =   224.0
+      Width           =   171.0
+   End
+   Begin iOSButton Button2
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   Button2, 1, <Parent>, 1, False, +1.00, 1, 1, 103, 
+      AutoLayout      =   Button2, 7, , 0, False, +1.00, 1, 1, 171, 
+      AutoLayout      =   Button2, 3, <Parent>, 3, False, +1.00, 1, 1, 420, 
+      AutoLayout      =   Button2, 8, , 0, False, +1.00, 1, 1, 30, 
+      Caption         =   "Robot"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   103
+      LockedInPosition=   False
+      Scope           =   2
+      TextColor       =   &c00000000
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   420
+      Visible         =   True
+      Width           =   171.0
+   End
+   Begin iOSButton Button3
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   Button3, 1, Button2, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Button3, 7, , 0, False, +1.00, 1, 1, 171, 
+      AutoLayout      =   Button3, 3, <Parent>, 3, False, +1.00, 1, 1, 458, 
+      AutoLayout      =   Button3, 8, , 0, False, +1.00, 1, 1, 30, 
+      Caption         =   "Match"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   103
+      LockedInPosition=   False
+      Scope           =   2
+      TextColor       =   &c00000000
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   458
+      Visible         =   True
+      Width           =   171.0
    End
 End
 #tag EndIOSView
@@ -212,31 +136,86 @@ End
 #tag WindowCode
 #tag EndWindowCode
 
-#tag Events btnSetup
-	#tag Event , Description = 4669726573207768656E2074686520627574746F6E20697320746F7563686564
+#tag Events btnMatch
+	#tag Event
 		Sub Action()
 		  self.PushTo new vwSetup
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events iOSLIbImageView1
-	#tag Event
-		Sub Open()
-		  me.Image = TransparentLogo
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events btnRobotScouting
+#tag Events Button2
 	#tag Event
 		Sub Action()
-		  self.PushTo new vwRobot
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btnMatchScouting
+#tag Events Button3
 	#tag Event
 		Sub Action()
-		  self.PushTo new vwGame
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Group="Behavior"
+		Type="Text"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Index"
+		Visible=true
+		Group="ID"
+		InitialValue="-2147483648"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Left"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="NavigationBarVisible"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TabIcon"
+		Group="Behavior"
+		Type="iOSImage"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TabTitle"
+		Group="Behavior"
+		Type="Text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Group="Behavior"
+		Type="Text"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Top"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+#tag EndViewBehavior
