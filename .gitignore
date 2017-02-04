@@ -1,3 +1,9 @@
 /bin/
 
 FRC Scout/Builds - FRC_Scout.xojo_binary_project/Mac OS X (Cocoa Intel)/FRC Scouting App.app/Contents/Frameworks/AppearancePakCocoa.dylib
+
+FRC Scout 2017/Desktop/.FRC2017ScoutingApplication.xojo_uistate
+
+FRC Scout 2017/iOS/.Scouting App 2017 iOS.xojo_uistate
+
+*.xojo_uistate
