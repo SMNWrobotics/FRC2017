@@ -9,7 +9,7 @@ Begin Window winGame
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   514
+   Height          =   546
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
@@ -25,7 +25,7 @@ Begin Window winGame
    Resizeable      =   True
    Title           =   "Match Edit"
    Visible         =   True
-   Width           =   760
+   Width           =   930
    Begin TextField txtScoutName
       AcceptTabs      =   False
       Alignment       =   0
@@ -43,7 +43,7 @@ Begin Window winGame
       HelpTag         =   ""
       Index           =   -2147483648
       Italic          =   False
-      Left            =   398
+      Left            =   568
       LimitText       =   0
       LockBottom      =   True
       LockedInPosition=   False
@@ -62,7 +62,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   472
+      Top             =   504
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -81,7 +81,7 @@ Begin Window winGame
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   660
+      Left            =   830
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -94,7 +94,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   473
+      Top             =   505
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -110,7 +110,7 @@ Begin Window winGame
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   295
+      Left            =   465
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -127,7 +127,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   473
+      Top             =   505
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -341,7 +341,7 @@ Begin Window winGame
       AutoDeactivate  =   True
       Bold            =   False
       Enabled         =   True
-      Height          =   427
+      Height          =   459
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -366,7 +366,7 @@ Begin Window winGame
       Underline       =   False
       Value           =   0
       Visible         =   True
-      Width           =   731
+      Width           =   901
       Begin ccAutonomous ccAutonomous1
          AcceptFocus     =   False
          AcceptTabs      =   True
@@ -385,6 +385,8 @@ Begin Window winGame
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
+         msMatchKey      =   ""
+         msTeamNumber    =   ""
          Scope           =   0
          TabIndex        =   0
          TabPanelIndex   =   1
@@ -394,6 +396,34 @@ Begin Window winGame
          UseFocusRing    =   False
          Visible         =   True
          Width           =   704
+      End
+      Begin ccTeleop ccTeleop1
+         AcceptFocus     =   False
+         AcceptTabs      =   True
+         AutoDeactivate  =   True
+         BackColor       =   &cFFFFFF00
+         Backdrop        =   0
+         Enabled         =   True
+         EraseBackground =   True
+         HasBackColor    =   False
+         Height          =   406
+         HelpTag         =   ""
+         InitialParent   =   "TabPanel1"
+         Left            =   18
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   2
+         TabStop         =   True
+         Top             =   71
+         Transparent     =   True
+         UseFocusRing    =   False
+         Visible         =   True
+         Width           =   872
       End
    End
    Begin Label Label8
@@ -407,7 +437,7 @@ Begin Window winGame
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   20
+      Left            =   190
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -424,7 +454,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   473
+      Top             =   505
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -441,7 +471,7 @@ Begin Window winGame
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   118
+      Left            =   288
       LockBottom      =   True
       LockedInPosition=   False
       LockLeft        =   False
@@ -458,7 +488,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   473
+      Top             =   505
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -529,7 +559,7 @@ End
 		  
 		  ccAutonomous1.load moMatch.skey, moTeam.sTeam_Number
 		  
-		  //Teleop
+		  ccTeleop1.load moMatch.skey, moTeam.sTeam_Number
 		  
 		  
 		  
@@ -540,7 +570,7 @@ End
 	#tag Method, Flags = &h0
 		Sub Handle_Save()
 		  ccAutonomous1.save
-		  ' ccTeleop.save
+		  ccTeleop1.save
 		  
 		  btnSave.Enabled = false
 		  

@@ -658,14 +658,12 @@ End
 		  
 		  dim sKey as string = preferences.StringValue("EventKey")
 		  
-		  ' sKey = "2016mokc"
-		  
 		  if sKey <> "" then
 		    moEvent = Data.T_event.FindByKey(sKey)
 		  end
 		  
 		  if moEvent = nil or moEvent.ID = 0 then
-		    lblEvent.text = "2017 KC Tournament not found."
+		    lblEvent.text = "No Tournament Selected"
 		    lblEvent.TextColor = &cFF0000
 		    bbExportMatchData.Enabled = false
 		    bbImportMatchData.Enabled = true
