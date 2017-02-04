@@ -159,12 +159,73 @@ Protected Class t_event
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
-		  
+		  ievent_ID = rs.Field("event_id").IntegerValue
+		  iYear = rs.Field("year").IntegerValue
+		  sEvent_Type_String = rs.Field("Event_Type_String").TextValue
+		  sKey = rs.Field("key").TextValue
+		  sLocation = rs.Field("Location").TextValue
+		  sName = rs.Field("Name").TextValue
+		  sShort_Name= rs.Field("Short_Name").TextValue
+		  swebsite = rs.Field("website").TextValue
+		  dtStart_Date = rs.Field("Start_Date").DateValue
+		  dtend_date = rs.Field("End_Date").DateValue
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  
+		  gDB.SQLExecute("BEGIN TRANSACTION")
+		  
+		  dim ars() as Text
+		  
+		  try
+		    if IsNew then
+		      ars.Append "INSERT INTO t_event"
+		      ars.Append "(Year, Event_Type_String, Key, Location, Name, Short_Name, website, Start_Date, End_Date) VALUES ("
+		      ars.Append iYear.ToText  + ", "
+		      ars.Append sEvent_Type_String + ", "
+		      ars.Append sKey.SQLizeText + ", "
+		      ars.Append sLocation.SQLizeText + ", "
+		      ars.Append sName.SQLizeText + ", "
+		      ars.Append sShort_Name.SQLizeText + ", "
+		      ars.Append swebsite.SQLizeText + ", "
+		      ars.Append dtStart_Date.ToText.SQLizeText + ", "
+		      ars.Append dtend_date.ToText.SQLizeText 
+		      
+		      ars.Append ")"
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    else
+		      
+		      ars.Append "Update t_event Set"
+		      ars.Append "Year = " + iYear.ToText  + ", "
+		      ars.Append "Event_Type_String = " + sEvent_Type_String + ", "
+		      ars.Append "Key = " + sKey.SQLizeText + ", "
+		      ars.Append "Location = " + sLocation.SQLizeText + ", "
+		      ars.Append "Name =" + sName.SQLizeText + ", "
+		      ars.Append "Short_Name =" + sShort_Name.SQLizeText + ", "
+		      ars.Append "website = " + swebsite.SQLizeText + ", "
+		      ars.Append "start_Date = " + dtStart_Date.ToText.SQLizeText + ", "
+		      ars.Append "end_Date = " + dtend_date.ToText.SQLizeText
+		      ars.Append "WHERE event_ID = " + ievent_ID.ToText
+		      
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    end
+		    gDB.SQLExecute("COMMIT")
+		  catch
+		    break
+		    gdb.SQLExecute("ROLLBACK")
+		  end
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -216,11 +277,11 @@ Protected Class t_event
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		dtend_date As Date
+		dtend_date As xojo.Core.Date
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		dtStart_Date As Date
+		dtStart_Date As xojo.Core.Date
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -290,31 +351,31 @@ Protected Class t_event
 		#tag ViewProperty
 			Name="sEvent_Type_String"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="skey"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sLocation"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sName"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sShort_Name"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -326,7 +387,7 @@ Protected Class t_event
 		#tag ViewProperty
 			Name="swebsite"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty

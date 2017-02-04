@@ -59,9 +59,9 @@ Begin iosView vwSetup
       AccessibilityLabel=   ""
       AutoLayout      =   pickerTeam, 1, <Parent>, 1, False, +1.00, 1, 1, 86, 
       AutoLayout      =   pickerTeam, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   pickerTeam, 4, TextField1, 3, False, +1.00, 1, 1, -42, 
       AutoLayout      =   pickerTeam, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
-      AutoLayout      =   pickerTeam, 4, TextField1, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
-      Height          =   88.0
+      Height          =   54.0
       Left            =   86
       LockedInPosition=   False
       Scope           =   1
@@ -96,7 +96,7 @@ Begin iosView vwSetup
       AccessibilityLabel=   ""
       AutoLayout      =   btnSave, 7, , 0, False, +1.00, 1, 1, 100, 
       AutoLayout      =   btnSave, 9, <Parent>, 9, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnSave, 3, TextField1, 4, False, +1.00, 1, 1, *kStdControlGapV, 
+      AutoLayout      =   btnSave, 3, <Parent>, 3, False, +1.00, 1, 1, 214, 
       AutoLayout      =   btnSave, 8, , 0, False, +1.00, 1, 1, 30, 
       Caption         =   "Save"
       Enabled         =   True
@@ -107,7 +107,27 @@ Begin iosView vwSetup
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   200
+      Top             =   214
+      Visible         =   True
+      Width           =   100.0
+   End
+   Begin iOSButton btnSave1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   btnSave1, 1, btnSave, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnSave1, 7, , 0, False, +1.00, 1, 1, 100, 
+      AutoLayout      =   btnSave1, 3, <Parent>, 3, False, +1.00, 1, 1, 343, 
+      AutoLayout      =   btnSave1, 8, , 0, False, +1.00, 1, 1, 30, 
+      Caption         =   "Import Data"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   110
+      LockedInPosition=   False
+      Scope           =   2
+      TextColor       =   &c007AFF00
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   343
       Visible         =   True
       Width           =   100.0
    End
@@ -115,6 +135,13 @@ End
 #tag EndIOSView
 
 #tag WindowCode
+	#tag Event
+		Sub Open()
+		  
+		End Sub
+	#tag EndEvent
+
+
 #tag EndWindowCode
 
 #tag Events pickerTeam
@@ -128,6 +155,13 @@ End
 	#tag Event
 		Sub SelectionChanged(row as integer, column as integer)
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnSave1
+	#tag Event
+		Sub Action()
+		  self.PushTo new vwImportData
 		End Sub
 	#tag EndEvent
 #tag EndEvents

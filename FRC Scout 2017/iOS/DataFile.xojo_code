@@ -1,7 +1,7 @@
 #tag Module
 Protected Module DataFile
 	#tag Method, Flags = &h0
-		Function CreateDB(db as iOSSQLiteDatabase, f as FolderItem) As boolean
+		Function CreateDB(db as iOSSQLiteDatabase, f as xojo.IO.FolderItem) As boolean
 		  db.DatabaseFile = f
 		  
 		  if db.CreateDatabaseFile = false then
@@ -23,7 +23,7 @@ Protected Module DataFile
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function OpenDB(f as FolderItem) As Boolean
+		Function OpenDB(f as xojo.IO.FolderItem) As Boolean
 		  dim db as new iOSSQLiteDatabase
 		  
 		  if f.exists = false then
