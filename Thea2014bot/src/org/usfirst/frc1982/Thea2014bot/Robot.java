@@ -85,7 +85,16 @@ public class Robot extends IterativeRobot {
 //        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(); //use this if you want an image in addition to the processed image
         UsbCamera camera = new UsbCamera("USB Camera 0", 0); //use this if you only want to see processed images on the dashboard
         camera.setResolution( iRes.getWidth(), iRes.getHeight() );
-
+        
+        // Set the brightness, as a percentage (0-100).
+        camera.setBrightness(0);
+        
+        // Set the exposure to manual, as a percentage (0-100).
+        camera.setExposureManual(0);
+        
+        // Set the white balance to manual, with specified color temperature.
+        camera.setWhiteBalanceManual(1);
+        
         CvSource outputStream = CameraServer.getInstance().putVideo( "Blur", iRes.getWidth(), iRes.getHeight() );
         GripPipeline gp = new GripPipeline();
         
