@@ -11,7 +11,6 @@
 
 package org.usfirst.frc1982.Thea2014bot.commands;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc1982.Thea2014bot.Robot;
 
 /**
  *
