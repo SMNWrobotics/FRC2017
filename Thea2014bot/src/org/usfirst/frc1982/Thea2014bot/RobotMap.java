@@ -49,6 +49,7 @@ public class RobotMap {
         driveDriveTrain.setSensitivity(0.5);
         driveDriveTrain.setMaxOutput(1.0);
 
+        driveDriveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         liftLiftMotor = new Jaguar(3);
         LiveWindow.addActuator("lift", "LiftMotor", (Jaguar) liftLiftMotor);
         
