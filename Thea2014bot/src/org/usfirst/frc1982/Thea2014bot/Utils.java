@@ -21,8 +21,11 @@ class Utils
 		for (MatOfPoint next : arrayList)
 		{
 			List<Point> current = next.toList();
-			ostr.append( show( current ));
-			minMax[ctr++] = getAverageX( current );	
+			if (!current.isEmpty()) {
+				ostr.append( show( current ));
+				minMax[ctr++] = getAverageX( current );
+			}
+				
 		}
 		ostr.append( findDist( minMax ) );
 		
@@ -52,7 +55,11 @@ class Utils
 		for (Point p : pList) {
 			adds += p.x;
 		}
-		return adds / pList.size();
+		if (!pList.isEmpty()) {
+			return adds / pList.size();
+		} else {
+			return -1;
+		}
 	}
 	
 	public static double getAverageY( List<Point> pList ) {
@@ -60,7 +67,11 @@ class Utils
 		for (Point p : pList) {
 			adds += p.y;
 		}
+		if (!pList.isEmpty()) {
 		return adds / pList.size();
+		} else {
+			return -1;
+		}
 	}
 	
 	private static String findDist(double[] minMax) {
