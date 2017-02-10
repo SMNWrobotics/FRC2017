@@ -42,25 +42,25 @@ public class AutonomousCommand extends Command {
     protected void initialize() {
     	startSecs = System.currentTimeMillis() + 1000;
     	System.out.println("Starting Time + 1000: " + startSecs);
-    	Robot.gyro.reset();
+//    	Robot.gyro.reset();
     }
     
     int counter = 0;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println(counter + "st run for execute: " + System.currentTimeMillis());
-    	if (System.currentTimeMillis() < startSecs) { //not a comment
-    		RobotMap.driveDriveTrain.arcadeDrive(.75, 0.0);
-    		System.out.println(System.currentTimeMillis());
-    		counter++;
-    	} else {
-    		if (Math.round(Robot.gyro.getAngleY()) < 90*4 && Math.round(Robot.gyro.getAngleY()) > -90*4) {
-    			RobotMap.driveDriveTrain.arcadeDrive(0.0, .5);
-    		} else {
-    			finished = true;
-    		}
-    	}
+//    	System.out.println(counter + "st run for execute: " + System.currentTimeMillis());
+//    	if (System.currentTimeMillis() < startSecs) { //not a comment
+//    		RobotMap.driveDriveTrain.arcadeDrive(.75, 0.0);
+//    		System.out.println(System.currentTimeMillis());
+//    		counter++;
+//    	} else {
+//    		if (Math.round(Robot.gyro.getAngleY()) < 90*4 && Math.round(Robot.gyro.getAngleY()) > -90*4) {
+//    			RobotMap.driveDriveTrain.arcadeDrive(0.0, .5);
+//    		} else {
+//    			finished = true;
+//    		}
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
