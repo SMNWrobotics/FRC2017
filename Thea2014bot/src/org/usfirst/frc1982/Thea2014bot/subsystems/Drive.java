@@ -12,11 +12,10 @@
 package org.usfirst.frc1982.Thea2014bot.subsystems;
 
 import org.usfirst.frc1982.Thea2014bot.RobotMap;
-import org.usfirst.frc1982.Thea2014bot.commands.*;
-import edu.wpi.first.wpilibj.Jaguar;
+import org.usfirst.frc1982.Thea2014bot.commands.DriveEnable;
+
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 

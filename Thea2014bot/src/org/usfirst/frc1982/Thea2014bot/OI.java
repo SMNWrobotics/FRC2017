@@ -11,7 +11,10 @@
 
 package org.usfirst.frc1982.Thea2014bot;
 
-import org.usfirst.frc1982.Thea2014bot.commands.*;
+import org.usfirst.frc1982.Thea2014bot.commands.AutonomousCommand;
+import org.usfirst.frc1982.Thea2014bot.commands.DriveEnable;
+import org.usfirst.frc1982.Thea2014bot.commands.LiftDown;
+import org.usfirst.frc1982.Thea2014bot.commands.LiftUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

@@ -10,9 +10,10 @@
 
 
 package org.usfirst.frc1982.Thea2014bot.commands;
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1982.Thea2014bot.Robot;
 import org.usfirst.frc1982.Thea2014bot.RobotMap;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
