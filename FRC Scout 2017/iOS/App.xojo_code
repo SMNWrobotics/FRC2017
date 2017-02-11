@@ -9,6 +9,8 @@ Inherits IOSApplication
 		  if DataFile.OpenDB(f) = false then
 		    msgbox "Can't open the data file."
 		  end
+		  
+		  
 		End Sub
 	#tag EndEvent
 
@@ -18,6 +20,11 @@ Inherits IOSApplication
 		  Return True
 		End Function
 	#tag EndEvent
+
+
+	#tag Property, Flags = &h0
+		oSelectedEvent As DataFile.t_event
+	#tag EndProperty
 
 
 	#tag ViewBehavior

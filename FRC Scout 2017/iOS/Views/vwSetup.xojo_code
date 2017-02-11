@@ -111,13 +111,13 @@ Begin iosView vwSetup
       Visible         =   True
       Width           =   100.0
    End
-   Begin iOSButton btnSave1
+   Begin iOSButton btnIMport
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnSave1, 1, btnSave, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnSave1, 7, , 0, False, +1.00, 1, 1, 100, 
-      AutoLayout      =   btnSave1, 3, <Parent>, 3, False, +1.00, 1, 1, 343, 
-      AutoLayout      =   btnSave1, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   btnIMport, 1, btnSave, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnIMport, 7, , 0, False, +1.00, 1, 1, 100, 
+      AutoLayout      =   btnIMport, 3, <Parent>, 3, False, +1.00, 1, 1, 343, 
+      AutoLayout      =   btnIMport, 8, , 0, False, +1.00, 1, 1, 30, 
       Caption         =   "Import Data"
       Enabled         =   True
       Height          =   30.0
@@ -158,7 +158,7 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btnSave1
+#tag Events btnIMport
 	#tag Event
 		Sub Action()
 		  self.PushTo new vwImportData

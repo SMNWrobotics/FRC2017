@@ -37,13 +37,13 @@ Begin iosView vwImportData
       AccessibilityLabel=   ""
       AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
       AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   tbl, 4, <Parent>, 4, False, +1.00, 1, 1, -89, 
       AutoLayout      =   tbl, 3, txtSearch, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   tbl, 4, btnImport, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   283.0
+      Height          =   240.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   2
@@ -57,8 +57,8 @@ Begin iosView vwImportData
       AccessibilityLabel=   ""
       AutoLayout      =   btnImport, 7, , 0, False, +1.00, 1, 1, 119, 
       AutoLayout      =   btnImport, 9, <Parent>, 9, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnImport, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, -*kStdControlGapV, 
       AutoLayout      =   btnImport, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   btnImport, 3, tbl, 4, False, +1.00, 1, 1, *kStdControlGapV, 
       Caption         =   "Import Event"
       Enabled         =   False
       Height          =   30.0
@@ -68,7 +68,7 @@ Begin iosView vwImportData
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   442
+      Top             =   399
       Visible         =   True
       Width           =   119.0
    End
@@ -288,8 +288,10 @@ End
 		  if oSelectedCell = nil then return
 		  dim oEvent as DataFile.t_event = oSelectedCell.Tag
 		  
-		  Foundation.NSUserDefaults.StandardUserDefaults.SetTextForKey("EventKey", oEvent.sKey)
-		  
+		  Foundation.NSUserDefaults.StandardUserDefaults.SetTextForKey(oEvent.sKey, "EventKey")
+		  if Foundation.NSUserDefaults.StandardUserDefaults.Synchronize = false then
+		    break
+		  end
 		  ImportTeams(oEvent)
 		  
 		  
