@@ -188,12 +188,99 @@ Protected Class t_matches
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
+		  iBlueScore = rs.Field("BlueScore").IntegerValue
+		  iEvent_ID = rs.Field("Event_ID").IntegerValue
+		  imatches_ID = rs.Field("matches_ID").IntegerValue
+		  imatch_number = rs.Field("match_number").IntegerValue
+		  iRedScore = rs.Field("RedScore").IntegerValue
+		  sBlue_Team_1 =  rs.Field("Blue_Team_1").TextValue
+		  sBlue_Team_2 =  rs.Field("Blue_Team_2").TextValue
+		  sBlue_Team_3 =  rs.Field("Blue_Team_3").TextValue
+		  sComp_Level =  rs.Field("Comp_Level").TextValue
+		  sevent_key =  rs.Field("event_key").TextValue
+		  sKey =  rs.Field("Key").TextValue
+		  sRed_Team_1 =  rs.Field("Red_Team_1").TextValue
+		  sRed_Team_2 =  rs.Field("Red_Team_2").TextValue
+		  sRed_Team_3 =  rs.Field("Red_Team_3").TextValue
+		  stime_string =  rs.Field("time_string").TextValue
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  
+		  gDB.SQLExecute("BEGIN TRANSACTION")
+		  
+		  dim ars() as Text
+		  
+		  try
+		    if IsNew then
+		      ars.Append "INSERT INTO t_matches"
+		      ars.Append "(BlueScore, Event_ID, match_number, RedScore, set_number, Blue_Team_1, Blue_Team_2, Blue_Team_3, Comp_Level, " + _
+		      " event_key, Key, Red_Team_1, Red_Team_2, Red_Team_3, time_string) VALUES ("
+		      
+		      ars.Append iBlueScore.ToText + ", "
+		      ars.Append iEvent_ID.ToText + ", "
+		      ars.Append imatch_number.ToText + ", "
+		      ars.Append iRedScore.ToText + ", "
+		      ars.Append iset_number.ToText + ", "
+		      ars.Append sBlue_Team_1.SQLizeText + ", "
+		      ars.Append sBlue_Team_2.SQLizeText + ", "
+		      ars.Append sBlue_Team_3.SQLizeText + ", "
+		      ars.Append sComp_Level.SQLizeText + ", "
+		      ars.Append sevent_key.SQLizeText + ", "
+		      ars.Append sKey.SQLizeText + ", "
+		      ars.Append sRed_Team_1.SQLizeText + ", "
+		      ars.Append sRed_Team_2.SQLizeText + ", "
+		      ars.Append sRed_Team_3.SQLizeText + ", "
+		      ars.Append stime_string.SQLizeText
+		      
+		      
+		      ars.Append ")"
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    else
+		      
+		      ars.Append "Update t_matches Set"
+		      
+		      ars.Append "BlueScore = " + iBlueScore.ToText + ", "
+		      ars.Append "Event_ID = " +  iEvent_ID.ToText + ", "
+		      ars.Append "match_number = " +  imatch_number.ToText + ", "
+		      ars.Append "RedScore = " +  iRedScore.ToText + ", "
+		      ars.Append "set_number = " +  iset_number.ToText + ", "
+		      ars.Append "Blue_Team_1 = " +  sBlue_Team_1.SQLizeText + ", "
+		      ars.Append "Blue_Team_2 = " +  sBlue_Team_2.SQLizeText + ", "
+		      ars.Append "Blue_Team_3 = " +  sBlue_Team_3.SQLizeText + ", "
+		      ars.Append "Comp_Level = " +  sComp_Level.SQLizeText + ", "
+		      ars.Append "event_key = " +  sevent_key.SQLizeText + ", "
+		      ars.Append "Key = " +  sKey.SQLizeText + ", "
+		      ars.Append "Red_Team_1 = " +  sRed_Team_1.SQLizeText + ", "
+		      ars.Append "Red_Team_2 = " +  sRed_Team_2.SQLizeText + ", "
+		      ars.Append "Red_Team_3 = " +  sRed_Team_3.SQLizeText + ", "
+		      ars.Append "time_string = " +  stime_string.SQLizeText
+		      
+		      
+		      ars.Append "WHERE matches_ID = " + imatches_ID.ToText
+		      
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    end
+		    gDB.SQLExecute("COMMIT")
+		  catch
+		    break
+		    gdb.SQLExecute("ROLLBACK")
+		  end
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -318,61 +405,61 @@ Protected Class t_matches
 		#tag ViewProperty
 			Name="sBlue_Team_1"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sBlue_Team_2"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sblue_team_3"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sComp_Level"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sevent_key"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="skey"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sRed_Team_1"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sRed_Team_2"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sRed_Team_3"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="stime_string"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty

@@ -60,12 +60,12 @@ Begin iosView vwImportData
       AutoLayout      =   btnImport, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, -*kStdControlGapV, 
       AutoLayout      =   btnImport, 8, , 0, False, +1.00, 1, 1, 30, 
       Caption         =   "Import Event"
-      Enabled         =   True
+      Enabled         =   False
       Height          =   30.0
       Left            =   100
       LockedInPosition=   False
       Scope           =   2
-      TextColor       =   &c007AFF00
+      TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
       Top             =   442
@@ -150,6 +150,13 @@ End
 #tag EndIOSView
 
 #tag WindowCode
+	#tag Event
+		Sub Activate()
+		  LoadList sLastSearch
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
 		Sub CreateFilter()
 		  if txtSearch.text = "" then
@@ -157,6 +164,39 @@ End
 		  else
 		    sLastQuery = " Year = " + txtYear.text + " AND ( Location Like " + sLastSearch.SQL_like + " OR Name Like " + sLastSearch.SQL_like + " OR Start_Date Like " + sLastSearch.SQL_like + ")"
 		  end
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ImportMatches(oEvent as DataFile.t_event)
+		  // Set up the socket
+		  oMatchSocket.RequestHeader(kXTBAAppId) = kXTBAAppId_Value
+		  
+		  // Set the URL
+		  dim url as text = "https://www.thebluealliance.com/api/v2/event/" + oCurrentEvent.sKey + "/matches"
+		  
+		  //Send the Asyncrhonous Request
+		  oMatchSocket.Send("GET", URL)
+		  
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ImportTeams(oEvent as DataFile.t_event)
+		  oCurrentEvent = oEvent
+		  
+		  // Set up the socket
+		  oTeamSocket.RequestHeader(kXTBAAppId) = kXTBAAppId_Value
+		  
+		  // Set the URL
+		  dim url as Text = "https://www.thebluealliance.com/api/v2/event/" +oEvent.skey + "/teams"
+		  
+		  //Send the Asyncrhonous Request
+		  oTeamSocket.Send("GET", URL)
+		  
+		  
 		End Sub
 	#tag EndMethod
 
@@ -173,12 +213,11 @@ End
 		      sDate = oRecord.dtStart_Date.ToText
 		    end
 		    
-		    tbl.addRow 0, oRecord.sName + " - " + oRecord.sLocation + " " + sDate
+		    Dim cell As iOSTableCellData
+		    cell = tbl.CreateCell(oRecord.sName,  oRecord.sLocation + " " + sDate, nil, iOSTableCellData.AccessoryTypes.None)
+		    cell.tag = oRecord
+		    tbl.AddRow(0, cell)
 		    
-		    
-		    'lst.AddRow oRecord.sName, oRecord.sLocation, sDate
-		    '
-		    'lst.RowTag(lst.LastIndex) = oRecord
 		  next
 		End Sub
 	#tag EndMethod
@@ -196,6 +235,14 @@ End
 		End Sub
 	#tag EndMethod
 
+
+	#tag Property, Flags = &h0
+		oCurrentEvent As DataFile.t_event
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oSelectedCell As iOSTableCellData
+	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		sLastQuery As Text
@@ -223,6 +270,31 @@ End
 		  CreateFilter
 		  
 		  Loadlist sLastQuery
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events tbl
+	#tag Event
+		Sub Action(section As Integer, row As Integer)
+		  btnImport.Enabled = section <> -1 and row <> -1
+		  
+		  oSelectedCell = Me.RowData(section, row)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnImport
+	#tag Event
+		Sub Action()
+		  if oSelectedCell = nil then return
+		  dim oEvent as DataFile.t_event = oSelectedCell.Tag
+		  
+		  Foundation.NSUserDefaults.StandardUserDefaults.SetTextForKey("EventKey", oEvent.sKey)
+		  
+		  ImportTeams(oEvent)
+		  
+		  
+		  
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -324,32 +396,29 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub PageReceived(URL as Text, HTTPStatus as Integer, Content as xojo.Core.MemoryBlock)
-		  'dim t as text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
-		  'dim s as Text = t
-		  '
-		  'dim oJSON as New JSONItem(s)
-		  '
-		  'for i as integer = 0 to oJSON.Count-1
-		  'dim oCHild as JSONitem = oJSON.Child(i)
-		  '
-		  'if oChild <> nil then
-		  'dim sKey as Text = oChild.lookup("key", "")
-		  '
-		  'dim oRecord as Data.t_team = Data.t_team.FindByKeyAndEventID(skey, oCurrentEvent.iEvent_ID )
-		  'oRecord.iEvent_ID = oCurrentEvent.ievent_ID
-		  'oRecord.sName = oChild.Lookup("name", "")
-		  'oRecord.sNickName= oChild.Lookup("nickname", "")
-		  'oRecord.sLocality= oChild.Lookup("locality", "")
-		  'oRecord.sRegion= oChild.Lookup("region", "")
-		  'oRecord.sTeam_Number= oChild.Lookup("team_number", "")
-		  'oRecord.iRookie_Year= oChild.Lookup("rookie_year", 0)
-		  'oRecord.save
-		  '
-		  'end
-		  'next
-		  '
-		  'dim oEvent as Data.t_event = lst.RowTag(lst.ListIndex)
-		  'ImportMatches(oEvent)
+		  dim tData as text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
+		  
+		  Dim aroJSON() as auto = Xojo.Data.ParseJSON(tData)
+		  
+		  for each a as auto in aroJSON
+		    dim d as xojo.Core.Dictionary = a
+		    
+		    dim oRecord as DataFile.t_team = DataFile.t_team.FindByKeyAndEventID(oCurrentEvent.skey, oCurrentEvent.iEvent_ID )
+		    oRecord.iEvent_ID = oCurrentEvent.ievent_ID
+		    oRecord.sName = d.Lookup("name", "")
+		    oRecord.sNickName= d.Lookup("nickname", "")
+		    oRecord.sLocality= d.Lookup("locality", "")
+		    oRecord.sRegion= d.Lookup("region", "")
+		    dim iTeamNumber as integer = d.Lookup("team_number", 0)
+		    oRecord.sTeam_Number= iTeamNumber.ToText
+		    oRecord.iRookie_Year= d.Lookup("rookie_year", 0)
+		    oRecord.save
+		    
+		  next
+		  
+		  ImportMatches(oCurrentEvent)
+		  
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -361,73 +430,80 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub PageReceived(URL as Text, HTTPStatus as Integer, Content as xojo.Core.MemoryBlock)
-		  'dim t as text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
-		  'dim s as Text = t
-		  '
-		  'dim oJSON as New JSONItem(s)
-		  '
-		  'for i as integer = 0 to oJSON.Count-1
-		  'dim oCHild as JSONitem = oJSON.Child(i)
-		  '
-		  'if oChild <> nil then
-		  'dim sKey as Text = oChild.lookup("key", "")
-		  '
-		  'dim oRecord as Data.t_matches = Data.t_matches.FindByKey(skey )
-		  'oRecord.iEvent_ID = oCurrentEvent.ievent_ID
-		  'oRecord.sevent_key = oChild.Lookup("event_key", "")
-		  'oRecord.stime_string= oChild.Lookup("time_string", "")
-		  'oRecord.imatch_number = oChild.Lookup("match_number", -1)
-		  'oRecord.iset_number = oChild.Lookup("set_number", -1)
-		  'oRecord.stime_string = oChild.Lookup("time_string", "")
-		  'oRecord.sComp_Level = oChild.Lookup("comp_level", "")
-		  '
-		  'dim oAliances as JSONItem = oChild.Lookup("alliances", nil)
-		  'if oAliances = nil then
-		  'break
-		  'return
-		  'end
-		  '
-		  'dim oBlueAlliance as JSONItem = oAliances.Lookup("blue", nil)
-		  'oRecord.iBlueScore = oBlueAlliance.Lookup("score", -1)
-		  'dim oBlueTeams as JSONItem = oBlueAlliance.Lookup("teams", nil)
-		  'if oBlueTeams.IsArray then
-		  'oRecord.sBlue_Team_1 = oBlueTeams.value(0)
-		  '
-		  'oRecord.sBlue_Team_2 = oBlueTeams.value(1)
-		  '
-		  'oRecord.sBlue_Team_3 = oBlueTeams.value(2)
-		  '
-		  'end
-		  '
-		  'dim oRedAlliance as JSONItem = oAliances.Lookup("red", nil)
-		  'oRecord.iRedScore = oRedAlliance.Lookup("score", -1)
-		  'dim oRedTeams as JSONItem = oRedAlliance.Lookup("teams", nil)
-		  '
-		  'if oRedTeams.IsArray then
-		  'oRecord.sRed_Team_1 = oRedTeams.value(0)
-		  '
-		  'oRecord.sRed_Team_2 = oRedTeams.value(1)
-		  '
-		  'oRecord.sRed_Team_3 = oRedTeams.value(2)
-		  '
-		  'end
-		  '
-		  '
-		  'oRecord.save
-		  '
-		  'end
-		  'next
-		  '
-		  'msgbox "All Data Imported from Blue Alliance"
-		  '
-		  'for i as integer = 0 to WindowCount-1
-		  'if window(i) isa winStartup then
-		  'winStartup(window(i)).Init
-		  'exit
-		  'end
-		  'next
-		  '
-		  'self.close
+		  dim tData as text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
+		  
+		  Dim aroJSON() as auto = Xojo.Data.ParseJSON(tData)
+		  
+		  for each a as auto in aroJSON
+		    dim d as xojo.Core.Dictionary = a
+		    
+		    dim sKey as Text = d.lookup("key", "")
+		    
+		    dim oRecord as DataFile.t_matches = DataFile.t_matches.FindByKey(skey )
+		    oRecord.iEvent_ID = oCurrentEvent.ievent_ID
+		    oRecord.sevent_key = d.Lookup("event_key", "")
+		    if d.Lookup("time_string", nil) <> nil then
+		      oRecord.stime_string= d.Lookup("time_string", "")
+		    end
+		    oRecord.imatch_number = d.Lookup("match_number", -1)
+		    oRecord.iset_number = d.Lookup("set_number", -1)
+		    oRecord.sComp_Level = d.Lookup("comp_level", "")
+		    
+		    dim dAlliances as Xojo.Core.Dictionary = d.Lookup("alliances", nil)
+		    if dAlliances = nil then
+		      break
+		      return
+		    end
+		    
+		    dim oBlueAlliance as Xojo.Core.Dictionary = dAlliances.Lookup("blue", nil)
+		    oRecord.iBlueScore = oBlueAlliance.Lookup("score", -1)
+		    
+		    dim arArray() as Auto = oBlueAlliance.Lookup("teams", nil)
+		    dim iCnt as integer = 0
+		    for each aTeam as Auto in arArray
+		      
+		      select case icnt
+		      case 0
+		        oRecord.sBlue_Team_1 = aTeam
+		      case 1
+		        oRecord.sBlue_Team_2 = aTeam
+		      case 2
+		        oRecord.sBlue_Team_3 = aTeam
+		      case else
+		        break
+		      end
+		      
+		      iCnt = iCnt + 1
+		    next
+		    
+		    
+		    dim oRedAlliance as Xojo.Core.Dictionary = dAlliances.Lookup("red", nil)
+		    oRecord.iRedScore = oRedAlliance.Lookup("score", -1)
+		    
+		    
+		    arArray()= oRedAlliance.Lookup("teams", nil)
+		    iCnt = 0
+		    for each aTeam as Auto in arArray
+		      
+		      select case icnt
+		      case 0
+		        oRecord.sRed_Team_1 = aTeam
+		      case 1
+		        oRecord.sRed_Team_2 = aTeam
+		      case 2
+		        oRecord.sRed_Team_3 = aTeam
+		      case else
+		        break
+		      end
+		      
+		      iCnt = iCnt + 1
+		    next
+		    
+		    oRecord.save
+		  next
+		  
+		  self.close
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -478,6 +554,16 @@ End
 		Name="NavigationBarVisible"
 		Group="Behavior"
 		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="sLastQuery"
+		Group="Behavior"
+		Type="Text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="sLastSearch"
+		Group="Behavior"
+		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"

@@ -178,12 +178,74 @@ Protected Class t_team
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
+		  iEvent_ID = rs.Field("event_id").IntegerValue
+		  iRookie_Year = rs.Field("rookie_year").IntegerValue
+		  skey = rs.Field("key").TextValue
+		  sLocality = rs.Field("locality").TextValue
+		  sName = rs.Field("name").TextValue
+		  sNickName = rs.Field("nickname").TextValue
+		  sRegion = rs.Field("region").TextValue
+		  sTeam_Number = rs.Field("team_number").TextValue
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  
+		  gDB.SQLExecute("BEGIN TRANSACTION")
+		  
+		  dim ars() as Text
+		  
+		  try
+		    if IsNew then
+		      ars.Append "INSERT INTO t_team"
+		      ars.Append "(event_id, rookie_year, Key, locality, Name, nickname, region, team_number) VALUES ("
+		      
+		      
+		      ars.Append iEvent_ID.ToText + ", "
+		      ars.Append iRookie_Year.ToText + ", "
+		      ars.Append skey.SQLizeText + ", "
+		      ars.Append sLocality.SQLizeText + ", "
+		      ars.Append sName.SQLizeText + ", "
+		      ars.Append sNickName.SQLizeText + ", "
+		      ars.Append sRegion.SQLizeText + ", "
+		      ars.Append sTeam_Number .SQLizeText
+		      
+		      ars.Append ")"
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    else
+		      
+		      ars.Append "Update t_team Set"
+		      
+		      ars.Append "event_id = " + iEvent_ID.ToText  + ", "
+		      ars.Append "rookie_year = " + iRookie_Year.ToText  + ", "
+		      ars.Append "Key = " + sKey.SQLizeText  + ", "
+		      ars.Append "locality = " + sLocality.SQLizeText  + ", "
+		      ars.Append "Name = " + sName.SQLizeText  + ", "
+		      ars.Append "nickname = " + sNickName.SQLizeText  + ", "
+		      ars.Append "region = " + sRegion.SQLizeText  + ", "
+		      ars.Append "team_number = " + sTeam_Number.SQLizeText
+		      
+		      ars.Append "WHERE t_team = " + iteam_id.ToText
+		      
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    end
+		    gDB.SQLExecute("COMMIT")
+		  catch
+		    break
+		    gdb.SQLExecute("ROLLBACK")
+		  end
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -288,37 +350,37 @@ Protected Class t_team
 		#tag ViewProperty
 			Name="sKey"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sLocality"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sName"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sNickName"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sRegion"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sTeam_Number"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty

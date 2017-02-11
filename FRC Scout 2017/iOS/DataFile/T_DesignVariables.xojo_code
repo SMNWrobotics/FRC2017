@@ -120,12 +120,68 @@ Protected Class T_DesignVariables
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
+		  iDriveTrainVariables_ID = rs.Field("DriveTrainVariables_ID").IntegerValue
+		  iIndx = rs.Field("Indx").IntegerValue
+		  sDataType = rs.Field("DataType").TextValue
+		  sForeignField = rs.Field("ForeignField").TextValue
+		  sForeignTable = rs.Field("ForeignTable").TextValue
+		  sList = rs.Field("List").TextValue
+		  sVariableName = rs.Field("VariableName").TextValue
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  
+		  gDB.SQLExecute("BEGIN TRANSACTION")
+		  
+		  dim ars() as Text
+		  
+		  try
+		    if IsNew then
+		      ars.Append "INSERT INTO T_DesignVariables"
+		      ars.Append "(Indx, DataType, ForeignField, ForeignTable,  List, VariableName) VALUES ("
+		      
+		      ars.Append iIndx.ToText + ", "
+		      ars.Append sDataType.SQLizeText + ", "
+		      ars.Append sForeignField.SQLizeText + ", "
+		      ars.Append sForeignTable.SQLizeText + ", "
+		      ars.Append sList.SQLizeText + ", "
+		      ars.Append sVariableName.SQLizeText
+		      
+		      ars.Append ")"
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    else
+		      
+		      ars.Append "Update t_team T_DesignVariables"
+		      
+		      ars.Append "Indx = " + iIndx.ToText + ", "
+		      ars.Append "DataType = " + sDataType.SQLizeText + ", "
+		      ars.Append "ForeignField = " + sForeignField.SQLizeText + ", "
+		      ars.Append "ForeignTable = " + sForeignTable.SQLizeText + ", "
+		      ars.Append "List = " + sList.SQLizeText + ", "
+		      ars.Append "VariableName = " + sVariableName.SQLizeText
+		      
+		      ars.Append "WHERE DesignVariables_ID = " + iDriveTrainVariables_ID.ToText
+		      
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    end
+		    gDB.SQLExecute("COMMIT")
+		  catch
+		    break
+		    gdb.SQLExecute("ROLLBACK")
+		  end
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -198,25 +254,25 @@ Protected Class T_DesignVariables
 		#tag ViewProperty
 			Name="sDataType"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sForeignField"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sForeignTable"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sList"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -228,7 +284,7 @@ Protected Class T_DesignVariables
 		#tag ViewProperty
 			Name="sVariableName"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty

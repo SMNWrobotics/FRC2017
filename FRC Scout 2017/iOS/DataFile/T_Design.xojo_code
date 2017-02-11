@@ -131,12 +131,60 @@ Protected Class T_Design
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
-		  
+		  iDesign_ID = rs.Field("Design_ID").IntegerValue
+		  sTeam_number = rs.Field("Team_number").TextValue
+		  sValue = rs.Field("Value ").TextValue
+		  sVariable = rs.Field("Variable").TextValue
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  
+		  gDB.SQLExecute("BEGIN TRANSACTION")
+		  
+		  dim ars() as Text
+		  
+		  
+		  try
+		    if IsNew then
+		      ars.Append "INSERT INTO T_Design"
+		      ars.Append "(Team_number, Value, Variable) VALUES ("
+		      
+		      ars.Append iDesign_ID.ToText + ", "
+		      ars.Append sTeam_number.SQLizeText + ", "
+		      ars.Append sValue.SQLizeText + ", "
+		      ars.Append sVariable.SQLizeText
+		      
+		      ars.Append ")"
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    else
+		      
+		      ars.Append "Update t_team T_Design"
+		      
+		      ars.Append "Team_number = " + sTeam_number.SQLizeText + ", "
+		      ars.Append "Value = " + sValue.SQLizeText + ", "
+		      ars.Append "Variable = " + sVariable.SQLizeText
+		      
+		      ars.Append "WHERE design_ID = " + iDesign_ID.ToText
+		      
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL)
+		      
+		    end
+		    gDB.SQLExecute("COMMIT")
+		  catch
+		    break
+		    gdb.SQLExecute("ROLLBACK")
+		  end
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -188,7 +236,7 @@ Protected Class T_Design
 		#tag ViewProperty
 			Name="sTeam_number"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -200,13 +248,13 @@ Protected Class T_Design
 		#tag ViewProperty
 			Name="sValue"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sVariable"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
