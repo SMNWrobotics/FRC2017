@@ -89,6 +89,11 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	RobotMap.driveEncoderBackRight.reset();
+        RobotMap.driveEncoderBackLeft.reset();
+        RobotMap.driveEncoderFrontRight.reset();
+        RobotMap.driveEncoderFrontLeft.reset();
+        gyro.reset();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 

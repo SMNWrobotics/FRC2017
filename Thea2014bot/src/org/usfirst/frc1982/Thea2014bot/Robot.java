@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
 //    GripPipelineTooMuch gripPipeline;
     
     List<Command> autoPrograms = new ArrayList<Command>();
-    autoPrograms.
+    
     
     NetworkTable table;
     
