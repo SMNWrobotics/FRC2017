@@ -11,10 +11,19 @@
 
 package org.usfirst.frc1982.Thea2014bot;
 
+import org.usfirst.frc1982.Thea2014bot.commands.AutoBaseLine;
+import org.usfirst.frc1982.Thea2014bot.commands.AutoDoNothing;
+import org.usfirst.frc1982.Thea2014bot.commands.AutoLeft;
+import org.usfirst.frc1982.Thea2014bot.commands.AutoMid;
+import org.usfirst.frc1982.Thea2014bot.commands.AutoRight;
 import org.usfirst.frc1982.Thea2014bot.commands.AutonomousCommand;
 import org.usfirst.frc1982.Thea2014bot.commands.DriveEnable;
 import org.usfirst.frc1982.Thea2014bot.commands.LiftDown;
 import org.usfirst.frc1982.Thea2014bot.commands.LiftUp;
+import org.usfirst.frc1982.Thea2014bot.commands._CameraOff;
+import org.usfirst.frc1982.Thea2014bot.commands._DriveEnable;
+import org.usfirst.frc1982.Thea2014bot.commands._LiftDown;
+import org.usfirst.frc1982.Thea2014bot.commands._LiftUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

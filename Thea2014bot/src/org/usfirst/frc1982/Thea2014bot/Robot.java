@@ -52,7 +52,7 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
  */
 public class Robot extends IterativeRobot {
 	private static final ImageResolution iRes = ImageResolution.MEDIUM;
-	public static final Object LOCK = new Integer( 0 );
+//	public static final Object LOCK = new Integer( 0 );
 	
     private AtomicInteger ctr = new AtomicInteger();
 	private VisionThread visionThread;
