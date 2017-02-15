@@ -26,11 +26,10 @@ import edu.wpi.first.wpilibj.vision.VisionPipeline;
 public class GripPipeline implements VisionPipeline {
 
 	//Outputs
-	private Mat hslThresholdOutput = new Mat();
-	private Mat cvDilateOutput = new Mat();
+	private Mat hslThreshold0Output = new Mat();
 	private ArrayList<MatOfPoint> findContoursOutput = new ArrayList<MatOfPoint>();
-	private ArrayList<MatOfPoint> convexHullsOutput = new ArrayList<MatOfPoint>();
 	private ArrayList<MatOfPoint> filterContoursOutput = new ArrayList<MatOfPoint>();
+	private Mat hslThreshold1Output = new Mat();
 
 	static {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -41,37 +40,24 @@ public class GripPipeline implements VisionPipeline {
 	 */
 	@Override	public void process(Mat source0) {
 		// Step HSL_Threshold0:
-		Mat hslThresholdInput = source0;
-		double[] hslThresholdHue = {33.99280575539569, 74.7952218430034};
-		double[] hslThresholdSaturation = {0.0, 255.0};
-		double[] hslThresholdLuminance = {241.92895683453239, 255.0};
-		hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, hslThresholdOutput);
-
-		// Step CV_dilate0:
-		Mat cvDilateSrc = hslThresholdOutput;
-		Mat cvDilateKernel = new Mat();
-		Point cvDilateAnchor = new Point(-1, -1);
-		double cvDilateIterations = 1.0;
-		int cvDilateBordertype = Core.BORDER_CONSTANT;
-		Scalar cvDilateBordervalue = new Scalar(-1);
-		cvDilate(cvDilateSrc, cvDilateKernel, cvDilateAnchor, cvDilateIterations, cvDilateBordertype, cvDilateBordervalue, cvDilateOutput);
+		Mat hslThreshold0Input = source0;
+		double[] hslThreshold0Hue = {40.46762589928058, 62.5085324232082};
+		double[] hslThreshold0Saturation = {0.0, 255.0};
+		double[] hslThreshold0Luminance = {220.14388489208633, 255.0};
+		hslThreshold(hslThreshold0Input, hslThreshold0Hue, hslThreshold0Saturation, hslThreshold0Luminance, hslThreshold0Output);
 
 		// Step Find_Contours0:
-		Mat findContoursInput = cvDilateOutput;
+		Mat findContoursInput = hslThreshold0Output;
 		boolean findContoursExternalOnly = true;
 		findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
 
-		// Step Convex_Hulls0:
-		ArrayList<MatOfPoint> convexHullsContours = findContoursOutput;
-		convexHulls(convexHullsContours, convexHullsOutput);
-
 		// Step Filter_Contours0:
-		ArrayList<MatOfPoint> filterContoursContours = convexHullsOutput;
-		double filterContoursMinArea = 28.0;
+		ArrayList<MatOfPoint> filterContoursContours = findContoursOutput;
+		double filterContoursMinArea = 17.0;
 		double filterContoursMinPerimeter = 0.0;
-		double filterContoursMinWidth = 8.0;
+		double filterContoursMinWidth = 6.0;
 		double filterContoursMaxWidth = 1000.0;
-		double filterContoursMinHeight = 8.0;
+		double filterContoursMinHeight = 6.0;
 		double filterContoursMaxHeight = 1000.0;
 		double[] filterContoursSolidity = {0.0, 100.0};
 		double filterContoursMaxVertices = 100.0;
@@ -80,22 +66,21 @@ public class GripPipeline implements VisionPipeline {
 		double filterContoursMaxRatio = 10.0;
 		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
+		// Step HSL_Threshold1:
+		Mat hslThreshold1Input = source0;
+		double[] hslThreshold1Hue = {40.46762589928058, 63.27645051194539};
+		double[] hslThreshold1Saturation = {0.0, 255.0};
+		double[] hslThreshold1Luminance = {220.14388489208633, 255.0};
+		hslThreshold(hslThreshold1Input, hslThreshold1Hue, hslThreshold1Saturation, hslThreshold1Luminance, hslThreshold1Output);
+
 	}
 
 	/**
 	 * This method is a generated getter for the output of a HSL_Threshold.
 	 * @return Mat output from HSL_Threshold.
 	 */
-	public Mat hslThresholdOutput() {
-		return hslThresholdOutput;
-	}
-
-	/**
-	 * This method is a generated getter for the output of a CV_dilate.
-	 * @return Mat output from CV_dilate.
-	 */
-	public Mat cvDilateOutput() {
-		return cvDilateOutput;
+	public Mat hslThreshold0Output() {
+		return hslThreshold0Output;
 	}
 
 	/**
@@ -107,14 +92,6 @@ public class GripPipeline implements VisionPipeline {
 	}
 
 	/**
-	 * This method is a generated getter for the output of a Convex_Hulls.
-	 * @return ArrayList<MatOfPoint> output from Convex_Hulls.
-	 */
-	public ArrayList<MatOfPoint> convexHullsOutput() {
-		return convexHullsOutput;
-	}
-
-	/**
 	 * This method is a generated getter for the output of a Filter_Contours.
 	 * @return ArrayList<MatOfPoint> output from Filter_Contours.
 	 */
@@ -122,46 +99,14 @@ public class GripPipeline implements VisionPipeline {
 		return filterContoursOutput;
 	}
 
-
 	/**
-	 * Segment an image based on hue, saturation, and luminance ranges.
-	 *
-	 * @param input The image on which to perform the HSL threshold.
-	 * @param hue The min and max hue
-	 * @param sat The min and max saturation
-	 * @param lum The min and max luminance
-	 * @param output The image in which to store the output.
+	 * This method is a generated getter for the output of a HSL_Threshold.
+	 * @return Mat output from HSL_Threshold.
 	 */
-	private void hslThreshold(Mat input, double[] hue, double[] sat, double[] lum,
-		Mat out) {
-		Imgproc.cvtColor(input, out, Imgproc.COLOR_BGR2HLS);
-		Core.inRange(out, new Scalar(hue[0], lum[0], sat[0]),
-			new Scalar(hue[1], lum[1], sat[1]), out);
+	public Mat hslThreshold1Output() {
+		return hslThreshold1Output;
 	}
 
-	/**
-	 * Expands area of higher value in an image.
-	 * @param src the Image to dilate.
-	 * @param kernel the kernel for dilation.
-	 * @param anchor the center of the kernel.
-	 * @param iterations the number of times to perform the dilation.
-	 * @param borderType pixel extrapolation method.
-	 * @param borderValue value to be used for a constant border.
-	 * @param dst Output Image.
-	 */
-	private void cvDilate(Mat src, Mat kernel, Point anchor, double iterations,
-	int borderType, Scalar borderValue, Mat dst) {
-		if (kernel == null) {
-			kernel = new Mat();
-		}
-		if (anchor == null) {
-			anchor = new Point(-1,-1);
-		}
-		if (borderValue == null){
-			borderValue = new Scalar(-1);
-		}
-		Imgproc.dilate(src, dst, kernel, anchor, (int)iterations, borderType, borderValue);
-	}
 
 	/**
 	 * Sets the values of pixels in a binary image to their distance to the nearest black pixel.
@@ -183,29 +128,6 @@ public class GripPipeline implements VisionPipeline {
 		}
 		int method = Imgproc.CHAIN_APPROX_SIMPLE;
 		Imgproc.findContours(input, contours, hierarchy, mode, method);
-	}
-
-	/**
-	 * Compute the convex hulls of contours.
-	 * @param inputContours The contours on which to perform the operation.
-	 * @param outputContours The contours where the output will be stored.
-	 */
-	private void convexHulls(List<MatOfPoint> inputContours,
-		ArrayList<MatOfPoint> outputContours) {
-		final MatOfInt hull = new MatOfInt();
-		outputContours.clear();
-		for (int i = 0; i < inputContours.size(); i++) {
-			final MatOfPoint contour = inputContours.get(i);
-			final MatOfPoint mopHull = new MatOfPoint();
-			Imgproc.convexHull(contour, hull);
-			mopHull.create((int) hull.size().height, 1, CvType.CV_32SC2);
-			for (int j = 0; j < hull.size().height; j++) {
-				int index = (int) hull.get(j, 0)[0];
-				double[] point = new double[] {contour.get(index, 0)[0], contour.get(index, 0)[1]};
-				mopHull.put(j, 0, point);
-			}
-			outputContours.add(mopHull);
-		}
 	}
 
 
@@ -255,6 +177,22 @@ public class GripPipeline implements VisionPipeline {
 			if (ratio < minRatio || ratio > maxRatio) continue;
 			output.add(contour);
 		}
+	}
+
+	/**
+	 * Segment an image based on hue, saturation, and luminance ranges.
+	 *
+	 * @param input The image on which to perform the HSL threshold.
+	 * @param hue The min and max hue
+	 * @param sat The min and max saturation
+	 * @param lum The min and max luminance
+	 * @param output The image in which to store the output.
+	 */
+	private void hslThreshold(Mat input, double[] hue, double[] sat, double[] lum,
+		Mat out) {
+		Imgproc.cvtColor(input, out, Imgproc.COLOR_BGR2HLS);
+		Core.inRange(out, new Scalar(hue[0], lum[0], sat[0]),
+			new Scalar(hue[1], lum[1], sat[1]), out);
 	}
 
 
