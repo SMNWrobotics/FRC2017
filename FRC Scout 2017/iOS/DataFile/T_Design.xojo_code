@@ -151,7 +151,6 @@ Protected Class T_Design
 		      ars.Append "INSERT INTO T_Design"
 		      ars.Append "(Team_number, Value, Variable) VALUES ("
 		      
-		      ars.Append iDesign_ID.ToText + ", "
 		      ars.Append sTeam_number.SQLizeText + ", "
 		      ars.Append sValue.SQLizeText + ", "
 		      ars.Append sVariable.SQLizeText
