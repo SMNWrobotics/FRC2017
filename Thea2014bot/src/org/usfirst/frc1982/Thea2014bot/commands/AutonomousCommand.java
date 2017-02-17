@@ -8,14 +8,10 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc1982.Thea2014bot.commands;
-import edu.wpi.first.wpilibj.command.Command;
-<<<<<<< HEAD
-=======
-import org.usfirst.frc1982.Thea2014bot.Robot;
 import org.usfirst.frc1982.Thea2014bot.RobotMap;
->>>>>>> e60795ac49e74e6dfea6d2564b17c67e3f846a31
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
