@@ -56,6 +56,13 @@ End
 		    
 		    cell.AccessoryType = iOSTableCellData.AccessoryTypes.Detail
 		    
+		    if oDesignVariables.sDataType = "Image" then
+		      if oData.sValue.Length = 0 then
+		        cell.DetailText = "No Picture"
+		      else
+		        cell.DetailText = "Image Available"
+		      end
+		    end
 		    
 		    tbl.AddRow 0, cell
 		    
@@ -119,7 +126,7 @@ End
 		      return
 		    #Endif
 		    
-		    dim vwImg as new vwImage
+		    dim vwImg as new vwImage(oData)
 		    self.PushTo(vwImg)
 		    
 		  case else

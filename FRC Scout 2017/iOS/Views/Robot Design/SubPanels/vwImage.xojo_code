@@ -51,14 +51,14 @@ Begin iosView vwImage
    Begin iOSButton btnTakeImage
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnTakeImage, 9, <Parent>, 9, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnTakeImage, 7, , 0, False, +1.00, 1, 1, 133, 
+      AutoLayout      =   btnTakeImage, 1, ImageView1, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnTakeImage, 7, , 0, False, +1.00, 1, 1, 110, 
       AutoLayout      =   btnTakeImage, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, 
       AutoLayout      =   btnTakeImage, 8, , 0, False, +1.00, 1, 1, 30, 
       Caption         =   "Choose Image"
       Enabled         =   True
       Height          =   30.0
-      Left            =   93
+      Left            =   20
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c007AFF00
@@ -66,7 +66,44 @@ Begin iosView vwImage
       TextSize        =   0
       Top             =   111
       Visible         =   True
-      Width           =   133.0
+      Width           =   110.0
+   End
+   Begin Extensions.Camera oCamera
+      editedImage     =   ""
+      Height          =   32
+      Height          =   32
+      Left            =   60
+      Left            =   60
+      LockedInPosition=   False
+      originalImage   =   ""
+      PanelIndex      =   -1
+      Parent          =   ""
+      Scope           =   1
+      SourceType      =   "1"
+      Top             =   60
+      Top             =   60
+      Width           =   32
+      Width           =   32
+   End
+   Begin iOSButton btnSaveImage
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   btnSaveImage, 2, ImageView1, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnSaveImage, 7, , 0, False, +1.00, 1, 1, 68, 
+      AutoLayout      =   btnSaveImage, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   btnSaveImage, 11, btnTakeImage, 11, False, +1.00, 1, 1, 0, 
+      Caption         =   "Save"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   232
+      LockedInPosition=   False
+      Scope           =   0
+      TextColor       =   &c007AFF00
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   111
+      Visible         =   True
+      Width           =   68.0
    End
 End
 #tag EndIOSView
@@ -79,26 +116,42 @@ End
 		  
 		  m_oDesign = oDesign
 		  
-		  oCamera = new Extensions.Camera
-		  AddHandler oCamera.PictureTaken, AddressOf PictureTaken
+		  lblVariableName.text = m_oDesign.sVariable
+		  
+		  if m_oDesign.sValue <> "" then
+		    dim sText as Text = m_oDesign.sValue 
+		    
+		    dim mb as xojo.Core.MemoryBlock = M_Text.DecodeBase64(sText)
+		    
+		    pic = iOSImage.FromData(mb)
+		    
+		    ImageView1.Image = pic
+		    imageview1.Invalidate
+		  end
 		End Sub
 	#tag EndMethod
 
-	#tag Method, Flags = &h21
-		Private Sub PictureTaken(oInstance as Extensions.Camera)
-		  pic = oInstance.originalImage
+	#tag Method, Flags = &h0
+		Sub Save()
+		  if pic = nil then
+		    msgbox "Can't Save", "No image to save."
+		    return
+		  end
 		  
-		  ImageView1.Image = pic
+		  dim mb as xojo.Core.MemoryBlock = pic.ToData("public.png")
+		  
+		  dim sEncode as text = M_Text.EncodeBase64(mb)
+		  
+		  m_oDesign.sValue = sEncode
+		  m_oDesign.save
+		  
+		  self.close
 		End Sub
 	#tag EndMethod
 
 
 	#tag Property, Flags = &h0
 		m_oDesign As DataFile.T_Design
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private oCamera As Extensions.Camera
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -112,6 +165,23 @@ End
 	#tag Event
 		Sub Action()
 		  oCamera.show(Self)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events oCamera
+	#tag Event
+		Sub PictureTaken()
+		  pic = me.originalImage
+		  ImageView1.image = pic
+		  
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnSaveImage
+	#tag Event
+		Sub Action()
+		  Save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
