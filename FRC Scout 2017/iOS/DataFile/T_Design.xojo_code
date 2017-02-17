@@ -133,7 +133,7 @@ Protected Class T_Design
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
 		  iDesign_ID = rs.Field("Design_ID").IntegerValue
 		  sTeam_number = rs.Field("Team_number").TextValue
-		  sValue = rs.Field("Value ").TextValue
+		  sValue = rs.Field("Value").TextValue
 		  sVariable = rs.Field("Variable").TextValue
 		End Sub
 	#tag EndMethod
@@ -163,7 +163,7 @@ Protected Class T_Design
 		      
 		    else
 		      
-		      ars.Append "Update t_team T_Design"
+		      ars.Append "Update T_Design  set "
 		      
 		      ars.Append "Team_number = " + sTeam_number.SQLizeText + ", "
 		      ars.Append "Value = " + sValue.SQLizeText + ", "

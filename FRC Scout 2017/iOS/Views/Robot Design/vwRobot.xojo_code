@@ -5,8 +5,8 @@ Begin iosView vwRobot
    Left            =   0
    NavigationBarVisible=   True
    TabIcon         =   ""
-   TabTitle        =   ""
-   Title           =   "Robot Scouting"
+   TabTitle        =   "Robot Design"
+   Title           =   "Robot Design"
    Top             =   0
    Begin iOSTable tbl
       AccessibilityHint=   ""
@@ -15,6 +15,7 @@ Begin iosView vwRobot
       AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
       AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
       AutoLayout      =   tbl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
@@ -40,18 +41,20 @@ End
 		  for each oDesignVariables as DataFile.T_DesignVariables in DataFile.T_DesignVariables.List
 		    Dim cell As iOSTableCellData = tbl.CreateCell
 		    cell.text = oDesignVariables.sVariableName
-		    dim oData as DataFile.T_Design = oDesignVariables.GetValue("1")
-		    cell.DetailText = oData.sValue
+		    dim oData as DataFile.T_Design = oDesignVariables.GetValue(m_oTeam.sTeam_Number)
+		    if oData.sValue = "" then
+		      if oDesignVariables.sDataType = "CheckBox" then
+		        cell.DetailText = "False"
+		      else
+		        cell.DetailText = "Not specified"
+		      end
+		    else
+		      cell.DetailText = oData.sValue
+		    end
+		    
 		    cell.Tag = oDesignVariables
 		    
-		    Select case oDesignVariables.sDataType
-		    case "CheckBox"
-		      cell.AccessoryType = iOSTableCellData.AccessoryTypes.CheckMark
-		    case "Text", "TextArea", "Numbers", "Popup"
-		      cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
-		    case else
-		      break //not handled yet
-		    end
+		    cell.AccessoryType = iOSTableCellData.AccessoryTypes.Detail
 		    
 		    
 		    tbl.AddRow 0, cell
@@ -62,8 +65,69 @@ End
 	#tag EndEvent
 
 
+	#tag Method, Flags = &h0
+		Sub Constructor(oTeam as DataFile.t_team)
+		  // Calling the overridden superclass constructor.
+		  Super.Constructor
+		  
+		  m_oTeam = oTeam
+		  
+		  Self.Title = "Robot - Team: " + m_oTeam.sTeam_Number
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		m_oTeam As DataFile.t_team
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
+#tag Events tbl
+	#tag Event
+		Sub AccessoryAction(section As Integer, row As Integer)
+		  dim oCell as iOSTableCellData = me.RowData(section, row)
+		  
+		  dim oDesignVariables as DataFile.T_DesignVariables = oCell.Tag
+		  dim oData as DataFile.T_Design = oDesignVariables.GetValue(m_oTeam.sTeam_Number)
+		  
+		  select case oDesignVariables.sDataType
+		  case "Checkbox"
+		    dim vwCheckBox as new vwCheckBox(oData)
+		    self.PushTo(vwCheckBox)
+		    
+		  case "Text"
+		    dim vwText as new vwTextField(oData)
+		    self.PushTo(vwText)
+		    
+		  case "Numbers"
+		    dim vwNumb as new vwNumbers(oData)
+		    self.PushTo(vwNumb)
+		    
+		  case "TextArea"
+		    dim vwtA as new vwTextArea(oData)
+		    self.PushTo(vwTa)
+		    
+		  case "Popup"
+		    dim vwPop as new vwPopup(oData, oDesignVariables)
+		    self.PushTo(vwPop)
+		    
+		  case "Image"
+		    #if DebugBuild
+		      msgbox "Camera only works on real device."
+		      return
+		    #Endif
+		    
+		    dim vwImg as new vwImage
+		    self.PushTo(vwImg)
+		    
+		  case else
+		    break
+		  end
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="BackButtonTitle"
