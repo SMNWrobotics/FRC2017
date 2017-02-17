@@ -12,8 +12,8 @@ Begin iosView vwSetup
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   Label2, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   Label2, 2, <Parent>, 2, False, +1.00, 1, 1, 242, 
-      AutoLayout      =   Label2, 3, <Parent>, 3, False, +1.00, 1, 1, 161, 
+      AutoLayout      =   Label2, 2, Label3, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Label2, 3, Label3, 4, False, +1.00, 1, 1, *kStdControlGapV, 
       AutoLayout      =   Label2, 8, , 0, False, +1.00, 1, 1, 30, 
       Enabled         =   True
       Height          =   30.0
@@ -26,46 +26,31 @@ Begin iosView vwSetup
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   161
+      Top             =   103
       Visible         =   True
-      Width           =   542.0
+      Width           =   58.0
    End
-   Begin iOSTextField TextField1
+   Begin iOSTextField txtName
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   TextField1, 1, <Parent>, 1, False, +1.00, 1, 1, 86, 
-      AutoLayout      =   TextField1, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   TextField1, 3, <Parent>, 3, False, +1.00, 1, 1, 161, 
-      AutoLayout      =   TextField1, 8, , 0, True, +1.00, 1, 1, 31, 
+      AutoLayout      =   txtName, 1, <Parent>, 1, False, +1.00, 1, 1, 86, 
+      AutoLayout      =   txtName, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   txtName, 11, Label2, 11, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   txtName, 8, , 0, True, +1.00, 1, 1, 31, 
       Enabled         =   True
       Height          =   31.0
       KeyboardType    =   "0"
       Left            =   86
       LockedInPosition=   False
       Password        =   False
-      PlaceHolder     =   "Name"
+      PlaceHolder     =   "Your Name"
       Scope           =   0
       Text            =   ""
       TextAlignment   =   "0"
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   161
-      Visible         =   True
-      Width           =   234.0
-   End
-   Begin Extensions.PickerView pickerTeam
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   pickerTeam, 1, <Parent>, 1, False, +1.00, 1, 1, 86, 
-      AutoLayout      =   pickerTeam, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   pickerTeam, 4, TextField1, 3, False, +1.00, 1, 1, -42, 
-      AutoLayout      =   pickerTeam, 3, TopLayoutGuide, 4, False, +1.00, 2, 1, 0, 
-      Height          =   54.0
-      Left            =   86
-      LockedInPosition=   False
-      Scope           =   1
-      Top             =   65
+      Top             =   102
       Visible         =   True
       Width           =   234.0
    End
@@ -74,8 +59,8 @@ Begin iosView vwSetup
       AccessibilityLabel=   ""
       AutoLayout      =   Label3, 1, <Parent>, 1, False, +1.00, 1, 1, 20, 
       AutoLayout      =   Label3, 7, , 0, False, +1.00, 1, 1, 58, 
-      AutoLayout      =   Label3, 3, pickerTeam, 3, False, +1.00, 1, 1, 0, 
       AutoLayout      =   Label3, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   Label3, 3, , 0, False, +1.00, 1, 1, 65, 
       Enabled         =   True
       Height          =   30.0
       Left            =   20
@@ -96,7 +81,7 @@ Begin iosView vwSetup
       AccessibilityLabel=   ""
       AutoLayout      =   btnSave, 7, , 0, False, +1.00, 1, 1, 100, 
       AutoLayout      =   btnSave, 9, <Parent>, 9, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnSave, 3, <Parent>, 3, False, +1.00, 1, 1, 214, 
+      AutoLayout      =   btnSave, 3, <Parent>, 3, False, +1.00, 1, 1, 151, 
       AutoLayout      =   btnSave, 8, , 0, False, +1.00, 1, 1, 30, 
       Caption         =   "Save"
       Enabled         =   True
@@ -107,16 +92,16 @@ Begin iosView vwSetup
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   214
+      Top             =   151
       Visible         =   True
       Width           =   100.0
    End
    Begin iOSButton btnIMport
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnIMport, 1, btnSave, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnIMport, 1, <Parent>, 1, False, +1.00, 1, 1, 110, 
       AutoLayout      =   btnIMport, 7, , 0, False, +1.00, 1, 1, 100, 
-      AutoLayout      =   btnIMport, 3, <Parent>, 3, False, +1.00, 1, 1, 343, 
+      AutoLayout      =   btnIMport, 3, <Parent>, 3, False, +1.00, 1, 1, 287, 
       AutoLayout      =   btnIMport, 8, , 0, False, +1.00, 1, 1, 30, 
       Caption         =   "Import Data"
       Enabled         =   True
@@ -127,33 +112,61 @@ Begin iosView vwSetup
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   343
+      Top             =   287
       Visible         =   True
       Width           =   100.0
+   End
+   Begin iOSTextField txtTeamNumber
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   txtTeamNumber, 1, Label3, 2, False, +1.00, 1, 1, *kStdControlGapH, 
+      AutoLayout      =   txtTeamNumber, 7, , 0, False, +1.00, 1, 1, 234, 
+      AutoLayout      =   txtTeamNumber, 11, Label3, 11, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   txtTeamNumber, 8, , 0, True, +1.00, 1, 1, 31, 
+      Enabled         =   True
+      Height          =   31.0
+      KeyboardType    =   "4"
+      Left            =   86
+      LockedInPosition=   False
+      Password        =   False
+      PlaceHolder     =   "Team Number"
+      Scope           =   0
+      Text            =   ""
+      TextAlignment   =   "0"
+      TextColor       =   &c00000000
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   64
+      Visible         =   True
+      Width           =   234.0
    End
 End
 #tag EndIOSView
 
 #tag WindowCode
 	#tag Event
-		Sub Open()
+		Sub Activate()
+		  dim s as Text = Foundation.NSUserDefaults.StandardUserDefaults.TextForKey("TeamNumber")
+		  if s <> "" then
+		    txtTeamNumber.text = s
+		  end
 		  
+		  s = Foundation.NSUserDefaults.StandardUserDefaults.TextForKey("ScoutName")
+		  if s <> "" then
+		    txtName.text = s
+		  end
 		End Sub
 	#tag EndEvent
 
 
 #tag EndWindowCode
 
-#tag Events pickerTeam
+#tag Events btnSave
 	#tag Event
-		Sub Open()
+		Sub Action()
+		  Foundation.NSUserDefaults.StandardUserDefaults.SetTextForKey(txtTeamNumber.text, "TeamNumber")
 		  
-		  dim ars() as Text = Array("Apple", "Beta", "Carrot")
-		  me.AddColumn ars
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub SelectionChanged(row as integer, column as integer)
+		  Foundation.NSUserDefaults.StandardUserDefaults.SetTextForKey(txtName.text, "ScoutName")
 		  
 		End Sub
 	#tag EndEvent

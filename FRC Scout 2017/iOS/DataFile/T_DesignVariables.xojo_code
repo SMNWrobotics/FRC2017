@@ -127,7 +127,6 @@ Protected Class T_DesignVariables
 		  sForeignTable = rs.Field("ForeignTable").TextValue
 		  sList = rs.Field("List").TextValue
 		  sVariableName = rs.Field("VariableName").TextValue
-		  
 		End Sub
 	#tag EndMethod
 

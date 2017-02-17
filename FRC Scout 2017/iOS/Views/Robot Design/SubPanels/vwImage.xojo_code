@@ -35,7 +35,7 @@ Begin iosView vwImage
       AccessibilityLabel=   ""
       AutoLayout      =   ImageView1, 1, lblVariableName, 1, False, +1.00, 1, 1, 0, 
       AutoLayout      =   ImageView1, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   ImageView1, 3, , 0, False, +1.00, 1, 1, 155, 
+      AutoLayout      =   ImageView1, 3, <Parent>, 3, False, +1.00, 1, 1, 155, 
       AutoLayout      =   ImageView1, 8, , 0, False, +1.00, 1, 1, 305, 
       ContentMode     =   "0"
       Height          =   305.0
@@ -111,7 +111,7 @@ End
 #tag Events btnTakeImage
 	#tag Event
 		Sub Action()
-		  oCamera.show(GetView)
+		  oCamera.show(Self)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -146,6 +146,11 @@ End
 		Name="NavigationBarVisible"
 		Group="Behavior"
 		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="pic"
+		Group="Behavior"
+		Type="iOSImage"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"

@@ -10,22 +10,22 @@
 			Begin ScreenContent
 				ItemName = Intro
 				Target = 162660351
-				Icon = 0
+				Icon = 2125922303
 			End ScreenContent
 			Begin ScreenContent
 				ItemName = Robot
 				Target = 591564799
-				Icon = 0
+				Icon = 1055170559
 			End ScreenContent
 			Begin ScreenContent
 				ItemName = Match
 				Target = 877703167
-				Icon = 0
+				Icon = 822079487
 			End ScreenContent
 			Begin ScreenContent
 				ItemName = Setup
 				Target = 728262655
-				Icon = 0
+				Icon = 1777336319
 			End ScreenContent
 	End ScreenContent
 #tag EndIOSScreen

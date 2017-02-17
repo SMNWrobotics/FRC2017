@@ -120,6 +120,15 @@ Protected Class T_Design
 		    //Name made yet.
 		    oValue.sTeam_number = TeamNumber
 		    oValue.sVariable = Variable
+		    
+		    Select case Variable
+		    case "Scout Name"
+		      oValue.sValue = Foundation.NSUserDefaults.StandardUserDefaults.TextForKey("ScoutName")
+		    case "Scout Team"
+		      oValue.sValue = Foundation.NSUserDefaults.StandardUserDefaults.TextForKey("TeamNumber")
+		    end
+		    
+		    
 		    oValue.save
 		  else
 		    oValue.ReadRecord(rs)
