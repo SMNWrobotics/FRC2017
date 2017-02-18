@@ -185,6 +185,9 @@ public class Robot extends IterativeRobot {
     	DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
     	System.out.println( "Alliance = " + alliance.name() );
     	
+    	int position = DriverStation.getInstance().getLocation();
+    	System.out.println( "Driver Station Position = " + position );
+    	
     	/*
     	 * The Goal is set from the Smart Dashboard.
     	 */
