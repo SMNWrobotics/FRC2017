@@ -11,21 +11,6 @@
 
 package org.usfirst.frc1982.Thea2014bot;
 
-import org.usfirst.frc1982.Thea2014bot.commands.AutoBaseLine;
-import org.usfirst.frc1982.Thea2014bot.commands.AutoDoNothing;
-import org.usfirst.frc1982.Thea2014bot.commands.AutoLeft;
-import org.usfirst.frc1982.Thea2014bot.commands.AutoMid;
-import org.usfirst.frc1982.Thea2014bot.commands.AutoRight;
-import org.usfirst.frc1982.Thea2014bot.commands._CameraOff;
-import org.usfirst.frc1982.Thea2014bot.commands._DriveEnable;
-import org.usfirst.frc1982.Thea2014bot.commands._LiftDown;
-import org.usfirst.frc1982.Thea2014bot.commands._LiftUp;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
