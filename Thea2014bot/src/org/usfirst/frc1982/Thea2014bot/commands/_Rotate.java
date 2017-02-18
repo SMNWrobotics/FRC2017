@@ -47,13 +47,13 @@ public class _Rotate extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.driveDriveTrain.arcadeDrive(0, .75);
-    	System.out.println(Robot.gyro.getAngleX());
+    	RobotMap.driveDriveTrain.arcadeDrive(0, m_Speed);
+    	System.out.println(Robot.gyro.getAngleZ());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Math.abs(Robot.gyro.getAngleX()) >= m_Angle ) {
+    	if (Math.abs(Robot.gyro.getAngleZ()) >= m_Angle*4 ) {
     		return true;
     	} else {
     		return false;
