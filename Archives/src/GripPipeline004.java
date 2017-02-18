@@ -1,4 +1,4 @@
-package org.usfirst.frc1982.Thea2014bot;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.vision.VisionPipeline;
 *
 * @author GRIP
 */
-public class GripPipeline002 implements VisionPipeline {
+public class GripPipeline004 implements VisionPipeline {
 
 	//Outputs
 	private Mat hslThresholdOutput = new Mat();
@@ -38,39 +38,37 @@ public class GripPipeline002 implements VisionPipeline {
 	 * This is the primary method that runs the entire pipeline and updates the outputs.
 	 */
 	@Override	public void process(Mat source0) {
-//		synchronized( Robot.LOCK )
-//		{
-			// Step HSL_Threshold0:
-			Mat hslThresholdInput = source0;
-			double[] hslThresholdHue = {77.6978417266187, 97.06484641638225};
-			double[] hslThresholdSaturation = {142.17625899280577, 255.0};
-			double[] hslThresholdLuminance = {137.58992805755395, 255.0};
-			hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, hslThresholdOutput);
+		// Step HSL_Threshold0:
+		Mat hslThresholdInput = source0;
+		double[] hslThresholdHue = {77.6978417266187, 97.06484641638225};
+		double[] hslThresholdSaturation = {142.17625899280577, 255.0};
+		double[] hslThresholdLuminance = {137.58992805755395, 255.0};
+		hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, hslThresholdOutput);
 
-			// Step Find_Contours0:
-			Mat findContoursInput = hslThresholdOutput;
-			boolean findContoursExternalOnly = false;
-			findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
+		// Step Find_Contours0:
+		Mat findContoursInput = hslThresholdOutput;
+		boolean findContoursExternalOnly = false;
+		findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
 
-			// Step Convex_Hulls0:
-			ArrayList<MatOfPoint> convexHullsContours = findContoursOutput;
-			convexHulls(convexHullsContours, convexHullsOutput);
+		// Step Convex_Hulls0:
+		ArrayList<MatOfPoint> convexHullsContours = findContoursOutput;
+		convexHulls(convexHullsContours, convexHullsOutput);
 
-			// Step Filter_Contours0:
-			ArrayList<MatOfPoint> filterContoursContours = convexHullsOutput;
-			double filterContoursMinArea = 100.0;
-			double filterContoursMinPerimeter = 100.0;
-			double filterContoursMinWidth = 20.0;
-			double filterContoursMaxWidth = 1000.0;
-			double filterContoursMinHeight = 20.0;
-			double filterContoursMaxHeight = 1000.0;
-			double[] filterContoursSolidity = {0.0, 100.0};
-			double filterContoursMaxVertices = 100.0;
-			double filterContoursMinVertices = 4.0;
-			double filterContoursMinRatio = 0.0;
-			double filterContoursMaxRatio = 10.0;
-			filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
-//		}
+		// Step Filter_Contours0:
+		ArrayList<MatOfPoint> filterContoursContours = convexHullsOutput;
+		double filterContoursMinArea = 0.0;
+		double filterContoursMinPerimeter = 0.0;
+		double filterContoursMinWidth = 6.0;
+		double filterContoursMaxWidth = 1000.0;
+		double filterContoursMinHeight = 6.0;
+		double filterContoursMaxHeight = 1000.0;
+		double[] filterContoursSolidity = {0.0, 100.0};
+		double filterContoursMaxVertices = 100.0;
+		double filterContoursMinVertices = 4.0;
+		double filterContoursMinRatio = 0.0;
+		double filterContoursMaxRatio = 10.0;
+		filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
+
 	}
 
 	/**
