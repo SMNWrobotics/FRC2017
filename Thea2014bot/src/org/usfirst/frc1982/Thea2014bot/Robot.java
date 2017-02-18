@@ -150,6 +150,7 @@ public class Robot extends IterativeRobot {
 //
 //        gyro.reset();
 //        gyro.calibrate();
+        
     }
 
     /**
@@ -257,5 +258,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+//        RobotMap.ultrasonicSolenoid.set(true);
     }
 }
