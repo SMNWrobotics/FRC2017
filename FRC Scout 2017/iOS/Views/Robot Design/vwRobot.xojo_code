@@ -93,7 +93,7 @@ End
 
 #tag Events tbl
 	#tag Event
-		Sub AccessoryAction(section As Integer, row As Integer)
+		Sub Action(section As Integer, row As Integer)
 		  dim oCell as iOSTableCellData = me.RowData(section, row)
 		  
 		  dim oDesignVariables as DataFile.T_DesignVariables = oCell.Tag

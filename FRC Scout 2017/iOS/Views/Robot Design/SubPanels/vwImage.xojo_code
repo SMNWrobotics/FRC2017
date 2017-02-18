@@ -70,20 +70,14 @@ Begin iosView vwImage
    End
    Begin Extensions.Camera oCamera
       editedImage     =   ""
-      Height          =   32
-      Height          =   32
-      Left            =   60
-      Left            =   60
+      Left            =   0
       LockedInPosition=   False
       originalImage   =   ""
       PanelIndex      =   -1
       Parent          =   ""
       Scope           =   1
       SourceType      =   "1"
-      Top             =   60
-      Top             =   60
-      Width           =   32
-      Width           =   32
+      Top             =   0
    End
    Begin iOSButton btnSaveImage
       AccessibilityHint=   ""

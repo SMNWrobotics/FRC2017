@@ -51,8 +51,15 @@ End
 		  
 		  tbl.AddSection ""
 		  
+		  dim cell as iOSTableCellData = tbl.CreateCell
+		  cell = tbl.CreateCell
+		  cell.Text = "Add Team"
+		  cell.tag = nil
+		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Detail
+		  tbl.AddRow 0, cell
+		  
 		  for each oteam as DataFile.t_team in app.oSelectedEvent.GetTeams
-		    dim cell as iOSTableCellData = tbl.CreateCell
+		    cell = tbl.CreateCell
 		    cell.Text = oTeam.sTeam_Number
 		    cell.DetailText = oTeam.sNickName + " - " + oTeam.sLocality
 		    cell.tag = oTeam
@@ -68,13 +75,23 @@ End
 
 #tag Events tbl
 	#tag Event
-		Sub AccessoryAction(section As Integer, row As Integer)
+		Sub Action(section As Integer, row As Integer)
 		  dim cell as iOSTableCellData = me.RowData(section, row)
 		  
-		  dim oTeam as DataFile.t_team = cell.Tag
-		  
-		  Dim v As New vwRobot(oTeam)
-		  Self.PushTo(v)
+		  if cell.tag = nil then
+		    dim oNew as new DataFile.t_team
+		    
+		    dim vw as new vwAddTeam(oNew)
+		    self.PushTo(vw)
+		    
+		  else
+		    
+		    dim oTeam as DataFile.t_team = cell.Tag
+		    
+		    Dim v As New vwRobot(oTeam)
+		    Self.PushTo(v)
+		    
+		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents

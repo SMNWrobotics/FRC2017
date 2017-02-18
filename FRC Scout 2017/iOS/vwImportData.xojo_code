@@ -1,12 +1,12 @@
 #tag IOSView
 Begin iosView vwImportData
-   BackButtonTitle =   ""
+   BackButtonTitle =   "Import Event"
    Compatibility   =   ""
    Left            =   0
    NavigationBarVisible=   True
    TabIcon         =   ""
    TabTitle        =   ""
-   Title           =   "Import Data"
+   Title           =   "Import Event"
    Top             =   0
    Begin iOSTextField txtSearch
       AccessibilityHint=   ""
@@ -206,6 +206,10 @@ End
 		  
 		  tbl.AddSection
 		  
+		  Dim cell As iOSTableCellData
+		  cell = tbl.CreateCell("Add Manual Event", "", nil, iOSTableCellData.AccessoryTypes.Disclosure)
+		  cell.tag = Nil
+		  tbl.AddRow(0, cell)
 		  
 		  for each oRecord as DataFile.t_event in DataFile.t_event.list(sSearch)
 		    dim sDate as text
@@ -213,7 +217,7 @@ End
 		      sDate = oRecord.dtStart_Date.ToText
 		    end
 		    
-		    Dim cell As iOSTableCellData
+		    
 		    cell = tbl.CreateCell(oRecord.sName,  oRecord.sLocation + " " + sDate, nil, iOSTableCellData.AccessoryTypes.None)
 		    cell.tag = oRecord
 		    tbl.AddRow(0, cell)
@@ -279,6 +283,18 @@ End
 		  btnImport.Enabled = section <> -1 and row <> -1
 		  
 		  oSelectedCell = Me.RowData(section, row)
+		  
+		  if oSelectedCell = nil then return
+		  
+		  if oSelectedCell.tag = nil then
+		    //Trying to Edit
+		    
+		    dim oEvent as new DataFile.t_event
+		    
+		    dim vw as new vwAddEvent(oEvent)
+		    self.PushTo(vw)
+		    
+		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -398,6 +414,8 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub PageReceived(URL as Text, HTTPStatus as Integer, Content as xojo.Core.MemoryBlock)
+		  if HTTPStatus = 400 then return  //Manual event?
+		  
 		  dim tData as text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
 		  
 		  Dim aroJSON() as auto = Xojo.Data.ParseJSON(tData)

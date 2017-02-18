@@ -102,6 +102,20 @@ Protected Class t_event
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function IsKeyDuplicated(EventKey as text) As Boolean
+		  dim s as text
+		  s = "Select Count(*) from t_event WHERE Key = ? and event_id <> ?"
+		  
+		  dim rs as iOSSQLiteRecordSet
+		  
+		  rs = gdb.SQLSelect(s, EventKey, me.ievent_ID)
+		  
+		  return rs.IdxField(0).IntegerValue > 0
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function IsNew() As boolean
 		  return iEvent_ID < 1
 		End Function
