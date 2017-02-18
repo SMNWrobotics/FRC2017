@@ -8,10 +8,13 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 public class CameraView {
-	private static final ImageResolution iRes = ImageResolution.MEDIUM;
+	public static final ImageResolution iRes = ImageResolution.MEDIUM;
 
 	private AtomicInteger ctr = new AtomicInteger();
+	private double centerX = 0.0;
 
+	public synchronized double getCenterX() { return centerX; }
+	
 	public CameraView() {
 	}
 
@@ -35,14 +38,14 @@ public class CameraView {
 
 		CvSource outputStream = CameraServer.getInstance().putVideo("Blur", iRes.getWidth(), iRes.getHeight());
 
-		GripPipeline gp = new GripPipeline();
+		GripPipelineGold gp = new GripPipelineGold();
 
 		return new VisionThread(camera, gp, pipeline -> {
 			if (0 == ctr.incrementAndGet() % 50) {
 				// System.out.println( "Current frame... (" + ctr.get() + ")" );
 				// Utils.show( gp.filterContoursOutput() );
 				// double[] areas = table.getNumberArray("area", defaultValue);
-				System.out.print("areas: ");
+//				System.out.print("areas: ");
 				// for (double area : areas) {
 				// System.out.print(area + " \n");
 				// }
@@ -50,10 +53,13 @@ public class CameraView {
 
 				System.out.println("Current frame... (" + ctr.get() + ")");
 				Utils.show(gp.filterContoursOutput());
-
 			}
 
-			outputStream.putFrame(gp.hslThreshold1Output());
+			synchronized(this) {
+				centerX = Utils.getCenterX( gp.filterContoursOutput() );
+			}
+
+			outputStream.putFrame(gp.rgbThresholdOutput());
 			// outputStream.putFrame( gp.maskOutput() );
 			// outputStream.putFrame( gp.rgbThresholdOutput() );
 

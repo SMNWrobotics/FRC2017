@@ -6,9 +6,11 @@ import java.util.List;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
 
-class Utils
+import edu.wpi.first.wpilibj.DriverStation;
+
+public class Utils
 {
-	static void show( ArrayList<MatOfPoint> arrayList )
+	public static void show( ArrayList<MatOfPoint> arrayList )
 	{
 		StringBuilder ostr = new StringBuilder();
 		
@@ -45,6 +47,25 @@ class Utils
 		}
 		
 		return ostr.toString();
+	}
+	
+	public static double getCenterX( ArrayList<MatOfPoint> arrayList ) {
+		if ( arrayList.size() != 2 ) {
+			DriverStation.reportWarning( "Target not in sight.", false );
+			return -1.0;
+		}
+		
+		double[] minMax = new double[arrayList.size()];
+		int ctr = 0;
+		
+		
+		for (MatOfPoint next : arrayList)
+		{
+			List<Point> current = next.toList();
+			minMax[ctr++] = getAverageX( current );	
+		}
+		
+		return ( minMax[0] + minMax[1] ) / 2.0;
 	}
 	
 	public static double getAverageX( List<Point> pList ) {

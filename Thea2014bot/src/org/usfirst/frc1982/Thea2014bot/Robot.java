@@ -38,13 +38,12 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	//private static final ImageResolution iRes = ImageResolution.MEDIUM;
+//	private static final ImageResolution iRes = ImageResolution.MEDIUM;
 //	public static final Object LOCK = new Integer( 0 );
 	
-    //private AtomicInteger ctr = new AtomicInteger();
+//    private AtomicInteger ctr = new AtomicInteger();
+	private CameraView cameraView;
 	private VisionThread visionThread;
-	
-//	ADIS16448_IMU gyro;
 	
     Command autonomousCommand;
 //    GripPipelineTooMuch gripPipeline;
@@ -100,7 +99,7 @@ public class Robot extends IterativeRobot {
         /*
          * Initialize SmartDashboard...
          */
-        SmartDashboard.putData( Scheduler.getInstance() );
+//        SmartDashboard.putData( Scheduler.getInstance() );
         SmartDashboard.putData( Goal.TITLE, goal );
         
 //        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(); //use this if you want an image in addition to the processed image
@@ -120,7 +119,8 @@ public class Robot extends IterativeRobot {
 //        CvSource outputStream = CameraServer.getInstance().putVideo( "Blur", iRes.getWidth(), iRes.getHeight() );
 //        GripPipeline gp = new GripPipeline();
 
-        visionThread = new CameraView().getVisionThread();
+        cameraView = new CameraView();
+        visionThread = cameraView.getVisionThread();
 //        visionThread = new VisionThread( camera, gp, pipeline -> {
 //        		if (0 == ctr.incrementAndGet() % 50)
 //        		{
@@ -135,16 +135,6 @@ public class Robot extends IterativeRobot {
 //
 //        			System.out.println( "Current frame... (" + ctr.get() + ")" );
 //        			Utils.show( gp.filterContoursOutput() );
-//
-//        		}
-//        		
-//        		outputStream.putFrame( gp.hslThreshold1Output() );
-////        		outputStream.putFrame( gp.maskOutput() );
-////        		outputStream.putFrame( gp.rgbThresholdOutput() );
-//        		
-//        });
-//        
-//        visionThread.start();
 //
 //        		}
 //        		
@@ -217,18 +207,18 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         gyro.reset();
 
-        gyroCtr = 5;
-        angleRates = new ArrayList<Double>();
-        angles = new ArrayList<Double>();
-        angles.add(gyro.getAngleZ());
+//        gyroCtr = 5;
+//        angleRates = new ArrayList<Double>();
+//        angles = new ArrayList<Double>();
+//        angles.add(gyro.getAngleZ());
 
     }
     
-    private int gyroCtr = 1000;
-    private ArrayList<Double> angleRates;
-    private ArrayList<Double> angles;
-    private double driftRate;
-    private int overCtr = 0;
+//    private int gyroCtr = 1000;
+//    private ArrayList<Double> angleRates;
+//    private ArrayList<Double> angles;
+//    private double driftRate;
+//    private int overCtr = 0;
     
     /**
      * This function is called periodically during operator control
@@ -236,32 +226,32 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
 
-        if (gyroCtr < 0) {
-        	overCtr++;
-//        	System.out.println("DriftRate: " + driftRate);
-//        	System.out.println("AngleZ: " + (gyro.getAngleZ()-driftRate*overCtr) + " ,DriftRate " + driftRate);
-        	System.out.println("Actual Angle Z: " + gyro.getAngleZ());
-//        	System.out.println("1: " + angles.get(0) + " , 2: " + angles.get(angles.size()/2) + " , 3: " + angles.get(angles.size()-1));
-//        	System.out.println("AngleY: " + gyro.getAngleY());
-//       	 System.out.println("AngleZ: " + gyro.getAngleZ());
-//        	System.out.println("Pitch: " + gyro.getPitch());
-        	System.out.println("Yaw: " + gyro.getYaw());
-//        	System.out.println("Roll: " + gyro.getRoll());
-        } else if (gyroCtr == 0) {
-        	gyroCtr--;
-        	double adds = 0;
-        	for (Double cur : angleRates) {
-        		adds+=cur;
-        	}
-        	driftRate = adds/(angleRates.size());
-        } else {
-        	gyroCtr--;
-        	double current = gyro.getAngleZ();
-        	angleRates.add(angles.get(angles.size()-1)-current);
-        	angles.add(current);
-        }
-
-        System.out.println(gyro.getAngleX());
+//        if (gyroCtr < 0) {
+//        	overCtr++;
+////        	System.out.println("DriftRate: " + driftRate);
+////        	System.out.println("AngleZ: " + (gyro.getAngleZ()-driftRate*overCtr) + " ,DriftRate " + driftRate);
+//        	System.out.println("Actual Angle Z: " + gyro.getAngleZ());
+////        	System.out.println("1: " + angles.get(0) + " , 2: " + angles.get(angles.size()/2) + " , 3: " + angles.get(angles.size()-1));
+////        	System.out.println("AngleY: " + gyro.getAngleY());
+////       	 System.out.println("AngleZ: " + gyro.getAngleZ());
+////        	System.out.println("Pitch: " + gyro.getPitch());
+//        	System.out.println("Yaw: " + gyro.getYaw());
+////        	System.out.println("Roll: " + gyro.getRoll());
+//        } else if (gyroCtr == 0) {
+//        	gyroCtr--;
+//        	double adds = 0;
+//        	for (Double cur : angleRates) {
+//        		adds+=cur;
+//        	}
+//        	driftRate = adds/(angleRates.size());
+//        } else {
+//        	gyroCtr--;
+//        	double current = gyro.getAngleZ();
+//        	angleRates.add(angles.get(angles.size()-1)-current);
+//        	angles.add(current);
+//        }
+//
+//        System.out.println(gyro.getAngleX());
 
     }
 
