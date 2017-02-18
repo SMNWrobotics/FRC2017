@@ -44,10 +44,13 @@ public class _Rotate extends Command {
     protected void initialize() {
     	Robot.gyro.reset();
     }
-
+    
+    
+    
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	RobotMap.driveDriveTrain.arcadeDrive(0, m_Speed);
+    	
     	System.out.println(Robot.gyro.getAngleZ());
     }
 

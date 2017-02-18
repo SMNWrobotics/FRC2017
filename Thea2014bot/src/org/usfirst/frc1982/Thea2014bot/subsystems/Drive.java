@@ -14,6 +14,7 @@ package org.usfirst.frc1982.Thea2014bot.subsystems;
 import org.usfirst.frc1982.Thea2014bot.RobotMap;
 import org.usfirst.frc1982.Thea2014bot.commands._DriveEnable;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
