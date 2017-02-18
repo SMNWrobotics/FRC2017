@@ -13,7 +13,6 @@ Window=winSetup;Windows/winSetup.xojo_window;&h7FECE7FF;&h7A8BA7FF;false
 FileTypeSet=FileTypes1;FileTypes1.xojo_filetypeset;&h67AFB7FF;&h0;false
 BuildSteps=Build Automation;Build Automation.xojo_code;&h597C37FF;&h0;false
 Window=ccTeleop;Windows/ccTeleop.xojo_window;&h1FEFFFF;&h7A8BA7FF;false
-Window=winDesign_Old;Windows/winDesign_Old.xojo_window;&h2FDBB7FF;&h7A8BA7FF;false
 Folder=Classes;Classes;&h20A5EFFF;&h0;false
 Class=CNumbersOnly;Classes/CNumbersOnly.xojo_code;&h18AFC7FF;&h20A5EFFF;false
 Folder=Images;Images;&h7DC5FFFF;&h0;false
