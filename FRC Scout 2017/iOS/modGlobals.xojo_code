@@ -21,6 +21,18 @@ Protected Module modGlobals
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function ToDataMB(extends Image as iOSImage) As xojo.Core.MemoryBlock
+		  Declare function UIImageJPEGRepresentation lib UIKitLib (obj_id as ptr) as ptr
+		  dim d as new Foundation.NSData(UIImageJPEGRepresentation(image.Handle))
+		  
+		  dim mb as MemoryBlock
+		  mb = d.DataMb
+		  
+		  return mb
+		End Function
+	#tag EndMethod
+
 
 	#tag ViewBehavior
 		#tag ViewProperty

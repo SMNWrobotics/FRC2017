@@ -37,6 +37,7 @@ Begin WindowMenuWindow WinRobotDesign
       HasBackColor    =   False
       Height          =   27
       HelpTag         =   ""
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   408
       LockBottom      =   True
@@ -65,6 +66,7 @@ Begin WindowMenuWindow WinRobotDesign
       HasBackColor    =   False
       Height          =   321
       HelpTag         =   ""
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   20
       LockBottom      =   True
@@ -175,6 +177,10 @@ End
 		    
 		  case "text"
 		    oRow = new ccText
+		    
+		  case "image"
+		    
+		    oRow = new ccImage
 		    
 		  case else
 		    break //not handled

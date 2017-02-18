@@ -37,7 +37,7 @@ Begin iosView vwImage
       AutoLayout      =   ImageView1, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, 
       AutoLayout      =   ImageView1, 3, <Parent>, 3, False, +1.00, 1, 1, 155, 
       AutoLayout      =   ImageView1, 8, , 0, False, +1.00, 1, 1, 305, 
-      ContentMode     =   "0"
+      ContentMode     =   "2"
       Height          =   305.0
       Image           =   "0"
       Image           =   "0"
@@ -132,7 +132,7 @@ End
 		    return
 		  end
 		  
-		  dim mb as xojo.Core.MemoryBlock = pic.ToData("public.png")
+		  dim mb as xojo.Core.MemoryBlock = pic.ToDataMB
 		  
 		  dim sEncode as text = M_Text.EncodeBase64(mb)
 		  

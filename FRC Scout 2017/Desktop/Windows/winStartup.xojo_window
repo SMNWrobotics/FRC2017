@@ -632,6 +632,12 @@ End
 
 #tag WindowCode
 	#tag Event
+		Sub Activate()
+		  Init
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub DropObject(obj As DragItem, action As Integer)
 		  if obj.FolderItemAvailable = false then return
 		  

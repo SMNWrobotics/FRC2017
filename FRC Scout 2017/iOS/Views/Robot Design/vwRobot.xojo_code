@@ -34,6 +34,109 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Activate()
+		  LoadList
+		End Sub
+	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Sub AskBoolean()
+		  if oData = nil then return
+		  
+		  using UIKit
+		  dim alert as UIAlertAction
+		  
+		  oAlertController = UIAlertController.AlertControllerWithTitleMessagePreferredStyle("Please select an option", oData.sVariable, _
+		  UIAlertController.UIAlertControllerStyle.ActionSheet)
+		  
+		  
+		  alert = UIAlertAction.ActionWithTitleStyleHandler("True", UIAlertAction.UIAlertActionStyle.Default, AddressOf CompHandler)
+		  oAlertController.AddAction alert
+		  
+		  alert = UIAlertAction.ActionWithTitleStyleHandler("False", UIAlertAction.UIAlertActionStyle.Default, AddressOf CompHandler)
+		  oAlertController.AddAction alert
+		  
+		  
+		  oAlertController.PresentInView(self)
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub AskPopup()
+		  if oData = nil then return
+		  
+		  using UIKit
+		  dim alert as UIAlertAction
+		  
+		  oAlertController = UIAlertController.AlertControllerWithTitleMessagePreferredStyle("Please select an option", oData.sVariable, _
+		  UIAlertController.UIAlertControllerStyle.ActionSheet)
+		  
+		  if oDesignVariables.sList <> "" then
+		    dim ars() as Text = oDesignVariables.sList.split(";")
+		    alert = UIAlertAction.ActionWithTitleStyleHandler("Cancel", UIAlertAction.UIAlertActionStyle.Cancel, AddressOf CompHandler)
+		    oAlertController.AddAction alert
+		    
+		    for each s as text in ars
+		      alert = UIAlertAction.ActionWithTitleStyleHandler(s, UIAlertAction.UIAlertActionStyle.Default, AddressOf CompHandler)
+		      oAlertController.AddAction alert
+		    next
+		    
+		  else
+		    
+		    'alert = UIAlertAction.ActionWithTitleStyleHandler("Cancel", UIAlertAction.UIAlertActionStyle.Cancel, AddressOf CompHandler)
+		    'oAlertController.AddAction alert
+		    '
+		    'dim sql as text = "Select * from " + oDesignVariables.sForeignTable
+		    '
+		    'dim rs as iOSSQLiteRecordSet = DataFile.gDB.SQLSelect(sql)
+		    '
+		    'while rs.eof = false
+		    'dim s as text = rs.Field(oDesignVariables.sForeignField).TextValue
+		    'alert = UIAlertAction.ActionWithTitleStyleHandler(s, UIAlertAction.UIAlertActionStyle.Default, AddressOf CompHandler)
+		    'oAlertController.AddAction alert
+		    '
+		    'rs.MoveNext
+		    'wend
+		    
+		    
+		  end
+		  
+		  
+		  
+		  
+		  oAlertController.PresentInView(self)
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub CompHandler(sender as UIKit.UIAlertAction)
+		  oData.sValue = Sender.title
+		  oData.save
+		  
+		  
+		  oAlertController.Dismiss
+		  
+		  LoadList
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Constructor(oTeam as DataFile.t_team)
+		  // Calling the overridden superclass constructor.
+		  Super.Constructor
+		  
+		  m_oTeam = oTeam
+		  
+		  Self.Title = "Robot - Team: " + m_oTeam.sTeam_Number
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub LoadList()
 		  tbl.RemoveAll
 		  
 		  tbl.AddSection ""
@@ -54,7 +157,7 @@ End
 		    
 		    cell.Tag = oDesignVariables
 		    
-		    cell.AccessoryType = iOSTableCellData.AccessoryTypes.Detail
+		    
 		    
 		    if oDesignVariables.sDataType = "Image" then
 		      if oData.sValue.Length = 0 then
@@ -64,28 +167,42 @@ End
 		      end
 		    end
 		    
+		    select case oDesignVariables.sDataType
+		    case "CheckBox"
+		      cell.AccessoryType = iOSTableCellData.AccessoryTypes.none
+		      
+		    case "Popup"
+		      if oDesignVariables.sList <> "" then
+		        cell.AccessoryType = iOSTableCellData.AccessoryTypes.none
+		      else
+		        cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		      end
+		    case else
+		      cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		    end
+		    
 		    tbl.AddRow 0, cell
 		    
 		    
 		  next
-		End Sub
-	#tag EndEvent
-
-
-	#tag Method, Flags = &h0
-		Sub Constructor(oTeam as DataFile.t_team)
-		  // Calling the overridden superclass constructor.
-		  Super.Constructor
-		  
-		  m_oTeam = oTeam
-		  
-		  Self.Title = "Robot - Team: " + m_oTeam.sTeam_Number
 		End Sub
 	#tag EndMethod
 
 
 	#tag Property, Flags = &h0
 		m_oTeam As DataFile.t_team
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private oAlertController As UIKit.UIAlertController
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oData As DataFile.T_Design
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private oDesignVariables As DataFile.T_DesignVariables
 	#tag EndProperty
 
 
@@ -96,14 +213,15 @@ End
 		Sub Action(section As Integer, row As Integer)
 		  dim oCell as iOSTableCellData = me.RowData(section, row)
 		  
-		  dim oDesignVariables as DataFile.T_DesignVariables = oCell.Tag
-		  dim oData as DataFile.T_Design = oDesignVariables.GetValue(m_oTeam.sTeam_Number)
+		  oDesignVariables = oCell.Tag
+		  oData = oDesignVariables.GetValue(m_oTeam.sTeam_Number)
 		  
 		  select case oDesignVariables.sDataType
 		  case "Checkbox"
-		    dim vwCheckBox as new vwCheckBox(oData)
-		    self.PushTo(vwCheckBox)
+		    'dim vwCheckBox as new vwCheckBox(oData)
+		    'self.PushTo(vwCheckBox)
 		    
+		    AskBoolean
 		  case "Text"
 		    dim vwText as new vwTextField(oData)
 		    self.PushTo(vwText)
@@ -117,8 +235,13 @@ End
 		    self.PushTo(vwTa)
 		    
 		  case "Popup"
-		    dim vwPop as new vwPopup(oData, oDesignVariables)
-		    self.PushTo(vwPop)
+		    
+		    if oDesignVariables.sList <> "" then
+		      AskPopup
+		    else
+		      dim vwPop as new vwPopup(oData, oDesignVariables)
+		      self.PushTo(vwPop)
+		    end
 		    
 		  case "Image"
 		    #if DebugBuild
