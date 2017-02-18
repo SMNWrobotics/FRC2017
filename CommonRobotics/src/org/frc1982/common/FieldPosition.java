@@ -8,7 +8,7 @@ public enum FieldPosition {
 	, THREE( "Three" )
 	;
 	
-	public static final String TITLE = "Field Position";
+	public static final String TITLE = "FieldPosition";
 	public static SendableChooser<FieldPosition> getFieldPosition() {
 		SendableChooser<FieldPosition> fieldPosition = new SendableChooser<FieldPosition>();
 		
