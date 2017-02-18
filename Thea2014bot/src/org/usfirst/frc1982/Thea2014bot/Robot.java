@@ -19,7 +19,6 @@ import org.frc1982.common.FieldPosition;
 import org.frc1982.common.Goal;
 import org.frc1982.common.TeamChoice;
 import org.usfirst.frc1982.Thea2014bot.commands.AutoDoNothing;
-import org.usfirst.frc1982.Thea2014bot.commands.AutonomousCommand;
 
 import org.usfirst.frc1982.Thea2014bot.commands.AutoBaseLine;
 import org.usfirst.frc1982.Thea2014bot.commands.AutoLeft;
@@ -167,6 +166,7 @@ public class Robot extends IterativeRobot {
 
         gyro.reset();
         gyro.calibrate();
+        
     }
 
     /**
@@ -266,5 +266,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+//        RobotMap.ultrasonicSolenoid.set(true);
     }
 }
