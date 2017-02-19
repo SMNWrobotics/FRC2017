@@ -213,6 +213,8 @@ Protected Class t_event
 		      
 		      gDB.SQLExecute(sSQL)
 		      
+		      me.ievent_ID = gdb.LastRowID
+		      
 		    else
 		      
 		      ars.Append "Update t_event Set"

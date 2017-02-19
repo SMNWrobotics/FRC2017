@@ -16,6 +16,7 @@ Begin iosView vwListSelect
       AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
       AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
       EditingEnabled  =   False
+      EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
       Height          =   415.0
@@ -32,28 +33,36 @@ End
 
 #tag WindowCode
 	#tag Method, Flags = &h0
-		Function GetCompLevel() As text
-		  dim oCell as iOSTableCellData = tbl.RowData(0, iSelectedRow)
+		Sub LoadAlliances()
+		  self.Title = "Pick Alliance Color"
 		  
-		  return oCell.Text
+		  iSelectedRow = -1
+		  sType = "Alliance"
 		  
-		  'select case oCell.Text
-		  'case "Qualifier Match"
-		  'return "qm"
-		  'case "Quarter Finals"
-		  'return "qf"
-		  'case "Semi-Finals"
-		  'return "sf"
-		  'case "Finals"
-		  'return "f"
-		  'case else
-		  'break
-		  'end
-		End Function
+		  tbl.removeall
+		  
+		  tbl.AddSection ""
+		  
+		  dim oCell as iOSTableCellData
+		  
+		  oCell = tbl.CreateCell
+		  oCell.Text = "Blue"
+		  oCell.Tag = "Blue"
+		  tbl.AddRow(0, oCell)
+		  
+		  oCell = tbl.CreateCell
+		  oCell.Text = "Red"
+		  oCell.Tag = "Red"
+		  tbl.AddRow(0, oCell)
+		  
+		  
+		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub LoadCompLevel()
+		  self.Title = "Pick Level"
+		  
 		  iSelectedRow = -1
 		  sType = "Comp"
 		  
@@ -61,10 +70,31 @@ End
 		  
 		  tbl.AddSection ""
 		  
-		  tbl.addRow(0, tbl.createcell("Finals"))
-		  tbl.addRow(0, tbl.createcell("Semi-Finals"))
-		  tbl.addRow(0, tbl.createcell("Qualifier Finals"))
-		  tbl.addRow(0, tbl.createcell("Qualifier Match"))
+		  dim oCell as iOSTableCellData
+		  
+		  oCell = tbl.CreateCell
+		  oCell.Text = "Qualifier Match"
+		  oCell.Tag = "qm"
+		  tbl.AddRow(0, oCell)
+		  
+		  oCell = tbl.CreateCell
+		  oCell.Text = "Qualifier Finals"
+		  oCell.Tag = "qf"
+		  tbl.AddRow(0, oCell)
+		  
+		  oCell = tbl.CreateCell
+		  oCell.Text = "Semi-Finals"
+		  oCell.Tag = "sf"
+		  tbl.AddRow(0, oCell)
+		  
+		  oCell = tbl.CreateCell
+		  oCell.Text = "Finals"
+		  oCell.Tag = "f"
+		  tbl.AddRow(0, oCell)
+		  
+		  
+		  
+		  
 		  
 		  
 		  
@@ -73,17 +103,84 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadMatches(sCompLevel as text)
+		  
+		  self.Title = "Pick Match Number"
+		  
 		  tbl.removeall
 		  
 		  tbl.AddSection ""
 		  
+		  sType = "Match"
+		  
+		  
+		  
+		  
+		  
 		  for each oMatch as DataFile.t_matches in DataFile.t_matches.ListByEventTag(app.oSelectedEvent.skey, sCompLevel)
 		    
-		    tbl.addRow(0, tbl.createcell(oMatch.imatch_number.ToText))
+		    dim oCell as iOSTableCellData = tbl.CreateCell
+		    oCell.text = oMatch.imatch_number.ToText
+		    oCell.tag = oMatch.skey
+		    
+		    tbl.addRow(0, oCell)
+		    
 		    
 		  next
 		End Sub
 	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub LoadTeams(alliance as text, oMatch as DataFile.t_matches)
+		  self.Title = "Pick " + alliance + " Alliance Team"
+		  tbl.RemoveAll
+		  
+		  tbl.AddSection ""
+		  
+		  sType = "Team"
+		  
+		  dim oCell as iOSTableCellData
+		  
+		  select case alliance
+		  case "Blue"
+		    oCell = tbl.CreateCell
+		    oCell.Text = oMatch.sBlue_Team_1
+		    oCell.tag = oCell.Text
+		    tbl.AddRow(0, oCell)
+		    
+		    oCell = tbl.CreateCell
+		    oCell.Text = oMatch.sBlue_Team_2
+		    oCell.tag = oCell.Text
+		    tbl.AddRow(0, oCell)
+		    
+		    oCell = tbl.CreateCell
+		    oCell.Text = oMatch.sBlue_Team_3
+		    oCell.tag = oCell.Text
+		    tbl.AddRow(0, oCell)
+		    
+		  Case "Red"
+		    oCell = tbl.CreateCell
+		    oCell.Text = oMatch.sRed_Team_1
+		    oCell.tag = oCell.Text
+		    tbl.AddRow(0, oCell)
+		    
+		    oCell = tbl.CreateCell
+		    oCell.Text = oMatch.sRed_Team_2
+		    oCell.tag = oCell.Text
+		    tbl.AddRow(0, oCell)
+		    
+		    oCell = tbl.CreateCell
+		    oCell.Text = oMatch.sRed_Team_3
+		    oCell.tag = oCell.Text
+		    tbl.AddRow(0, oCell)
+		  end
+		  
+		End Sub
+	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event Action(sType as text, sValue as Text, sTag as Text)
+	#tag EndHook
 
 
 	#tag Property, Flags = &h0
@@ -100,7 +197,15 @@ End
 #tag Events tbl
 	#tag Event
 		Sub Action(section As Integer, row As Integer)
-		  iSelectedRow = row
+		  dim oCell as iOSTableCellData = me.RowData(section, row)
+		  
+		  dim sTag as Text
+		  
+		  if oCell.Tag <> nil then
+		    sTag = oCell.tag
+		  end
+		  
+		  Raiseevent Action(sType, oCell.Text, sTag)
 		  
 		End Sub
 	#tag EndEvent
@@ -141,6 +246,11 @@ End
 		Name="NavigationBarVisible"
 		Group="Behavior"
 		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="sType"
+		Group="Behavior"
+		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"

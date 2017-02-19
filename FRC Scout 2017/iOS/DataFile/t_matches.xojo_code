@@ -211,6 +211,9 @@ Protected Class t_matches
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  if imatch_number = 0 and iset_number = 0 then
+		    break
+		  end
 		  
 		  gDB.SQLExecute("BEGIN TRANSACTION")
 		  
@@ -244,6 +247,8 @@ Protected Class t_matches
 		      dim sSQL as Text = ars.JoinSQL
 		      
 		      gDB.SQLExecute(sSQL)
+		      
+		      me.imatches_ID = gdb.LastRowID
 		      
 		    else
 		      

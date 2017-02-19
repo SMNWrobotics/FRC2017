@@ -1,6 +1,7 @@
 Type=iOS
 RBProjectVersion=2016.041
 MinIDEVersion=20140300
+iOSContainerControl=cellShooter;Views/Match/cellShooter.xojo_code;&h4A6637FF;&h215D77FF;false
 Module=DataFile;DataFile.xojo_code;&h46D3A62F;&h0;false
 Class=App;App.xojo_code;&h7C86AFFF;&h0;false
 iOSScreen=iPhoneScreen;iPhoneScreen.xojo_code;&h42A55FFF;&h0;false
@@ -137,6 +138,9 @@ Module=M_Text;M_Text.xojo_code;&h25EF1CA8;&h0;false
 iOSView=vwAddEvent;Views/vwAddEvent.xojo_code;&hDB6B7FF;&h54C2A7FF;false
 iOSView=vwAddTeam;Views/vwAddTeam.xojo_code;&h2724AFFF;&h54C2A7FF;false
 iOSView=vwListSelect;Views/Match/vwListSelect.xojo_code;&h127A2FFF;&h215D77FF;false
+iOSView=vwGameScouting;Views/Match/vwGameScouting.xojo_code;&h30EC4FFF;&h215D77FF;false
+iOSContainerControl=ccAutonomous;Views/Match/ccAutonomous.xojo_code;&h238237FF;&h215D77FF;false
+iOSContainerControl=gearAttempts;Views/Match/gearAttempts.xojo_code;&h7B2A6FFF;&h215D77FF;false
 DefaultScreen=iPhoneScreen
 DefaultTabletScreen=iPhoneScreen
 MajorVersion=1

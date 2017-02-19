@@ -60,7 +60,7 @@ Begin iosView vwSetup
       AutoLayout      =   Label3, 1, <Parent>, 1, False, +1.00, 1, 1, 20, 
       AutoLayout      =   Label3, 7, , 0, False, +1.00, 1, 1, 58, 
       AutoLayout      =   Label3, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   Label3, 3, , 0, False, +1.00, 1, 1, 65, 
+      AutoLayout      =   Label3, 3, <Parent>, 3, False, +1.00, 1, 1, 65, 
       Enabled         =   True
       Height          =   30.0
       Left            =   20

@@ -232,6 +232,8 @@ Protected Class t_team
 		      
 		      gDB.SQLExecute(sSQL)
 		      
+		      me.iteam_id = gdb.LastRowID
+		      
 		    else
 		      
 		      ars.Append "Update t_team Set"
@@ -245,7 +247,7 @@ Protected Class t_team
 		      ars.Append "region = " + sRegion.SQLizeText  + ", "
 		      ars.Append "team_number = " + sTeam_Number.SQLizeText
 		      
-		      ars.Append "WHERE t_team = " + iteam_id.ToText
+		      ars.Append "WHERE team_id = " + iteam_id.ToText
 		      
 		      
 		      dim sSQL as Text = ars.JoinSQL
