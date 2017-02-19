@@ -53,6 +53,33 @@ End
 #tag EndIOSContainerControl
 
 #tag WindowCode
+	#tag Method, Flags = &h0
+		Sub SetGame(oGame as DataFile.t_game, Variable as text)
+		  m_sVariable = Variable
+		  m_oGame = oGame
+		  
+		  select case Variable
+		  case "Gear 1"
+		    lblTitle.text = "Gear 1 (Left)"
+		  case "Gear 2"
+		    lblTitle.text = "Gear 2 (Middle)"
+		  case "Gear 3"
+		    lblTitle.text = "Gear 3 (Right)"
+		  end
+		  
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		m_oGame As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_sVariable As text
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
 #tag ViewBehavior

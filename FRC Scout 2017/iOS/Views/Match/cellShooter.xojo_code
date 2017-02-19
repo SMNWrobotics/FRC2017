@@ -95,12 +95,31 @@ End
 #tag EndIOSContainerControl
 
 #tag WindowCode
+	#tag Method, Flags = &h0
+		Sub SetGame(oGame as DataFile.t_game, Variable as text)
+		  m_sVariable = Variable
+		  m_oGame = oGame
+		  
+		  
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		m_oGame As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_sVariable As text
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
 #tag Events Slider1
 	#tag Event
 		Sub ValueChanged()
-		  lblPercentage.text = me.value.ToText
+		  lblPercentage.text = me.value.ToText(Locale.Current, "###")
 		End Sub
 	#tag EndEvent
 #tag EndEvents

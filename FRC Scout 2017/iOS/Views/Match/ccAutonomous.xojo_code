@@ -40,6 +40,7 @@ End
 		  tbl.AddSection ""
 		  
 		  dim cell as iOSTableCellData
+		  dim oGear as gearAttempts
 		  
 		  cell = tbl.CreateCell
 		  cell.text = "Starting Position"
@@ -47,22 +48,19 @@ End
 		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, cell)
 		  
-		  cell = tbl.CreateCell
-		  cell.text = "Gear 1 (Left)"
-		  Cell.DetailText = ""
-		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		  cell = tbl.CreateCustomCell(GetTypeInfo(gearAttempts))
+		  oGear = gearAttempts(cell.control)
+		  oGear.SetGame(m_oGame, "Gear 1")
 		  tbl.AddRow(0, cell)
 		  
-		  cell = tbl.CreateCell
-		  cell.text = "Gear 2 (Middle)"
-		  Cell.DetailText = ""
-		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		  cell = tbl.CreateCustomCell(GetTypeInfo(gearAttempts))
+		  oGear = gearAttempts(cell.control)
+		  oGear.SetGame(m_oGame, "Gear 2")
 		  tbl.AddRow(0, cell)
 		  
-		  cell = tbl.CreateCell
-		  cell.text = "Gear 3 (Right)"
-		  Cell.DetailText = ""
-		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		  cell = tbl.CreateCustomCell(GetTypeInfo(gearAttempts))
+		  oGear = gearAttempts(cell.control)
+		  oGear.SetGame(m_oGame, "Gear 3")
 		  tbl.AddRow(0, cell)
 		  
 		  cell = tbl.CreateCell
