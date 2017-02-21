@@ -53,10 +53,10 @@ Begin iOSCustomTableCell cellShooter
    Begin iOSSlider Slider1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Slider1, 1, <Parent>, 1, False, +1.00, 1, 1, 20, 
-      AutoLayout      =   Slider1, 2, lblPercentage, 1, False, +1.00, 1, 1, -20, 
-      AutoLayout      =   Slider1, 3, lblPercentage, 3, False, +1.00, 1, 1, 0, 
       AutoLayout      =   Slider1, 8, , 0, True, +1.00, 1, 1, 23, 
+      AutoLayout      =   Slider1, 1, <Parent>, 1, False, +1.00, 1, 1, 20, 
+      AutoLayout      =   Slider1, 2, lblPercentage, 1, False, +1.00, 1, 1, -*kStdControlGapH, 
+      AutoLayout      =   Slider1, 3, <Parent>, 3, False, +1.00, 1, 1, 45, 
       Enabled         =   True
       Height          =   23.0
       Left            =   18
@@ -67,18 +67,18 @@ Begin iOSCustomTableCell cellShooter
       Top             =   45
       Value           =   0.0
       Visible         =   True
-      Width           =   257.0
+      Width           =   251.0
    End
    Begin iOSLabel lblPercentage
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblPercentage, 7, , 0, False, +1.00, 1, 1, 25, 
-      AutoLayout      =   lblPercentage, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
       AutoLayout      =   lblPercentage, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   lblPercentage, 4, <Parent>, 4, False, +1.00, 1, 1, -9, 
+      AutoLayout      =   lblPercentage, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   lblPercentage, 3, lblTitle, 4, False, +1.00, 1, 1, *kStdControlGapV, 
+      AutoLayout      =   lblPercentage, 7, , 0, False, +1.00, 1, 1, 43, 
       Enabled         =   True
       Height          =   30.0
-      Left            =   295
+      Left            =   277
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   0
@@ -87,9 +87,9 @@ Begin iOSCustomTableCell cellShooter
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   45
+      Top             =   39
       Visible         =   True
-      Width           =   25.0
+      Width           =   43.0
    End
 End
 #tag EndIOSContainerControl
@@ -110,7 +110,7 @@ End
 		  
 		  
 		  Slider1.value = Integer.parse(m_oGoalPercentage.sValue)
-		  lblPercentage.text = Slider1.value.ToText(Locale.Current, "###")
+		  lblPercentage.text = Slider1.value.ToText(Locale.Current, "###") + "%"
 		End Sub
 	#tag EndMethod
 
@@ -126,9 +126,11 @@ End
 		  case else
 		    break
 		  end
+		  
 		  m_oGoalAttempt.save
 		  
 		  m_oGoalPercentage.sValue = slider1.value.ToText(Locale.Current, "###")
+		  m_oGoalPercentage.save
 		End Sub
 	#tag EndMethod
 
@@ -159,10 +161,19 @@ End
 
 #tag EndWindowCode
 
+#tag Events SegmentedControl1
+	#tag Event
+		Sub ValueChanged()
+		  Save
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events Slider1
 	#tag Event
 		Sub ValueChanged()
-		  lblPercentage.text = me.value.ToText(Locale.Current, "###")
+		  lblPercentage.text = me.value.ToText(Locale.Current, "###") + "%"
+		  
+		  Save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -194,11 +205,6 @@ End
 		Visible=true
 		Group="Position"
 		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="m_sVariable"
-		Group="Behavior"
-		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"

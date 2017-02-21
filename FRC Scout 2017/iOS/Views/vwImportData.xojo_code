@@ -423,7 +423,8 @@ End
 		  for each a as auto in aroJSON
 		    dim d as xojo.Core.Dictionary = a
 		    
-		    dim oRecord as DataFile.t_team = DataFile.t_team.FindByKeyAndEventID(oCurrentEvent.skey, oCurrentEvent.iEvent_ID )
+		    dim sKey as text = d.Lookup("key", "")
+		    dim oRecord as DataFile.t_team = DataFile.t_team.FindByKeyAndEventID(sKey, oCurrentEvent.iEvent_ID )
 		    oRecord.iEvent_ID = oCurrentEvent.ievent_ID
 		    oRecord.sName = d.Lookup("name", "")
 		    oRecord.sNickName= d.Lookup("nickname", "")

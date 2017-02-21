@@ -150,6 +150,9 @@ Protected Class T_Game
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  if sTeamNumber = "" then
+		    break
+		  end
 		  
 		  gDB.SQLExecute("BEGIN TRANSACTION")
 		  
@@ -287,12 +290,6 @@ Protected Class T_Game
 			Visible=true
 			Group="ID"
 			Type="String"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="sGameUUID"
-			Group="Behavior"
-			Type="Text"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sMatchKey"

@@ -207,30 +207,21 @@ Protected Class t_team
 	#tag Method, Flags = &h0
 		Sub Save()
 		  
+		  
 		  gDB.SQLExecute("BEGIN TRANSACTION")
 		  
 		  dim ars() as Text
 		  
 		  try
 		    if IsNew then
+		      
 		      ars.Append "INSERT INTO t_team"
-		      ars.Append "(event_id, rookie_year, Key, locality, Name, nickname, region, team_number) VALUES ("
-		      
-		      
-		      ars.Append iEvent_ID.ToText + ", "
-		      ars.Append iRookie_Year.ToText + ", "
-		      ars.Append skey.SQLizeText + ", "
-		      ars.Append sLocality.SQLizeText + ", "
-		      ars.Append sName.SQLizeText + ", "
-		      ars.Append sNickName.SQLizeText + ", "
-		      ars.Append sRegion.SQLizeText + ", "
-		      ars.Append sTeam_Number .SQLizeText
-		      
-		      ars.Append ")"
+		      ars.Append "(rookie_year, Key, locality, Name, nickname, region, team_number, Event_ID) "
+		      ars.append "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 		      
 		      dim sSQL as Text = ars.JoinSQL
 		      
-		      gDB.SQLExecute(sSQL)
+		      gDB.SQLExecute(sSQL, iRookie_Year, sKey, sLocality, sName, sNickName, sRegion, sTeam_Number, iEvent_ID)
 		      
 		      me.iteam_id = gdb.LastRowID
 		      
@@ -238,21 +229,21 @@ Protected Class t_team
 		      
 		      ars.Append "Update t_team Set"
 		      
-		      ars.Append "event_id = " + iEvent_ID.ToText  + ", "
-		      ars.Append "rookie_year = " + iRookie_Year.ToText  + ", "
-		      ars.Append "Key = " + sKey.SQLizeText  + ", "
-		      ars.Append "locality = " + sLocality.SQLizeText  + ", "
-		      ars.Append "Name = " + sName.SQLizeText  + ", "
-		      ars.Append "nickname = " + sNickName.SQLizeText  + ", "
-		      ars.Append "region = " + sRegion.SQLizeText  + ", "
-		      ars.Append "team_number = " + sTeam_Number.SQLizeText
+		      ars.Append "event_id = ?, "
+		      ars.Append "rookie_year = ?, "
+		      ars.Append "Key = ?, "
+		      ars.Append "locality = ?, "
+		      ars.Append "Name = ?, "
+		      ars.Append "nickname = ?, "
+		      ars.Append "region = ?, " 
+		      ars.Append "team_number = ? "
 		      
-		      ars.Append "WHERE team_id = " + iteam_id.ToText
+		      ars.Append "WHERE team_id =? "
 		      
 		      
 		      dim sSQL as Text = ars.JoinSQL
 		      
-		      gDB.SQLExecute(sSQL)
+		      gDB.SQLExecute(sSQL, iEvent_ID, iRookie_Year, sKey, sLocality, sName, sNickName, sRegion, sTeam_Number, iteam_id)
 		      
 		    end
 		    gDB.SQLExecute("COMMIT")

@@ -141,6 +141,7 @@ iOSView=vwListSelect;Views/Match/vwListSelect.xojo_code;&h127A2FFF;&h215D77FF;fa
 iOSView=vwGameScouting;Views/Match/vwGameScouting.xojo_code;&h30EC4FFF;&h215D77FF;false
 iOSContainerControl=ccAutonomous;Views/Match/ccAutonomous.xojo_code;&h238237FF;&h215D77FF;false
 iOSContainerControl=gearAttempts;Views/Match/gearAttempts.xojo_code;&h7B2A6FFF;&h215D77FF;false
+iOSContainerControl=cellMadeBaseline;Views/Match/cellMadeBaseline.xojo_code;&h5BE9BFFF;&h215D77FF;false
 DefaultScreen=iPhoneScreen
 DefaultTabletScreen=iPhoneScreen
 MajorVersion=1

@@ -66,29 +66,30 @@ End
 		  
 		  cell = tbl.CreateCustomCell(GetTypeInfo(gearAttempts))
 		  oGear = gearAttempts(cell.control)
-		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Gear 1")
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Gear1")
 		  oGear.SetGame(oGame)
 		  cell.Tag = oGame
 		  tbl.AddRow(0, cell)
 		  
 		  cell = tbl.CreateCustomCell(GetTypeInfo(gearAttempts))
 		  oGear = gearAttempts(cell.control)
-		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Gear 2")
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Gear2")
 		  oGear.SetGame(oGame)
 		  cell.Tag = oGame
 		  tbl.AddRow(0, cell)
 		  
 		  cell = tbl.CreateCustomCell(GetTypeInfo(gearAttempts))
 		  oGear = gearAttempts(cell.control)
-		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Gear 3")
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Gear3")
 		  oGear.SetGame(oGame)
 		  cell.Tag = oGame
 		  tbl.AddRow(0, cell)
 		  
-		  cell = tbl.CreateCell
-		  cell.text = "Passed Base Line"
-		  Cell.DetailText = ""
-		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		  cell = tbl.CreateCustomCell(GetTypeInfo(cellMadeBaseline))
+		  Dim oCheckBox as cellMadeBaseline = cellMadeBaseLine(cell.Control)
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "Baseline")
+		  oCheckBox.SetGame(oGame)
+		  cell.tag = oGame
 		  tbl.AddRow(0, cell)
 		  
 		  cell = tbl.CreateCustomCell(GetTypeInfo(cellShooter))

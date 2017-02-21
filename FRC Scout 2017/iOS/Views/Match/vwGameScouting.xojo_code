@@ -37,6 +37,8 @@ Begin iosView vwGameScouting
       Height          =   370.0
       Left            =   0
       LockedInPosition=   False
+      m_sMatchKey     =   ""
+      m_sTeamNumber   =   ""
       Scope           =   0
       Top             =   110
       Visible         =   True
@@ -107,6 +109,16 @@ End
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_sMatchKey"
+		Group="Behavior"
+		Type="text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_sTeamNumber"
+		Group="Behavior"
+		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
