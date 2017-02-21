@@ -1,6 +1,6 @@
 #tag IOSView
 Begin iosView vwGameScouting
-   BackButtonTitle =   ""
+   BackButtonTitle =   "Match"
    Compatibility   =   ""
    Left            =   0
    NavigationBarVisible=   True
@@ -87,6 +87,13 @@ End
 		    'ccTeleop1.visible = true
 		  end
 		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events ccAutonomous1
+	#tag Event
+		Function GetView() As iOSView
+		  return self
+		End Function
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior

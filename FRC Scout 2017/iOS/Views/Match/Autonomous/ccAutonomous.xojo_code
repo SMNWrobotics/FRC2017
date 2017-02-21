@@ -32,6 +32,13 @@ End
 #tag EndIOSContainerControl
 
 #tag WindowCode
+	#tag Event
+		Sub Open()
+		  vwParent = GetView
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
 		Sub LoadList()
 		  'moBaseline = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "Baseline")
@@ -58,7 +65,7 @@ End
 		  
 		  cell = tbl.CreateCell
 		  cell.text = "Starting Position"
-		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "")
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "StartingPosition")
 		  cell.Tag = oGame
 		  Cell.DetailText = oGame.sValue
 		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
@@ -107,6 +114,36 @@ End
 		  oGoal.SetGame(oGoalAttempt, oGoalPercent)
 		  tbl.AddRow(0, cell)
 		  
+		  cell = tbl.CreateCell
+		  cell.text = "Notes"
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "AutoNotes")
+		  cell.Tag = oGame
+		  if oGame.sValue <> "" then
+		    Cell.DetailText = "Has Notes"
+		  end
+		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		  tbl.AddRow(0, cell)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub ReturnValue(oInstance as vwStartingPosition, sType as text, sValue as Text, sTag as Text)
+		  RemoveHandler oInstance.Action, AddressOf ReturnValue
+		  
+		  
+		  select case sType
+		  case "StartingPosition"
+		    oCell.DetailText = sValue
+		    tbl.ReloadRow(0, iRow)
+		    
+		  case else
+		    
+		    break //Didn't handle
+		    
+		  end
+		  
+		  oInstance.close
 		End Sub
 	#tag EndMethod
 
@@ -119,6 +156,15 @@ End
 	#tag EndMethod
 
 
+	#tag Hook, Flags = &h0
+		Event GetView() As iOSView
+	#tag EndHook
+
+
+	#tag Property, Flags = &h0
+		iRow As Integer
+	#tag EndProperty
+
 	#tag Property, Flags = &h0
 		m_sMatchKey As text
 	#tag EndProperty
@@ -127,9 +173,42 @@ End
 		m_sTeamNumber As text
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		oCell As iOSTableCellData
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		vwParent As iOSView
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
+#tag Events tbl
+	#tag Event
+		Sub Action(section As Integer, row As Integer)
+		  oCell = me.RowData(section, row)
+		  
+		  select case oCell.text
+		    
+		  case "Starting Position"
+		    iRow = row
+		    
+		    dim vw as new vwStartingPosition
+		    vw.LoadStartingPosition( oCell.tag)
+		    
+		    self.vwParent.pushto(vw)
+		    
+		  case "Notes"
+		    dim vw as new vwNotes
+		    vw.LoadNotes( oCell.tag)
+		    
+		    self.vwParent.pushto(vw)
+		    
+		  end
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="AccessibilityHint"
@@ -151,6 +230,11 @@ End
 		Visible=true
 		Group="ID"
 		InitialValue="-2147483648"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iRow"
+		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty

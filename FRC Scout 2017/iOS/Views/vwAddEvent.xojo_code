@@ -158,8 +158,6 @@ Begin iosView vwAddEvent
       Height          =   30.0
       Left            =   200
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   0
       TextColor       =   &c00000000
       TextFont        =   ""
@@ -251,11 +249,6 @@ End
 		Visible=true
 		Group="Position"
 		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="m_oEvent"
-		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
