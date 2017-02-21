@@ -211,9 +211,9 @@ Protected Class t_matches
 
 	#tag Method, Flags = &h0
 		Sub Save()
-		  if imatch_number = 0 and iset_number = 0 then
-		    break
-		  end
+		  'if imatch_number = 0 and iset_number = 0 then
+		  'break
+		  'end
 		  
 		  gDB.SQLExecute("BEGIN TRANSACTION")
 		  

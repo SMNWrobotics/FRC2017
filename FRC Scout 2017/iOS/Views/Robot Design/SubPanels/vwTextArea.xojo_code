@@ -40,7 +40,7 @@ Begin iosView vwTextArea
       Editable        =   True
       Height          =   349.0
       KeyboardType    =   "0"
-      Left            =   20.0
+      Left            =   20
       LockedInPosition=   False
       Scope           =   0
       Text            =   ""
@@ -48,7 +48,7 @@ Begin iosView vwTextArea
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   111.0
+      Top             =   111
       Visible         =   True
       Width           =   280.0
    End

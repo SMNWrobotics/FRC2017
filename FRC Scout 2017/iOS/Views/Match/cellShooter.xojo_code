@@ -12,7 +12,7 @@ Begin iOSCustomTableCell cellShooter
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   SegmentedControl1, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   SegmentedControl1, 1, Label1, 2, False, +1.00, 1, 1, 20, 
+      AutoLayout      =   SegmentedControl1, 1, lblTitle, 2, False, +1.00, 1, 1, 20, 
       AutoLayout      =   SegmentedControl1, 2, <Parent>, 2, False, +1.00, 1, 1, -2, 
       AutoLayout      =   SegmentedControl1, 3, <Parent>, 3, False, +1.00, 1, 1, 2, 
       AutoLayout      =   SegmentedControl1, 7, , 0, False, +1.00, 1, 1, 200, 
@@ -28,13 +28,13 @@ Begin iOSCustomTableCell cellShooter
       Visible         =   True
       Width           =   200.0
    End
-   Begin iOSLabel Label1
+   Begin iOSLabel lblTitle
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Label1, 1, Slider1, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Label1, 7, , 0, False, +1.00, 1, 1, 80, 
-      AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   Label1, 11, SegmentedControl1, 11, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   lblTitle, 1, Slider1, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 80, 
+      AutoLayout      =   lblTitle, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   lblTitle, 11, SegmentedControl1, 11, False, +1.00, 1, 1, 0, 
       Enabled         =   True
       Height          =   30.0
       Left            =   18
@@ -96,21 +96,64 @@ End
 
 #tag WindowCode
 	#tag Method, Flags = &h0
-		Sub SetGame(oGame as DataFile.t_game, Variable as text)
-		  m_sVariable = Variable
-		  m_oGame = oGame
+		Sub Load()
+		  select case m_oGoalAttempt.sValue
+		  case "Not Attempted", ""
+		    SegmentedControl1.value = 0
+		  case "Attempted"
+		    SegmentedControl1.value = 1
+		  case "Made"
+		    SegmentedControl1.value = 2
+		  case else
+		    break
+		  end
 		  
 		  
+		  Slider1.value = Integer.parse(m_oGoalPercentage.sValue)
+		  lblPercentage.text = Slider1.value.ToText(Locale.Current, "###")
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Save()
+		  select case SegmentedControl1.value
+		  case 0
+		    m_oGoalAttempt.sValue = "Not Attempted"
+		  case 1
+		    m_oGoalAttempt.sValue = "Attempted"
+		  case 2
+		    m_oGoalAttempt.sValue = "Made"
+		  case else
+		    break
+		  end
+		  m_oGoalAttempt.save
+		  
+		  m_oGoalPercentage.sValue = slider1.value.ToText(Locale.Current, "###")
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetGame(oGoalAttempt as DataFile.T_Game, oGoalPercentage as DataFile.T_Game)
+		  m_oGoalAttempt = oGoalAttempt
+		  m_oGoalPercentage = oGoalPercentage
+		  
+		  if m_oGoalAttempt.sVariable = "HighGoalAttempt" then
+		    lblTitle.text = "High Goal Attempts/Percentage"
+		  else
+		    lblTitle.text = "Low Goal Attempts/Percentage"
+		  end
+		  
+		  Load
 		End Sub
 	#tag EndMethod
 
 
 	#tag Property, Flags = &h0
-		m_oGame As DataFile.T_Game
+		m_oGoalAttempt As DataFile.T_Game
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		m_sVariable As text
+		m_oGoalPercentage As DataFile.T_Game
 	#tag EndProperty
 
 
@@ -151,6 +194,11 @@ End
 		Visible=true
 		Group="Position"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_sVariable"
+		Group="Behavior"
+		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"

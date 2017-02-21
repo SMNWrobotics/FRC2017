@@ -3,7 +3,7 @@ Begin iosView vwGameScouting
    BackButtonTitle =   ""
    Compatibility   =   ""
    Left            =   0
-   NavigationBarVisible=   False
+   NavigationBarVisible=   True
    TabIcon         =   ""
    TabTitle        =   ""
    Title           =   ""
@@ -22,7 +22,7 @@ Begin iosView vwGameScouting
       LockedInPosition=   False
       Scope           =   0
       Segments        =   "Autonomous\n\nTrue\rTeleop\n\nFalse"
-      Top             =   28
+      Top             =   73
       Value           =   0
       Visible         =   True
       Width           =   280.0
@@ -34,11 +34,11 @@ Begin iosView vwGameScouting
       AutoLayout      =   ccAutonomous1, 2, <Parent>, 2, False, +1.00, 1, 1, -0, 
       AutoLayout      =   ccAutonomous1, 3, seg, 4, False, +1.00, 1, 1, *kStdControlGapV, 
       AutoLayout      =   ccAutonomous1, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      Height          =   415.0
+      Height          =   370.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
-      Top             =   65
+      Top             =   110
       Visible         =   True
       Width           =   320.0
    End
@@ -47,22 +47,28 @@ End
 
 #tag WindowCode
 	#tag Method, Flags = &h0
-		Sub Constructor(oGame as DataFile.t_game)
+		Sub Constructor(sMatchKey as text, sTeamNumber as text)
 		  // Calling the overridden superclass constructor.
 		  Super.Constructor
 		  
-		  m_oGame = oGame
+		  m_sMatchKey = sMatchKey
+		  m_sTeamNumber = sTeamNumber
 		  
 		  seg.value = 0
 		  
 		  ccAutonomous1.Visible = true
+		  ccAutonomous1.SetGame(m_sMatchKey, m_sTeamNumber)
 		  'ccTeleop1.visible = false
 		End Sub
 	#tag EndMethod
 
 
 	#tag Property, Flags = &h0
-		m_oGame As DataFile.t_game
+		m_sMatchKey As text
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_sTeamNumber As text
 	#tag EndProperty
 
 
@@ -100,11 +106,6 @@ End
 		Visible=true
 		Group="Position"
 		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="m_oGame"
-		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty

@@ -250,20 +250,18 @@ End
 		  //Team Data
 		  dim oTeam as DataFile.t_team = DataFile.t_team.FindByKey(Team)
 		  
-		  dim oNewGame as new DataFile.t_game
-		  oNewGame.sMatchKey = oMatch.skey
-		  oNewGame.sTeamNumber = oTeam.sTeam_Number
 		  
-		  //Scout Data
-		  oNewGame.sscoutName = Foundation.NSUserDefaults.StandardUserDefaults.TextForKey("ScoutName")
-		  oNewGame.sScoutTeamNumber = Foundation.NSUserDefaults.StandardUserDefaults.TextForKey("TeamNumber")
-		  
-		  dim vw as new vwGameScouting(oNewGame)
+		  dim vw as new vwGameScouting(oMatch.skey, oTeam.sTeam_Number)
 		  self.PushTo(vw)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="Alliance"
+		Group="Behavior"
+		Type="text"
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="BackButtonTitle"
 		Group="Behavior"
@@ -295,6 +293,11 @@ End
 		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="MatchKey"
+		Group="Behavior"
+		Type="text"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
@@ -320,6 +323,11 @@ End
 		Name="TabTitle"
 		Group="Behavior"
 		Type="Text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Team"
+		Group="Behavior"
+		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"

@@ -135,12 +135,57 @@ Protected Class T_Game
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
+		  iGame_ID = rs.Field("Game_ID").IntegerValue
+		  sMatchKey = rs.Field("MatchKey").TextValue
+		  sscoutName = rs.Field("scoutName").TextValue
+		  sScoutTeamNumber = rs.Field("ScoutTeamNumber").TextValue
+		  sTeamNumber = rs.Field("TeamNumber").TextValue
+		  sValue = rs.Field("Value").TextValue
+		  sVariable = rs.Field("Variable").TextValue
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
+		  
+		  gDB.SQLExecute("BEGIN TRANSACTION")
+		  
+		  dim ars() as Text
+		  
+		  try
+		    if IsNew then
+		      ars.Append "INSERT INTO t_game"
+		      ars.Append "(MatchKey, scoutName,ScoutTeamNumber,TeamNumber,  Value, Variable)  "
+		      ars.Append " VALUES (?, ?, ?, ?, ?, ?)"
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL,  sMatchKey, sscoutName, sScoutTeamNumber, sTeamNumber, sValue, sVariable)
+		      
+		      me.iGame_ID = gdb.LastRowID
+		      
+		    else
+		      
+		      ars.Append "Update t_game Set"
+		      ars.Append " MatchKey = ?, scoutName = ?,ScoutTeamNumber = ?,TeamNumber = ?,  Value = ?, Variable = ? "
+		      ars.Append "WHERE game_id = ?" 
+		      
+		      
+		      dim sSQL as Text = ars.JoinSQL
+		      
+		      gDB.SQLExecute(sSQL,  sMatchKey, sscoutName, sScoutTeamNumber, sTeamNumber, sValue, sVariable, iGame_ID)
+		      
+		    end
+		    gDB.SQLExecute("COMMIT")
+		  catch
+		    break
+		    gdb.SQLExecute("ROLLBACK")
+		  end
+		  
+		  
 		  
 		End Sub
 	#tag EndMethod
@@ -190,10 +235,6 @@ Protected Class T_Game
 
 	#tag Property, Flags = &h0
 		iGame_ID As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		sGameUUID As Text
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -250,31 +291,31 @@ Protected Class T_Game
 		#tag ViewProperty
 			Name="sGameUUID"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sMatchKey"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sscoutName"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sScoutTeamNumber"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sTeamNumber"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -286,13 +327,13 @@ Protected Class T_Game
 		#tag ViewProperty
 			Name="sValue"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sVariable"
 			Group="Behavior"
-			Type="String"
+			Type="Text"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty

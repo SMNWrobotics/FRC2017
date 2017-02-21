@@ -382,7 +382,7 @@ End
 		  'if oChild <> nil then
 		  'dim sKey as Text = oChild.lookup("key", "")
 		  '
-		  'dim oRecord as Data.t_event = Data.T_Event.FindByKey(sKey)
+		  'dim oRecord as DataFile.t_event = DataFile.T_Event.FindByKey(sKey)
 		  '
 		  'oRecord.iYear = oChild.Lookup("year", 0)
 		  'oRecord.sEvent_Type_String= oChild.Lookup("event_type", "")
