@@ -64,8 +64,6 @@ End
 		  
 		  tbl.RemoveAll
 		  
-		  ' tbl.EstimatedRowHeight = 55
-		  
 		  tbl.AddSection ""
 		  
 		  dim oCell as iOSTableCellData
@@ -73,30 +71,33 @@ End
 		  oCell = tbl.CreateCell
 		  oCell.Text = "Gears"
 		  oCell.tag = new vwTeleopGears(m_sMatchKey, m_sTeamNumber)
+		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
-		  oCell.Text = "High Goals"
-		  tbl.AddRow(0, oCell)
-		  
-		  oCell = tbl.CreateCell
-		  oCell.Text = "Low Goals"
+		  oCell.Text = "Goals"
+		  oCell.tag = new vwGoals(m_sMatchKey, m_sTeamNumber)
+		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
 		  oCell.Text = "Driver Skill"
+		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
 		  oCell.Text = "Climbing"
+		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
 		  oCell.Text = "Defense"
+		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
 		  oCell.Text = "Notes"
+		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		End Sub
 	#tag EndMethod
