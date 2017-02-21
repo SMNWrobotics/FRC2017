@@ -41,7 +41,7 @@ Begin iosView vwGame
       Left            =   110
       LockedInPosition=   False
       Scope           =   0
-      TextColor       =   &c00000000
+      TextColor       =   &c0080FF00
       TextFont        =   ""
       TextSize        =   0
       Top             =   420

@@ -44,6 +44,21 @@ Begin iosView vwGameScouting
       Visible         =   True
       Width           =   320.0
    End
+   Begin ccTeleop ccTeleop1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   ccTeleop1, 4, BottomLayoutGuide, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   ccTeleop1, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   ccTeleop1, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   ccTeleop1, 3, seg, 4, False, +1.00, 1, 1, *kStdControlGapV, 
+      Height          =   -1110.0
+      Left            =   0
+      LockedInPosition=   False
+      Scope           =   0
+      Top             =   110
+      Visible         =   True
+      Width           =   320.0
+   End
 End
 #tag EndIOSView
 
@@ -60,7 +75,8 @@ End
 		  
 		  ccAutonomous1.Visible = true
 		  ccAutonomous1.SetGame(m_sMatchKey, m_sTeamNumber)
-		  'ccTeleop1.visible = false
+		  ccTeleop1.visible = false
+		  ccTeleop1.setGame(m_sMatchKey, m_sTeamNumber)
 		End Sub
 	#tag EndMethod
 
@@ -81,15 +97,22 @@ End
 		Sub ValueChanged()
 		  if me.value = 0 then
 		    ccAutonomous1.Visible = true
-		    'ccTeleop1.visible = false
+		    ccTeleop1.visible = false
 		  else
 		    ccAutonomous1.Visible = false
-		    'ccTeleop1.visible = true
+		    ccTeleop1.visible = true
 		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events ccAutonomous1
+	#tag Event
+		Function GetView() As iOSView
+		  return self
+		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events ccTeleop1
 	#tag Event
 		Function GetView() As iOSView
 		  return self

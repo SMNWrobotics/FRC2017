@@ -147,6 +147,7 @@ iOSContainerControl=cellMadeBaseline;Views/Match/Autonomous/cellMadeBaseline.xoj
 iOSView=vwStartingPosition;Views/Match/Autonomous/vwStartingPosition.xojo_code;&h70B5FFFF;&h44160FFF;false
 iOSContainerControl=ccTeleop;Views/Match/Telop/ccTeleop.xojo_code;&h73AD27FF;&h57A34FFF;false
 iOSView=vwNotes;Views/Match/Autonomous/vwNotes.xojo_code;&h567F3FFF;&h44160FFF;false
+iOSView=vwTeleopGears;Views/Match/Telop/vwTeleopGears.xojo_code;&h7A9C07FF;&h57A34FFF;false
 DefaultScreen=iPhoneScreen
 DefaultTabletScreen=iPhoneScreen
 MajorVersion=1
