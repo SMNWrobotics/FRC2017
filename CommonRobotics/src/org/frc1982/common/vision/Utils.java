@@ -51,7 +51,7 @@ public class Utils
 	
 	public static double getCenterX( ArrayList<MatOfPoint> arrayList ) {
 		if ( arrayList.size() != 2 ) {
-			DriverStation.reportWarning( "Target not in sight.", false );
+//			DriverStation.reportWarning( "Targets not in sight.", false );
 			return -1.0;
 		}
 		

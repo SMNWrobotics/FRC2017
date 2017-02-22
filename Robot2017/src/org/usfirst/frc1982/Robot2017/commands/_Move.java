@@ -64,7 +64,8 @@ public class _Move extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, m_Speed, 0, 0);
+//    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, m_Speed, 0, 0);
+    	Robot.driver.setMotorsMecanum(0, m_Speed, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -79,18 +80,18 @@ public class _Move extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0, 0);
+    	Robot.driver.setMotorsMecanum(0, 0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0, 0);
+    	Robot.driver.setMotorsMecanum(0, 0, 0);
     }
     
     private double getAverageDist() {
 //    	return (RobotMap.driveEncoderBackLeft.get()*BLconversion + RobotMap.driveEncoderBackRight.get()*BRconversion + RobotMap.driveEncoderFrontLeft.get()*FLconversion + RobotMap.driveEncoderFrontRight.get()*FRconversion) / 4;
 //    	return ((double) RobotMap.driveEncoderBackLeft.get())*BLconversion;// * 24/(-169);//*BLconversion;
-    	return ( RobotMap.driveEncoderBackLeft.getDistance() + RobotMap.driveEncoderBackRight.getDistance() + RobotMap.driveEncoderFrontLeft.getDistance() + RobotMap.driveEncoderFrontRight.getDistance() ) / 4;
+    	return ( RobotMap.driveEncoderFrontLeft.getDistance() + RobotMap.driveEncoderFrontRight.getDistance() ) / 1;
     }
 }

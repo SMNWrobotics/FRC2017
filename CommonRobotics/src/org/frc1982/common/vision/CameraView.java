@@ -16,6 +16,7 @@ public class CameraView {
 	public synchronized double getCenterX() { return centerX; }
 	
 	public CameraView() {
+		centerX = 0.0;
 	}
 
 	public VisionThread getVisionThread() {
@@ -38,7 +39,7 @@ public class CameraView {
 
 		CvSource outputStream = CameraServer.getInstance().putVideo("Blur", iRes.getWidth(), iRes.getHeight());
 
-		GripPipelineGold gp = new GripPipelineGold();
+		GripPipelineWorking gp = new GripPipelineWorking();
 
 		return new VisionThread(camera, gp, pipeline -> {
 			if (0 == ctr.incrementAndGet() % 50) {

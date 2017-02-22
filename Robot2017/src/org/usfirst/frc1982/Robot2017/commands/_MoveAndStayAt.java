@@ -5,25 +5,25 @@ import org.usfirst.frc1982.Robot2017.RobotMap;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
 
-public class _TurnTo extends PIDCommand {
+public class _MoveAndStayAt extends PIDCommand {
 	
 	private boolean done = false;
 	private int ctr;
 	private double maxSpeed;
-	private double deadZone = 0.13;
+	private double deadZone = 0.125;
 	private double setPoint;
 	
-	private double oldAng;
+	private double moveSpeed;
 	
 	private volatile float out = (float) 0.0;
 	
-	public _TurnTo(double degrees, double maxSpeed) {
+	public _MoveAndStayAt(double degrees, double maxSpeed, double moveSpeed) {
 		super(1.0/90.0, 0.0, 0.0);
 		setSetpoint(0);
 		setSetpointRelative(degrees);
 		setPoint = degrees;
 		this.maxSpeed = Math.abs(maxSpeed);
-		oldAng = 0.0;
+		this.moveSpeed = moveSpeed;
 	}
 	
 	protected void initialize() {
@@ -39,17 +39,14 @@ public class _TurnTo extends PIDCommand {
 		System.out.println("Gyro Angle: " + Robot.gyro.getAngleZ()/4);
 		
 		double diff = Math.abs(setPoint - currentAng);
-		if (diff < 5.0) { ctr++; }
+		if (diff < 1) { ctr++; }
 		else { ctr = 0; }
-		
-		
-		
 		
 		return currentAng;
 	}
 	
 	protected void execute() {
-		RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, out, 0);
+		RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, moveSpeed, out, 0);
 	}
 
 	@Override
@@ -79,11 +76,11 @@ public class _TurnTo extends PIDCommand {
 
 	@Override
 	protected boolean isFinished() {
-		if (ctr > 5) {
-			done = true;
-		} else {
-			done = false;
-		}
+//		if (ctr > 5) {
+//			done = true;
+//		} else {
+//			done = false;
+//		}
 		return done;
 	}
 
