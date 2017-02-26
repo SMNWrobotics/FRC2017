@@ -65,7 +65,7 @@ Begin iosView vwImportData
       Left            =   100
       LockedInPosition=   False
       Scope           =   2
-      TextColor       =   &c00000000
+      TextColor       =   &c0080FF00
       TextFont        =   ""
       TextSize        =   0
       Top             =   399
@@ -129,14 +129,14 @@ Begin iosView vwImportData
    Begin iOSButton btnRefresh
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnRefresh, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   btnRefresh, 7, , 0, False, +1.00, 1, 1, 100, 
-      AutoLayout      =   btnRefresh, 11, txtSearch, 11, False, +1.00, 1, 1, , 
+      AutoLayout      =   btnRefresh, 2, tbl, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnRefresh, 7, , 0, False, +1.00, 1, 1, 134, 
       AutoLayout      =   btnRefresh, 8, , 0, False, +1.00, 1, 1, 30, 
-      Caption         =   "Refresh List"
+      AutoLayout      =   btnRefresh, 11, txtSearch, 11, False, +1.00, 1, 1, 0, 
+      Caption         =   "Query Blue Alliance"
       Enabled         =   True
       Height          =   30.0
-      Left            =   200
+      Left            =   186
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c007AFF00
@@ -144,7 +144,23 @@ Begin iosView vwImportData
       TextSize        =   0
       Top             =   112
       Visible         =   True
-      Width           =   100.0
+      Width           =   134.0
+   End
+   Begin iOSProgressWheel ProgressWheel1
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   ProgressWheel1, 1, txtYear, 2, False, +1.00, 1, 1, *kStdControlGapH, 
+      AutoLayout      =   ProgressWheel1, 7, , 0, True, +1.00, 1, 1, 24, 
+      AutoLayout      =   ProgressWheel1, 3, txtYear, 3, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   ProgressWheel1, 8, , 0, True, +1.00, 1, 1, 24, 
+      Height          =   24.0
+      Left            =   189
+      LockedInPosition=   False
+      Scope           =   0
+      Shade           =   "0"
+      Top             =   73
+      Visible         =   False
+      Width           =   24.0
    End
 End
 #tag EndIOSView
@@ -223,6 +239,7 @@ End
 		    tbl.AddRow(0, cell)
 		    
 		  next
+		  
 		End Sub
 	#tag EndMethod
 
@@ -319,7 +336,14 @@ End
 #tag Events oEventSocket
 	#tag Event
 		Sub Error(err as RuntimeException)
+		  ProgressWheel1.Visible = false
+		  tbl.Visible = true
+		  
+		  LoadList sLastSearch
+		  
 		  msgbox "Error Retrieving Event Data from The Blue Alliance.  Error Message: " + err.Reason
+		  
+		  
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -368,41 +392,10 @@ End
 		    oRecord.save
 		  next
 		  
+		  ProgressWheel1.Visible = false
+		  tbl.Visible = true
 		  
-		  'For Each entry As DictionaryEntry In dict
-		  'dim sKey as Text = entry.Key
-		  'dim sValue as Auto = entry.Value
-		  '
-		  'dim i as integer
-		  'next
-		  
-		  'for i as integer = 0 to oJSON.Count-1
-		  'dim oCHild as JSONitem = oJSON.Child(i)
-		  '
-		  'if oChild <> nil then
-		  'dim sKey as Text = oChild.lookup("key", "")
-		  '
-		  'dim oRecord as DataFile.t_event = DataFile.T_Event.FindByKey(sKey)
-		  '
-		  'oRecord.iYear = oChild.Lookup("year", 0)
-		  'oRecord.sEvent_Type_String= oChild.Lookup("event_type", "")
-		  'oRecord.sLocation= oChild.Lookup("location", "")
-		  'oRecord.sName= oChild.Lookup("name", "")
-		  'oRecord.sShort_Name= oChild.Lookup("short_name", "")
-		  'oRecord.swebsite= oChild.Lookup("website", "")
-		  '
-		  'dim d as new Date
-		  'd.SQLDate = oChild.Lookup("start_date", "")
-		  'oRecord.dtStart_Date= d
-		  '
-		  'd.SQLDate = oChild.Lookup("end_date", "")
-		  'oRecord.dtend_date= d
-		  '
-		  'oRecord.save
-		  '
-		  'end
-		  'next
-		  
+		  LoadList sLastSearch
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -538,6 +531,9 @@ End
 #tag Events btnRefresh
 	#tag Event
 		Sub Action()
+		  ProgressWheel1.Visible = true
+		  tbl.Visible = false
+		  
 		  RequestEvents
 		  
 		  LoadList sLastQuery

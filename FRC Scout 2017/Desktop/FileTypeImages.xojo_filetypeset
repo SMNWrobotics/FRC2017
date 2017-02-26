@@ -2,7 +2,7 @@
 	#tag FileType
 		CodeName=Jpeg
 		Extension=.jfif;.jpe;.jpeg;.jpg
-		Flags=&h0
+		Flags=&h9
 		MacCreator=prvw
 		MacType=JPEG
 		Name=image/jpeg
@@ -16,7 +16,7 @@
 	#tag FileType
 		CodeName=Png
 		Extension=.png
-		Flags=&h0
+		Flags=&h9
 		MacCreator=ogle
 		MacType=PNGf
 		Name=image/png

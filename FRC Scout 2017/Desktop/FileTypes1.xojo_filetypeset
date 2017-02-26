@@ -3,7 +3,7 @@
 		CodeName=SQLite
 		DocIcon=FRC2017ScoutingApplication.xojo_resources;&h0
 		Extension=.sqlite
-		Flags=&h0
+		Flags=&h5
 		MacCreator=
 		MacType=
 		Name=sqlite
