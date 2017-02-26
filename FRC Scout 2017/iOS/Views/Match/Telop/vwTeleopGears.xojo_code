@@ -363,10 +363,7 @@ Begin iosView vwTeleopGears
       Width           =   100.0
    End
    Begin xojo.Core.Timer Timer1
-      Height          =   32
-      Height          =   32
-      Left            =   120
-      Left            =   120
+      Left            =   0
       LockedInPosition=   False
       Mode            =   "2"
       PanelIndex      =   -1
@@ -374,10 +371,7 @@ Begin iosView vwTeleopGears
       Period          =   1000
       Scope           =   0
       Tolerance       =   0
-      Top             =   420
-      Top             =   420
-      Width           =   32
-      Width           =   32
+      Top             =   0
    End
 End
 #tag EndIOSView
@@ -544,10 +538,30 @@ End
 		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="bTiming"
+		Group="Behavior"
+		Type="boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iAttempts"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iAverage"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Index"
 		Visible=true
 		Group="ID"
 		InitialValue="-2147483648"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iTotalTime"
+		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
@@ -577,11 +591,6 @@ End
 		Name="NavigationBarVisible"
 		Group="Behavior"
 		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="oGearsMade"
-		Group="Behavior"
-		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"

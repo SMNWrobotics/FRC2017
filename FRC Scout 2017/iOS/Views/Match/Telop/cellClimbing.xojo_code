@@ -11,9 +11,11 @@ Begin iOSCustomTableCell cellClimbing
    Begin iOSLabel lblTitle
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   lblTitle, 1, , 0, False, +1.00, 1, 1, 20, 
+      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 1.48e+2, 
       Enabled         =   True
       Height          =   30.0
-      Left            =   0
+      Left            =   20
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   0
@@ -21,7 +23,7 @@ Begin iOSCustomTableCell cellClimbing
       TextAlignment   =   "0"
       TextColor       =   &c00000000
       TextFont        =   ""
-      TextSize        =   0
+      TextSize        =   18
       Top             =   0
       Visible         =   True
       Width           =   148.0
@@ -29,13 +31,13 @@ Begin iOSCustomTableCell cellClimbing
    Begin iOSSwitch chkAttemped
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   chkAttemped, 2, <Parent>, 2, False, +1.00, 1, 1, -166, 
-      AutoLayout      =   chkAttemped, 7, , 0, True, +1.00, 1, 1, 51, 
-      AutoLayout      =   chkAttemped, 3, <Parent>, 3, False, +1.00, 1, 1, 45, 
       AutoLayout      =   chkAttemped, 8, , 0, True, +1.00, 1, 1, 31, 
+      AutoLayout      =   chkAttemped, 1, Label1, 2, False, +1.00, 1, 1, *kStdControlGapH, 
+      AutoLayout      =   chkAttemped, 3, <Parent>, 3, False, +1.00, 1, 1, 45, 
+      AutoLayout      =   chkAttemped, 7, , 0, True, +1.00, 1, 1, 51, 
       Enabled         =   True
       Height          =   31.0
-      Left            =   103
+      Left            =   110
       LockedInPosition=   False
       Scope           =   0
       Top             =   45
@@ -72,8 +74,6 @@ Begin iOSCustomTableCell cellClimbing
       Left            =   20
       LineBreakMode   =   "0"
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   0
       Text            =   "Attempted:"
       TextAlignment   =   "0"
@@ -112,48 +112,26 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Load()
-		  select case m_oGame.sValue
-		  case "Not Attempted", ""
-		    SegmentedControl1.value = 0
-		  case "Attempted"
-		    SegmentedControl1.value = 1
-		  case "Made"
-		    SegmentedControl1.value = 2
-		  case else
-		    break
-		  end
+		  chkAttemped.value = cBool(m_oClimbingAttempted.sValue)
+		  chkMade.value = cBool(m_oClimbingMade.sValue)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub Save()
-		  select case SegmentedControl1.value
-		  case 0
-		    m_oGame.sValue = "Not Attempted"
-		  case 1
-		    m_oGame.sValue = "Attempted"
-		  case 2
-		    m_oGame.sValue = "Made"
-		  case else
-		    break
-		  end
-		  m_oGame.save
+		  m_oClimbingAttempted.sValue = chkAttemped.value.BoolToText
+		  m_oClimbingAttempted.save
+		  
+		  m_oClimbingMade.sValue = chkMade.value.BoolToText
+		  m_oClimbingMade.save
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetGame(oGame as DataFile.T_Game)
-		  m_oGame = oGame
-		  
-		  select case m_oGame.sVariable
-		  case "Gear 1"
-		    lblTitle.text = "Gear 1 (Left)"
-		  case "Gear 2"
-		    lblTitle.text = "Gear 2 (Middle)"
-		  case "Gear 3"
-		    lblTitle.text = "Gear 3 (Right)"
-		  end
+		Sub SetGame(oClimbingAttempted as DataFile.T_Game, oClimbingMade as DataFile.T_Game)
+		  m_oClimbingAttempted = oClimbingAttempted
+		  m_oClimbingMade = oClimbingMade
 		  
 		  Load
 		End Sub
@@ -161,7 +139,11 @@ End
 
 
 	#tag Property, Flags = &h0
-		m_oGame As DataFile.T_Game
+		m_oClimbingAttempted As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_oClimbingMade As DataFile.T_Game
 	#tag EndProperty
 
 

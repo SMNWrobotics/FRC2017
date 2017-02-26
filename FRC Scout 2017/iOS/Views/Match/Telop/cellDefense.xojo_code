@@ -11,9 +11,13 @@ Begin iOSCustomTableCell cellDefense
    Begin iOSLabel lblTitle
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   lblTitle, 1, , 0, False, +1.00, 1, 1, 20, 
+      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 1.48e+2, 
+      AutoLayout      =   lblTitle, 3, , 0, False, +1.00, 1, 1, 1, 
+      AutoLayout      =   lblTitle, 8, , 0, False, +1.00, 1, 1, 3.0e+1, 
       Enabled         =   True
       Height          =   30.0
-      Left            =   0
+      Left            =   20
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   0
@@ -21,24 +25,24 @@ Begin iOSCustomTableCell cellDefense
       TextAlignment   =   "0"
       TextColor       =   &c00000000
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   0
+      TextSize        =   18
+      Top             =   1
       Visible         =   True
       Width           =   148.0
    End
    Begin iOSSwitch chkPlayedDefense
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   chkPlayedDefense, 1, <Parent>, 1, False, +1.00, 1, 1, 249, 
       AutoLayout      =   chkPlayedDefense, 7, , 0, True, +1.00, 1, 1, 51, 
+      AutoLayout      =   chkPlayedDefense, 3, <Parent>, 3, False, +1.00, 1, 1, 5, 
       AutoLayout      =   chkPlayedDefense, 8, , 0, True, +1.00, 1, 1, 31, 
-      AutoLayout      =   chkPlayedDefense, 3, lblTitle, 3, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   chkPlayedDefense, 1, , 0, False, +1.00, 1, 1, 249, 
       Enabled         =   True
       Height          =   31.0
       Left            =   249
       LockedInPosition=   False
       Scope           =   0
-      Top             =   0
+      Top             =   5
       Value           =   False
       Visible         =   True
       Width           =   51.0
@@ -46,10 +50,10 @@ Begin iOSCustomTableCell cellDefense
    Begin iOSLabel Label1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Label1, 7, , 0, False, +1.00, 1, 1, 52, 
-      AutoLayout      =   Label1, 2, <Parent>, 2, False, +1.00, 1, 1, -79, 
       AutoLayout      =   Label1, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   Label1, 11, lblTitle, 11, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   Label1, 2, chkPlayedDefense, 1, False, +1.00, 1, 1, -*kStdControlGapH, 
+      AutoLayout      =   Label1, 3, <Parent>, 3, False, +1.00, 1, 1, 6, 
+      AutoLayout      =   Label1, 7, , 0, False, +1.00, 1, 1, 52, 
       Enabled         =   True
       Height          =   30.0
       Left            =   189
@@ -61,20 +65,20 @@ Begin iOSCustomTableCell cellDefense
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   0
+      Top             =   6
       Visible         =   True
       Width           =   52.0
    End
    Begin iOSLabel Label2
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   Label2, 1, lblTitle, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   Label2, 7, , 0, False, +1.00, 1, 1, 94, 
-      AutoLayout      =   Label2, 3, <Parent>, 3, False, +1.00, 1, 1, 47, 
       AutoLayout      =   Label2, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   Label2, 1, <Parent>, 1, False, +1.00, 2, 1, *kStdGapCtlToViewH, 
+      AutoLayout      =   Label2, 3, Label1, 4, False, +1.00, 1, 1, *kStdControlGapV, 
+      AutoLayout      =   Label2, 7, , 0, False, +1.00, 1, 1, 94, 
       Enabled         =   True
       Height          =   30.0
-      Left            =   0
+      Left            =   20
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   0
@@ -83,28 +87,28 @@ Begin iOSCustomTableCell cellDefense
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   47
+      Top             =   44
       Visible         =   True
       Width           =   94.0
    End
    Begin iOSSegmentedControl segEffectiveness
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   segEffectiveness, 1, <Parent>, 1, False, +1.00, 1, 1, 112, 
-      AutoLayout      =   segEffectiveness, 7, , 0, False, +1.00, 1, 1, 200, 
       AutoLayout      =   segEffectiveness, 11, Label2, 11, False, +1.00, 1, 1, 0, 
       AutoLayout      =   segEffectiveness, 8, , 0, True, +1.00, 1, 1, 29, 
+      AutoLayout      =   segEffectiveness, 1, Label2, 2, False, +1.00, 1, 1, 10, 
+      AutoLayout      =   segEffectiveness, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
-      Left            =   112
+      Left            =   124
       LockedInPosition=   False
       Scope           =   0
-      Segments        =   "Bad\n\nFalse\rOkay\n\nFalse\rGood\n\nFalse"
-      Top             =   47
-      Value           =   -1
+      Segments        =   "Bad\n\nFalse\rOkay\n\nTrue\rGood\n\nFalse"
+      Top             =   44
+      Value           =   1
       Visible         =   True
-      Width           =   200.0
+      Width           =   176.0
    End
 End
 #tag EndIOSContainerControl
@@ -112,13 +116,15 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Load()
-		  select case m_oGame.sValue
-		  case "Not Attempted", ""
-		    SegmentedControl1.value = 0
-		  case "Attempted"
-		    SegmentedControl1.value = 1
-		  case "Made"
-		    SegmentedControl1.value = 2
+		  chkPlayedDefense.value = cbool(m_oDefense.svalue)
+		  
+		  select case m_oDefenseEffectiveness.sValue
+		  case "Bad", ""
+		    segEffectiveness.value = 0
+		  case "Okay"
+		    segEffectiveness.value = 1
+		  case "Good"
+		    segEffectiveness.value = 2
 		  case else
 		    break
 		  end
@@ -128,32 +134,31 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Save()
-		  select case SegmentedControl1.value
+		  
+		  
+		  m_oDefense.svalue = chkPlayedDefense.value.BoolToText
+		  m_oDefense.save
+		  
+		  select case segEffectiveness.value
 		  case 0
-		    m_oGame.sValue = "Not Attempted"
+		    m_oDefenseEffectiveness.sValue = "Bad"
 		  case 1
-		    m_oGame.sValue = "Attempted"
+		    m_oDefenseEffectiveness.sValue = "Okay"
 		  case 2
-		    m_oGame.sValue = "Made"
+		    m_oDefenseEffectiveness.sValue = "Good"
 		  case else
 		    break
 		  end
-		  m_oGame.save
+		  
+		  m_oDefenseEffectiveness.save
+		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetGame(oGame as DataFile.T_Game)
-		  m_oGame = oGame
-		  
-		  select case m_oGame.sVariable
-		  case "Gear 1"
-		    lblTitle.text = "Gear 1 (Left)"
-		  case "Gear 2"
-		    lblTitle.text = "Gear 2 (Middle)"
-		  case "Gear 3"
-		    lblTitle.text = "Gear 3 (Right)"
-		  end
+		Sub SetGame(oDefense as DataFile.T_Game, oDefenseEffectiveness as DataFile.T_Game)
+		  m_oDefense = oDefense
+		  m_oDefenseEffectiveness = oDefenseEffectiveness
 		  
 		  Load
 		End Sub
@@ -161,7 +166,11 @@ End
 
 
 	#tag Property, Flags = &h0
-		m_oGame As DataFile.T_Game
+		m_oDefense As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		m_oDefenseEffectiveness As DataFile.T_Game
 	#tag EndProperty
 
 

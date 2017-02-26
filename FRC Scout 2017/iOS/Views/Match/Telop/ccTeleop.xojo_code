@@ -11,22 +11,22 @@ Begin iOSContainerControl ccTeleop
    Begin iOSTable tbl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   tbl, 4, <Parent>, 4, False, +1.00, 1, 1, -*kStdGapCtlToViewV, 
-      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   tbl, 3, <Parent>, 3, False, +1.00, 1, 1, *kStdGapCtlToViewV, 
+      AutoLayout      =   tbl, 4, <Parent>, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   tbl, 3, <Parent>, 3, False, +1.00, 1, 1, 0, 
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   440.0
-      Left            =   20
+      Height          =   480.0
+      Left            =   0
       LockedInPosition=   False
       Scope           =   0
       SectionCount    =   0
-      Top             =   20
+      Top             =   0
       Visible         =   True
-      Width           =   280.0
+      Width           =   320.0
    End
 End
 #tag EndIOSContainerControl
@@ -63,8 +63,11 @@ End
 		  ' oLowGoalEffectiveness = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LowGoalEffectiveness")
 		  
 		  tbl.RemoveAll
+		  tbl.EstimatedRowHeight = 40
+		  
 		  
 		  tbl.AddSection ""
+		  
 		  
 		  dim oCell as iOSTableCellData
 		  
@@ -80,23 +83,34 @@ End
 		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		  
-		  oCell = tbl.CreateCell
-		  oCell.Text = "Driver Skill"
-		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		  
+		  oCell = tbl.CreateCustomCell(GetTypeInfo(cellDriverSkill))
+		  dim oDriverSkillCell as cellDriverSkill = cellDriverSkill(oCell.control)
+		  dim oGame as DataFile.T_Game = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "DriverSkill")
+		  oDriverSkillCell.SetGame(oGame)
+		  tbl.AddRow(0, oCell)
+		  
+		  oCell = tbl.CreateCustomCell(GetTypeInfo(cellClimbing))
+		  dim oClimbingCell as cellClimbing = cellClimbing(oCell.control)
+		  dim oClimbingAttempted as DataFile.T_Game = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "ClimbingAttempted")
+		  dim oClimbingmade as DataFile.T_Game = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "ClimbingMade")
+		  oClimbingCell.SetGame(oClimbingAttempted, oClimbingMade)
+		  tbl.AddRow(0, oCell)
+		  
+		  oCell = tbl.CreateCustomCell(GetTypeInfo(cellDefense))
+		  dim ocellDefense as cellDefense = cellDefense(oCell.control)
+		  dim oDefenseEffectiveNess as DataFile.T_Game = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "DefenseEffectiveness")
+		  dim oDefensePlayed as DataFile.T_Game = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "DefensePlayed")
+		  ocellDefense.SetGame(oDefensePlayed, oDefenseEffectiveNess)
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
-		  oCell.Text = "Climbing"
-		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
-		  tbl.AddRow(0, oCell)
-		  
-		  oCell = tbl.CreateCell
-		  oCell.Text = "Defense"
-		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
-		  tbl.AddRow(0, oCell)
-		  
-		  oCell = tbl.CreateCell
-		  oCell.Text = "Notes"
+		  oCell.text = "Notes"
+		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "TeleopNotes")
+		  oCell.Tag = oGame
+		  if oGame.sValue <> "" then
+		    oCell.DetailText = "Has Notes"
+		  end
 		  oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, oCell)
 		End Sub
@@ -138,9 +152,17 @@ End
 		  
 		  if oCell.tag = nil then return
 		  
-		  dim vw as iOSView = oCell.Tag
-		  
-		  self.vwParent.PushTo(vw)
+		  if oCell.text = "Notes" then
+		    dim vw as new vwNotes
+		    vw.LoadNotes( oCell.tag)
+		    
+		    self.vwParent.pushto(vw)
+		    
+		  else
+		    dim vw as iOSView = oCell.Tag
+		    
+		    self.vwParent.PushTo(vw)
+		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents
