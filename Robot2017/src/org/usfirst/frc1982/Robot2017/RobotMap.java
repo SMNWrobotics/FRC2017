@@ -37,7 +37,7 @@ public class RobotMap {
     public static SpeedController driveFrontRight;
     public static SpeedController driveBackLeft;
     public static SpeedController driveBackRight;
-    public static RobotDrive driveDriveTrain;
+//    public static RobotDrive driveDriveTrain;
     public static Encoder driveEncoderFrontLeft;
     public static Encoder driveEncoderFrontRight;
     public static Encoder driveEncoderBackLeft;
@@ -70,16 +70,16 @@ public class RobotMap {
         driveBackRight = new Talon(1);
         LiveWindow.addActuator("Drive", "BackRight", (Talon) driveBackRight);
         
-        driveDriveTrain = new RobotDrive(driveFrontLeft, driveBackLeft,
-              driveFrontRight, driveBackRight);
-        
-        driveDriveTrain.setSafetyEnabled(true);
-        driveDriveTrain.setExpiration(0.1);
-        driveDriveTrain.setSensitivity(0.5);
-        driveDriveTrain.setMaxOutput(1.0);
-
-        driveDriveTrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
-        driveDriveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+//        driveDriveTrain = new RobotDrive(driveFrontLeft, driveBackLeft,
+//              driveFrontRight, driveBackRight);
+//        
+//        driveDriveTrain.setSafetyEnabled(true);
+//        driveDriveTrain.setExpiration(0.1);
+//        driveDriveTrain.setSensitivity(0.5);
+//        driveDriveTrain.setMaxOutput(1.0);
+//
+//        driveDriveTrain.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+//        driveDriveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         driveEncoderFrontLeft = new Encoder(6, 7, false, EncodingType.k4X);
         LiveWindow.addSensor("Drive", "EncoderFrontLeft", driveEncoderFrontLeft);
         driveEncoderFrontLeft.setDistancePerPulse(1.0);

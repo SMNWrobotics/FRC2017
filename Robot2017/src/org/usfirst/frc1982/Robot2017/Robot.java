@@ -137,7 +137,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	RobotMap.driveDriveTrain.setSafetyEnabled(false);
+//    	RobotMap.driveDriveTrain.setSafetyEnabled(false);
         //resetting the encoders and gyro back to 0
     	RobotMap.driveEncoderBackRight.reset();
         RobotMap.driveEncoderBackLeft.reset();
@@ -162,7 +162,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-    	RobotMap.driveDriveTrain.setSafetyEnabled(true);
+//    	RobotMap.driveDriveTrain.setSafetyEnabled(true);
     	
 //    	new _CameraCenter(cameraView);
     	

@@ -12,7 +12,6 @@
 package org.usfirst.frc1982.Robot2017.subsystems;
 
 import org.usfirst.frc1982.Robot2017.RobotMap;
-import org.usfirst.frc1982.Robot2017.commands.DrivePID;
 import org.usfirst.frc1982.Robot2017.commands._DriveEnable;
 import org.usfirst.frc1982.Robot2017.commands._DriveEnableRaw;
 
