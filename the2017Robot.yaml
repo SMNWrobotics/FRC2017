@@ -679,7 +679,7 @@ Children:
     Base: Command
     Name: _WinchManual
   - Children: []
-    Properties: &id017
+    Properties:
       Parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []
         name: Parameters
@@ -755,43 +755,7 @@ Children:
         default: []
         name: Commands
         validators: *id015
-        value:
-        - !!robotbuilder.data.CommandGroupEntry
-          command:
-            base:
-              help: A command specifies an action that the robot can perform.
-              name: Command
-              properties:
-              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-                name: Requires, type: Subsystem, validators: null, value: None}
-              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
-                validators: null, value: true}
-              - !!robotbuilder.data.properties.ParametersProperty
-                default: []
-                name: Parameters
-                validators: null
-                value: []
-              - !!robotbuilder.data.properties.ParameterSetProperty
-                default: &id016 []
-                name: Parameter presets
-                validators: null
-                value: *id016
-              supports: {}
-              type: Command
-            name: _Move
-            properties: *id017
-          hasMatch: true
-          order: Sequential
-          parameters:
-            default: []
-            name: ParametersProperty
-            validators: null
-            value:
-            - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Distance,
-              type: double, value: '2'}
-            - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: Speed,
-              type: double, value: '.5'}
-          previous: null
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command Group
@@ -989,10 +953,10 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Agitator}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id018 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id018
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
@@ -1007,14 +971,56 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Agitator}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id019 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id019
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: _AgitateServoBackward
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id016 []
+        name: Parameter presets
+        validators: null
+        value: *id016
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: &id017 []
+        name: Commands
+        validators: *id015
+        value: *id017
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutoLeft
+  - Children: []
+    Properties:
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id018 []
+        name: Parameter presets
+        validators: null
+        value: *id018
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: &id019 []
+        name: Commands
+        validators: *id015
+        value: *id019
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command Group
+    Name: AutoRight
   Properties: {}
   Base: Commands
   Name: Commands

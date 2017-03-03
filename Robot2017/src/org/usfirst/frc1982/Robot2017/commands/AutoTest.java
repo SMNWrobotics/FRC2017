@@ -47,9 +47,5 @@ public class AutoTest extends CommandGroup {
     	addSequential(new _Move(96, -.25));
     	addSequential(new _TurnTo(30, .5), 3);
     	addSequential(new _CameraCenter(Robot.cameraView));
-//    	addSequential(new _Move(12, -.25));
-//    	addSequential(new _CameraCenter(Robot.cameraView));
-//    	addSequential(new _Move(12, -.25));
-    	
     } 
 }

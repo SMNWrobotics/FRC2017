@@ -35,7 +35,7 @@ public class Drive extends Subsystem {
     private final SpeedController frontRight = RobotMap.driveFrontRight;
     private final SpeedController backLeft = RobotMap.driveBackLeft;
     private final SpeedController backRight = RobotMap.driveBackRight;
-//    private final RobotDrive driveTrain = RobotMap.driveDriveTrain;
+    private final RobotDrive driveTrain = RobotMap.driveDriveTrain;
     private final Encoder encoderFrontLeft = RobotMap.driveEncoderFrontLeft;
     private final Encoder encoderFrontRight = RobotMap.driveEncoderFrontRight;
     private final Encoder encoderBackLeft = RobotMap.driveEncoderBackLeft;
