@@ -234,7 +234,7 @@ Inherits Data.ActiveRecordBase
 
 	#tag Method, Flags = &h0
 		Function UnscoutedTeams() As Data.t_team()
-		  dim sWHERE as string = " event_id = " + str(me.ievent_ID) + " AND key NOT IN (Select teamkey from t_game) "
+		  dim sWHERE as string = " event_id = " + str(me.ievent_ID) + " AND key NOT IN (Select ('frc'||teamnumber) as key from t_game) "
 		  
 		  return Data.T_Team.List(sWhere, "cast(Team_Number AS int)")
 		End Function

@@ -198,7 +198,7 @@ Inherits Data.ActiveRecordBase
 		  //Get the total number of games
 		  dim s as string
 		  
-		  s = "select count(*) from t_game where teamkey = " + me.sKey.SQLizeText 
+		  s = "select count(*) from t_game where teamnumber = " + me.sTeam_Number.SQLizeText 
 		  dim rs as RecordSet = gDB.SQLSelectRaiseOnError(s)
 		  
 		  iTotalGames = rs.IdxField(1).IntegerValue

@@ -48,7 +48,6 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Year"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -188,6 +187,7 @@ Begin WindowMenuWindow winSetup
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
+      MacBorderStyle  =   0
       PlaceHolderText =   ""
       Scope           =   0
       SendSearchStringImmediately=   False
@@ -222,7 +222,6 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Filter"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -257,7 +256,6 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "Note:  Importing Event Data will make this the default Event."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -402,7 +400,6 @@ Begin WindowMenuWindow winSetup
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   0
-         TabStop         =   True
          Text            =   "Fetching Online Data"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -469,7 +466,6 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
-      TabStop         =   True
       Text            =   "WARNING!  No valid internet connection.  You will not be able to connect to http://thebluealliance.com to retrieve event, match, game, and team data."
       TextAlign       =   0
       TextColor       =   &cFF000000
@@ -483,7 +479,6 @@ Begin WindowMenuWindow winSetup
       Width           =   186
    End
    Begin Xojo.net.httpsocket oEventSocket
-      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Scope           =   0
@@ -491,7 +486,6 @@ Begin WindowMenuWindow winSetup
       ValidateCertificates=   False
    End
    Begin Xojo.net.httpsocket oTeamSocket
-      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Scope           =   0
@@ -499,7 +493,6 @@ Begin WindowMenuWindow winSetup
       ValidateCertificates=   False
    End
    Begin Xojo.net.httpsocket oMatchSocket
-      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Scope           =   0
@@ -679,6 +672,7 @@ End
 		    me.AddRow str(i)
 		  next
 		  
+		  me.ListIndex = me.ListCount-1
 		  
 		End Sub
 	#tag EndEvent

@@ -201,6 +201,18 @@ Inherits Data.ActiveRecordBase
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Shared Function TeamFoundForMatch(MatchKey as string, TeamNumber as String) As boolean
+		  dim s as string
+		  
+		  s = "Select Count(*) from t_game where MatchKey = " + MatchKey.SQLizeText + " AND TeamNumber = " + TeamNumber.SQLizeText
+		  
+		  dim rs as RecordSet = gdb.SQLSelectRaiseOnError(s)
+		  
+		  return rs.IdxField(1).IntegerValue > 0
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Shared Function TeamFoundForMatchAndTeam(MatchKey as string, TeamNumber as String) As boolean
 		  dim s as string
 		  
@@ -291,16 +303,9 @@ Inherits Data.ActiveRecordBase
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="sScoutTeamKey"
+			Name="sScoutTeamNumber"
 			Group="Behavior"
 			Type="String"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="sTeamKey"
-			Group="Behavior"
-			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sTeamNumber"

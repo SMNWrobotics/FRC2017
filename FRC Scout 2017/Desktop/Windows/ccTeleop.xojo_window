@@ -211,6 +211,8 @@ Begin ContainerControl ccTeleop
          Password        =   False
          ReadOnly        =   False
          Scope           =   0
+         SeparatorIsComma=   False
+         SeparatorIsDot  =   False
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
@@ -718,6 +720,8 @@ Begin ContainerControl ccTeleop
          Password        =   False
          ReadOnly        =   False
          Scope           =   0
+         SeparatorIsComma=   False
+         SeparatorIsDot  =   False
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
@@ -761,7 +765,7 @@ Begin ContainerControl ccTeleop
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   124
+      Top             =   156
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -779,7 +783,7 @@ Begin ContainerControl ccTeleop
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   230
+      Height          =   206
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
@@ -808,7 +812,7 @@ Begin ContainerControl ccTeleop
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   156
+      Top             =   180
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -877,7 +881,7 @@ Begin ContainerControl ccTeleop
       Top             =   91
       Underline       =   False
       Visible         =   True
-      Width           =   108
+      Width           =   121
    End
    Begin GroupBox GroupBox4
       AutoDeactivate  =   True
@@ -935,6 +939,8 @@ Begin ContainerControl ccTeleop
          Password        =   False
          ReadOnly        =   False
          Scope           =   0
+         SeparatorIsComma=   False
+         SeparatorIsDot  =   False
          TabIndex        =   1
          TabPanelIndex   =   0
          TabStop         =   True
@@ -978,6 +984,8 @@ Begin ContainerControl ccTeleop
          Password        =   False
          ReadOnly        =   False
          Scope           =   0
+         SeparatorIsComma=   False
+         SeparatorIsDot  =   False
          TabIndex        =   0
          TabPanelIndex   =   0
          TabStop         =   True
@@ -1101,7 +1109,7 @@ Begin ContainerControl ccTeleop
             Enabled         =   True
             HasBackColor    =   False
             HasMenu         =   0
-            Height          =   60
+            Height          =   45
             HelpTag         =   ""
             Icon            =   0
             IconAlign       =   0
@@ -1580,6 +1588,50 @@ Begin ContainerControl ccTeleop
          Visible         =   True
          Width           =   28
       End
+      Begin BevelButton btnCancel
+         AcceptFocus     =   True
+         AutoDeactivate  =   True
+         BackColor       =   &c00000000
+         Bevel           =   0
+         Bold            =   False
+         ButtonType      =   0
+         Caption         =   "Cancel"
+         CaptionAlign    =   3
+         CaptionDelta    =   0
+         CaptionPlacement=   1
+         Enabled         =   True
+         HasBackColor    =   False
+         HasMenu         =   0
+         Height          =   21
+         HelpTag         =   ""
+         Icon            =   0
+         IconAlign       =   0
+         IconDX          =   0
+         IconDY          =   0
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox4"
+         Italic          =   False
+         Left            =   274
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         MenuValue       =   0
+         Scope           =   0
+         TabIndex        =   9
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   90
+         Underline       =   False
+         Value           =   False
+         Visible         =   False
+         Width           =   60
+      End
    End
    Begin GroupBox GroupBox5
       AutoDeactivate  =   True
@@ -1806,6 +1858,71 @@ Begin ContainerControl ccTeleop
       Scope           =   0
       TabPanelIndex   =   0
    End
+   Begin Label Label23
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   626
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   9
+      TabPanelIndex   =   0
+      Text            =   "Pilot Skill:"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   124
+      Transparent     =   True
+      Underline       =   False
+      Visible         =   True
+      Width           =   100
+   End
+   Begin PopupMenu pmPilotSkill
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      InitialValue    =   "Not Applicable\nBad\nOkay\nGood"
+      Italic          =   False
+      Left            =   738
+      ListIndex       =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   10
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   123
+      Underline       =   False
+      Visible         =   True
+      Width           =   121
+   End
 End
 #tag EndWindow
 
@@ -1836,6 +1953,8 @@ End
 		  oHighGoalEffectiveness = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "HighGoalEffectiveness")
 		  oLowGoalEffectiveness = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LowGoalEffectiveness")
 		  
+		  oPilotSkill = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "PilotSkill")
+		  
 		  chkClimbingAttempted.value = cBool(oClimbingAttempted.svalue)
 		  chkClimbingMade.value = cBool(oClimbingMade.sValue)
 		  pmDefenseEffectiveness.SetText = oDefenseEffectiveness.svalue
@@ -1853,6 +1972,7 @@ End
 		  txtNotes.text = oNotes.sValue
 		  pmHighGoalEffectiveness.SetText = oHighGoalEffectiveness.sValue
 		  pmLowGoalEffectiveness.SetText = oLowGoalEffectiveness.sValue
+		  pmPilotSkill.SetText = oPilotSkill.sValue
 		End Sub
 	#tag EndMethod
 
@@ -1875,6 +1995,7 @@ End
 		  oNotes.sValue = txtNotes.text
 		  oHighGoalEffectiveness.sValue = pmHighGoalEffectiveness.Text
 		  oLowGoalEffectiveness.sValue = pmLowGoalEffectiveness.Text
+		  oPilotSkill.sValue = pmPilotSkill.Text
 		  
 		  oClimbingAttempted.save
 		  oClimbingMade.save
@@ -1893,6 +2014,7 @@ End
 		  oNotes.save
 		  oHighGoalEffectiveness.save
 		  oLowGoalEffectiveness.save
+		  oPilotSkill.save
 		End Sub
 	#tag EndMethod
 
@@ -1921,8 +2043,6 @@ End
 		#tag Note
 			msMatchKey = sMatchKey
 			msTeamNumber = sTeamNumber
-			
-			
 		#tag EndNote
 		msMatchKey As string
 	#tag EndProperty
@@ -1997,6 +2117,10 @@ End
 
 	#tag Property, Flags = &h0
 		oNotes As Data.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oPilotSkill As Data.T_Game
 	#tag EndProperty
 
 
@@ -2079,6 +2203,8 @@ End
 		    lblGearTotalTime.text = str(iTotalTime) + " s"
 		    lblGearAttempts.text = str(iAttempts)
 		    lblGearAvgTime.text = str(iAverage) + " s"
+		    
+		    btnCancel.visible = true
 		  else
 		    //We are starting the timer
 		    self.iAttempts = self.iAttempts + 1
@@ -2086,6 +2212,7 @@ End
 		    bTiming = true
 		    me.Caption = "Stop"
 		    lblGearAttempts.text = str(iAttempts)
+		    btnCancel.visible = false
 		  end
 		End Sub
 	#tag EndEvent
@@ -2135,6 +2262,17 @@ End
 		  iCurrentValue = max(0, iCurrentValue)
 		  
 		  txtGearsMade.text = str(iCurrentValue)
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnCancel
+	#tag Event
+		Sub Action()
+		  bTiming = false
+		  self.iAttempts = self.iAttempts - 1
+		  btnStartStop.caption = "Start"
+		  me.Visible = false
+		  lblGearAttempts.text = str(iAttempts)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

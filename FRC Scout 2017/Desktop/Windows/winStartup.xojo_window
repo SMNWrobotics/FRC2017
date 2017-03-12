@@ -751,8 +751,9 @@ End
 #tag Events bbList
 	#tag Event
 		Sub Action()
-		  Msgbox "To Do"
+		  dim w as new winMatchList
 		  
+		  w.Display moEvent
 		End Sub
 	#tag EndEvent
 #tag EndEvents
