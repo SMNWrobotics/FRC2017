@@ -679,8 +679,13 @@ End
 		    bbReporting.Enabled = false
 		    bbRobot.Enabled = false
 		  else
-		    lblEvent.text = "Event: " + moEvent.sShort_Name + " at " + moEvent.sLocation
-		    lblEvent.TextColor = &c00800000
+		    dim d as new date
+		    if moEvent.iYear = d.year then
+		      lblEvent.TextColor = &c00FF00
+		    else
+		      lblEvent.TextColor = &cFF0000
+		    end
+		    lblEvent.text = "Event: " + moEvent.sShort_Name + " at " + moEvent.sLocation + ": " + moEvent.iYear.ToString
 		    bbExportMatchData.Enabled = true
 		    bbImportMatchData.Enabled = true
 		    bbScout.Enabled = true

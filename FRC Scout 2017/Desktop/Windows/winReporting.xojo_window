@@ -53,10 +53,10 @@ Begin WindowMenuWindow winReporting
       TextUnit        =   0
       Top             =   0
       Underline       =   False
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   992
-      Begin AlternatingList lstAuto
+      Begin AlternatingList lstAutonomous
          AutoDeactivate  =   True
          AutoHideScrollbars=   True
          Bold            =   False
@@ -74,14 +74,14 @@ Begin WindowMenuWindow winReporting
          GridLinesVertical=   0
          HasHeading      =   True
          HeadingIndex    =   -1
-         Height          =   278
+         Height          =   172
          HelpTag         =   ""
          Hierarchical    =   False
          Index           =   -2147483648
          InitialParent   =   "TabPanel1"
          InitialValue    =   "Autonomous	Blue 1	Blue 2	Blue 3	Red 1	Red 2	Red 3"
          Italic          =   False
-         Left            =   27
+         Left            =   29
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
@@ -98,7 +98,7 @@ Begin WindowMenuWindow winReporting
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   70
+         Top             =   71
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -128,7 +128,6 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   1
-         TabStop         =   True
          Text            =   "Match"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -194,7 +193,6 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
-         TabStop         =   True
          Text            =   "Level"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -238,7 +236,7 @@ Begin WindowMenuWindow winReporting
          Visible         =   True
          Width           =   215
       End
-      Begin AlternatingList lstManual
+      Begin AlternatingList lstTeleop
          AutoDeactivate  =   True
          AutoHideScrollbars=   True
          Bold            =   False
@@ -256,12 +254,12 @@ Begin WindowMenuWindow winReporting
          GridLinesVertical=   0
          HasHeading      =   True
          HeadingIndex    =   -1
-         Height          =   278
+         Height          =   377
          HelpTag         =   ""
          Hierarchical    =   False
          Index           =   -2147483648
          InitialParent   =   "TabPanel1"
-         InitialValue    =   "Manual	Blue 1	Blue 2	Blue 3	Red 1	Red 2	Red 3"
+         InitialValue    =   "Teleop	Blue 1	Blue 2	Blue 3	Red 1	Red 2	Red 3"
          Italic          =   False
          Left            =   27
          LockBottom      =   True
@@ -280,7 +278,7 @@ Begin WindowMenuWindow winReporting
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   365
+         Top             =   266
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -302,7 +300,7 @@ Begin WindowMenuWindow winReporting
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "TabPanel1"
-         Left            =   27
+         Left            =   29
          LinuxStyle      =   3
          LockBottom      =   False
          LockedInPosition=   False
@@ -317,7 +315,7 @@ Begin WindowMenuWindow winReporting
          TabIndex        =   6
          TabPanelIndex   =   1
          TabStop         =   True
-         Top             =   346
+         Top             =   243
          Visible         =   True
          Width           =   974
          WinLiveMove     =   False
@@ -328,7 +326,7 @@ Begin WindowMenuWindow winReporting
          AutoHideScrollbars=   True
          Bold            =   False
          Border          =   True
-         ColumnCount     =   51
+         ColumnCount     =   10
          ColumnsResizable=   True
          ColumnWidths    =   ""
          DataField       =   ""
@@ -373,132 +371,6 @@ Begin WindowMenuWindow winReporting
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
       End
-      Begin Canvas cvsAuto
-         AcceptFocus     =   False
-         AcceptTabs      =   False
-         AutoDeactivate  =   True
-         Backdrop        =   0
-         DoubleBuffer    =   False
-         Enabled         =   True
-         EraseBackground =   True
-         Height          =   25
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Left            =   40
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   1
-         TabPanelIndex   =   2
-         TabStop         =   True
-         Top             =   28
-         Transparent     =   True
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   25
-      End
-      Begin Canvas cvsManual
-         AcceptFocus     =   False
-         AcceptTabs      =   False
-         AutoDeactivate  =   True
-         Backdrop        =   0
-         DoubleBuffer    =   False
-         Enabled         =   True
-         EraseBackground =   True
-         Height          =   25
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Left            =   300
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   2
-         TabPanelIndex   =   2
-         TabStop         =   True
-         Top             =   28
-         Transparent     =   True
-         UseFocusRing    =   True
-         Visible         =   True
-         Width           =   25
-      End
-      Begin Label Label1
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   77
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   3
-         TabPanelIndex   =   2
-         TabStop         =   True
-         Text            =   "Autonomous"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   28
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   100
-      End
-      Begin Label Label2
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   337
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   0
-         Selectable      =   False
-         TabIndex        =   4
-         TabPanelIndex   =   2
-         TabStop         =   True
-         Text            =   "Manual"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   28
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   100
-      End
    End
 End
 #tag EndWindow
@@ -516,131 +388,67 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub List()
-		  lstAuto.DeleteAllRows
-		  lstManual.DeleteAllRows
+		  lstAutonomous.DeleteAllRows
+		  lstTeleop.DeleteAllRows
+		  
+		  if pmMatchNumber.ListIndex = -1 then return
 		  
 		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.Heading(1) = oMatch.sBlue_Team_1.replace("frc", "")
-		  lstAuto.Heading(2) = oMatch.sBlue_Team_2.replace("frc", "")
-		  lstAuto.Heading(3) = oMatch.sBlue_Team_3.replace("frc", "")
-		  lstAuto.Heading(4) = oMatch.sRed_Team_1.replace("frc", "")
-		  lstAuto.Heading(5) = oMatch.sRed_Team_2.replace("frc", "")
-		  lstAuto.Heading(6) = oMatch.sRed_Team_3.replace("frc", "")
-		  
-		  lstAuto.columntag(1) = oMatch.sBlue_Team_1
-		  lstAuto.columntag(2) = oMatch.sBlue_Team_2
-		  lstAuto.columntag(3) = oMatch.sBlue_Team_3
-		  lstAuto.columntag(4) = oMatch.sRed_Team_1
-		  lstAuto.columntag(5) = oMatch.sRed_Team_2
-		  lstAuto.columntag(6) = oMatch.sRed_Team_3
-		  
-		  lstAuto.ColumnAlignment(1) = listbox.AlignCenter
-		  lstAuto.ColumnAlignment(2) = listbox.AlignCenter
-		  lstAuto.ColumnAlignment(3) = listbox.AlignCenter
-		  lstAuto.ColumnAlignment(4) = listbox.AlignCenter
-		  lstAuto.ColumnAlignment(5) = listbox.AlignCenter
-		  lstAuto.ColumnAlignment(6) = listbox.AlignCenter
-		  
-		  lstManual.Heading(1) = oMatch.sBlue_Team_1.replace("frc", "")
-		  lstManual.Heading(2) = oMatch.sBlue_Team_2.replace("frc", "")
-		  lstManual.Heading(3) = oMatch.sBlue_Team_3.replace("frc", "")
-		  lstManual.Heading(4) = oMatch.sRed_Team_1.replace("frc", "")
-		  lstManual.Heading(5) = oMatch.sRed_Team_2.replace("frc", "")
-		  lstManual.Heading(6) = oMatch.sRed_Team_3.replace("frc", "")
-		  
-		  lstManual.columntag(1) = oMatch.sBlue_Team_1
-		  lstManual.columntag(2) = oMatch.sBlue_Team_2
-		  lstManual.columntag(3) = oMatch.sBlue_Team_3
-		  lstManual.columntag(4) = oMatch.sRed_Team_1
-		  lstManual.columntag(5) = oMatch.sRed_Team_2
-		  lstManual.columntag(6) = oMatch.sRed_Team_3
-		  
-		  lstManual.ColumnAlignment(1) = listbox.AlignCenter
-		  lstManual.ColumnAlignment(2) = listbox.AlignCenter
-		  lstManual.ColumnAlignment(3) = listbox.AlignCenter
-		  lstManual.ColumnAlignment(4) = listbox.AlignCenter
-		  lstManual.ColumnAlignment(5) = listbox.AlignCenter
-		  lstManual.ColumnAlignment(6) = listbox.AlignCenter
+		  lstAutonomous.Heading(1) = oMatch.sBlue_Team_1.replace("frc", "")
+		  lstAutonomous.Heading(2) = oMatch.sBlue_Team_2.replace("frc", "")
+		  lstAutonomous.Heading(3) = oMatch.sBlue_Team_3.replace("frc", "")
+		  lstAutonomous.Heading(4) = oMatch.sRed_Team_1.replace("frc", "")
+		  lstAutonomous.Heading(5) = oMatch.sRed_Team_2.replace("frc", "")
+		  lstAutonomous.Heading(6) = oMatch.sRed_Team_3.replace("frc", "")
 		  
 		  
-		  lstAuto.addRow "Games Scouted"
+		  lstTeleop.Heading(1) = oMatch.sBlue_Team_1.replace("frc", "")
+		  lstTeleop.Heading(2) = oMatch.sBlue_Team_2.replace("frc", "")
+		  lstTeleop.Heading(3) = oMatch.sBlue_Team_3.replace("frc", "")
+		  lstTeleop.Heading(4) = oMatch.sRed_Team_1.replace("frc", "")
+		  lstTeleop.Heading(5) = oMatch.sRed_Team_2.replace("frc", "")
+		  lstTeleop.Heading(6) = oMatch.sRed_Team_3.replace("frc", "")
 		  
-		  lstAuto.AddRow "Low Bar Attempts"
-		  lstAuto.addRow "Low Bar Success"
 		  
-		  lstAuto.addRow "Portcullis Attempts"
-		  lstAuto.addRow "Portcullis Success"
 		  
-		  lstAuto.addRow "Cheval de Frise Attempts"
-		  lstAuto.addRow "Cheval de Frise Success"
+		  //Autonomous
+		  lstAutonomous.DeleteAllRows
+		  lstAutonomous.addRow "StartingPosition"
+		  lstAutonomous.addRow "Baseline"
+		  lstAutonomous.addRow "Gear1"
+		  lstAutonomous.addRow "Gear2"
+		  lstAutonomous.addRow "Gear3"
+		  lstAutonomous.addRow "HighGoal"
+		  lstAutonomous.addRow "HighGoalAttempt"
+		  lstAutonomous.addRow "LowGoal"
+		  lstAutonomous.addRow"LowGoalAttempt"
 		  
-		  lstAuto.addRow "Moat Attempts"
-		  lstAuto.addRow "Moat Success"
 		  
-		  lstAuto.addRow "Ramparts Attempts"
-		  lstAuto.addRow "Ramparts Success"
+		  //Teleop
 		  
-		  lstAuto.addRow "Drawbridge Attempts"
-		  lstAuto.addRow "Drawbridge Success"
+		  lstTeleop.DeleteAllRows
+		  lstTeleop.addRow "ClimbingAttempted"
+		  lstTeleop.addRow  "ClimbingMade"
+		  lstTeleop.addRow "DefenseEffectiveness"
+		  lstTeleop.addRow  "DefensePlayed"
+		  lstTeleop.addRow  "DriverSkill"
+		  lstTeleop.addRow "PilotSkill"
 		  
-		  lstAuto.addRow "Sally Port Attempts"
-		  lstAuto.addRow "Sally Port Success"
+		  lstTeleop.addRow  "GearCycleAverage"
+		  lstTeleop.addRow  "GearCycleCount"
+		  lstTeleop.addRow  "GearCycleTotalTime"
+		  lstTeleop.addRow  "GearsAcquired"
+		  lstTeleop.addRow  "GearsMade"
 		  
-		  lstAuto.addRow "Rock Wall Attempts" 
-		  lstAuto.addRow "Rock Wall Success"
+		  lstTeleop.addRow  "HighGoalCycles"
+		  lstTeleop.addRow "HighGoalPercentage"
+		  lstTeleop.addRow  "LowGoalCycles"
+		  lstTeleop.addRow  "LowGoalPercentage"
 		  
-		  lstAuto.addRow "Rough Terrain Attempts"
-		  lstAuto.addRow "Rough Terrain Success"
+		  lstTeleop.addRow  "HighGoalEffectiveness"
+		  lstTeleop.addRow  "LowGoalEffectiveness"
 		  
-		  lstAuto.addRow "Defense Reached"
-		  
-		  lstAuto.addrow "Low Shot Made Avg"
-		  lstAuto.addRow "Low Shot Attempts Avg"
-		  
-		  lstAuto.addRow "High Shot Made Avg"
-		  lstAuto.addRow "High Shot Attempts Avg"
-		  
-		  //Manual Rows
-		  
-		  lstManual.AddRow "Low Bar Attempts"
-		  lstManual.addRow "Low Bar Success"
-		  
-		  lstManual.addRow "Portcullis Attempts"
-		  lstManual.addRow "Portcullis Success"
-		  
-		  lstManual.addRow "Cheval de Frise Attempts"
-		  lstManual.addRow "Cheval de Frise Success"
-		  
-		  lstManual.addRow "Moat Attempts"
-		  lstManual.addRow "Moat Success"
-		  
-		  lstManual.addRow "Ramparts Attempts"
-		  lstManual.addRow "Ramparts Success"
-		  
-		  lstManual.addRow "Drawbridge Attempts"
-		  lstManual.addRow "Drawbridge Success"
-		  
-		  lstManual.addRow "Sally Port Attempts"
-		  lstManual.addRow "Sally Port Success"
-		  
-		  lstManual.addRow "Rock Wall Attempts" 
-		  lstManual.addRow "Rock Wall Success"
-		  
-		  lstManual.addRow "Rough Terrain Attempts"
-		  lstManual.addRow "Rough Terrain Success"
-		  
-		  lstManual.addrow "Low Shot Made Avg"
-		  lstManual.addRow "Low Shot Attempts Avg"
-		  
-		  lstManual.addRow "High Shot Made Avg"
-		  lstManual.addRow "High Shot Attempts Avg"
-		  
-		  lstManual.AddRow "Challenge Attempted Avg"
-		  lstManual.addRow "Challenge Succeeded Avg"
-		  
-		  lstManual.AddRow "Scale Attempted Avg"
-		  lstManual.addRow "Scale Succeeded Avg"
 		  
 		  LoadBlue
 		  LoadRed
@@ -649,32 +457,71 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadAll()
-		  lstAll.DeleteAllRows
+		  lstall.Visible = false
+		  lstall.DeleteAllRows
 		  
-		  for each oTeam as Data.t_team in oEvent.GetTeams
-		    lstAll.AddRow oTeam.sTeam_Number
-		    
-		    dim iRow as integer = lstall.LastIndex
-		    
-		    lstall.RowTag(iRow) = oTeam
-		    
-		    
-		    //Load Team Data in Row
-		    LoadRow(iRow, oTeam)
-		    
+		  //Create headings
+		  dim arsAuto() as string
+		  arsAuto.append "StartingPosition"
+		  arsAuto.append "Baseline"
+		  arsAuto.append  "Gear1"
+		  arsAuto.append  "Gear2"
+		  arsAuto.append  "Gear3"
+		  arsAuto.append  "HighGoal"
+		  arsAuto.append  "HighGoalAttempt"
+		  arsAuto.append  "LowGoal"
+		  arsAuto.append "LowGoalAttempt"
+		  
+		  dim arsTelop() as string
+		  arsTelop.append "ClimbingAttempted"
+		  arsTelop.append  "ClimbingMade"
+		  arsTelop.append "DefenseEffectiveness"
+		  arsTelop.append "DefensePlayed"
+		  arsTelop.append "DriverSkill"
+		  arsTelop.append "PilotSkill"
+		  arsTelop.append "GearCycleAverage"
+		  arsTelop.append "GearCycleCount"
+		  arsTelop.append "GearCycleTotalTime"
+		  arsTelop.append "GearsAcquired"
+		  arsTelop.append "GearsMade"
+		  arsTelop.append  "HighGoalCycles"
+		  arsTelop.append "HighGoalPercentage"
+		  arsTelop.append "LowGoalCycles"
+		  arsTelop.append "LowGoalPercentage"
+		  arsTelop.append "HighGoalEffectiveness"
+		  arsTelop.append "LowGoalEffectiveness"
+		  
+		  lstall.ColumnCount = arsAuto.Ubound + 1 + arsTelop.Ubound + 1 + 1
+		  
+		  dim arsWidths() as string
+		  arsWidths.append "50"
+		  
+		  lstAll.heading(0) = "Team"
+		  
+		  dim icnt as integer = 1
+		  for each s as string in arsAuto
+		    lstAll.heading(iCnt) = s
+		    arsWidths.append  "100"
+		    icnt = iCnt + 1
+		  Next
+		  
+		  iMaxTeleop = iCnt
+		  
+		  for each s as string in arsTelop
+		    lstAll.heading(iCnt) = s
+		    arsWidths.append  "100"
+		    icnt = iCnt + 1
 		  next
 		  
-		  lstall.heading(0) = "Team Number"
 		  
-		  dim arsColumnWidths() as string
-		  arsColumnWidths.Append "100"
-		  arsColumnWidths.Append "50"
-		  for icol as integer =2 to lstall.ColumnCount-1
-		    arsColumnWidths.Append "100"
-		    lstall.ColumnAlignment(iCol) = listbox.AlignCenter
+		  //Load all the teams
+		  for each oteam as Data.T_Team in oEvent.GetTeams
+		    lstall.AddRow oTeam.sTeam_Number
 		  next
 		  
-		  lstAll.ColumnWidths = join(arsColumnWidths, ",")
+		  lstall.ColumnWidths = join(arsWidths, ",")
+		  
+		  lstall.visible = true
 		End Sub
 	#tag EndMethod
 
@@ -689,99 +536,32 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadBlue1()
-		  dim iCol as integer = 0
+		  dim iCol as integer = 1
 		  
-		  dim sTag as string = lstAuto.ColumnTag(iCol)
-		  dim oTeam as Data.T_Team = Data.T_team.FindByKey(sTag)
+		  dim sTeamNumber as string = lstAutonomous.heading(iCol)
+		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
+		  //Autnomous
+		  for iRow as integer = 0 to lstAutonomous.ListCount-1
+		    dim sVariableName as string = lstAutonomous.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstAutonomous.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
-		  ' //9
-		  ' lstAuto.Cell(1, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' lstAuto.Cell(2, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' 
-		  ' //1
-		  ' lstAuto.Cell(3, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstAuto.Cell(4, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' ' 
-		  ' ' //2
-		  ' lstAuto.Cell(5, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstAuto.Cell(6, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' ' 
-		  ' ' //3
-		  ' lstAuto.Cell(7, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' lstAuto.Cell(8, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' ' 
-		  ' ' //4
-		  ' lstAuto.Cell(9, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstAuto.Cell(10, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' ' 
-		  ' ' //5
-		  ' lstAuto.Cell(11, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstAuto.Cell(12, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' ' 
-		  ' ' //6
-		  ' lstAuto.Cell(13, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstAuto.Cell(14, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' ' 
-		  ' ' //7
-		  ' lstAuto.Cell(15, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstAuto.Cell(16, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' ' 
-		  ' ' //8
-		  ' lstAuto.Cell(17, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstAuto.Cell(18, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstAuto.Cell(19, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' 
-		  ' lstAuto.Cell(20, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' lstAuto.Cell(21, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' ' 
-		  ' lstAuto.Cell(22, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' lstAuto.Cell(23, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' 
-		  ' //Manual
-		  ' 
-		  ' lstManual.cell(0, icol) = oTeam.LowBarAttempts 
-		  ' lstManual.cell(1, icol) = oTeam.LowBarMade
-		  ' 
-		  ' lstManual.cell(2, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstManual.cell(3, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' 
-		  ' lstManual.cell(4, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstManual.cell(5, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' 
-		  ' lstManual.cell(6, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' lstManual.cell(7, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' 
-		  ' lstManual.cell(8, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstManual.cell(9, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' 
-		  ' lstManual.cell(10, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstManual.cell(11, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' 
-		  ' lstManual.cell(12, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstManual.cell(13, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' 
-		  ' lstManual.cell(14, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstManual.cell(15, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' 
-		  ' lstManual.cell(16, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstManual.cell(17, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstManual.cell(18, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' lstManual.cell(19, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(20, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' lstManual.cell(21, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(22, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' lstManual.cell(23, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' 
-		  ' lstManual.cell(24, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' lstManual.cell(25, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
+		  //Manual
+		  for iRow as integer = 0 to lstTeleop.ListCount-1
+		    dim sVariableName as string = lstTeleop.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstTeleop.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -790,97 +570,30 @@ End
 		Sub LoadBlue2()
 		  dim iCol as integer = 2
 		  
-		  dim sTag as string = lstAuto.ColumnTag(iCol)
-		  dim oTeam as Data.T_Team = Data.T_team.FindByKey(sTag)
+		  dim sTeamNumber as string = lstAutonomous.heading(iCol)
+		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
+		  //Autnomous
+		  for iRow as integer = 0 to lstAutonomous.ListCount-1
+		    dim sVariableName as string = lstAutonomous.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstAutonomous.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
-		  ' //9
-		  ' lstAuto.Cell(1, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' lstAuto.Cell(2, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' 
-		  ' //1
-		  ' lstAuto.Cell(3, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstAuto.Cell(4, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' ' 
-		  ' ' //2
-		  ' lstAuto.Cell(5, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstAuto.Cell(6, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' ' 
-		  ' ' //3
-		  ' lstAuto.Cell(7, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' lstAuto.Cell(8, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' ' 
-		  ' ' //4
-		  ' lstAuto.Cell(9, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstAuto.Cell(10, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' ' 
-		  ' ' //5
-		  ' lstAuto.Cell(11, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstAuto.Cell(12, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' ' 
-		  ' ' //6
-		  ' lstAuto.Cell(13, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstAuto.Cell(14, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' ' 
-		  ' ' //7
-		  ' lstAuto.Cell(15, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstAuto.Cell(16, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' ' 
-		  ' ' //8
-		  ' lstAuto.Cell(17, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstAuto.Cell(18, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstAuto.Cell(19, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' 
-		  ' lstAuto.Cell(20, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' lstAuto.Cell(21, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' ' 
-		  ' lstAuto.Cell(22, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' lstAuto.Cell(23, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' 
-		  ' //Manual
-		  ' 
-		  ' lstManual.cell(0, icol) = oTeam.LowBarAttempts 
-		  ' lstManual.cell(1, icol) = oTeam.LowBarMade
-		  ' 
-		  ' lstManual.cell(2, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstManual.cell(3, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' 
-		  ' lstManual.cell(4, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstManual.cell(5, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' 
-		  ' lstManual.cell(6, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' lstManual.cell(7, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' 
-		  ' lstManual.cell(8, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstManual.cell(9, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' 
-		  ' lstManual.cell(10, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstManual.cell(11, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' 
-		  ' lstManual.cell(12, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstManual.cell(13, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' 
-		  ' lstManual.cell(14, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstManual.cell(15, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' 
-		  ' lstManual.cell(16, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstManual.cell(17, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstManual.cell(18, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' lstManual.cell(19, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(20, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' lstManual.cell(21, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(22, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' lstManual.cell(23, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' 
-		  ' lstManual.cell(24, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' lstManual.cell(25, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
+		  //Manual
+		  for iRow as integer = 0 to lstTeleop.ListCount-1
+		    dim sVariableName as string = lstTeleop.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstTeleop.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -889,97 +602,30 @@ End
 		Sub LoadBlue3()
 		  dim iCol as integer = 3
 		  
-		  dim sTag as string = lstAuto.ColumnTag(iCol)
-		  dim oTeam as Data.T_Team = Data.T_team.FindByKey(sTag)
+		  dim sTeamNumber as string = lstAutonomous.heading(iCol)
+		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
+		  //Autnomous
+		  for iRow as integer = 0 to lstAutonomous.ListCount-1
+		    dim sVariableName as string = lstAutonomous.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstAutonomous.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
-		  ' //9
-		  ' lstAuto.Cell(1, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' lstAuto.Cell(2, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' 
-		  ' //1
-		  ' lstAuto.Cell(3, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstAuto.Cell(4, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' ' 
-		  ' ' //2
-		  ' lstAuto.Cell(5, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstAuto.Cell(6, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' ' 
-		  ' ' //3
-		  ' lstAuto.Cell(7, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' lstAuto.Cell(8, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' ' 
-		  ' ' //4
-		  ' lstAuto.Cell(9, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstAuto.Cell(10, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' ' 
-		  ' ' //5
-		  ' lstAuto.Cell(11, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstAuto.Cell(12, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' ' 
-		  ' ' //6
-		  ' lstAuto.Cell(13, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstAuto.Cell(14, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' ' 
-		  ' ' //7
-		  ' lstAuto.Cell(15, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstAuto.Cell(16, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' ' 
-		  ' ' //8
-		  ' lstAuto.Cell(17, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstAuto.Cell(18, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstAuto.Cell(19, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' 
-		  ' lstAuto.Cell(20, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' lstAuto.Cell(21, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' ' 
-		  ' lstAuto.Cell(22, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' lstAuto.Cell(23, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' 
-		  ' //Manual
-		  ' 
-		  ' lstManual.cell(0, icol) = oTeam.LowBarAttempts 
-		  ' lstManual.cell(1, icol) = oTeam.LowBarMade
-		  ' 
-		  ' lstManual.cell(2, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstManual.cell(3, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' 
-		  ' lstManual.cell(4, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstManual.cell(5, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' 
-		  ' lstManual.cell(6, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' lstManual.cell(7, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' 
-		  ' lstManual.cell(8, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstManual.cell(9, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' 
-		  ' lstManual.cell(10, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstManual.cell(11, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' 
-		  ' lstManual.cell(12, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstManual.cell(13, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' 
-		  ' lstManual.cell(14, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstManual.cell(15, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' 
-		  ' lstManual.cell(16, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstManual.cell(17, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstManual.cell(18, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' lstManual.cell(19, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(20, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' lstManual.cell(21, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(22, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' lstManual.cell(23, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' 
-		  ' lstManual.cell(24, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' lstManual.cell(25, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
+		  //Manual
+		  for iRow as integer = 0 to lstTeleop.ListCount-1
+		    dim sVariableName as string = lstTeleop.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstTeleop.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -996,99 +642,30 @@ End
 		Sub LoadRed1()
 		  dim iCol as integer = 4
 		  
-		  dim sTag as string = lstAuto.ColumnTag(iCol)
-		  dim oTeam as Data.T_Team = Data.T_team.FindByKey(sTag)
+		  dim sTeamNumber as string = lstAutonomous.heading(iCol)
+		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
+		  //Autnomous
+		  for iRow as integer = 0 to lstAutonomous.ListCount-1
+		    dim sVariableName as string = lstAutonomous.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstAutonomous.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
-		  
-		  ' //9
-		  ' lstAuto.Cell(1, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' lstAuto.Cell(2, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' 
-		  ' //1
-		  ' lstAuto.Cell(3, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstAuto.Cell(4, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' ' 
-		  ' ' //2
-		  ' lstAuto.Cell(5, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstAuto.Cell(6, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' ' 
-		  ' ' //3
-		  ' lstAuto.Cell(7, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' lstAuto.Cell(8, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' ' 
-		  ' ' //4
-		  ' lstAuto.Cell(9, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstAuto.Cell(10, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' ' 
-		  ' ' //5
-		  ' lstAuto.Cell(11, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstAuto.Cell(12, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' ' 
-		  ' ' //6
-		  ' lstAuto.Cell(13, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstAuto.Cell(14, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' ' 
-		  ' ' //7
-		  ' lstAuto.Cell(15, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstAuto.Cell(16, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' ' 
-		  ' ' //8
-		  ' lstAuto.Cell(17, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstAuto.Cell(18, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstAuto.Cell(19, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' 
-		  ' lstAuto.Cell(20, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' lstAuto.Cell(21, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' ' 
-		  ' lstAuto.Cell(22, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' lstAuto.Cell(23, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' 
-		  ' //Manual
-		  ' 
-		  ' lstManual.cell(0, icol) = oTeam.LowBarAttempts 
-		  ' lstManual.cell(1, icol) = oTeam.LowBarMade
-		  ' 
-		  ' lstManual.cell(2, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstManual.cell(3, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' 
-		  ' lstManual.cell(4, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstManual.cell(5, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' 
-		  ' lstManual.cell(6, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' lstManual.cell(7, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' 
-		  ' lstManual.cell(8, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstManual.cell(9, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' 
-		  ' lstManual.cell(10, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstManual.cell(11, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' 
-		  ' lstManual.cell(12, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstManual.cell(13, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' 
-		  ' lstManual.cell(14, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstManual.cell(15, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' 
-		  ' lstManual.cell(16, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstManual.cell(17, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstManual.cell(18, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' lstManual.cell(19, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(20, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' lstManual.cell(21, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(22, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' lstManual.cell(23, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' 
-		  ' lstManual.cell(24, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' lstManual.cell(25, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
+		  //Manual
+		  for iRow as integer = 0 to lstTeleop.ListCount-1
+		    dim sVariableName as string = lstTeleop.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstTeleop.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -1097,97 +674,30 @@ End
 		Sub LoadRed2()
 		  dim iCol as integer = 5
 		  
-		  dim sTag as string = lstAuto.ColumnTag(iCol)
-		  dim oTeam as Data.T_Team = Data.T_team.FindByKey(sTag)
+		  dim sTeamNumber as string = lstAutonomous.heading(iCol)
+		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
+		  //Autnomous
+		  for iRow as integer = 0 to lstAutonomous.ListCount-1
+		    dim sVariableName as string = lstAutonomous.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstAutonomous.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
-		  ' //9
-		  ' lstAuto.Cell(1, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' lstAuto.Cell(2, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' 
-		  ' //1
-		  ' lstAuto.Cell(3, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstAuto.Cell(4, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' ' 
-		  ' ' //2
-		  ' lstAuto.Cell(5, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstAuto.Cell(6, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' ' 
-		  ' ' //3
-		  ' lstAuto.Cell(7, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' lstAuto.Cell(8, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' ' 
-		  ' ' //4
-		  ' lstAuto.Cell(9, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstAuto.Cell(10, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' ' 
-		  ' ' //5
-		  ' lstAuto.Cell(11, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstAuto.Cell(12, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' ' 
-		  ' ' //6
-		  ' lstAuto.Cell(13, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstAuto.Cell(14, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' ' 
-		  ' ' //7
-		  ' lstAuto.Cell(15, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstAuto.Cell(16, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' ' 
-		  ' ' //8
-		  ' lstAuto.Cell(17, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstAuto.Cell(18, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstAuto.Cell(19, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' 
-		  ' lstAuto.Cell(20, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' lstAuto.Cell(21, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' ' 
-		  ' lstAuto.Cell(22, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' lstAuto.Cell(23, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' 
-		  ' //Manual
-		  ' 
-		  ' lstManual.cell(0, icol) = oTeam.LowBarAttempts 
-		  ' lstManual.cell(1, icol) = oTeam.LowBarMade
-		  ' 
-		  ' lstManual.cell(2, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstManual.cell(3, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' 
-		  ' lstManual.cell(4, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstManual.cell(5, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' 
-		  ' lstManual.cell(6, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' lstManual.cell(7, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' 
-		  ' lstManual.cell(8, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstManual.cell(9, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' 
-		  ' lstManual.cell(10, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstManual.cell(11, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' 
-		  ' lstManual.cell(12, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstManual.cell(13, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' 
-		  ' lstManual.cell(14, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstManual.cell(15, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' 
-		  ' lstManual.cell(16, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstManual.cell(17, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstManual.cell(18, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' lstManual.cell(19, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(20, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' lstManual.cell(21, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(22, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' lstManual.cell(23, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' 
-		  ' lstManual.cell(24, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' lstManual.cell(25, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
+		  //Manual
+		  for iRow as integer = 0 to lstTeleop.ListCount-1
+		    dim sVariableName as string = lstTeleop.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstTeleop.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -1196,298 +706,30 @@ End
 		Sub LoadRed3()
 		  dim iCol as integer = 6
 		  
-		  dim sTag as string = lstAuto.ColumnTag(iCol)
-		  dim oTeam as Data.T_Team = Data.T_team.FindByKey(sTag)
+		  dim sTeamNumber as string = lstAutonomous.heading(iCol)
+		  dim oMatch as Data.t_matches = pmMatchNumber.RowTag(pmMatchNumber.ListIndex)
 		  
-		  lstAuto.cell(0, icol) = oTeam.TotalGames //TotalGames
+		  //Autnomous
+		  for iRow as integer = 0 to lstAutonomous.ListCount-1
+		    dim sVariableName as string = lstAutonomous.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstAutonomous.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
-		  ' //9
-		  ' lstAuto.Cell(1, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' lstAuto.Cell(2, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' 
-		  ' //1
-		  ' lstAuto.Cell(3, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstAuto.Cell(4, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' ' 
-		  ' ' //2
-		  ' lstAuto.Cell(5, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstAuto.Cell(6, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' ' 
-		  ' ' //3
-		  ' lstAuto.Cell(7, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' lstAuto.Cell(8, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' ' 
-		  ' ' //4
-		  ' lstAuto.Cell(9, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstAuto.Cell(10, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' ' 
-		  ' ' //5
-		  ' lstAuto.Cell(11, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstAuto.Cell(12, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' ' 
-		  ' ' //6
-		  ' lstAuto.Cell(13, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstAuto.Cell(14, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' ' 
-		  ' ' //7
-		  ' lstAuto.Cell(15, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstAuto.Cell(16, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' ' 
-		  ' ' //8
-		  ' lstAuto.Cell(17, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstAuto.Cell(18, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstAuto.Cell(19, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' 
-		  ' lstAuto.Cell(20, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' lstAuto.Cell(21, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' ' 
-		  ' lstAuto.Cell(22, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' lstAuto.Cell(23, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' 
-		  ' //Manual
-		  ' 
-		  ' lstManual.cell(0, icol) = oTeam.LowBarAttempts 
-		  ' lstManual.cell(1, icol) = oTeam.LowBarMade
-		  ' 
-		  ' lstManual.cell(2, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' lstManual.cell(3, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' 
-		  ' lstManual.cell(4, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' lstManual.cell(5, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' 
-		  ' lstManual.cell(6, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' lstManual.cell(7, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' 
-		  ' lstManual.cell(8, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' lstManual.cell(9, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' 
-		  ' lstManual.cell(10, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' lstManual.cell(11, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' 
-		  ' lstManual.cell(12, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' lstManual.cell(13, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' 
-		  ' lstManual.cell(14, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' lstManual.cell(15, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' 
-		  ' lstManual.cell(16, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' lstManual.cell(17, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' 
-		  ' 
-		  ' lstManual.cell(18, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' lstManual.cell(19, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(20, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' lstManual.cell(21, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' 
-		  ' lstManual.cell(22, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' lstManual.cell(23, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' 
-		  ' lstManual.cell(24, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' lstManual.cell(25, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub LoadRow(iRow as integer, oTeam as Data.T_Team)
-		  dim iCol as integer = 1
-		  lstAll.heading(icol) = "# Games"
-		  lstAll.cell(iRow, icol) = oTeam.TotalGames //TotalGames
-		  icol = icol + 1
-		  
-		  ' //9
-		  ' lstAll.heading(icol) = "Low Bar Attempts"
-		  ' lstAll.Cell(iRow, icol) =  oTeam.Auto_LoadBarAttempts //"Low Bar Attempts"
-		  ' icol = icol + 1
-		  ' 
-		  ' lstAll.heading(icol) = "Low Bar Success"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_LoadBarSuccess //"Low Bar Success"
-		  ' icol = icol + 1
-		  ' 
-		  ' //1
-		  ' lstAll.heading(icol) = "Portcullis Attempts"
-		  ' lstAll.Cell(iRow, icol) = oteam.Auto_DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' icol = icol + 1
-		  ' 
-		  ' lstAll.heading(icol) = "Portcullis Success"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_DefenseTypeSuccess("1") //"Portcullis Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //2
-		  ' lstAll.heading(icol) = "Cheval de Frise Attempts"
-		  ' lstAll.Cell(iRow, icol)= oteam.Auto_DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' icol = icol + 1
-		  ' 
-		  ' lstAll.heading(icol) = "Cheval de Frise Success"
-		  ' lstAll.Cell(iRow, icol)= oTeam.Auto_DefenseTypeSuccess("2") // "Cheval de Frise Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //3
-		  ' lstAll.heading(icol) = "Moat Attempts"
-		  ' lstAll.Cell(iRow, icol)= oteam.Auto_DefenseTypeAttempts("3") // "Moat Attempts"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Moat Success"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_DefenseTypeSuccess("3") //"Moat Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //4
-		  ' lstAll.heading(icol) = "Ramparts Attempts"
-		  ' lstAll.Cell(iRow, icol)= oteam.Auto_DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Ramparts Success"
-		  ' lstAll.Cell(iRow, icol)= oTeam.Auto_DefenseTypeSuccess("4") // "Ramparts Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //5
-		  ' lstAll.heading(icol) = "Drawbridge Attempts"
-		  ' lstAll.Cell(iRow, icol)= oteam.Auto_DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Drawbridge Success"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_DefenseTypeSuccess("5") //"Drawbridge Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //6
-		  ' lstAll.heading(icol) = "Sally Port Attempts"
-		  ' lstAll.Cell(iRow, icol)= oteam.Auto_DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Sally Port Success"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_DefenseTypeSuccess("6") //"Sally Port Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //7
-		  ' lstAll.heading(icol) = "Rock Wall Attempts"
-		  ' lstAll.Cell(iRow, icol)= oteam.Auto_DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Rock Wall Success"
-		  ' lstAll.Cell(iRow, icol)= oTeam.Auto_DefenseTypeSuccess("7") // "Rock Wall Success"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' ' //8
-		  ' lstAll.heading(icol) = "Rough Terrain Attempts"
-		  ' lstAll.Cell(iRow, icol) = oteam.Auto_DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Rough Terrain Success"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_DefenseTypeSuccess("8") //"Rough Terrain Success"
-		  ' icol = icol + 1
-		  ' 
-		  ' lstAll.heading(icol) = "Defense Reached"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_DefenseReached // "Defense Reached"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "Low Shot Made Avg"
-		  ' lstAll.Cell(iRow, icol)= oTeam.Auto_LowShotMadeAverage//"Low Shot Made Avg"
-		  ' icol = icol + 1
-		  ' 
-		  ' lstAll.heading(icol) = "Low Shot Attempts Avg"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_LowShotAttemptAverage// "Low Shot Attempts Avg"
-		  ' icol = icol + 1
-		  ' ' 
-		  ' lstAll.heading(icol) = "High Shot Made Avg"
-		  ' lstAll.Cell(iRow, icol) = oTeam.Auto_HighShotMadeAverage//"High Shot Made Avg"
-		  ' icol = icol + 1
-		  ' lstAll.heading(icol) = "High Shot Attempts Avg"
-		  ' lstAll.Cell(iRow, icol)= oTeam.Auto_HighShotAttemptAverage //"High Shot Attempts Avg"
-		  ' icol = icol + 1
-		  ' 
-		  ' iManualStart = iCol
-		  ' 
-		  ' lstAll.heading(icol) = "Team Manual"
-		  ' lstAll.cell(iRow, icol) = oTeam.sTeam_Number 
-		  ' icol = iCol + 1
-		  ' 
-		  ' lstAll.heading(icol) = "Low Bar Attempts"
-		  ' lstAll.cell(iRow, icol) = oTeam.LowBarAttempts 
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Low Bar Made"
-		  ' lstAll.cell(iRow, icol) = oTeam.LowBarMade
-		  ' 
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Portcullis Attempts"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("1") // "Portcullis Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Portcullis Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("1")  //"Portcullis Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Cheval de Frise Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("2") // "Cheval de Frise Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Cheval de Frise Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("2") // "Cheval de Frise Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Moat Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam. DefenseTypeAttempts("3")// "Moat Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Moat Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("3") // "Moat Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Ramparts Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("4") // "Ramparts Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Ramparts Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("4") // "Ramparts Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Drawbridge Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("5") // "Drawbridge Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Drawbridge Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("5") // "Drawbridge Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Sally Port Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("6") // "Sally Port Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Sally Port Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("6") // "Sally Port Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Rock Wall Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("7") // "Rock Wall Attempts" 
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Rock Wall Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("7") // "Rock Wall Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Rough Terrain Attempts"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeAttempts("8") //"Rough Terrain Attempts"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Rough Terrain Success"
-		  ' lstAll.cell(iRow, icol) = oTeam.DefenseTypeMade("8") //"Rough Terrain Success"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Low Shot Made Avg"
-		  ' 
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.LowShotMadeAverage // "Low Shot Made Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Low Shot Attempts Avg"
-		  ' lstAll.cell(iRow, icol) = oTeam.LowShotAttemptAverage //"Low Shot Attempts Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "High Shot Made Avg"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.HighShotMadeAverage // "High Shot Made Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "High Shot Attempts Avg"
-		  ' lstAll.cell(iRow, icol) = oTeam.HighShotAttemptAverage // "High Shot Attempts Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Challenge Attempted Avg"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.ChallengeAttemptedAverage //"Challenge Attempted Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Challenge Succeeded Avg"
-		  ' lstAll.cell(iRow, icol) = oTeam.ChallengeSucceededAverage //"Challenge Succeeded Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Scale Attempted Avg"
-		  ' 
-		  ' lstAll.cell(iRow, icol) = oTeam.ScaleAttemptedAverage //"Scale Attempted Avg"
-		  ' icol = iCol + 1
-		  ' lstAll.heading(icol) = "Scale Succeeded Avg"
-		  ' lstAll.cell(iRow, icol) = oTeam.ScaleSucceededAverage //"Scale Succeeded Avg"
-		  ' 
+		  //Manual
+		  for iRow as integer = 0 to lstTeleop.ListCount-1
+		    dim sVariableName as string = lstTeleop.cell(iRow, 0)
+		    
+		    dim oGame as Data.T_Game = Data.T_Game.LoadMatchValue(oMatch.skey, sTeamNumber, sVariableName)
+		    
+		    dim sTemp as string = oGame.sValue
+		    lstTeleop.cell(iRow, iCol) = oGame.sValue
+		    
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -1495,6 +737,10 @@ End
 
 	#tag Property, Flags = &h0
 		iManualStart As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		iMaxTeleop As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -1515,7 +761,7 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events lstAuto
+#tag Events lstAutonomous
 	#tag Event
 		Sub cellBackgroundPaint(g as graphics, row as integer, column as integer)
 		  if column > 0 and column < 4 then
@@ -1569,7 +815,7 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events lstManual
+#tag Events lstTeleop
 	#tag Event
 		Sub cellBackgroundPaint(g as graphics, row as integer, column as integer)
 		  if column > 0 and column < 4 then
@@ -1592,17 +838,17 @@ End
 #tag Events WindowSplitter1
 	#tag Event
 		Sub Open()
-		  me.AddControl lstAuto, true
-		  me.AddControl lstManual, false
+		  me.AddControl lstAutonomous, true
+		  me.AddControl lstTeleop, false
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events lstAll
 	#tag Event
 		Function CellBackgroundPaint(g As Graphics, row As Integer, column As Integer) As Boolean
-		  if column > 1 and column < 25 then
+		  if column > 0 and column < iMaxTeleop then
 		    g.ForeColor = &cFF996600
-		  elseif column > 25 then
+		  elseif column >= iMaxTeleop then
 		    g.ForeColor = &cCCCCFF00
 		  else
 		    g.ForeColor = &cFFFFFF
@@ -1614,12 +860,6 @@ End
 		  
 		  g.fillrect 0, 0, g.Width, g.Height
 		  
-		  if column = iManualStart then
-		    g.ForeColor = &c000000
-		    g.PenWidth = 2
-		    g.PenHeight = 2
-		    g.DrawLine 0, 0, 0, g.Height
-		  end
 		  
 		  
 		End Function
@@ -1649,22 +889,6 @@ End
 		  end
 		  return true
 		End Function
-	#tag EndEvent
-#tag EndEvents
-#tag Events cvsAuto
-	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
-		  g.ForeColor = &cFF996600
-		  g.FillRect 0, 0, g.Width, g.Height
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events cvsManual
-	#tag Event
-		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
-		  g.ForeColor = &cCCCCFF00
-		  g.FillRect 0, 0, g.Width, g.Height
-		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior

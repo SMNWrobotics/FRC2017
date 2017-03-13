@@ -2204,7 +2204,7 @@ End
 		    lblGearAttempts.text = str(iAttempts)
 		    lblGearAvgTime.text = str(iAverage) + " s"
 		    
-		    btnCancel.visible = true
+		    btnCancel.visible = false
 		  else
 		    //We are starting the timer
 		    self.iAttempts = self.iAttempts + 1
@@ -2212,7 +2212,8 @@ End
 		    bTiming = true
 		    me.Caption = "Stop"
 		    lblGearAttempts.text = str(iAttempts)
-		    btnCancel.visible = false
+		    
+		    btnCancel.visible = true
 		  end
 		End Sub
 	#tag EndEvent
