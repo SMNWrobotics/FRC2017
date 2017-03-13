@@ -462,34 +462,20 @@ End
 		  
 		  //Create headings
 		  dim arsAuto() as string
-		  arsAuto.append "StartingPosition"
 		  arsAuto.append "Baseline"
 		  arsAuto.append  "Gear1"
 		  arsAuto.append  "Gear2"
 		  arsAuto.append  "Gear3"
 		  arsAuto.append  "HighGoal"
-		  arsAuto.append  "HighGoalAttempt"
-		  arsAuto.append  "LowGoal"
-		  arsAuto.append "LowGoalAttempt"
 		  
 		  dim arsTelop() as string
 		  arsTelop.append "ClimbingAttempted"
-		  arsTelop.append  "ClimbingMade"
-		  arsTelop.append "DefenseEffectiveness"
-		  arsTelop.append "DefensePlayed"
-		  arsTelop.append "DriverSkill"
-		  arsTelop.append "PilotSkill"
+		  arsTelop.append "ClimbingMade"
 		  arsTelop.append "GearCycleAverage"
 		  arsTelop.append "GearCycleCount"
 		  arsTelop.append "GearCycleTotalTime"
 		  arsTelop.append "GearsAcquired"
 		  arsTelop.append "GearsMade"
-		  arsTelop.append  "HighGoalCycles"
-		  arsTelop.append "HighGoalPercentage"
-		  arsTelop.append "LowGoalCycles"
-		  arsTelop.append "LowGoalPercentage"
-		  arsTelop.append "HighGoalEffectiveness"
-		  arsTelop.append "LowGoalEffectiveness"
 		  
 		  lstall.ColumnCount = arsAuto.Ubound + 1 + arsTelop.Ubound + 1 + 1
 		  
@@ -501,7 +487,8 @@ End
 		  dim icnt as integer = 1
 		  for each s as string in arsAuto
 		    lstAll.heading(iCnt) = s
-		    arsWidths.append  "100"
+		    arsWidths.append  "50"
+		    lstall.ColumnAlignment(icnt) = listbox.AlignRight
 		    icnt = iCnt + 1
 		  Next
 		  
@@ -509,7 +496,8 @@ End
 		  
 		  for each s as string in arsTelop
 		    lstAll.heading(iCnt) = s
-		    arsWidths.append  "100"
+		    arsWidths.append  "100"  
+		    lstall.ColumnAlignment(icnt) = listbox.AlignRight
 		    icnt = iCnt + 1
 		  next
 		  
@@ -517,6 +505,21 @@ End
 		  //Load all the teams
 		  for each oteam as Data.T_Team in oEvent.GetTeams
 		    lstall.AddRow oTeam.sTeam_Number
+		    
+		    Dim iRow As Integer = lstAll.LastIndex
+		    
+		    
+		    dim sTeamNumber as string = lstAll.cell(iRow, 0)
+		    //Get averages
+		    For icol As Integer = 1 To lstAll.ColumnCount-1
+		      Dim sVariable As String = lstAll.heading(iCol)
+		      Dim d As Double = Data.T_Game.AverageForVariable(sTeamNumber, sVariable)
+		      if d <> 0.0 then
+		        lstAll.Cell(iRow, iCol) = Format(d, "###.0")
+		        lstAll.CellTag(iRow, iCol) = d
+		      end
+		    next
+		    
 		  next
 		  
 		  lstall.ColumnWidths = join(arsWidths, ",")
@@ -972,6 +975,11 @@ End
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="iManualStart"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iMaxTeleop"
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty

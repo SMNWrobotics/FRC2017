@@ -16,6 +16,62 @@ Inherits Data.ActiveRecordBase
 
 
 	#tag Method, Flags = &h0
+		Shared Function AverageForVariable(TeamNumber as string, Variable as String) As double
+		  Dim sql As String
+		  
+		  sql = "Select * from T_Game WHERE TeamNumber = " + TeamNumber.SQLizeText + " AND Variable = " + Variable.SQLizeText 
+		  
+		  Dim rs As RecordSet = gDB.SQLSelectRaiseOnError(sql)
+		  
+		  Dim iCnt As Integer
+		  dim dTotal as double
+		  
+		  While rs.eof = False
+		    
+		    Select Case Variable
+		    Case "BaseLine", "Gear1", "Gear2", "Gear3"
+		      If rs.field("Value").StringValue  = "Made" Then
+		        iCnt = iCnt + 1
+		      End
+		    Case "HighGoal"
+		      If rs.field("Value").StringValue  = "Attempted" Then
+		        iCnt = iCnt + 1
+		      End
+		    Case "ClimbingAttempted", "ClimbingMade"
+		      If rs.field("Value").StringValue  = "True" Then
+		        iCnt = iCnt + 1
+		      End
+		      
+		    Case "GearsAcquired", "GearsMade", "GearCycleAverage", "GearCycleCount", "GearCycleTotalTime"
+		      dTotal = dTotal + rs.Field("Value").StringValue.val
+		      
+		    Case Else
+		      Break
+		    end
+		    
+		    
+		    rs.MoveNext
+		  Wend
+		  
+		  If rs.RecordCount = 0 Then
+		    Return 0
+		  else
+		    Select Case Variable
+		    Case "BaseLine", "Gear1", "Gear2", "Gear3", "HighGoal", "ClimbingAttempted", "ClimbingMade"
+		      Return icnt/rs.RecordCount * 100
+		      
+		    Case "GearsAcquired", "GearsMade", "GearCycleAverage", "GearCycleCount", "GearCycleTotalTime"
+		      Return dTotal/rs.RecordCount
+		      
+		    Case Else
+		      Break
+		    End
+		  End
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Shared Function BaseSQL(bAsCount as Boolean = false) As String
 		  dim ars() as string
 		  
@@ -306,6 +362,7 @@ Inherits Data.ActiveRecordBase
 			Name="sScoutTeamNumber"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="sTeamNumber"
