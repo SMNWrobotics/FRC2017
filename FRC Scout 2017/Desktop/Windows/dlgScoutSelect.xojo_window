@@ -141,6 +141,7 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Match"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -175,6 +176,7 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Alliance"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -209,6 +211,7 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Team Number"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -270,6 +273,7 @@ Begin Window dlgScoutSelect
          Selectable      =   False
          TabIndex        =   2
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Scout Name"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -378,6 +382,7 @@ Begin Window dlgScoutSelect
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Scout Team Number"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -444,6 +449,7 @@ Begin Window dlgScoutSelect
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Level"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -467,6 +473,7 @@ Begin Window dlgScoutSelect
       HasBackColor    =   False
       Height          =   27
       HelpTag         =   ""
+      Index           =   -2147483648
       InitialParent   =   ""
       Left            =   408
       LockBottom      =   True
@@ -706,7 +713,7 @@ End
 		  oNewGame.sscoutName = txtScoutName.text.trim
 		  
 		  dim w as new winGame
-		  w.display oMatch, oTeam
+		  w.display oMatch, oTeam, sAllianceColor
 		  
 		  self.close
 		End Sub

@@ -35,7 +35,7 @@ Begin ContainerControl ccAutonomous
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
-      InitialValue    =   "Far Left\nPosition 1 (Left)\nPosition 2 (Middle)\nPosition 3 (Right)\nFar Right\nOther"
+      InitialValue    =   "A\nB\nC"
       Italic          =   False
       Left            =   171
       ListIndex       =   -1

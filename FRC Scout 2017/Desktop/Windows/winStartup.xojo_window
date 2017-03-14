@@ -722,9 +722,38 @@ End
 #tag Events bbImportMatchData
 	#tag Event
 		Sub Action()
-		  dim f as FolderItem = GetOpenFolderItem(filetypes1.SQLite)
+		  dim f as FolderItem = GetOpenFolderItem("")
 		  
 		  if f = nil then return //user cancelled
+		  
+		  dim mdb as New SQLiteDatabase
+		  
+		  mDB.DatabaseFile = f
+		  
+		  If mDB.Connect = False Then
+		    MsgBox "This does not appear to be an SQLite Database File."
+		    Return
+		  End
+		  
+		  Dim rs As RecordSet = mDB.TableSchema
+		  
+		  Dim bFound As Boolean
+		  While rs.eof = False
+		    Select Case rs.IdxField(1).StringValue
+		    Case "t_event", "t_game", "t_matches", "t_team", "T_Design"
+		      bFound = True
+		    Case Else
+		      //do nothing
+		    End
+		    rs.MoveNext
+		  Wend
+		  
+		  If bFound = False Then
+		    MsgBox "This does not appear to be an FRC Scout Database File."
+		    return
+		  End
+		  
+		  
 		  
 		  dim w as new winImport
 		  w.display(f)
@@ -736,7 +765,11 @@ End
 		Sub Action()
 		  //Get the database file and  copy it
 		  
-		  dim fExport as FolderItem = GetSaveFolderItem(FileTypes1.SQLite, "Exported Database.sqlite")
+		  Dim d As New date
+		  
+		  dim sName as string = "FRC Export " + d.SQLDateTime.ReplaceAll("/", "-").ReplaceAll(":", "-") + ".sqlite"
+		  
+		  dim fExport as FolderItem = GetSaveFolderItem(FileTypes1.SQLite, sName)
 		  
 		  if fExport = nil then return //user cancelled
 		  

@@ -302,6 +302,83 @@ Begin WindowMenuWindow winMatchList
          Visible         =   True
          Width           =   292
       End
+      Begin TextField txtFilter
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         CueText         =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "TabPanel1"
+         Italic          =   False
+         Left            =   466
+         LimitText       =   0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   False
+         ReadOnly        =   False
+         Scope           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   1
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   58
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   80
+      End
+      Begin Label Label7
+         AutoDeactivate  =   True
+         Bold            =   True
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "TabPanel1"
+         Italic          =   False
+         Left            =   407
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   4
+         TabPanelIndex   =   1
+         Text            =   "Filter"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   58
+         Transparent     =   True
+         Underline       =   False
+         Visible         =   True
+         Width           =   47
+      End
    End
 End
 #tag EndWindow
@@ -351,12 +428,28 @@ End
 		  
 		  if moEvent = nil then return
 		  
+		  dim sCompLevel as string = pmCompLevel.RowTag(pmCompLevel.ListIndex)
 		  //Show all Matches
-		  for each oRow as Data.t_matches in Data.t_matches.ListByEventTag(moEvent.skey, pmCompLevel.rowtag(pmCompLevel.listindex))
-		    lst.addrow str(oRow.imatch_number), oRow.sBlue_Team_1, oRow.sBlue_Team_2, oRow.sblue_team_3, oRow.sRed_Team_1, oRow.sRed_Team_2, oRow.sRed_Team_3
+		  For Each oRow As Data.t_matches In moEvent.GetMatches
 		    
-		    lst.RowTag(lst.LastIndex) = oRow
-		  next
+		    If oRow.sComp_Level = sCompLevel Then
+		      
+		      If txtFilter.Text = "" Or (oRow.sBlue_Team_1.InStr( txtFilter.Text) > 0 Or oRow.sBlue_Team_2.InStr( txtFilter.Text) > 0 Or oRow.sBlue_Team_3.InStr( txtFilter.Text) > 0 Or _
+		        oRow.sRed_Team_1.InStr( txtFilter.Text) > 0 OR oRow.sRed_Team_2.InStr( txtFilter.Text) > 0 OR oRow.sRed_Team_3.InStr( txtFilter.Text) > 0) then
+		        
+		        lst.addrow Str(oRow.imatch_number), oRow.sBlue_Team_1, oRow.sBlue_Team_2, oRow.sblue_team_3, oRow.sRed_Team_1, oRow.sRed_Team_2, oRow.sRed_Team_3
+		        
+		        lst.RowTag(lst.LastIndex) = oRow
+		      End
+		    end
+		  Next
+		  ' 
+		  ' 
+		  ' for each oRow as Data.t_matches in Data.t_matches.ListByEventTag(moEvent.skey, pmCompLevel.rowtag(pmCompLevel.listindex))
+		  ' lst.addrow str(oRow.imatch_number), oRow.sBlue_Team_1, oRow.sBlue_Team_2, oRow.sblue_team_3, oRow.sRed_Team_1, oRow.sRed_Team_2, oRow.sRed_Team_3
+		  ' 
+		  ' lst.RowTag(lst.LastIndex) = oRow
+		  ' next
 		End Sub
 	#tag EndMethod
 
@@ -490,6 +583,13 @@ End
 		  me.addRowAndTag "Finals", "f"
 		  
 		  me.ListIndex = 0
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events txtFilter
+	#tag Event
+		Sub TextChange()
+		  List
 		End Sub
 	#tag EndEvent
 #tag EndEvents

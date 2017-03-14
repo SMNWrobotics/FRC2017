@@ -8,8 +8,8 @@ Begin Window winGame
    Frame           =   0
    FullScreen      =   False
    FullScreenButton=   False
-   HasBackColor    =   False
-   Height          =   546
+   HasBackColor    =   True
+   Height          =   604
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
@@ -62,7 +62,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   504
+      Top             =   562
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -94,7 +94,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   505
+      Top             =   563
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -127,7 +127,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   505
+      Top             =   563
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -341,7 +341,7 @@ Begin Window winGame
       AutoDeactivate  =   True
       Bold            =   False
       Enabled         =   True
-      Height          =   459
+      Height          =   450
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -362,7 +362,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   33
+      Top             =   100
       Underline       =   False
       Value           =   1
       Visible         =   True
@@ -391,7 +391,7 @@ Begin Window winGame
          TabIndex        =   0
          TabPanelIndex   =   1
          TabStop         =   True
-         Top             =   71
+         Top             =   138
          Transparent     =   True
          UseFocusRing    =   False
          Visible         =   True
@@ -425,7 +425,7 @@ Begin Window winGame
          TabIndex        =   0
          TabPanelIndex   =   2
          TabStop         =   True
-         Top             =   71
+         Top             =   138
          Transparent     =   True
          UseFocusRing    =   False
          Visible         =   True
@@ -460,7 +460,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   505
+      Top             =   563
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -494,11 +494,39 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   505
+      Top             =   563
       Transparent     =   False
       Underline       =   False
       Visible         =   True
       Width           =   86
+   End
+   Begin Canvas cvsRobotPic
+      AcceptFocus     =   False
+      AcceptTabs      =   False
+      AutoDeactivate  =   True
+      Backdrop        =   0
+      DoubleBuffer    =   False
+      Enabled         =   True
+      EraseBackground =   True
+      Height          =   92
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   592
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   12
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   8
+      Transparent     =   True
+      UseFocusRing    =   True
+      Visible         =   True
+      Width           =   318
    End
 End
 #tag EndWindow
@@ -516,7 +544,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Display(oMatch as Data.T_Matches, oTeam as Data.T_Team)
+		Sub Display(oMatch as Data.T_Matches, oTeam as Data.T_Team, sAllianceColor as String)
 		  moMatch = oMatch
 		  moTeam = oTeam
 		  
@@ -527,7 +555,13 @@ End
 		  
 		  Handle_Load
 		  
-		  btnSave.Enabled = true
+		  btnSave.Enabled = True
+		  
+		  If sAllianceColor = "Red" Then
+		    Self.BackColor = &cFDCED000
+		  Else
+		    Self.BackColor = &cD0D6FE00
+		  end
 		End Sub
 	#tag EndMethod
 
@@ -568,8 +602,17 @@ End
 		  ccTeleop1.load moMatch.skey, moTeam.sTeam_Number
 		  
 		  
+		  dim oValue as Data.T_Design = Data.T_Design.LoadTeamValue(moTeam.sTeam_Number, "Robot Picture")
 		  
-		  
+		  If oValue.sValue <> "" Then
+		    Dim sText As String = oValue.sValue 
+		    
+		    Dim mb As MemoryBlock = DecodeBase64(sText)
+		    
+		    pic = Picture.FromData(mb)
+		    
+		    cvsRobotPic.Invalidate(false)
+		  End
 		End Sub
 	#tag EndMethod
 
@@ -600,6 +643,10 @@ End
 		moTeam As Data.T_Team
 	#tag EndProperty
 
+	#tag Property, Flags = &h0
+		pic As Picture
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
@@ -611,6 +658,19 @@ End
 		  Handle_Save
 		  
 		  Self.close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events cvsRobotPic
+	#tag Event
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  If pic = Nil Then Return
+		  
+		  Dim dRatio As Double
+		  
+		  dRatio = Min( g.Height/pic.Height, g.Width/pic.Width)
+		  
+		  g.DrawPicture pic, 0, 0, pic.Width * dRatio, pic.Height * dRatio, 0, 0, pic.Width, pic.Height
 		End Sub
 	#tag EndEvent
 #tag EndEvents

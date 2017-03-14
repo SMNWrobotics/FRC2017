@@ -165,6 +165,18 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Method, Flags = &h21
+		Private Function DesignTeamExists(sTeamNumber as String, sVariable as string) As boolean
+		  Dim s As String
+		  
+		  s = "Select count(*) FROM T_Design where Team_Number = " + sTeamNumber.SQLizeText + " AND Variable = " + sVariable.SQLizeText + " AND Value <> ''"
+		  
+		  Dim rs As RecordSet = gdb.SQLSelectRaiseOnError(s)
+		  
+		  Return rs.IdxField(1).IntegerValue > 0
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h0
 		Sub Display(f as FolderItem)
 		  mF = f
@@ -173,6 +185,44 @@ End
 		  
 		  self.ShowModal
 		  
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub IMport_Design()
+		  Dim s As String
+		  
+		  s = "Select * from T_Design"
+		  
+		  Dim rs As RecordSet = mDB.SQLSelect(s)
+		  
+		  mDB.SQLExecute("BEGIN Transaction")
+		  
+		  While rs.eof = False
+		    
+		    Dim sTeamNumber As String = rs.Field("Team_Number").StringValue
+		    Dim sVariable As String = rs.Field("Variable").StringValue
+		    
+		    //Do we already have MatchKey and Team?
+		    If DesignTeamExists(sTeamNumber, sVariable) = False Then
+		      
+		      Dim dbr As New DatabaseRecord
+		      dbr.column("Variable") = rs.Field("Variable").StringValue
+		      dbr.column("Value") = rs.Field("Value").StringValue
+		      dbr.column("Team_Number") = rs.Field("Team_Number").StringValue
+		      
+		      gdb.InsertRecord("T_Design", dbr)
+		      If gdb.error Then
+		        MsgBox "Error: " + gdb.ErrorMessage
+		        gdb.Rollback
+		      End
+		    End
+		    
+		    rs.MoveNext
+		  Wend
+		  
+		  gDB.Commit
 		  
 		End Sub
 	#tag EndMethod
@@ -191,15 +241,42 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Import_Games()
-		  dim s as string
+		  Dim s As String
 		  
-		  s = "INSERT INTO t_game (gameUUID, matchkey,teamkey,ScoutTeamKey,ScoutName,AutoNotes ,OtherNotes ,DefenseType2_ID,DefenseType3_ID,DefenseType4_ID,DefenseType5_ID,ScaleAttempted ,ScaleSuccessful ,HighShootAttempts,HighShootMade,LowShootAttempts,LowShootMade,Auto_LowBarBreechAttempted ,Auto_LowBarBreechSucceeded ,Auto_Defense2Attempted ,Auto_Defense2Succeeded,Auto_Defense3Attempted ,Auto_Defense3Succeeded ,Auto_Defense4Attempted ,Auto_Defense4Succeeded ,Auto_Defense5Attempted ,Auto_Defense5Succeeded ,Auto_DefenseReached ,Auto_HighShotAttempt ,Auto_HighShotMade ,Auto_LowShotAttempt ,Auto_LowShotMade ,Defense1Attempts ,Defense1Made ,Defense2Attempts,Defense2Made ,Defense3Attempts ,Defense3Made ,Defense4Attempts ,Defense4Made ,Defense5Attempts ,Defense5Made ,ChallengeAttempted ,ChallengeSucceeded) " + _
-		  " Select gameUUID, matchkey,teamkey,ScoutTeamKey,ScoutName,AutoNotes ,OtherNotes ,DefenseType2_ID,DefenseType3_ID,DefenseType4_ID,DefenseType5_ID,ScaleAttempted ,ScaleSuccessful ,HighShootAttempts,HighShootMade,LowShootAttempts,LowShootMade,Auto_LowBarBreechAttempted ,Auto_LowBarBreechSucceeded ,Auto_Defense2Attempted ,Auto_Defense2Succeeded,Auto_Defense3Attempted ,Auto_Defense3Succeeded ,Auto_Defense4Attempted ,Auto_Defense4Succeeded ,Auto_Defense5Attempted ,Auto_Defense5Succeeded ,Auto_DefenseReached ,Auto_HighShotAttempt ,Auto_HighShotMade ,Auto_LowShotAttempt ,Auto_LowShotMade ,Defense1Attempts ,Defense1Made ,Defense2Attempts,Defense2Made ,Defense3Attempts ,Defense3Made ,Defense4Attempts ,Defense4Made ,Defense5Attempts ,Defense5Made ,ChallengeAttempted ,ChallengeSucceeded from a.t_game " + _
-		  " WHERE  gameUUID Not In(select gameUUID from t_game) "
+		  s = "Select * from T_Game"
 		  
-		  gDB.SQLExecuteRaiseOnError(s)
+		  Dim rs As RecordSet = mDB.SQLSelect(s)
 		  
-		  'gameUUID, matchkey,teamkey,ScoutTeamKey,ScoutName,AutoNotes ,OtherNotes ,DefenseType2_ID,DefenseType3_ID,DefenseType4_ID,DefenseType5_ID,ScaleAttempted ,ScaleSuccessful ,HighShootAttempts,HighShootMade,LowShootAttempts,LowShootMade,Auto_LowBarBreechAttempted ,Auto_LowBarBreechSucceeded ,Auto_Defense2Attempted ,Auto_Defense2Succeeded,Auto_Defense3Attempted ,Auto_Defense3Succeeded ,Auto_Defense4Attempted ,Auto_Defense4Succeeded ,Auto_Defense5Attempted ,Auto_Defense5Succeeded ,Auto_DefenseReached ,Auto_HighShotAttempt ,Auto_HighShotMade ,Auto_LowShotAttempt ,Auto_LowShotMade ,Defense1Attempts ,Defense1Made ,Defense2Attempts,Defense2Made ,Defense3Attempts ,Defense3Made ,Defense4Attempts ,Defense4Made ,Defense5Attempts ,Defense5Made ,ChallengeAttempted ,ChallengeSucceeded
+		  gdb.SQLExecute("BEGIN Transaction")
+		  
+		  While rs.eof = False
+		    
+		    Dim sKey As String = rs.Field("MatchKey").StringValue
+		    Dim sTeamNumber As String = rs.Field("TeamNumber").StringValue
+		    Dim sVariable As String = rs.Field("Variable").StringValue
+		    //Do we already have MatchKey and Team?
+		    If MatchandTeamExist(sKey, sTeamNumber, sVariable) = false Then
+		      
+		      Dim dbr As New DatabaseRecord
+		      dbr.column("Variable") = rs.Field("Variable").StringValue
+		      dbr.column("Value") = rs.Field("Value").StringValue
+		      dbr.column("MatchKey") = rs.Field("MatchKey").StringValue
+		      dbr.column("TeamNumber") = rs.Field("TeamNumber").StringValue
+		      dbr.column("ScoutName") = rs.Field("ScoutName").StringValue
+		      dbr.column("ScoutTeamNumber") = rs.Field("ScoutTeamNumber").StringValue
+		      
+		      gdb.InsertRecord("T_Game", dbr)
+		      If gdb.error Then
+		        msgbox "Error: " + gdb.ErrorMessage
+		        gdb.Rollback
+		      end
+		    End
+		    
+		    rs.MoveNext
+		  Wend
+		  
+		  gDB.Commit
+		  
 		End Sub
 	#tag EndMethod
 
@@ -232,7 +309,8 @@ End
 		  
 		  if mDB.Connect = false then
 		    msgbox "This does not appear to be an SQLite Database File."
-		    self.close
+		    Self.close
+		    return
 		  end
 		  
 		  dim rs as RecordSet = mDB.TableSchema
@@ -240,7 +318,7 @@ End
 		  dim bFound as boolean
 		  while rs.eof = false
 		    select case rs.IdxField(1).StringValue
-		    case "t_event", "t_game", "t_matches", "t_team"
+		    case "t_event", "t_game", "t_matches", "t_team", "T_Design"
 		      bFound = true
 		    case else
 		      //do nothing
@@ -264,7 +342,11 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadEventsPopup()
-		  dim s as string = "Select * from t_event ORDER BY Short_Name"
+		  dim s as string
+		  
+		  
+		  
+		  s = "Select * from t_event ORDER BY Short_Name"
 		  
 		  dim rs as recordset = mDB.SQLSelectRaiseOnError(s)
 		  
@@ -276,6 +358,7 @@ End
 		  
 		  dim sKey as string = preferences.StringValue("EventKey")
 		  
+		  dim iIndex as integer = -1
 		  while rs.eof = false
 		    dim sID as string = rs.Field("key").StringValue
 		    dim sName as string = rs.Field("short_Name").StringValue + " " + rs.Field("start_date").StringValue
@@ -283,12 +366,26 @@ End
 		    
 		    if sID = sKey then
 		      //This is what the user has selected
-		      pmEvents.ListIndex = pmEvents.ListCount-1
+		      iIndex = pmEvents.ListCount-1
 		    end
 		    
 		    rs.MoveNext
-		  wend
+		  Wend
+		  
+		  pmEvents.ListIndex = iIndex
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function MatchandTeamExist(sKey as string, sTeamNumber as String, sVariable as String) As boolean
+		  Dim s As String
+		  
+		  s = "Select count(*) FROM t_Game where MatchKey = " + sKey.SQLizeText + " AND TeamNumber = " + sTeamNumber.SQLizeText + " AND Variable = " + sVariable.SQLizeText + " AND Value <> '';"
+		  
+		  Dim rs As RecordSet = gdb.SQLSelectRaiseOnError(s)
+		  
+		  return rs.IdxField(1).IntegerValue > 0
+		End Function
 	#tag EndMethod
 
 
@@ -334,6 +431,7 @@ End
 		  'Import_Event
 		  ' Import_Matches
 		  ' Import_Teams
+		  IMport_Design
 		  Import_Games
 		End Sub
 	#tag EndEvent

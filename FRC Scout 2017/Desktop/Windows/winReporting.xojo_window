@@ -53,7 +53,7 @@ Begin WindowMenuWindow winReporting
       TextUnit        =   0
       Top             =   0
       Underline       =   False
-      Value           =   1
+      Value           =   0
       Visible         =   True
       Width           =   992
       Begin AlternatingList lstAutonomous
