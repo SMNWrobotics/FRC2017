@@ -37,7 +37,7 @@ public class _CameraCenter extends Command {
     	if (currentX == -1) {
     		return;
     	}
-    		
+    	
     	double dif = currentX / targx;
     	
     	System.out.println("Percentage off: " + dif);
@@ -46,19 +46,19 @@ public class _CameraCenter extends Command {
     		//target is off center
     		if ( currentX > targx ) {
     			//turn left
-    			System.out.println("turn left");
+    			System.out.println("turnn left");
 //    			Robot.driver.setMotorsMecanum(0,0,0.2);
-//    			RobotMap.driveDriveTrain.arcadeDrive(0.0, 0.2);
+    			RobotMap.driveDriveTrain.arcadeDrive(0.0, -0.59);
     		} else if ( currentX < targx ) {
     			//turn right
-    			System.out.println("turn right");
+    			System.out.println("turnn right");
 //    			Robot.driver.setMotorsMecanum(0,0,-0.2);
-//    			RobotMap.driveDriveTrain.arcadeDrive(0.0, -0.2);
+    			RobotMap.driveDriveTrain.arcadeDrive(0.0, 0.59);
     		}
     	} else {
     		System.out.println("Driving Straight");
 //    		Robot.driver.setMotorsMecanum(0,0.2,0);
-//    		RobotMap.driveDriveTrain.arcadeDrive(0.2, 0.0);
+    		RobotMap.driveDriveTrain.arcadeDrive(-0.5, 0.0);
     	}
     }
 
