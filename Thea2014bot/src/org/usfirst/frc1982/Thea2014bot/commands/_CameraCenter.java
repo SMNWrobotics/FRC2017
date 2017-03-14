@@ -48,12 +48,12 @@ public class _CameraCenter extends Command {
     			//turn left
     			System.out.println("turnn left");
 //    			Robot.driver.setMotorsMecanum(0,0,0.2);
-    			RobotMap.driveDriveTrain.arcadeDrive(0.0, -0.59);
+    			RobotMap.driveDriveTrain.arcadeDrive(0.0, -0.63);
     		} else if ( currentX < targx ) {
     			//turn right
     			System.out.println("turnn right");
 //    			Robot.driver.setMotorsMecanum(0,0,-0.2);
-    			RobotMap.driveDriveTrain.arcadeDrive(0.0, 0.59);
+    			RobotMap.driveDriveTrain.arcadeDrive(0.0, 0.63);
     		}
     	} else {
     		System.out.println("Driving Straight");

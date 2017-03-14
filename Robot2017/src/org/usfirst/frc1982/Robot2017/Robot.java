@@ -23,6 +23,7 @@ import org.usfirst.frc1982.Robot2017.subsystems.ShooterServoSystem;
 import org.usfirst.frc1982.Robot2017.subsystems.Winch;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -134,6 +135,8 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
         SmartDashboard.putData("IMU", gyro);
+        
+        
     }
 
     public void autonomousInit() {

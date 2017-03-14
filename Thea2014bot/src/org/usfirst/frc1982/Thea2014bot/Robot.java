@@ -24,6 +24,8 @@ import org.usfirst.frc1982.Thea2014bot.subsystems.lift;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -111,52 +113,6 @@ public class Robot extends IterativeRobot {
 //        SmartDashboard.putData( Scheduler.getInstance() );
         SmartDashboard.putData( Goal.TITLE, goal );
         
-//        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture(); //use this if you want an image in addition to the processed image
-////        UsbCamera camera = new UsbCamera("USB Camera 0", 0); //use this if you only want to see processed images on the dashboard
-//        camera.setResolution( iRes.getWidth(), iRes.getHeight() );
-////
-////        
-//        // Set the brightness, as a percentage (0-100).
-//        camera.setBrightness(0);
-////        
-////         //Set the exposure to manual, as a percentage (0-100).
-////        camera.setExposureManual(50);
-////        
-////         //Set the white balance to manual, with specified color temperature.
-////        camera.setWhiteBalanceManual(50);
-//        
-//        CvSource outputStream = CameraServer.getInstance().putVideo( "Blur", iRes.getWidth(), iRes.getHeight() );
-//        GripPipeline gp = new GripPipeline();
-
-//        cameraView = new CameraView();
-//        visionThread = cameraView.getVisionThread();
-        
-        
-//        visionThread = new VisionThread( camera, gp, pipeline -> {
-//        		if (0 == ctr.incrementAndGet() % 50)
-//        		{
-////        			System.out.println( "Current frame... (" + ctr.get() + ")" );
-////        			Utils.show( gp.filterContoursOutput() );
-////        			double[] areas = table.getNumberArray("area", defaultValue);
-//        			System.out.print("areas: ");
-////        			for (double area : areas) {
-////        				System.out.print(area + " \n");
-////        			}
-//        			System.out.println("");
-//
-//        			System.out.println( "Current frame... (" + ctr.get() + ")" );
-//        			Utils.show( gp.filterContoursOutput() );
-//
-//        		}
-//        		
-//        		outputStream.putFrame( gp.hslThreshold1Output() );
-////        		outputStream.putFrame( gp.maskOutput() );
-////        		outputStream.putFrame( gp.rgbThresholdOutput() );
-//        		
-//        });
-        
-//        visionThread.start();
-        
         
     }
 
@@ -167,16 +123,16 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
     	
     }
-
+    
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
         double current = ((double) irSensor.getValue()) / 1000.0;
 //        System.out.println("IR sensor output: " + current + " volts");
     }
-
+    
     public void autonomousInit() {
         // schedule the autonomous command.
-//    	autonomousCommand = getAutonomousProgram();
+    	autonomousCommand = getAutonomousProgram();
         if (autonomousCommand != null) autonomousCommand.start();
     }
     
@@ -188,14 +144,24 @@ public class Robot extends IterativeRobot {
     	DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
     	System.out.println( "Alliance = " + alliance.name() );
     	
-    	int position = DriverStation.getInstance().getLocation();
-    	System.out.println( "Driver Station Position = " + position );
+    	////Position on the driver station, however is not necessarily where our robot will be on the field
+//    	int position = DriverStation.getInstance().getLocation();
+//    	System.out.println( "Driver Station Position = " + position );
+    	int poisition = 0;
+    	boolean position = oi.AutoOnLeft.get();
     	
     	/*
-    	 * The Goal is set from the Smart Dashboard.
+    	 * The Goal is set from two switches on the operator box.
     	 */
-    	Goal g = goal.getSelected();
-    	System.out.println( "Selected Goal = " + g.getLabel() );
+    	Goal g;
+    	boolean gear = oi.AutoGearButton.get();
+    	if (gear) {
+    		g = Goal.GEAR;
+    	} else {
+    		g = Goal.DO_NOTHING;
+    	}
+//    	Goal g = goal.getSelected();
+//    	System.out.println( "Selected Goal = " + g.getLabel() );
     	
     	/*
     	 * The AutonomousPrograms class encapsulates the logic to map from

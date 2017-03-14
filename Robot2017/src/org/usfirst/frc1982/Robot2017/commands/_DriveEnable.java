@@ -59,37 +59,39 @@ public class _DriveEnable extends Command {
 //    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(Robot.oi.driverJoystick.getX(), Robot.oi.driverJoystick.getY(), Robot.oi.driverJoystick.getTwist(), 0);
     	
     	
-    	/////translate joystick input to mecanum output between -1, and 1 for each wheel (depending on joystick X, Y, and Twist)
-        double xIn = Robot.oi.driverJoystick.getX();
+//    	/////translate joystick input to mecanum output between -1, and 1 for each wheel (depending on joystick X, Y, and Twist)
+//        double xIn = Robot.oi.driverJoystick.getX();
+//    	
+//        double yIn = Robot.oi.driverJoystick.getY();
+//        // Negate y for the joystick.
+//        yIn = -yIn;
+//        
+//        double rotation = Robot.oi.driverJoystick.getTwist()/2;
+//        
+//        
+//        //////use for field absolute driving
+////        // Compenstate for gyro angle.
+////        double[] rotated = rotateVector(xIn, yIn, gyroAngle);
+////        xIn = rotated[0];
+////        yIn = rotated[1];
+//        
+//        
+////        /////outputs between -1 and 1 (full power forwards and backwards) based on joystick
+////        double frontLeft = xIn + yIn + rotation;
+////        double frontRight = -xIn + yIn - rotation;
+////        double rearLeft = -xIn + yIn + rotation;
+////        double rearRight = xIn + yIn - rotation;
+//        
+//        
+//        double[] wheelSpeeds = new double[4];
+//        wheelSpeeds[0] = xIn + yIn + rotation; //front left
+//        wheelSpeeds[1] = -xIn + yIn - rotation; //front right
+//        wheelSpeeds[2] = -xIn + yIn + rotation; //rear left
+//        wheelSpeeds[3] = xIn + yIn - rotation; //rear right
+//        normalize(wheelSpeeds);
+        
+    	Robot.driver.setMotorsBasedOnJoystick();
     	
-        double yIn = Robot.oi.driverJoystick.getY();
-        // Negate y for the joystick.
-        yIn = -yIn;
-        
-        double rotation = Robot.oi.driverJoystick.getTwist()/2;
-        
-        
-        //////use for field absolute driving
-//        // Compenstate for gyro angle.
-//        double[] rotated = rotateVector(xIn, yIn, gyroAngle);
-//        xIn = rotated[0];
-//        yIn = rotated[1];
-        
-        
-//        /////outputs between -1 and 1 (full power forwards and backwards) based on joystick
-//        double frontLeft = xIn + yIn + rotation;
-//        double frontRight = -xIn + yIn - rotation;
-//        double rearLeft = -xIn + yIn + rotation;
-//        double rearRight = xIn + yIn - rotation;
-        
-        
-        double[] wheelSpeeds = new double[4];
-        wheelSpeeds[0] = xIn + yIn + rotation; //front left
-        wheelSpeeds[1] = -xIn + yIn - rotation; //front right
-        wheelSpeeds[2] = -xIn + yIn + rotation; //rear left
-        wheelSpeeds[3] = xIn + yIn - rotation; //rear right
-        normalize(wheelSpeeds);
-        
 //        RobotMap.frontLeftPID.setSetpoint(wheelSpeeds[0] * maxSpeed);
 //        RobotMap.frontRightPID.setSetpoint(wheelSpeeds[1] * maxSpeed);
 //        RobotMap.backLeftPID.setSetpoint(wheelSpeeds[2] * maxSpeed);

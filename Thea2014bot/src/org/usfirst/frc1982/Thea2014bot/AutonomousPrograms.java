@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousPrograms {
 
 	public static Command mapToProgram(Alliance alliance, int position, Goal g) {
-		return new AutoMid();
+		if (g == Goal.GEAR) {
+			
+		}
 	}
 }

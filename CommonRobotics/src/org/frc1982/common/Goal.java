@@ -6,6 +6,7 @@ public enum Goal {
 	DO_NOTHING( "Do Nothing" )
 	, BASELINE( "BaseLine" )
 	, GEAR( "Gear" )
+	, GEAR_AND_BASELINE( "Gear and Baseline" )
 	;
 	
 	public static final String TITLE = "Goal";
