@@ -1,13 +1,15 @@
 package org.usfirst.frc1982.Thea2014bot.commands;
 
 import org.frc1982.common.vision.CameraView;
+import org.usfirst.frc1982.Thea2014bot.Robot;
+import org.usfirst.frc1982.Thea2014bot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 public class _CameraCenter extends Command {
     
-	private static final double maxX = 1.05;
-	private static final double minX = 0.95;
+	private static final double maxX = 1.10;
+	private static final double minX = 0.90;
 	
 	private CameraView camView;
 	private double targx;
@@ -21,6 +23,7 @@ public class _CameraCenter extends Command {
     protected void initialize() {
     	targx = CameraView.iRes.getWidth() / 2;
     	System.out.println( "Target X value: " + targx );
+    	currentX = 0.0;
     }
     
     private double currentX = 0.0;
@@ -28,22 +31,46 @@ public class _CameraCenter extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	currentX = camView.getCenterX();
-    	if ( currentX > targx ) {
-    		//turn left
+    	
+    	System.out.println("Camera Center X (pixels): " + currentX);
+    	
+    	if (currentX == -1) {
+    		return;
+    	}
+    		
+    	double dif = currentX / targx;
+    	
+    	System.out.println("Percentage off: " + dif);
+    	
+    	if ( dif < minX || dif > maxX ) {
+    		//target is off center
+    		if ( currentX > targx ) {
+    			//turn left
+    			System.out.println("turn left");
+//    			Robot.driver.setMotorsMecanum(0,0,0.2);
+//    			RobotMap.driveDriveTrain.arcadeDrive(0.0, 0.2);
+    		} else if ( currentX < targx ) {
+    			//turn right
+    			System.out.println("turn right");
+//    			Robot.driver.setMotorsMecanum(0,0,-0.2);
+//    			RobotMap.driveDriveTrain.arcadeDrive(0.0, -0.2);
+    		}
     	} else {
-    		//turn right
+    		System.out.println("Driving Straight");
+//    		Robot.driver.setMotorsMecanum(0,0.2,0);
+//    		RobotMap.driveDriveTrain.arcadeDrive(0.2, 0.0);
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if ( currentX < 0 ) {
-    		return false;
-    	}
-    	double dif = currentX / targx;
-    	if ( dif < maxX && dif > minX ) {
-    		return true;
-    	}
+//    	if ( currentX < 0 ) {
+//    		return false;
+//    	}
+//    	double dif = currentX / targx;
+//    	if ( dif < maxX && dif > minX ) {
+//    		return true;
+//    	}
         return false;
     }
 

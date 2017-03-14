@@ -19,6 +19,7 @@ public class _TurnTo extends PIDCommand {
 	}
 	
 	protected void initialize() {
+		System.out.println("_TurnTo command running");
 		Robot.gyro.reset();
 		done = false;
 		ctr = 0;

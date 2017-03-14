@@ -8,6 +8,7 @@ public class AutoTest extends CommandGroup {
 	
 	public AutoTest(CameraView camView) {
 		
+//		addSequential(new _TurnTo(360, 1.0));
 		addSequential( new _CameraCenter( camView ) );
 		
 	}

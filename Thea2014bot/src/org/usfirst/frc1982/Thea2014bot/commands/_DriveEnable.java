@@ -42,7 +42,7 @@ public class _DriveEnable extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	RobotMap.driveDriveTrain.arcadeDrive(Robot.oi.favJoystickII.getTwist(), Robot.oi.favJoystickII.getY());
+    	RobotMap.driveDriveTrain.arcadeDrive( Robot.oi.favJoystickII.getY(), Robot.oi.favJoystickII.getTwist() );
     }
 
     // Make this return true when this Command no longer needs to run execute()

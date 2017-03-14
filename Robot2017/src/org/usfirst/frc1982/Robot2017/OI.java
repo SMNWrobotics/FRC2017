@@ -19,7 +19,7 @@ import org.usfirst.frc1982.Robot2017.commands._DriveEnableRaw;
 import org.usfirst.frc1982.Robot2017.commands._Intake;
 import org.usfirst.frc1982.Robot2017.commands._ServoBackward;
 import org.usfirst.frc1982.Robot2017.commands._ServoForward;
-import org.usfirst.frc1982.Robot2017.commands._Shoot;
+import org.usfirst.frc1982.Robot2017.commands._ToggleShoot;
 import org.usfirst.frc1982.Robot2017.commands._UnlockArm;
 import org.usfirst.frc1982.Robot2017.commands._WinchManual;
 
@@ -90,7 +90,7 @@ public class OI {
         intakeButton = new JoystickButton(driverJoystick, 10);
         intakeButton.whileHeld(new _Intake());
         shoot = new JoystickButton(driverJoystick, 1);
-        shoot.whenPressed(new _Shoot());
+        shoot.whenPressed(new _ToggleShoot());
         automateServo = new JoystickButton(driverJoystick, 2);
         automateServo.whileHeld(new _AutomateServo());
         servoBackward = new JoystickButton(driverJoystick, 10);
