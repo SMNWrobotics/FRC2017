@@ -47,6 +47,7 @@ Begin ContainerControl ccImage Implements itrRowDesign
       Selectable      =   False
       TabIndex        =   0
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Untitled"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -158,6 +159,7 @@ End
 	#tag Method, Flags = &h0
 		Sub Save()
 		  // Part of the itrRowDesign interface.
+		  If pic = Nil Then Return
 		  
 		  //do the same save as the iOS version.
 		  dim mb as MemoryBlock = pic.GetData(picture.FormatPNG)

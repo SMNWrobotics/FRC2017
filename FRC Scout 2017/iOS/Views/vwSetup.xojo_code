@@ -36,7 +36,7 @@ Begin iosView vwSetup
       AutoLayout      =   txtName, 1, <Parent>, 1, False, +1.00, 1, 1, 86, 
       AutoLayout      =   txtName, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
       AutoLayout      =   txtName, 8, , 0, True, +1.00, 1, 1, 31, 
-      AutoLayout      =   txtName, 3, , 0, False, +1.00, 1, 1, 163, 
+      AutoLayout      =   txtName, 3, <Parent>, 3, False, +1.00, 1, 1, 163, 
       Enabled         =   True
       Height          =   31.0
       KeyboardType    =   "0"
@@ -122,7 +122,7 @@ Begin iosView vwSetup
       AutoLayout      =   txtTeamNumber, 1, Label3, 2, False, +1.00, 1, 1, *kStdControlGapH, 
       AutoLayout      =   txtTeamNumber, 7, , 0, False, +1.00, 1, 1, 234, 
       AutoLayout      =   txtTeamNumber, 8, , 0, True, +1.00, 1, 1, 31, 
-      AutoLayout      =   txtTeamNumber, 3, , 0, False, +1.00, 1, 1, 125, 
+      AutoLayout      =   txtTeamNumber, 3, <Parent>, 3, False, +1.00, 1, 1, 125, 
       Enabled         =   True
       Height          =   31.0
       KeyboardType    =   "4"

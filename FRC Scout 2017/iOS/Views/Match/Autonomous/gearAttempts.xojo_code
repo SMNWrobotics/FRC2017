@@ -90,11 +90,11 @@ End
 		  m_oGame = oGame
 		  
 		  select case m_oGame.sVariable
-		  case "Gear 1"
+		  case "Gear1"
 		    lblTitle.text = "Gear 1 (Left)"
-		  case "Gear 2"
+		  case "Gear2"
 		    lblTitle.text = "Gear 2 (Middle)"
-		  case "Gear 3"
+		  case "Gear3"
 		    lblTitle.text = "Gear 3 (Right)"
 		  end
 		  

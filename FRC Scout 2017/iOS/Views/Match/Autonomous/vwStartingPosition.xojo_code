@@ -46,7 +46,7 @@ End
 		  dim oCell as iOSTableCellData
 		  
 		  oCell = tbl.CreateCell
-		  oCell.text = "Far Left"
+		  oCell.text = "A"
 		  if m_oStartingPosition.sValue = oCell.Text then
 		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
 		  else
@@ -55,7 +55,7 @@ End
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
-		  oCell.text = "Position 1 (Left)"
+		  oCell.text = "B"
 		  if m_oStartingPosition.sValue = oCell.Text then
 		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
 		  else
@@ -64,7 +64,7 @@ End
 		  tbl.AddRow(0, oCell)
 		  
 		  oCell = tbl.CreateCell
-		  oCell.text = "Position 2 (Middle)"
+		  oCell.text = "C"
 		  if m_oStartingPosition.sValue = oCell.Text then
 		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
 		  else
@@ -72,32 +72,7 @@ End
 		  end
 		  tbl.AddRow(0, oCell)
 		  
-		  oCell = tbl.CreateCell
-		  oCell.text = "Position 3 (Right)"
-		  if m_oStartingPosition.sValue = oCell.Text then
-		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
-		  else
-		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.None
-		  end
-		  tbl.AddRow(0, oCell)
 		  
-		  oCell = tbl.CreateCell
-		  oCell.text = "Far Right"
-		  if m_oStartingPosition.sValue = oCell.Text then
-		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
-		  else
-		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.None
-		  end
-		  tbl.AddRow(0, oCell)
-		  
-		  oCell = tbl.CreateCell
-		  oCell.text = "Other"
-		  if m_oStartingPosition.sValue = oCell.Text then
-		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
-		  else
-		    oCell.AccessoryType = iOSTableCellData.AccessoryTypes.None
-		  end
-		  tbl.AddRow(0, oCell)
 		End Sub
 	#tag EndMethod
 

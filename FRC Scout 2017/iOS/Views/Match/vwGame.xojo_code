@@ -250,8 +250,15 @@ End
 		  //Team Data
 		  dim oTeam as DataFile.t_team = DataFile.t_team.FindByKey(Team)
 		  
-		  
-		  dim vw as new vwGameScouting(oMatch.skey, oTeam.sTeam_Number)
+		  dim sAlliance as text
+		  If oTeam.sTeam_Number = oMatch.sBlue_Team_1 Or _
+		    oTeam.sTeam_Number = oMatch.sBlue_Team_2 Or _
+		    oTeam.sTeam_Number = oMatch.sBlue_Team_3 Then
+		    sAlliance = "Blue"
+		  Else
+		    sAlliance = "Red"
+		  end
+		  dim vw as new vwGameScouting(oMatch.skey, oTeam.sTeam_Number, sAlliance)
 		  self.PushTo(vw)
 		End Sub
 	#tag EndEvent

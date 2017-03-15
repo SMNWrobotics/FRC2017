@@ -148,10 +148,34 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub SetGame(sMatchKey as text, sTeamNumber as text)
+		Sub SetGame(sMatchKey as text, sTeamNumber as text, sAlliance as text)
 		  m_sMatchKey = sMatchKey
 		  m_sTeamNumber = sTeamNumber
 		  LoadLIst
+		  
+		  ' ' ObjC Declare to get a ref to a class by its name
+		  ' Declare Function objc_getClass Lib "/usr/lib/libobjc.dylib" (aClassName As CString) As Ptr
+		  ' ' Here is the corresponding Xojo call
+		  ' Dim theUIColorClassRef As Ptr =  objc_getClass("UIColor")
+		  ' 
+		  ' ' UIKit Declare to create a color object
+		  ' Declare Function decl_GetColorWithRGBA Lib "UIKit" selector "colorWithRed:green:blue:alpha:" (UIColorClassRef As Ptr, red As Single, green As Single, blue As Single, alpha As Single) As Ptr
+		  ' ' Here is the corresponding Xojo call, where we create a flashy green color
+		  ' Dim myUIColorObject As ptr 
+		  ' If sAlliance = "Blue" Then
+		  ' myUIColorObject= decl_GetColorWithRGBA(theUIColorClassRef, (206 / 255), (207/ 255), (254 / 255), 1.0)
+		  ' Else
+		  ' myUIColorObject= decl_GetColorWithRGBA(theUIColorClassRef, (253 / 255), (185/ 255), (181 / 255), 1.0)
+		  ' End
+		  ' ' UIKit Declare to get a reference to a View from its ViewController
+		  ' Declare Function decl_GetView Lib "UIKit" selector "view" (aUIViewController As Ptr) As Ptr
+		  ' ' Here is the corresponding Xojo call (View.Self returns a ViewController)
+		  ' Dim myViewPtr As Ptr = decl_GetView(Self.Handle)
+		  ' 
+		  ' ' UIKit Declare to set the backgound color of a View
+		  ' Declare Sub decl_SetBackgroundColor Lib "UIKit" selector "setBackgroundColor:" (aUIView As Ptr, aUIColor As Ptr)
+		  ' ' Here is the corresponding Xojo call
+		  ' decl_SetBackgroundColor(myViewPtr, myUIColorObject)
 		End Sub
 	#tag EndMethod
 

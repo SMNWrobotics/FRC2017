@@ -527,6 +527,13 @@ End
 		  
 		End Sub
 	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  Dim d As Xojo.Core.Date = Xojo.Core.Date.now
+		  
+		  me.text = d.Year.ToText
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag Events btnRefresh
 	#tag Event
