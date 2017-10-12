@@ -19,7 +19,7 @@ import org.usfirst.frc1982.Robot2017.RobotMap;
 /**
  *
  */
-public class _CameraCenter extends Command {
+public class _CameraCenterNoStop extends Command {
 
 	private static final double maxX = 1.20;
 	private static final double minX = 0.80;
@@ -33,7 +33,7 @@ public class _CameraCenter extends Command {
 
     private boolean drivingStraight = false;
 	
-	public _CameraCenter(CameraView camView) {
+	public _CameraCenterNoStop(CameraView camView) {
 		this.camView = camView;
     }
 
@@ -103,14 +103,14 @@ public class _CameraCenter extends Command {
 //    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, -0.2, 0);
     				Robot.driver.setMotorsMecanum(0,0,-0.2);
     			}
-    		} else { //if target is in range
-    			System.out.println("Driving straight");
-    			
-    			drivingStraight = true;
-    			
-//    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0.2, 0, 0);
-    			Robot.driver.setMotorsMecanum(0,-0.25,0);
-    		}
+    		} //else { //if target is in range
+//    			System.out.println("Driving straight");
+//    			
+//    			drivingStraight = true;
+//    			
+////    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0.2, 0, 0);
+//    			Robot.driver.setMotorsMecanum(0,-0.25,0);
+//    		}
     	}
     }
     
@@ -118,15 +118,16 @@ public class _CameraCenter extends Command {
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double current = ((double) Robot.irSensor.getValue()) / 1000.0;
-    	if (current >= 1.6) {
-    		ctr++;
-    	}
-    	if (ctr > 10) {
-			return true;	
-		} else {
-			return false;
-		}
+//    	double current = ((double) Robot.irSensor.getValue()) / 1000.0;
+//    	if (current >= 1.6) {
+//    		ctr++;
+//    	}
+//    	if (ctr > 10) {
+//			return true;	
+//		} else {
+//			return false;
+//		}
+    	return false;
     }
 
     // Called once after isFinished returns true

@@ -16,7 +16,6 @@ public class _CameraCenter extends Command {
 	
 	public _CameraCenter(CameraView camView) {
 		this.camView = camView;
-		
     }
 
     // Called just before this Command runs the first time
@@ -58,7 +57,7 @@ public class _CameraCenter extends Command {
     	} else {
     		System.out.println("Driving Straight");
 //    		Robot.driver.setMotorsMecanum(0,0.2,0);
-    		RobotMap.driveDriveTrain.arcadeDrive(-0.5, 0.0);
+//    		RobotMap.driveDriveTrain.arcadeDrive(-0.5, 0.0);
     	}
     }
 

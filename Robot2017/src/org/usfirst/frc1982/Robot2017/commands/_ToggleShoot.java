@@ -42,13 +42,13 @@ public class _ToggleShoot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!Robot.shooterGoing) {
+//    	if (!Robot.shooterGoing) {
     	RobotMap.shootershooterMotor.set(Robot.oi.driverJoystick.getThrottle());
-    	Robot.shooterGoing = true;
-    	} else {
-    		RobotMap.shootershooterMotor.set(0.0);
-    		Robot.shooterGoing = false;
-    	}
+//    	Robot.shooterGoing = true;
+//    	} else {
+//    		RobotMap.shootershooterMotor.set(0.0);
+//    		Robot.shooterGoing = false;
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -60,7 +60,7 @@ public class Mover {
 	}
 	
 	public void setMotorsBasedOnJoystick() {
-		double sideMovement = Robot.oi.driverJoystick.getX();
+		double sideMovement = -Robot.oi.driverJoystick.getX();
 		double forwardMovement = Robot.oi.driverJoystick.getY();
 		double rotation = Robot.oi.driverJoystick.getTwist()/2; // divided by 2 for less sensitivity
 		//creates deadzone of .05 for the joystick (hopefully solves "clicking" problem in the motors while still)
@@ -90,6 +90,8 @@ public class Mover {
     	multFRB = SmartDashboard.getNumber("Multiplier for Front Right Back: ", multFRB);
     	multBLB = SmartDashboard.getNumber("Multiplier for Back Left Back: ", multBLB);
     	multBRB = SmartDashboard.getNumber("Multiplier for Back Right Back: ", multBRB);
+		
+		
 		
 		
         double[] wheelSpeeds = new double[4];

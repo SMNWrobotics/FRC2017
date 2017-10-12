@@ -18,6 +18,7 @@ import org.frc1982.common.Goal;
 import org.frc1982.common.vision.CameraView;
 import org.usfirst.frc1982.Thea2014bot.commands.AutoMid;
 import org.usfirst.frc1982.Thea2014bot.commands.AutoTest;
+import org.usfirst.frc1982.Thea2014bot.commands._CameraCenter;
 import org.usfirst.frc1982.Thea2014bot.subsystems.Drive;
 import org.usfirst.frc1982.Thea2014bot.subsystems.lift;
 
@@ -126,8 +127,8 @@ public class Robot extends IterativeRobot {
     
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
-        double current = ((double) irSensor.getValue()) / 1000.0;
-//        System.out.println("IR sensor output: " + current + " volts");
+        double current = ((double) irSensor.getVoltage());//) / 1000.0;
+        System.out.println("IR sensor output: " + current + " volts");
     }
     
     public void autonomousInit() {
@@ -167,7 +168,8 @@ public class Robot extends IterativeRobot {
     	 * The AutonomousPrograms class encapsulates the logic to map from
     	 * alliance, position, and goal to the desired program.
     	 */
-    	return AutonomousPrograms.mapToProgram( alliance, position, g );
+//    	return AutonomousPrograms.mapToProgram( alliance, position, g );
+    	return new _CameraCenter(cameraView);
     }
 
 	/**
