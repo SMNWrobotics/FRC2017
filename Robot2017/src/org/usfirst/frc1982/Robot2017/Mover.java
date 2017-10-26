@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Mover {
+	//TODO: remove/fix to new robot wheel stuffs
 	//class to control the motors with more control than RobotDrive class (allows output values to be multiplied by a constant)
 	private double multFL = 0.975;
 	private double multFR = 0.975;

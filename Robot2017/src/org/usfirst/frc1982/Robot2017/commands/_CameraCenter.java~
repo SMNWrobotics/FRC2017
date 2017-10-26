@@ -29,7 +29,7 @@ public class _CameraCenter extends Command {
 	
 	private int ctr = 0;
 	
-//	private double OldX = -1.0;
+	private double OldX = -1.0;
 
     private boolean drivingStraight = false;
 	
@@ -42,7 +42,7 @@ public class _CameraCenter extends Command {
     	targx = CameraView.iRes.getWidth() / 2;
     	System.out.println( "Target X value: " + targx );
     	currentX = 0.0;
-//    	OldX = 0.0;
+    	OldX = 0.0;
     	ctr = 0;
     }
     
@@ -118,9 +118,6 @@ public class _CameraCenter extends Command {
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//TODO: look into accessing files from Roborio / getting networktables from the driving computer
-    	//TODO: document the IR sensor's values at different distances so that the 1.6 value makes sense
-    	//TODO: also figure out the method call for the IR sensor
     	double current = ((double) Robot.irSensor.getValue()) / 1000.0;
     	if (current >= 1.6) {
     		ctr++;

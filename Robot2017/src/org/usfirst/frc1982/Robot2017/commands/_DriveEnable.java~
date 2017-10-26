@@ -90,7 +90,6 @@ public class _DriveEnable extends Command {
 //        wheelSpeeds[3] = xIn + yIn - rotation; //rear right
 //        normalize(wheelSpeeds);
         
-    	//TODO: switch this to the drivetrain mecanum drive (for testing if the motors actually work right)
     	Robot.driver.setMotorsBasedOnJoystick();
     	
 //        RobotMap.frontLeftPID.setSetpoint(wheelSpeeds[0] * maxSpeed);
