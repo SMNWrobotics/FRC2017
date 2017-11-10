@@ -167,7 +167,7 @@ public class Robot extends IterativeRobot {
 //        SmartDashboard.putNumber("Front Right Encoder Distance", RobotMap.driveEncoderFrontRight.getDistance());
         displayEncoderValues(false);
         
-        System.out.println(RobotMap.intakeLimitBot.get());
+//        System.out.println(RobotMap.intakeLimitBot.get());
         
         //reading distance away from IR sensor
         double current = ((double) irSensor.getValue()) / 1000.0;

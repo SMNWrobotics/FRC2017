@@ -85,6 +85,6 @@ public class _Move extends Command {
     
     private double getAverageDist() {
     	//returns the average distance (found from the front two encoders)
-    	return (RobotMap.driveEncoderFrontRight.getDistance() + RobotMap.driveEncoderFrontLeft.getDistance())/2;
+    	return (RobotMap.driveEncoderFrontRight.getDistance());// + RobotMap.driveEncoderFrontLeft.getDistance())/2;
     }
 }

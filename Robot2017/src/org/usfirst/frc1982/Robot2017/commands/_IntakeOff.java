@@ -47,9 +47,9 @@ public class _IntakeOff extends Command {
 //    	RobotMap.intakeMotor.set(.5);
     	RobotMap.intakeRollerMot.set(0.0);
     	if (!RobotMap.intakeLimitTop.get()) { //intake mechanism is not at the bottom position yet:
-    		RobotMap.intakeMotor.set(.25);
+    		RobotMap.intakeMotor.set(.35);
     	} else {
-    		RobotMap.intakeMotor.set(0.0);
+    		RobotMap.intakeMotor.set(0.20);
     	}
     }
 
