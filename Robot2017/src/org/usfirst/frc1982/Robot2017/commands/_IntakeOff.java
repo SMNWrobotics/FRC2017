@@ -38,21 +38,28 @@ public class _IntakeOff extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.intakeRollerMot.set(0.0);
+//    	RobotMap.intakeRollerMot.set(0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.intakeMotor.set(.5);
+//    	System.out.println("Intake Off is running");
+//    	RobotMap.intakeMotor.set(.5);
+    	RobotMap.intakeRollerMot.set(0.0);
+    	if (!RobotMap.intakeLimitTop.get()) { //intake mechanism is not at the bottom position yet:
+    		RobotMap.intakeMotor.set(.25);
+    	} else {
+    		RobotMap.intakeMotor.set(0.0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (RobotMap.intakeLimitTop.get()) {
-    		return true;
-    	} else {
+//    	if (RobotMap.intakeLimitTop.get()) {
+//    		return true;
+//    	} else {
     		return false;
-    	}
+//    	}
     }
 
     // Called once after isFinished returns true

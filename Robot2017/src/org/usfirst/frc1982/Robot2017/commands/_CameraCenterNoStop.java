@@ -61,7 +61,8 @@ public class _CameraCenterNoStop extends Command {
     		if (drivingStraight) { //if it was driving straight before it lost the contours
     			System.out.println("Continuing to drive straight");
     			
-    			Robot.driver.setMotorsMecanum(0,-0.25,0);
+    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, -0.25, 0, 0);
+//    			Robot.driver.setMotorsMecanum(0,-0.25,0);
     		}
     		ctr++;
     		
@@ -93,15 +94,15 @@ public class _CameraCenterNoStop extends Command {
     				
     				System.out.println("turning left");
     				
-//    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0.2, 0);
-    				Robot.driver.setMotorsMecanum(0,0,0.2);
+    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0.2, 0);
+//    				Robot.driver.setMotorsMecanum(0,0,0.2);
     			} else if ( currentX < targx ) {
     				//turn right
     				
     				System.out.println("turning right");
     				
-//    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, -0.2, 0);
-    				Robot.driver.setMotorsMecanum(0,0,-0.2);
+    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, -0.2, 0);
+//    				Robot.driver.setMotorsMecanum(0,0,-0.2);
     			}
     		} //else { //if target is in range
 //    			System.out.println("Driving straight");

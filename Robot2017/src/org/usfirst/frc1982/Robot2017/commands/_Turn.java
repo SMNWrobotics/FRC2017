@@ -1,6 +1,7 @@
 package org.usfirst.frc1982.Robot2017.commands;
 
 import org.usfirst.frc1982.Robot2017.Robot;
+import org.usfirst.frc1982.Robot2017.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -19,7 +20,8 @@ public class _Turn extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.driver.setMotorsMecanum(0.0, 0.0, speed);
+		RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, speed, 0);
+//		Robot.driver.setMotorsMecanum(0.0, 0.0, speed);
 	}
 	
 	

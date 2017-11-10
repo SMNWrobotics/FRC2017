@@ -94,8 +94,8 @@ public class OI {
         AutoOnRight = new JoystickButton(opBox, 14);
         
         intake = new JoystickButton(opBox, 15);
-        intake.whenPressed(new _IntakeOn());
-        intake.whenReleased(new _IntakeOff());
+        intake.whenPressed(new _IntakeOn()); //when the switch is pressed, the intake contraption moves into the lower position
+        intake.whenReleased(new _IntakeOff()); //when the switch is released the intake moves to the upper position
         
         ReverseWinch = new JoystickButton( driverJoystick, 5);
         ReverseWinch.whileHeld( new _WinchOnReverse());

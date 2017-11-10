@@ -38,7 +38,7 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 public class Robot extends IterativeRobot {
 
 	
-	public static Mover driver;
+//	public static Mover driver;
 	
 	public static boolean shooterGoing = true;
 	
@@ -69,6 +69,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     RobotMap.init();
+    
     
     cameraView = new CameraView();
     visionThread = cameraView.getVisionThread();
@@ -110,15 +111,15 @@ public class Robot extends IterativeRobot {
 //        UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
 //        cam.setBrightness(2);
 //        cam.setResolution(320, 240);
-        
-        driver = new Mover(RobotMap.driveEncoderFrontLeft
-        		,RobotMap.driveEncoderFrontRight
-        		,RobotMap.driveEncoderBackLeft
-        		,RobotMap.driveEncoderBackRight
-        		,RobotMap.driveFrontLeft
-        		,RobotMap.driveFrontRight
-        		,RobotMap.driveBackLeft
-        		,RobotMap.driveBackRight);
+//        
+//        driver = new Mover(RobotMap.driveEncoderFrontLeft
+//        		,RobotMap.driveEncoderFrontRight
+//        		,RobotMap.driveEncoderBackLeft
+//        		,RobotMap.driveEncoderBackRight
+//        		,RobotMap.driveFrontLeft
+//        		,RobotMap.driveFrontRight
+//        		,RobotMap.driveBackLeft
+//        		,RobotMap.driveBackRight);
         
         
     }
@@ -129,11 +130,44 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     }
-
+    
+    private void displayEncoderValues(boolean printToo) {
+    	//printing distances from encoders:
+    	SmartDashboard.putNumber("Front Right Encoder Distance", RobotMap.driveEncoderFrontRight.getDistance());
+    	SmartDashboard.putNumber("Front Left Encoder Distance", RobotMap.driveEncoderFrontLeft.getDistance());
+    	SmartDashboard.putNumber("Back Right Encoder Distance", RobotMap.driveEncoderBackRight.getDistance());
+    	SmartDashboard.putNumber("Back Left Encoder Distance", RobotMap.driveEncoderBackLeft.getDistance());
+    	
+    	//printing counts from encoder
+    	SmartDashboard.putNumber("Front Right Encoder count", RobotMap.driveEncoderFrontRight.get());
+    	SmartDashboard.putNumber("Front Left Encoder count", RobotMap.driveEncoderFrontLeft.get());
+    	SmartDashboard.putNumber("Back Right Encoder count", RobotMap.driveEncoderBackRight.get());
+    	SmartDashboard.putNumber("Back Left Encoder count", RobotMap.driveEncoderBackLeft.get());
+    	
+    	//printing rates from encoder
+    	SmartDashboard.putNumber("Front Right Encoder Rate", RobotMap.driveEncoderFrontRight.getRate());
+    	SmartDashboard.putNumber("Front Left Encoder Rate", RobotMap.driveEncoderFrontLeft.getRate());
+    	SmartDashboard.putNumber("Back Right Encoder Rate", RobotMap.driveEncoderBackRight.getRate());
+    	SmartDashboard.putNumber("Back Left Encoder Rate", RobotMap.driveEncoderBackLeft.getRate());
+    	if (printToo) { //if the values need to be printed to the console in addition to the smartdashboard
+    		System.out.println("Front Right: " + RobotMap.driveEncoderFrontRight.get());
+    		System.out.println("Front Left: " + RobotMap.driveEncoderFrontLeft.get());
+    		System.out.println("Back Right: " + RobotMap.driveEncoderBackRight.get());
+    		System.out.println("Back Left: " + RobotMap.driveEncoderBackLeft.get());
+    	}
+    }
+    
+    
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
         //putting the gyro on the smartdashboard
         SmartDashboard.putData("IMU", gyro);
+        
+//        System.out.println("Front Right: " + RobotMap.driveEncoderFrontRight.get());
+//        SmartDashboard.putNumber("Front Right Encoder Distance", RobotMap.driveEncoderFrontRight.getDistance());
+        displayEncoderValues(false);
+        
+        System.out.println(RobotMap.intakeLimitBot.get());
         
         //reading distance away from IR sensor
         double current = ((double) irSensor.getValue()) / 1000.0;
@@ -145,6 +179,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
+    	RobotMap.driveDriveTrain.setSafetyEnabled(true);
 //    	RobotMap.driveDriveTrain.setSafetyEnabled(false);
         //resetting the encoders and gyro back to 0
     	RobotMap.driveEncoderBackRight.reset();
@@ -153,7 +188,8 @@ public class Robot extends IterativeRobot {
         RobotMap.driveEncoderFrontLeft.reset();
         
         //use method getAutonomousProgram to choose the autonomous program.
-        autonomousCommand = getAutonomousProgram();
+//        autonomousCommand = getAutonomousProgram();
+        autonomousCommand = new AutoTest();
         if (autonomousCommand != null) autonomousCommand.start();
     }
     
@@ -202,7 +238,7 @@ public class Robot extends IterativeRobot {
     	 * The AutonomousPrograms class encapsulates the logic to map from
     	 * alliance, position, and goal to the desired program.
     	 */
-    	//TODO: make notes, make enumeration for position (also rename position variable to startingPosition or robotStartingPosition
+    	//TODO: write notes, make enumeration for position (also rename position variable to startingPosition or robotStartingPosition
     	return AutonomousPrograms.mapToProgram( alliance, position, g );
     }
     
@@ -219,9 +255,10 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("FrontRightEncoder", RobotMap.driveEncoderFrontRight.get());
         SmartDashboard.putNumber("FrontLeftEncoder", RobotMap.driveEncoderFrontLeft.get());
     }
-
+    
     public void teleopInit() {
-//    	RobotMap.driveDriveTrain.setSafetyEnabled(true);
+//    	RobotMap.driveDriveTrain.setSafetyEnabled(false);
+    	RobotMap.driveDriveTrain.setSafetyEnabled(true);
     	
 //    	new _CameraCenter(cameraView);
     	
@@ -241,6 +278,12 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
+//        SmartDashboard.putNumber("Front Right Encoder Distance", RobotMap.driveEncoderFrontRight.getDistance());
+//        System.out.println("0,1 port Encoder output: " + RobotMap.driveEncoderFrontRight.get());
+        displayEncoderValues(false);
+        
+        
 //        System.out.println("Average Encoder Value: " + (RobotMap.driveEncoderBackLeft.get() + RobotMap.driveEncoderBackRight.get() + RobotMap.driveEncoderFrontLeft.get() + RobotMap.driveEncoderFrontRight.get()) / 4);
 //        System.out.println("Gyro Z Angle/4: " + gyro.getAngleZ()/4);
         //giving smartdashboard the current readout from the gyro Z angle and the raw encoder value from each wheel

@@ -91,7 +91,11 @@ public class _DriveEnable extends Command {
 //        normalize(wheelSpeeds);
         
     	//TODO: switch this to the drivetrain mecanum drive (for testing if the motors actually work right)
-    	Robot.driver.setMotorsBasedOnJoystick();
+//    	Robot.driver.setMotorsBasedOnJoystick();
+    	
+    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(Robot.oi.driverJoystick.getX(), Robot.oi.driverJoystick.getY(), Robot.oi.driverJoystick.getTwist(), 0.0);
+//    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0.0, .25, 0.0, 0.0);
+//    	Robot.driver.setMotorsMecanum(0.0, .25, 0.0);
     	
 //        RobotMap.frontLeftPID.setSetpoint(wheelSpeeds[0] * maxSpeed);
 //        RobotMap.frontRightPID.setSetpoint(wheelSpeeds[1] * maxSpeed);

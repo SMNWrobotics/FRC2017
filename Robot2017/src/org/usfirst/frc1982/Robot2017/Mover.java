@@ -10,7 +10,7 @@ public class Mover {
 	private double multFL = 0.975;
 	private double multFR = 0.975;
 	private double multBL = 1.125;
-	private double multBR = 0.72;
+	private double multBR = 0.8;
 	
 	private double multFLB = 1.1;
 	private double multFRB = 1.0;
@@ -61,9 +61,9 @@ public class Mover {
 	}
 	
 	public void setMotorsBasedOnJoystick() {
-		double sideMovement = -Robot.oi.driverJoystick.getX();
-		double forwardMovement = Robot.oi.driverJoystick.getY();
-		double rotation = Robot.oi.driverJoystick.getTwist()/2; // divided by 2 for less sensitivity
+		double sideMovement = Robot.oi.driverJoystick.getX();
+		double forwardMovement = -Robot.oi.driverJoystick.getY();
+		double rotation = -Robot.oi.driverJoystick.getTwist()/2; // divided by 2 for less sensitivity
 		//creates deadzone of .05 for the joystick (hopefully solves "clicking" problem in the motors while still)
 		if (Math.abs(sideMovement) < deadZone) {
 			sideMovement = 0;

@@ -61,7 +61,8 @@ public class _CameraCenter extends Command {
     		if (drivingStraight) { //if it was driving straight before it lost the contours
     			System.out.println("Continuing to drive straight");
     			
-    			Robot.driver.setMotorsMecanum(0,-0.25,0);
+//    			Robot.driver.setMotorsMecanum(0,-0.25,0);
+    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, -0.25, 0, 0);
     		}
     		ctr++;
     		
@@ -93,23 +94,23 @@ public class _CameraCenter extends Command {
     				
     				System.out.println("turning left");
     				
-//    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0.2, 0);
-    				Robot.driver.setMotorsMecanum(0,0,0.2);
+    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0.2, 0);
+//    				Robot.driver.setMotorsMecanum(0,0,0.2);
     			} else if ( currentX < targx ) {
     				//turn right
     				
     				System.out.println("turning right");
     				
-//    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, -0.2, 0);
-    				Robot.driver.setMotorsMecanum(0,0,-0.2);
+    				RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, -0.2, 0);
+//    				Robot.driver.setMotorsMecanum(0,0,-0.2);
     			}
     		} else { //if target is in range
     			System.out.println("Driving straight");
     			
     			drivingStraight = true;
     			
-//    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0.2, 0, 0);
-    			Robot.driver.setMotorsMecanum(0,-0.25,0);
+    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, -0.25, 0, 0);
+//    			Robot.driver.setMotorsMecanum(0,-0.25,0);
     		}
     	}
     }
@@ -118,10 +119,10 @@ public class _CameraCenter extends Command {
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//TODO: look into accessing files from Roborio / getting networktables from the driving computer
-    	//TODO: document the IR sensor's values at different distances so that the 1.6 value makes sense
-    	//TODO: also figure out the method call for the IR sensor
-    	double current = ((double) Robot.irSensor.getValue()) / 1000.0;
+    	//TODO: look into accessing files from Roborio / getting networktables from the driving computer: found you can access both a USB drive on the roborio and the roborio's filing system
+    	//TODO: Shuffleboard -> new dashboard!!!! - open source beta is on github currently!!
+    	//TODO: document the IR sensor's values at different distances so that the 1.6 value makes sense -> wyatt in midst of this currently (11/1/2017)
+    	double current = ((double) Robot.irSensor.getVoltage()) / 1000.0;
     	if (current >= 1.6) {
     		ctr++;
     	}

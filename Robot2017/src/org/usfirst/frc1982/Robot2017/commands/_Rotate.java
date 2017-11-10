@@ -49,7 +49,8 @@ public class _Rotate extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driver.setMotorsMecanum(0,0,m_Speed);
+    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, m_Speed, 0);
+//    	Robot.driver.setMotorsMecanum(0,0,m_Speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -63,12 +64,14 @@ public class _Rotate extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driver.setMotorsMecanum(0,0,0);
+    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0, 0);
+//    	Robot.driver.setMotorsMecanum(0,0,0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.driver.setMotorsMecanum(0,0,0);
+    	RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0, 0);
+//    	Robot.driver.setMotorsMecanum(0,0,0);
     }
 }
