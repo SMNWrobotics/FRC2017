@@ -27,7 +27,9 @@ public class _CameraCenter extends Command {
 	private CameraView camView;
 	private double targx;
 	
-	private int ctr = 0;
+	private long startTime;
+	private boolean ending = false;
+	private long timeOut = 2000;
 	
 //	private double OldX = -1.0;
 
@@ -42,8 +44,7 @@ public class _CameraCenter extends Command {
     	targx = CameraView.iRes.getWidth() / 2;
     	System.out.println( "Target X value: " + targx );
     	currentX = 0.0;
-//    	OldX = 0.0;
-    	ctr = 0;
+    	startTime = System.currentTimeMillis();
     }
     
     private double currentX = 0.0;
@@ -59,26 +60,17 @@ public class _CameraCenter extends Command {
     		System.out.println("Can't find the right number of contours");
     		
     		if (drivingStraight) { //if it was driving straight before it lost the contours
-    			System.out.println("Continuing to drive straight");
+    			System.out.println("Lost target, continuing to drive straight");
     			
 //    			Robot.driver.setMotorsMecanum(0,-0.25,0);
     			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, -0.25, 0, 0);
+    			if (System.currentTimeMillis() > startTime + timeOut) {
+    				ending = true;
+    			}
+    		} else { //robot was not driving straight when it lost the targets:
+    			System.out.println("Lost targets, rotating to reacquire");
+    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0.0, 0.0, -.15, 0.0);
     		}
-    		ctr++;
-    		
-//    		if (OldX > targx) {
-//    			//turn left
-//    			System.out.println("turn left");
-////    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, 0.2, 0);
-//    			Robot.driver.setMotorsMecanum(0,0,0.2);
-//    		} else if (OldX < targx) {
-//    			//turn right
-//    			System.out.println("turn right");
-////    			RobotMap.driveDriveTrain.mecanumDrive_Cartesian(0, 0, -0.2, 0);
-//    			Robot.driver.setMotorsMecanum(0,0,-0.2);
-//    		} else {
-////    			Robot.driver.setMotorsMecanum(0, 0, .3);
-//    		}
     		
     		return;
     	} else { //if it can find the targets...
@@ -122,15 +114,15 @@ public class _CameraCenter extends Command {
     	//TODO: look into accessing files from Roborio / getting networktables from the driving computer: found you can access both a USB drive on the roborio and the roborio's filing system
     	//TODO: Shuffleboard -> new dashboard!!!! - open source beta is on github currently!!
     	//TODO: document the IR sensor's values at different distances so that the 1.6 value makes sense -> wyatt in midst of this currently (11/1/2017)
-    	double current = ((double) Robot.irSensor.getVoltage()) / 1000.0;
-    	if (current >= 1.6) {
-    		ctr++;
-    	}
-    	if (ctr > 10) {
-			return true;	
-		} else {
-			return false;
-		}
+//    	double current = ((double) Robot.irSensor.getVoltage();
+//    	if (current >= 1.6) {
+//    		ctr++;
+//    	}
+//    	if (ctr > 10) {
+//			return true;	
+//		} else {
+			return ending;
+//		}
     }
 
     // Called once after isFinished returns true

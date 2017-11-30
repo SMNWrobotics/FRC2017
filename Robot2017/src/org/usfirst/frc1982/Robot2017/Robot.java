@@ -18,7 +18,9 @@ import org.usfirst.frc1982.Robot2017.commands.AutoTest;
 import org.usfirst.frc1982.Robot2017.commands._CameraCenter;
 import org.usfirst.frc1982.Robot2017.subsystems.*;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -188,8 +190,8 @@ public class Robot extends IterativeRobot {
         RobotMap.driveEncoderFrontLeft.reset();
         
         //use method getAutonomousProgram to choose the autonomous program.
-//        autonomousCommand = getAutonomousProgram();
-        autonomousCommand = new AutoTest();
+        autonomousCommand = getAutonomousProgram();
+//        autonomousCommand = new AutoTest();
         if (autonomousCommand != null) autonomousCommand.start();
     }
     
@@ -247,6 +249,8 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
+        displayEncoderValues(false);
         
         //giving smartdashboard the current readout from the gyro Z angle and the raw encoder value from each wheel
         SmartDashboard.putNumber("Raw Gyro Z", gyro.getAngleZ());
