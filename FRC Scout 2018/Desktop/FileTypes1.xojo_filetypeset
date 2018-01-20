@@ -1,0 +1,16 @@
+#tag FileTypeSet
+	#tag FileType
+		CodeName=SQLite
+		Extension=.sqlite
+		Flags=&h5
+		MacCreator=
+		MacType=
+		Name=sqlite
+		UTI=public.database
+		UTIConformsTo=public.data
+		Description=FRC Scout Data
+		MimeType=application/x-sqlite3
+		Imported=True
+	#tag EndFileType
+
+#tag EndFileTypeSet
