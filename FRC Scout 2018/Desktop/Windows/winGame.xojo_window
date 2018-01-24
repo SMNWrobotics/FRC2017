@@ -411,6 +411,7 @@ Begin Window winGame
          BackColor       =   &cFFFFFF00
          Backdrop        =   0
          bTiming         =   False
+         dCycleAverageTime=   0.0
          Enabled         =   True
          EraseBackground =   True
          HasBackColor    =   False
@@ -547,17 +548,17 @@ Begin Window winGame
       Bevel           =   0
       Bold            =   True
       ButtonType      =   1
-      Caption         =   "Start"
+      Caption         =   "Timer"
       CaptionAlign    =   3
       CaptionDelta    =   0
-      CaptionPlacement=   1
+      CaptionPlacement=   4
       Enabled         =   True
       HasBackColor    =   False
       HasMenu         =   0
-      Height          =   69
+      Height          =   96
       HelpTag         =   ""
-      Icon            =   0
-      IconAlign       =   0
+      Icon            =   2015936511
+      IconAlign       =   1
       IconDX          =   0
       IconDY          =   0
       Index           =   -2147483648
@@ -582,7 +583,7 @@ Begin Window winGame
       Underline       =   False
       Value           =   False
       Visible         =   True
-      Width           =   60
+      Width           =   80
    End
    Begin Timer tmrMatch
       Index           =   -2147483648
@@ -603,7 +604,7 @@ Begin Window winGame
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   82
+      Left            =   109
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -621,7 +622,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   18.0
       TextUnit        =   0
-      Top             =   89
+      Top             =   93
       Transparent     =   True
       Underline       =   False
       Visible         =   True
@@ -895,6 +896,11 @@ End
 		Group="ID"
 		Type="String"
 		EditorType="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iSeconds"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"

@@ -794,11 +794,32 @@ End
 		    
 		    fExport = GetSaveFolderItem(FileTypes1.CSV, sName)
 		    
-		    if fExport = nil then return //user cancelled
+		    If fExport = Nil Then Return //user cancelled
 		    
-		    msgbox "Not Implemented yet"
+		    Dim csv As New sbCSVOut
 		    
-		  end
+		    Dim rs As Recordset = gDB.SQLSelectRaiseOnError("select * from T_Game")
+		    
+		    For i As Integer = 1 To rs.FieldCount
+		      csv.AddField(rs.IdxField(i).Name)
+		    Next
+		    
+		    While rs.eof = False
+		      
+		      For i As Integer = 1 To rs.FieldCount
+		        csv.FieldValue(i-1) = rs.IdxField(i).StringValue
+		      Next
+		      
+		      csv.PostRow
+		      
+		      rs.MoveNext
+		    Wend
+		    
+		    csv.SaveToFile(fExport)
+		    
+		  End
+		  
+		  fexport.parent.launch //show the user the file
 		End Sub
 	#tag EndEvent
 	#tag Event
