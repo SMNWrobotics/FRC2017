@@ -197,7 +197,7 @@ Begin WindowMenuWindow winStartup
       CaptionPlacement=   4
       Enabled         =   False
       HasBackColor    =   False
-      HasMenu         =   0
+      HasMenu         =   2
       Height          =   64
       HelpTag         =   ""
       Icon            =   762103807
@@ -771,17 +771,40 @@ End
 #tag Events bbExportMatchData
 	#tag Event
 		Sub Action()
-		  //Get the database file and  copy it
-		  
 		  Dim d As New date
-		  
-		  dim sName as string = "FRC Export " + d.SQLDateTime.ReplaceAll("/", "-").ReplaceAll(":", "-") + ".sqlite"
-		  
-		  dim fExport as FolderItem = GetSaveFolderItem(FileTypes1.SQLite, sName)
-		  
-		  if fExport = nil then return //user cancelled
-		  
-		  gDB.DatabaseFile.CopyFileTo fExport
+		  dim sName as string
+		  dim fExport as FolderItem
+		  select case me.MenuValue
+		    
+		  case 0
+		    //SQLite
+		    
+		    //Get the database file and  copy it
+		    sName= "FRC Export " + d.SQLDateTime.ReplaceAll("/", "-").ReplaceAll(":", "-") + ".sqlite"
+		    
+		    fExport = GetSaveFolderItem(FileTypes1.SQLite, sName)
+		    
+		    if fExport = nil then return //user cancelled
+		    
+		    gDB.DatabaseFile.CopyFileTo fExport
+		    
+		  case 1
+		    //CSV
+		    sName= "FRC Export " + d.SQLDateTime.ReplaceAll("/", "-").ReplaceAll(":", "-") + ".csv"
+		    
+		    fExport = GetSaveFolderItem(FileTypes1.CSV, sName)
+		    
+		    if fExport = nil then return //user cancelled
+		    
+		    msgbox "Not Implemented yet"
+		    
+		  end
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Open()
+		  me.AddRow "SQLite Database"
+		  me.addRow "CSV"
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -2870,7 +2870,7 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub CheckBoostButton()
-		  if chkBoostOne.value and chkBoostTwo.value and chkBoostThree.value then
+		  if chkBoostOne.value OR chkBoostTwo.value OR chkBoostThree.value then
 		    btnBoostUsed.Enabled = true
 		  else
 		    btnBoostUsed.Enabled = false
@@ -2880,7 +2880,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub CheckForceButton()
-		  if chkForceOne.value and chkForceTwo.value and chkForceThree.value then
+		  if chkForceOne.value OR chkForceTwo.value OR chkForceThree.value then
 		    btnForceUsed.Enabled = true
 		  else
 		    btnForceUsed.Enabled = false
@@ -2939,17 +2939,20 @@ End
 		  oBoostThree = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostThree")
 		  oBoostUsedCount = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostUsedCount")
 		  oBoostUsedTime = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostUsedTime")
+		  lblBoostTime.text = oBoostUsedTime.sValue
 		  
 		  oForceOne = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceOne")
 		  oForceTwo = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceTwo")
 		  oForceThree = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceThree")
 		  oForceUsedCount = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceUsedCount")
 		  oForceUsedTime = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceUsedTime")
+		  lblForceTime.text = oForceUsedTime.sValue
 		  
 		  oLevitateOne = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateOne")
 		  oLevitateTwo = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateTwo")
 		  oLevitateThree = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateThree")
-		  oLevitateUsedTime = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostUsedTime")
+		  oLevitateUsedTime = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateUsedTime")
+		  lblLevitateTime.text = oLevitateUsedTime.sValue
 		  
 		  oParked = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "Parked")
 		  oClimbingAttemptedRobot = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ClimbingAttemptedRobot")
@@ -3383,21 +3386,27 @@ End
 #tag Events btnForceUsed
 	#tag Event
 		Sub Action()
+		  dim oParent as WinGame = WinGame(self.TrueWindow)
 		  
+		  lblForceTime.text = oParent.lblTime.text
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events btnBoostUsed
 	#tag Event
 		Sub Action()
+		  dim oParent as WinGame = WinGame(self.TrueWindow)
 		  
+		  lblBoostTime.text = oParent.lblTime.text
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events btnLevitateUsed
 	#tag Event
 		Sub Action()
+		  dim oParent as WinGame = WinGame(self.TrueWindow)
 		  
+		  lblLevitateTime.text = oParent.lblTime.text
 		End Sub
 	#tag EndEvent
 #tag EndEvents

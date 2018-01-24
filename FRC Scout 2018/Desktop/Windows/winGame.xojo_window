@@ -418,8 +418,11 @@ Begin Window winGame
          HelpTag         =   ""
          iAttempts       =   0
          iAverage        =   0
+         iCurrentTIme    =   0
+         iCycleCount     =   0
+         iCycleTime      =   0
+         iCycleTotalTime =   0
          InitialParent   =   "TabPanel1"
-         iTotalTime      =   0
          Left            =   18
          LockBottom      =   False
          LockedInPosition=   False
@@ -537,6 +540,93 @@ Begin Window winGame
       Visible         =   True
       Width           =   318
    End
+   Begin BevelButton btnStartTimer
+      AcceptFocus     =   True
+      AutoDeactivate  =   True
+      BackColor       =   &c00000000
+      Bevel           =   0
+      Bold            =   True
+      ButtonType      =   1
+      Caption         =   "Start"
+      CaptionAlign    =   3
+      CaptionDelta    =   0
+      CaptionPlacement=   1
+      Enabled         =   True
+      HasBackColor    =   False
+      HasMenu         =   0
+      Height          =   69
+      HelpTag         =   ""
+      Icon            =   0
+      IconAlign       =   0
+      IconDX          =   0
+      IconDY          =   0
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   9
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MenuValue       =   0
+      Scope           =   2
+      TabIndex        =   13
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   65
+      Underline       =   False
+      Value           =   False
+      Visible         =   True
+      Width           =   60
+   End
+   Begin Timer tmrMatch
+      Index           =   -2147483648
+      LockedInPosition=   False
+      Mode            =   0
+      Period          =   1000
+      Scope           =   0
+      TabPanelIndex   =   0
+   End
+   Begin Label lblTime
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   27
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   82
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   14
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "0"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   18.0
+      TextUnit        =   0
+      Top             =   89
+      Transparent     =   True
+      Underline       =   False
+      Visible         =   True
+      Width           =   89
+   End
 End
 #tag EndWindow
 
@@ -645,6 +735,10 @@ End
 
 
 	#tag Property, Flags = &h0
+		iSeconds As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		moMatch As Data.T_Matches
 	#tag EndProperty
 
@@ -680,6 +774,31 @@ End
 		  dRatio = Min( g.Height/pic.Height, g.Width/pic.Width)
 		  
 		  g.DrawPicture pic, 0, 0, pic.Width * dRatio, pic.Height * dRatio, 0, 0, pic.Width, pic.Height
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnStartTimer
+	#tag Event
+		Sub Action()
+		  if me.value then
+		    iSeconds = 0
+		    tmrMatch.mode = timer.ModeMultiple
+		  else
+		    tmrMatch.mode = timer.ModeOff
+		  end
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events tmrMatch
+	#tag Event
+		Sub Action()
+		  iSeconds = iSeconds + 1
+		  
+		  dim iMinutes as integer = iSeconds\60
+		  dim iLeft as integer = iSeconds - (iMinutes*60)
+		  
+		  dim s as string = str(iMinutes) + ":" + Format(iLeft, "00")
+		  lblTime.text = s
 		End Sub
 	#tag EndEvent
 #tag EndEvents
