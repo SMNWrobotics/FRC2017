@@ -53,7 +53,7 @@ Begin WindowMenuWindow winReporting
       TextUnit        =   0
       Top             =   0
       Underline       =   False
-      Value           =   0
+      Value           =   1
       Visible         =   True
       Width           =   992
       Begin AlternatingList lstAutonomous
@@ -92,6 +92,7 @@ Begin WindowMenuWindow winReporting
          ScrollbarHorizontal=   False
          ScrollBarVertical=   True
          SelectionType   =   0
+         ShowDropIndicator=   False
          TabIndex        =   0
          TabPanelIndex   =   1
          TabStop         =   True
@@ -128,6 +129,7 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Match"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -193,6 +195,7 @@ Begin WindowMenuWindow winReporting
          Selectable      =   False
          TabIndex        =   3
          TabPanelIndex   =   1
+         TabStop         =   True
          Text            =   "Level"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -272,6 +275,7 @@ Begin WindowMenuWindow winReporting
          ScrollbarHorizontal=   False
          ScrollBarVertical=   True
          SelectionType   =   0
+         ShowDropIndicator=   False
          TabIndex        =   5
          TabPanelIndex   =   1
          TabStop         =   True
@@ -339,7 +343,7 @@ Begin WindowMenuWindow winReporting
          GridLinesVertical=   2
          HasHeading      =   True
          HeadingIndex    =   -1
-         Height          =   591
+         Height          =   569
          HelpTag         =   ""
          Hierarchical    =   False
          Index           =   -2147483648
@@ -356,20 +360,114 @@ Begin WindowMenuWindow winReporting
          Scope           =   0
          ScrollbarHorizontal=   True
          ScrollBarVertical=   True
-         SelectionType   =   1
+         SelectionType   =   0
+         ShowDropIndicator=   False
          TabIndex        =   0
          TabPanelIndex   =   2
          TabStop         =   True
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   57
+         Top             =   79
          Underline       =   False
          UseFocusRing    =   False
          Visible         =   True
          Width           =   971
          _ScrollOffset   =   0
          _ScrollWidth    =   -1
+      End
+      Begin PushButton btnSelectAutoFields
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Select Auto Fields"
+         Default         =   False
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "TabPanel1"
+         Italic          =   False
+         Left            =   28
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   2
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   38
+         Underline       =   False
+         Visible         =   True
+         Width           =   147
+      End
+      Begin PushButton btnSelectTelopFields
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Select TeleOp Fields"
+         Default         =   False
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "TabPanel1"
+         Italic          =   False
+         Left            =   207
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   4
+         TabPanelIndex   =   2
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   38
+         Underline       =   False
+         Visible         =   True
+         Width           =   147
+      End
+      Begin PushButton btnSelectTeams
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Select Teams"
+         Default         =   False
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "TabPanel1"
+         Italic          =   False
+         Left            =   385
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   5
+         TabPanelIndex   =   2
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   38
+         Underline       =   False
+         Visible         =   True
+         Width           =   147
       End
    End
 End
@@ -378,7 +476,78 @@ End
 #tag WindowCode
 	#tag Method, Flags = &h0
 		Sub Display(InEvent as Data.t_event)
+		  dictAutoFields = new Dictionary
+		  dictTeleopFields = new Dictionary
+		  dictTeams = new Dictionary
+		  
+		  //Autonomous Stuff
+		  arsAuto.Append "Baseline"
+		  arsAuto.Append "StartingPosition"
+		  arsAuto.Append "AutoSwitchAttempted"
+		  arsAuto.Append "AutoSwitchMade"
+		  arsAuto.Append "AutoScaleAttempted"
+		  arsAuto.Append "AutoScaleMade"
+		  arsAuto.Append "AutoScalePosition"
+		  arsAuto.Append "AutoSwitchPosition"
+		  
+		  for each s as string in arsAuto
+		    dictAutoFields.value(s) = true
+		  next
+		  
+		  //Teleop
+		  arsTeleop.Append "CycleCount"
+		  arsTeleop.Append "CycleTotalTime"
+		  arsTeleop.Append "CycleAverageTime"
+		  
+		  arsTeleop.Append "CountOpponentSwitch"
+		  arsTeleop.Append "CountPortalIntake"
+		  arsTeleop.Append "CountScale"
+		  arsTeleop.Append "CountYourSwitch"
+		  
+		  
+		  arsTeleop.Append "BoostOne"
+		  arsTeleop.Append "BoostTwo"
+		  arsTeleop.Append "BoostThree"
+		  arsTeleop.Append "BoostUsedCount"
+		  arsTeleop.Append "BoostUsedTime"
+		  
+		  arsTeleop.Append "ForceOne"
+		  arsTeleop.Append "ForceTwo"
+		  arsTeleop.Append "ForceThree"
+		  arsTeleop.Append "ForceUsedCount"
+		  arsTeleop.Append "ForceUsedTime"
+		  
+		  arsTeleop.Append "LevitateOne"
+		  arsTeleop.Append "LevitateTwo"
+		  arsTeleop.Append "LevitateThree"
+		  arsTeleop.Append "BoostUsedTime"
+		  
+		  arsTeleop.Append "Parked"
+		  arsTeleop.Append "ClimbingAttemptedRobot"
+		  arsTeleop.Append "ClimbingAttemptedRung"
+		  arsTeleop.Append "ClimbingMade"
+		  
+		  arsTeleop.Append "CubesFromFloor"
+		  arsTeleop.Append "CubesFromOpponent"
+		  arsTeleop.Append "CubesFromPortal"
+		  arsTeleop.Append "CubesFromPyramid"
+		  arsTeleop.Append "CubesFromYou"
+		  arsTeleop.Append "CubesLost"
+		  arsTeleop.Append "CubeFromRobot"
+		  
+		  arsTeleop.Append "DefenseEffectiveness"
+		  arsTeleop.Append "DefensePlayed"
+		  arsTeleop.Append "DriverSkill"
+		  
+		  for each s as string in arsTeleop
+		    dictTeleopFields.value(s) = true
+		  next
+		  
 		  oEvent = InEvent
+		  
+		  for each oteam as Data.T_Team in oEvent.GetTeams
+		    dictTeams.value( oTeam.sTeam_Number) = True
+		  next
 		  
 		  pmCompLevel.ListIndex = 0
 		  
@@ -410,45 +579,14 @@ End
 		  lstTeleop.Heading(5) = oMatch.sRed_Team_2.replace("frc", "")
 		  lstTeleop.Heading(6) = oMatch.sRed_Team_3.replace("frc", "")
 		  
+		  for i as integer = 0 to arsAuto.Ubound
+		    lstAutonomous.addRow arsAuto(i)
+		  next
 		  
 		  
-		  //Autonomous
-		  lstAutonomous.DeleteAllRows
-		  lstAutonomous.addRow "StartingPosition"
-		  lstAutonomous.addRow "Baseline"
-		  lstAutonomous.addRow "Gear1"
-		  lstAutonomous.addRow "Gear2"
-		  lstAutonomous.addRow "Gear3"
-		  lstAutonomous.addRow "HighGoal"
-		  lstAutonomous.addRow "HighGoalAttempt"
-		  lstAutonomous.addRow "LowGoal"
-		  lstAutonomous.addRow"LowGoalAttempt"
-		  
-		  
-		  //Teleop
-		  
-		  lstTeleop.DeleteAllRows
-		  lstTeleop.addRow "ClimbingAttempted"
-		  lstTeleop.addRow  "ClimbingMade"
-		  lstTeleop.addRow "DefenseEffectiveness"
-		  lstTeleop.addRow  "DefensePlayed"
-		  lstTeleop.addRow  "DriverSkill"
-		  lstTeleop.addRow "PilotSkill"
-		  
-		  lstTeleop.addRow  "GearCycleAverage"
-		  lstTeleop.addRow  "GearCycleCount"
-		  lstTeleop.addRow  "GearCycleTotalTime"
-		  lstTeleop.addRow  "GearsAcquired"
-		  lstTeleop.addRow  "GearsMade"
-		  
-		  lstTeleop.addRow  "HighGoalCycles"
-		  lstTeleop.addRow "HighGoalPercentage"
-		  lstTeleop.addRow  "LowGoalCycles"
-		  lstTeleop.addRow  "LowGoalPercentage"
-		  
-		  lstTeleop.addRow  "HighGoalEffectiveness"
-		  lstTeleop.addRow  "LowGoalEffectiveness"
-		  
+		  for i as integer = 0 to arsTeleop.Ubound
+		    lstTeleop.addRow arsTeleop(i)
+		  next
 		  
 		  LoadBlue
 		  LoadRed
@@ -457,69 +595,73 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadAll()
+		  dim arsWidths() as string
+		  
 		  lstall.Visible = false
 		  lstall.DeleteAllRows
 		  
-		  //Create headings
-		  dim arsAuto() as string
-		  arsAuto.append "Baseline"
-		  arsAuto.append  "Gear1"
-		  arsAuto.append  "Gear2"
-		  arsAuto.append  "Gear3"
-		  arsAuto.append  "HighGoal"
+		  dim iColumnCount as integer = 1
+		  for i as integer = 0 to dictAutoFields.count-1
+		    dim s as string = dictAutoFields.key(i)
+		    if dictAutoFields.value(s) then
+		      iColumnCount = iColumnCount + 1
+		    end
+		  next
+		  for i as integer = 0 to dictTeleopFields.count-1
+		    dim s as string = dictTeleopFields.key(i)
+		    if dictTeleopFields.value(s) then
+		      iColumnCount = iColumnCount + 1
+		    end
+		  next
 		  
-		  dim arsTelop() as string
-		  arsTelop.append "ClimbingAttempted"
-		  arsTelop.append "ClimbingMade"
-		  arsTelop.append "GearCycleAverage"
-		  arsTelop.append "GearCycleCount"
-		  arsTelop.append "GearCycleTotalTime"
-		  arsTelop.append "GearsAcquired"
-		  arsTelop.append "GearsMade"
+		  lstall.ColumnCount = iColumnCount
 		  
-		  lstall.ColumnCount = arsAuto.Ubound + 1 + arsTelop.Ubound + 1 + 1
-		  
-		  dim arsWidths() as string
-		  arsWidths.append "50"
 		  
 		  lstAll.heading(0) = "Team"
 		  
 		  dim icnt as integer = 1
-		  for each s as string in arsAuto
-		    lstAll.heading(iCnt) = s
-		    arsWidths.append  "50"
-		    lstall.ColumnAlignment(icnt) = listbox.AlignRight
-		    icnt = iCnt + 1
-		  Next
+		  for i as integer = 0 to dictAutoFields.count-1
+		    dim s as string = dictAutoFields.key(i)
+		    if dictAutoFields.value(s) then
+		      lstAll.heading(iCnt) = s
+		      arsWidths.append  "100"
+		      lstall.ColumnAlignment(icnt) = listbox.AlignRight
+		      icnt = iCnt + 1
+		    end
+		  next
 		  
 		  iMaxTeleop = iCnt
 		  
-		  for each s as string in arsTelop
-		    lstAll.heading(iCnt) = s
-		    arsWidths.append  "100"  
-		    lstall.ColumnAlignment(icnt) = listbox.AlignRight
-		    icnt = iCnt + 1
+		  for i as integer = 0 to dictTeleopFields.count-1
+		    dim s as string = dictTeleopFields.key(i)
+		    if dictTeleopFields.value(s) then
+		      lstAll.heading(iCnt) = s
+		      arsWidths.append  "100"
+		      lstall.ColumnAlignment(icnt) = listbox.AlignRight
+		      icnt = iCnt + 1
+		    end
 		  next
 		  
 		  
+		  
 		  //Load all the teams
-		  for each oteam as Data.T_Team in oEvent.GetTeams
-		    lstall.AddRow oTeam.sTeam_Number
-		    
-		    Dim iRow As Integer = lstAll.LastIndex
-		    
-		    
-		    dim sTeamNumber as string = lstAll.cell(iRow, 0)
-		    //Get averages
-		    For icol As Integer = 1 To lstAll.ColumnCount-1
-		      Dim sVariable As String = lstAll.heading(iCol)
-		      Dim d As Double = Data.T_Game.AverageForVariable(sTeamNumber, sVariable)
-		      if d <> 0.0 then
-		        lstAll.Cell(iRow, iCol) = Format(d, "###.0")
-		        lstAll.CellTag(iRow, iCol) = d
-		      end
-		    next
-		    
+		  for i as integer = 0 to dictteams.count - 1
+		    dim sTeamNumber as string = dictTeams.key(i)
+		    if dictTeams.value(sTeamNumber) then
+		      lstall.AddRow sTeamNumber
+		      
+		      Dim iRow As Integer = lstAll.LastIndex
+		      
+		      //Get averages
+		      For icol As Integer = 1 To lstAll.ColumnCount-1
+		        Dim sVariable As String = lstAll.heading(iCol)
+		        Dim d As Double = Data.T_Game.AverageForVariable(sTeamNumber, sVariable)
+		        if d <> 0.0 then
+		          lstAll.Cell(iRow, iCol) = Format(d, "###.0")
+		          lstAll.CellTag(iRow, iCol) = d
+		        end
+		      next
+		    end
 		  next
 		  
 		  lstall.ColumnWidths = join(arsWidths, ",")
@@ -739,6 +881,26 @@ End
 
 
 	#tag Property, Flags = &h0
+		arsAuto() As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		arsTeleop() As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		dictAutoFields As dictionary
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		dictTeams As Dictionary
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		dictTeleopFields As dictionary
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		iManualStart As Integer
 	#tag EndProperty
 
@@ -892,6 +1054,45 @@ End
 		  end
 		  return true
 		End Function
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnSelectAutoFields
+	#tag Event
+		Sub Action()
+		  dim w as new winSelectData
+		  w.left = btnSelectAutoFields.left + self.left
+		  w.top = btnSelectAutoFields.top + self.top
+		  
+		  if w.Display("Autonomouse Fields to Show", dictAutoFields) then
+		    LoadAll
+		  end
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnSelectTelopFields
+	#tag Event
+		Sub Action()
+		  dim w as new winSelectData
+		  w.left = btnSelectAutoFields.left + self.left
+		  w.top = btnSelectAutoFields.top + self.top
+		  
+		  if w.Display("TeleOp Fields to Show", dictTeleopFields) then
+		    LoadAll
+		  end
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnSelectTeams
+	#tag Event
+		Sub Action()
+		  dim w as new winSelectData
+		  w.left = btnSelectAutoFields.left + self.left
+		  w.top = btnSelectAutoFields.top + self.top
+		  
+		  if w.Display("Select Teams to Show", dictTeams) then
+		    LoadAll
+		  end
+		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior

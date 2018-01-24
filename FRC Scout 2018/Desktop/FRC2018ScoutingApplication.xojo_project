@@ -126,6 +126,7 @@ MultiImage=picCube;Images/picCube.xojo_image;&h0000000045A4FFFF;&h000000007DC5FF
 MultiImage=picSwitch;Images/picSwitch.xojo_image;&h00000000728E0FFF;&h000000007DC5FFFF;false
 MultiImage=picScale;Images/picScale.xojo_image;&h000000006794B7FF;&h000000007DC5FFFF;false
 MultiImage=picMirror;Images/picMirror.xojo_image;&h000000000B6067FF;&h000000007DC5FFFF;false
+Window=winSelectData;Windows/winSelectData.xojo_window;&h0000000022BD1FFF;&h000000007A8BA7FF;false
 DefaultWindow=winSplash
 AppMenuBar=MainMenuBar
 MajorVersion=2018
