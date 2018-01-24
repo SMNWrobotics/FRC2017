@@ -9,7 +9,7 @@ Begin ContainerControl ccAutonomous
    Enabled         =   True
    EraseBackground =   True
    HasBackColor    =   False
-   Height          =   369
+   Height          =   489
    HelpTag         =   ""
    InitialParent   =   ""
    Left            =   0
@@ -68,7 +68,7 @@ Begin ContainerControl ccAutonomous
       DataSource      =   ""
       Enabled         =   True
       Format          =   ""
-      Height          =   308
+      Height          =   428
       HelpTag         =   ""
       HideSelection   =   True
       Index           =   -2147483648
@@ -199,7 +199,7 @@ Begin ContainerControl ccAutonomous
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   63
+      Top             =   186
       Underline       =   False
       Value           =   False
       Visible         =   True
@@ -228,7 +228,7 @@ Begin ContainerControl ccAutonomous
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   106
+      Top             =   229
       Underline       =   False
       Visible         =   True
       Width           =   305
@@ -258,7 +258,7 @@ Begin ContainerControl ccAutonomous
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   135
+         Top             =   258
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -290,7 +290,7 @@ Begin ContainerControl ccAutonomous
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   167
+         Top             =   290
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -320,7 +320,7 @@ Begin ContainerControl ccAutonomous
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   229
+      Top             =   352
       Underline       =   False
       Visible         =   True
       Width           =   305
@@ -350,7 +350,7 @@ Begin ContainerControl ccAutonomous
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   289
+         Top             =   412
          Underline       =   False
          Value           =   False
          Visible         =   True
@@ -382,12 +382,124 @@ Begin ContainerControl ccAutonomous
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   257
+         Top             =   380
          Underline       =   False
          Value           =   False
          Visible         =   True
          Width           =   180
       End
+   End
+   Begin Label Label9
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   2
+      Selectable      =   False
+      TabIndex        =   23
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Switch"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   65
+      Transparent     =   True
+      Underline       =   False
+      Visible         =   True
+      Width           =   61
+   End
+   Begin Label Label10
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   2
+      Selectable      =   False
+      TabIndex        =   24
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Scale"
+      TextAlign       =   0
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   109
+      Transparent     =   True
+      Underline       =   False
+      Visible         =   True
+      Width           =   51
+   End
+   BeginSegmented SegmentedControl segScaleColor
+      Enabled         =   True
+      Height          =   24
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   93
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MacControlStyle =   0
+      Scope           =   0
+      Segments        =   "Left\n\nFalse\rRight\n\nFalse"
+      SelectionType   =   0
+      TabIndex        =   25
+      TabPanelIndex   =   0
+      Top             =   109
+      Visible         =   True
+      Width           =   128
+   End
+   BeginSegmented SegmentedControl segSwitchColor
+      Enabled         =   True
+      Height          =   24
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   93
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MacControlStyle =   0
+      Scope           =   0
+      Segments        =   "Left\n\nFalse\rRight\n\nFalse"
+      SelectionType   =   0
+      TabIndex        =   26
+      TabPanelIndex   =   0
+      Top             =   65
+      Visible         =   True
+      Width           =   128
    End
 End
 #tag EndWindow
@@ -405,14 +517,19 @@ End
 		  moSwitchMade = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "AutoSwitchMade")
 		  moScaleAttempted = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "AutoScaleAttempted")
 		  moScaleMade = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "AutoScaleMade")
+		  moScalePosition = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "AutoScalePosition")
+		  moSwitchPosition  = Data.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "AutoSwitchPosition")
+		  
 		  
 		  //Autonomous
 		  chkScaleAttempted.value = cBool(moScaleAttempted.sValue)
 		  chkScaleMade.value = cBool(moScaleMade.sValue)
 		  
 		  chkSwitchAttempted.value = cBool(moSwitchAttempted.sValue)
-		  chkSwitchMade.value = cBool(moSwitchAttempted.sValue)
+		  chkSwitchMade.value = cBool(moSwitchMade.sValue)
 		  
+		  segScaleColor.Items(moScalePosition.sValue.val).Selected=true
+		  segSwitchColor.Items(moSwitchPosition.sValue.val).Selected = true
 		  
 		  chkMadeBaseline.value = cBool(moBaseline.sValue)
 		  pmStartingPosition.SetText = moStartingPosition.svalue
@@ -430,16 +547,30 @@ End
 		  moScaleMade.sValue = chkScaleMade.value.ToString
 		  
 		  moSwitchAttempted.sValue = chkSwitchAttempted.value.ToString
-		  moSwitchAttempted.sValue = chkSwitchMade.value.ToString
+		  moSwitchMade.sValue = chkSwitchMade.value.ToString
 		  
+		  if segScaleColor.Items(0).Selected = true then
+		    moScalePosition.sValue = "0"
+		  else
+		    moScalePosition.sValue = "1"
+		  end
+		  
+		  if segSwitchColor.Items(0).Selected = true then
+		    moSwitchPosition.sValue = "0"
+		  else
+		    moSwitchPosition.sValue = "1"
+		  end
 		  
 		  moScaleAttempted.save
 		  moScaleMade.save
 		  moSwitchAttempted.save
-		  moSwitchAttempted.save
+		  moSwitchMade.save
 		  moBaseline.save
 		  moStartingPosition.save
 		  moNotes.save
+		  moScalePosition.save
+		  moSwitchPosition.save
+		  
 		End Sub
 	#tag EndMethod
 
@@ -461,6 +592,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		moScalePosition As Data.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		moStartingPosition As Data.T_Game
 	#tag EndProperty
 
@@ -470,6 +605,10 @@ End
 
 	#tag Property, Flags = &h0
 		moSwitchMade As Data.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		moSwitchPosition As Data.T_Game
 	#tag EndProperty
 
 	#tag Property, Flags = &h0

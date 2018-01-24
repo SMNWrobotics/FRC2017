@@ -25,7 +25,7 @@ Begin WindowMenuWindow winStartup
    Resizeable      =   False
    Title           =   "FRC 1982 Scout Application"
    Visible         =   True
-   Width           =   600
+   Width           =   642
    Begin BevelButton bbSetup
       AcceptFocus     =   True
       AutoDeactivate  =   True
@@ -92,6 +92,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   6
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Use this selection to import data from The Blue Alliance website for Events, Teams, and Matches.  Use to select the event you are at."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -170,6 +171,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Feel the love!  Import Scouting Data From Other FRC teams at your tournament.   Drag and Drop the File onto this Window to Import or Select by using the button on the left."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -248,6 +250,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Information want to be free!  Export your scouting data so other FRC teams at your tournament can participate."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -326,6 +329,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Scout a match at ^1.  Keep track of one robot in a match and score how it does."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -404,6 +408,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   10
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "What teams have and haven’t been scouted yet?  What teams do you need to look at?"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -438,6 +443,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Untitled"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -516,6 +522,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   12
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Get Statistics for Teams in upcoming matches"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -594,6 +601,7 @@ Begin WindowMenuWindow winStartup
       Selectable      =   False
       TabIndex        =   14
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Scout the robot designs."
       TextAlign       =   0
       TextColor       =   &c00000000

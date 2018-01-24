@@ -71,7 +71,7 @@ Protected Module modGlobals
 
 	#tag Method, Flags = &h0
 		Function cBool(s as String) As boolean
-		  if s = "True" or s = "1" then
+		  if s = "True" or s = "1" or s = "Yes" then
 		    return true
 		  else
 		    return false

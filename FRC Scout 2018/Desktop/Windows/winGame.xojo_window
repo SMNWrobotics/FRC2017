@@ -9,7 +9,7 @@ Begin Window winGame
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   True
-   Height          =   604
+   Height          =   794
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
@@ -62,7 +62,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   562
+      Top             =   752
       Underline       =   False
       UseFocusRing    =   True
       Visible         =   True
@@ -94,7 +94,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   563
+      Top             =   753
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -128,7 +128,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   563
+      Top             =   753
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -348,7 +348,7 @@ Begin Window winGame
       AutoDeactivate  =   True
       Bold            =   False
       Enabled         =   True
-      Height          =   450
+      Height          =   594
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -369,7 +369,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   100
+      Top             =   146
       Underline       =   False
       Value           =   1
       Visible         =   True
@@ -383,7 +383,7 @@ Begin Window winGame
          Enabled         =   True
          EraseBackground =   True
          HasBackColor    =   False
-         Height          =   382
+         Height          =   476
          HelpTag         =   ""
          InitialParent   =   "TabPanel1"
          Left            =   29
@@ -398,7 +398,7 @@ Begin Window winGame
          TabIndex        =   0
          TabPanelIndex   =   1
          TabStop         =   True
-         Top             =   138
+         Top             =   184
          Transparent     =   True
          UseFocusRing    =   False
          Visible         =   True
@@ -414,7 +414,7 @@ Begin Window winGame
          Enabled         =   True
          EraseBackground =   True
          HasBackColor    =   False
-         Height          =   355
+         Height          =   539
          HelpTag         =   ""
          iAttempts       =   0
          iAverage        =   0
@@ -432,81 +432,11 @@ Begin Window winGame
          TabIndex        =   0
          TabPanelIndex   =   2
          TabStop         =   True
-         Top             =   189
+         Top             =   184
          Transparent     =   True
          UseFocusRing    =   False
          Visible         =   True
          Width           =   872
-      End
-      Begin Label Label9
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   18
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   2
-         Selectable      =   False
-         TabIndex        =   1
-         TabPanelIndex   =   2
-         TabStop         =   True
-         Text            =   "Switch"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   138
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   100
-      End
-      Begin Label Label10
-         AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
-         Enabled         =   True
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "TabPanel1"
-         Italic          =   False
-         Left            =   312
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Multiline       =   False
-         Scope           =   2
-         Selectable      =   False
-         TabIndex        =   2
-         TabPanelIndex   =   2
-         TabStop         =   True
-         Text            =   "Scale"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   138
-         Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   100
       End
    End
    Begin Label Label8
@@ -538,7 +468,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   563
+      Top             =   753
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -573,7 +503,7 @@ Begin Window winGame
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   563
+      Top             =   753
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -587,7 +517,7 @@ Begin Window winGame
       DoubleBuffer    =   False
       Enabled         =   True
       EraseBackground =   True
-      Height          =   92
+      Height          =   153
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
