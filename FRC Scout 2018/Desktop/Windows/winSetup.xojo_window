@@ -48,6 +48,7 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   7
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Year"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -127,6 +128,7 @@ Begin WindowMenuWindow winSetup
       ScrollbarHorizontal=   False
       ScrollBarVertical=   True
       SelectionType   =   0
+      ShowDropIndicator=   False
       TabIndex        =   3
       TabPanelIndex   =   0
       TabStop         =   True
@@ -222,6 +224,7 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   8
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Filter"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -256,6 +259,7 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   9
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Note:  Importing Event Data will make this the default Event."
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -400,6 +404,7 @@ Begin WindowMenuWindow winSetup
          Selectable      =   False
          TabIndex        =   1
          TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "Fetching Online Data"
          TextAlign       =   0
          TextColor       =   &c00000000
@@ -466,6 +471,7 @@ Begin WindowMenuWindow winSetup
       Selectable      =   False
       TabIndex        =   11
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "WARNING!  No valid internet connection.  You will not be able to connect to http://thebluealliance.com to retrieve event, match, game, and team data."
       TextAlign       =   0
       TextColor       =   &cFF000000
@@ -541,7 +547,7 @@ End
 		  oMatchSocket.RequestHeader(kXTBAAppId.ToText) = kXTBAAppId_Value.ToText
 		  
 		  // Set the URL
-		  dim url as string = "http://www.thebluealliance.com/api/v2/event/" + oEvent.sKey + "/matches"
+		  dim url as string = "https://www.thebluealliance.com/api/v3/event/" + oEvent.sKey + "/matches"
 		  
 		  //Send the Asyncrhonous Request
 		  oMatchSocket.Send("GET", URL.ToText)
@@ -574,7 +580,7 @@ End
 		  oTeamSocket.RequestHeader(kXTBAAppId.ToText) = kXTBAAppId_Value.ToText
 		  
 		  // Set the URL
-		  dim url as string = "http://www.thebluealliance.com/api/v2/event/" +oEvent.skey + "/teams"
+		  dim url as string = "https://www.thebluealliance.com/api/v3/event/" +oEvent.skey + "/teams"
 		  
 		  //Send the Asyncrhonous Request
 		  oTeamSocket.Send("GET", URL.ToText)
@@ -624,7 +630,7 @@ End
 		  oEventSocket.RequestHeader(kXTBAAppId.ToText) = kXTBAAppId_Value.ToText
 		  
 		  // Set the URL
-		  dim url as string = "http://www.thebluealliance.com/api/v2/events/" + pmYear.text
+		  dim url as string = "https://www.thebluealliance.com/api/v3/events/" + pmYear.text
 		  
 		  //Send the Asyncrhonous Request
 		  oEventSocket.Send("GET", URL.ToText)
@@ -882,7 +888,7 @@ End
 		      
 		      dim oBlueAlliance as JSONItem = oAliances.Lookup("blue", nil)
 		      oRecord.iBlueScore = oBlueAlliance.Lookup("score", -1)
-		      dim oBlueTeams as JSONItem = oBlueAlliance.Lookup("teams", nil)
+		      dim oBlueTeams as JSONItem = oBlueAlliance.Lookup("team_keys", nil)
 		      if oBlueTeams.IsArray then
 		        oRecord.sBlue_Team_1 = oBlueTeams.value(0)
 		        
@@ -894,7 +900,7 @@ End
 		      
 		      dim oRedAlliance as JSONItem = oAliances.Lookup("red", nil)
 		      oRecord.iRedScore = oRedAlliance.Lookup("score", -1)
-		      dim oRedTeams as JSONItem = oRedAlliance.Lookup("teams", nil)
+		      dim oRedTeams as JSONItem = oRedAlliance.Lookup("team_keys", nil)
 		      
 		      if oRedTeams.IsArray then
 		        oRecord.sRed_Team_1 = oRedTeams.value(0)

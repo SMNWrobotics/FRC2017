@@ -199,10 +199,10 @@ Protected Module modGlobals
 	#tag EndProperty
 
 
-	#tag Constant, Name = kXTBAAppId, Type = String, Dynamic = False, Default = \"X-TBA-App-Id", Scope = Public
+	#tag Constant, Name = kXTBAAppId, Type = String, Dynamic = False, Default = \"X-TBA-Auth-Key", Scope = Public
 	#tag EndConstant
 
-	#tag Constant, Name = kXTBAAppId_Value, Type = String, Dynamic = False, Default = \"frc1982:scouting-app:2018.1", Scope = Public
+	#tag Constant, Name = kXTBAAppId_Value, Type = String, Dynamic = False, Default = \"heEb91YwiQMAVsUjYSGLOKOklVuSbaFM2Z41XltDdQjCgFoLnduO8A9Lw7mJmuiW", Scope = Public
 	#tag EndConstant
 
 
