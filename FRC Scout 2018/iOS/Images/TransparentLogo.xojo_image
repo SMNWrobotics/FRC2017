@@ -1,0 +1,40 @@
+#tag MultiImage
+Image TransparentLogo
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAHcAAAAAAHcAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMY4UVHJhbnNwYXJlbnQtTG9nby5wbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABpqFdS7cp8AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAABUljb25zAAAQAAgAANRjpYEAAAARAAgAANS7xv8AAAABABgAGjGOABYJwgAWB5sAFf7VAAaGugAGMFsAAgBbTWFjaW50b3NoIEhEOlVzZXJzOgByb2JlcnRrZWVuZXk6AEZSQzIwMTc6AEZSQyBTY291dCAyMDE3OgBpT1M6AEljb25zOgBUcmFuc3BhcmVudC1Mb2dvLnBuZwAADgAqABQAVAByAGEAbgBzAHAAYQByAGUAbgB0AC0ATABvAGcAbwAuAHAAbgBnAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIASFVzZXJzL3JvYmVydGtlZW5leS9GUkMyMDE3L0ZSQyBTY291dCAyMDE3L2lPUy9JY29ucy9UcmFuc3BhcmVudC1Mb2dvLnBuZwATAAEvAAAVAAIAE///AAAAAAAAAAA=
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/Transparent-Logo.png
+		PartialPath = Icons\Transparent-Logo.png
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = -1.00
+			Orientation = Any
+			Platform = 15
+			PPI = 72
+			VSize = -1.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = -1.00
+			Orientation = Any
+			Platform = 15
+			PPI = 144
+			VSize = -1.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = -1.00
+			Orientation = Any
+			Platform = 15
+			PPI = 216
+			VSize = -1.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+End Image
+#tag EndMultiImage

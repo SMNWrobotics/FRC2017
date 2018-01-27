@@ -1,0 +1,321 @@
+#tag MultiImage
+Image App Icon
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 16.00
+			Orientation = Any
+			Platform = 6
+			PPI = 72
+			VSize = 16.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 16.00
+			Orientation = Any
+			Platform = 2
+			PPI = 144
+			VSize = 16.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 32.00
+			Orientation = Any
+			Platform = 6
+			PPI = 72
+			VSize = 32.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 32.00
+			Orientation = Any
+			Platform = 2
+			PPI = 144
+			VSize = 32.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = Tiles / Thumbnails
+			Device = 16
+			HSize = 48.00
+			Orientation = Any
+			Platform = 4
+			PPI = 96
+			VSize = 48.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 128.00
+			Orientation = Any
+			Platform = 2
+			PPI = 72
+			VSize = 128.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 128.00
+			Orientation = Any
+			Platform = 2
+			PPI = 144
+			VSize = 128.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 256.00
+			Orientation = Any
+			Platform = 6
+			PPI = 72
+			VSize = 256.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 256.00
+			Orientation = Any
+			Platform = 2
+			PPI = 144
+			VSize = 256.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 512.00
+			Orientation = Any
+			Platform = 2
+			PPI = 72
+			VSize = 512.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 16
+			HSize = 512.00
+			Orientation = Any
+			Platform = 2
+			PPI = 144
+			VSize = 512.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAH6AAAAAAH6AAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZESU3BvdGxpZ2h0NDB4NDAucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxptS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAZ01hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTcG90bGlnaHQ0MHg0MC5wbmcAAA4AJgASAFMAcABvAHQAbABpAGcAaAB0ADQAMAB4ADQAMAAuAHAAbgBnAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAU1VzZXJzL3JvYmVydGtlZW5leS9GUkMyMDE3L0ZSQyBTY291dCAyMDE3L2lPUy9JY29ucy9pT1MgQXBwIEljb24vU3BvdGxpZ2h0NDB4NDAucG5nAAATAAEvAAAVAAIAE///AAAAAAAAAAA=
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Spotlight40x40.png
+		PartialPath = Icons\iOS App Icon\Spotlight40x40.png
+		#tag ImageSpecification
+			Comment = Notification\niOS 7-10
+			Device = 3
+			HSize = 20.00
+			Orientation = Any
+			Platform = 1
+			PPI = 72
+			VSize = 20.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAIEAAAAAAIEAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEVU3BvdGxpZ2h0NDB4NDBAMngucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxqdS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAak1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTcG90bGlnaHQ0MHg0MEAyeC5wbmcADgAsABUAUwBwAG8AdABsAGkAZwBoAHQANAAwAHgANAAwAEAAMgB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBWVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9TcG90bGlnaHQ0MHg0MEAyeC5wbmcAEwABLwAAFQACABP//wAAAAAAAAAA
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Spotlight40x40@2x.png
+		PartialPath = Icons\iOS App Icon\Spotlight40x40@2x.png
+		#tag ImageSpecification
+			Comment = Notification\niOS 7-10
+			Device = 3
+			HSize = 20.00
+			Orientation = Any
+			Platform = 1
+			PPI = 144
+			VSize = 20.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAIEAAAAAAIEAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEVU3BvdGxpZ2h0NDB4NDBAM3gucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxrNS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAak1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTcG90bGlnaHQ0MHg0MEAzeC5wbmcADgAsABUAUwBwAG8AdABsAGkAZwBoAHQANAAwAHgANAAwAEAAMwB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBWVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9TcG90bGlnaHQ0MHg0MEAzeC5wbmcAEwABLwAAFQACABP//wAAAAAAAAAA
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Spotlight40x40@3x.png
+		PartialPath = Icons\iOS App Icon\Spotlight40x40@3x.png
+		#tag ImageSpecification
+			Comment = Notification\niOS 7-10
+			Device = 3
+			HSize = 20.00
+			Orientation = Any
+			Platform = 1
+			PPI = 216
+			VSize = 20.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAH0AAAAAAH0AAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZERU2V0dGluZ3MyOXgyOS5wbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxr9S7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAZk1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTZXR0aW5nczI5eDI5LnBuZwAOACQAEQBTAGUAdAB0AGkAbgBnAHMAMgA5AHgAMgA5AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBSVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9TZXR0aW5nczI5eDI5LnBuZwATAAEvAAAVAAIAE///AAAAAAAAAAA=
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Settings29x29.png
+		PartialPath = Icons\iOS App Icon\Settings29x29.png
+		#tag ImageSpecification
+			Comment = Settings\niOS 5-10
+			Device = 2
+			HSize = 29.00
+			Orientation = Any
+			Platform = 1
+			PPI = 72
+			VSize = 29.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAICAAAAAAICAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEUU2V0dGluZ3MyOXgyOUAyeC5wbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxstS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAaU1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTZXR0aW5nczI5eDI5QDJ4LnBuZwAADgAqABQAUwBlAHQAdABpAG4AZwBzADIAOQB4ADIAOQBAADIAeAAuAHAAbgBnAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAVVVzZXJzL3JvYmVydGtlZW5leS9GUkMyMDE3L0ZSQyBTY291dCAyMDE3L2lPUy9JY29ucy9pT1MgQXBwIEljb24vU2V0dGluZ3MyOXgyOUAyeC5wbmcAABMAAS8AABUAAgAT//8AAAAAAAAAAA==
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Settings29x29@2x.png
+		PartialPath = Icons\iOS App Icon\Settings29x29@2x.png
+		#tag ImageSpecification
+			Comment = Settings\niOS 5-10
+			Device = 7
+			HSize = 29.00
+			Orientation = Any
+			Platform = 1
+			PPI = 144
+			VSize = 29.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAICAAAAAAICAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEUU2V0dGluZ3MyOXgyOUAzeC5wbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxtdS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAaU1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTZXR0aW5nczI5eDI5QDN4LnBuZwAADgAqABQAUwBlAHQAdABpAG4AZwBzADIAOQB4ADIAOQBAADMAeAAuAHAAbgBnAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAVVVzZXJzL3JvYmVydGtlZW5leS9GUkMyMDE3L0ZSQyBTY291dCAyMDE3L2lPUy9JY29ucy9pT1MgQXBwIEljb24vU2V0dGluZ3MyOXgyOUAzeC5wbmcAABMAAS8AABUAAgAT//8AAAAAAAAAAA==
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Settings29x29@3x.png
+		PartialPath = Icons\iOS App Icon\Settings29x29@3x.png
+		#tag ImageSpecification
+			Comment = Settings\niOS 5-10
+			Device = 1
+			HSize = 29.00
+			Orientation = Any
+			Platform = 1
+			PPI = 216
+			VSize = 29.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAH6AAAAAAH6AAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZESU3BvdGxpZ2h0NDB4NDAucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxptS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAZ01hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTcG90bGlnaHQ0MHg0MC5wbmcAAA4AJgASAFMAcABvAHQAbABpAGcAaAB0ADQAMAB4ADQAMAAuAHAAbgBnAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAU1VzZXJzL3JvYmVydGtlZW5leS9GUkMyMDE3L0ZSQyBTY291dCAyMDE3L2lPUy9JY29ucy9pT1MgQXBwIEljb24vU3BvdGxpZ2h0NDB4NDAucG5nAAATAAEvAAAVAAIAE///AAAAAAAAAAA=
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Spotlight40x40.png
+		PartialPath = Icons\iOS App Icon\Spotlight40x40.png
+		#tag ImageSpecification
+			Comment = Spotlight\niOS 7-10
+			Device = 2
+			HSize = 40.00
+			Orientation = Any
+			Platform = 1
+			PPI = 72
+			VSize = 40.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAIEAAAAAAIEAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEVU3BvdGxpZ2h0NDB4NDBAMngucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxqdS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAak1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTcG90bGlnaHQ0MHg0MEAyeC5wbmcADgAsABUAUwBwAG8AdABsAGkAZwBoAHQANAAwAHgANAAwAEAAMgB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBWVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9TcG90bGlnaHQ0MHg0MEAyeC5wbmcAEwABLwAAFQACABP//wAAAAAAAAAA
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Spotlight40x40@2x.png
+		PartialPath = Icons\iOS App Icon\Spotlight40x40@2x.png
+		#tag ImageSpecification
+			Comment = Spotlight\niOS 7-10
+			Device = 7
+			HSize = 40.00
+			Orientation = Any
+			Platform = 1
+			PPI = 144
+			VSize = 40.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAIEAAAAAAIEAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEVU3BvdGxpZ2h0NDB4NDBAM3gucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxrNS7ct0AAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xz0AAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAak1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBTcG90bGlnaHQ0MHg0MEAzeC5wbmcADgAsABUAUwBwAG8AdABsAGkAZwBoAHQANAAwAHgANAAwAEAAMwB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBWVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9TcG90bGlnaHQ0MHg0MEAzeC5wbmcAEwABLwAAFQACABP//wAAAAAAAAAA
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/Spotlight40x40@3x.png
+		PartialPath = Icons\iOS App Icon\Spotlight40x40@3x.png
+		#tag ImageSpecification
+			Comment = Spotlight\niOS 7-10
+			Device = 1
+			HSize = 40.00
+			Orientation = Any
+			Platform = 1
+			PPI = 216
+			VSize = 40.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAH8AAAAAAH8AAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZETQXBwSWNvbjYweDYwQDJ4LnBuZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxl9S7ctwAAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xzwAAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAaE1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBBcHBJY29uNjB4NjBAMngucG5nAA4AKAATAEEAcABwAEkAYwBvAG4ANgAwAHgANgAwAEAAMgB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBUVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9BcHBJY29uNjB4NjBAMngucG5nABMAAS8AABUAAgAT//8AAAAAAAAAAA==
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/AppIcon60x60@2x.png
+		PartialPath = Icons\iOS App Icon\AppIcon60x60@2x.png
+		#tag ImageSpecification
+			Comment = App\niOS 7-10
+			Device = 1
+			HSize = 60.00
+			Orientation = Any
+			Platform = 1
+			PPI = 144
+			VSize = 60.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAH8AAAAAAH8AAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZETQXBwSWNvbjYweDYwQDN4LnBuZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxmtS7ctwAAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xzwAAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAaE1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBBcHBJY29uNjB4NjBAM3gucG5nAA4AKAATAEEAcABwAEkAYwBvAG4ANgAwAHgANgAwAEAAMwB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBUVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9BcHBJY29uNjB4NjBAM3gucG5nABMAAS8AABUAAgAT//8AAAAAAAAAAA==
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/AppIcon60x60@3x.png
+		PartialPath = Icons\iOS App Icon\AppIcon60x60@3x.png
+		#tag ImageSpecification
+			Comment = App\niOS 7-10
+			Device = 1
+			HSize = 60.00
+			Orientation = Any
+			Platform = 1
+			PPI = 216
+			VSize = 60.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAIEAAAAAAIEAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEVQXBwSWNvbjc2eDc2fmlwYWQucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxndS7ctwAAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xzwAAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAak1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBBcHBJY29uNzZ4NzZ+aXBhZC5wbmcADgAsABUAQQBwAHAASQBjAG8AbgA3ADYAeAA3ADYAfgBpAHAAYQBkAC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBWVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9BcHBJY29uNzZ4NzZ+aXBhZC5wbmcAEwABLwAAFQACABP//wAAAAAAAAAA
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/AppIcon76x76~ipad.png
+		PartialPath = Icons\iOS App Icon\AppIcon76x76~ipad.png
+		#tag ImageSpecification
+			Comment = App\niOS 7-10
+			Device = 2
+			HSize = 76.00
+			Orientation = Any
+			Platform = 1
+			PPI = 72
+			VSize = 76.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAISAAAAAAISAAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZEYQXBwSWNvbjc2eDc2QDJ4fmlwYWQucG5nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxoNS7ctwAAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xzwAAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAbU1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBBcHBJY29uNzZ4NzZAMnh+aXBhZC5wbmcAAA4AMgAYAEEAcABwAEkAYwBvAG4ANwA2AHgANwA2AEAAMgB4AH4AaQBwAGEAZAAuAHAAbgBnAA8AGgAMAE0AYQBjAGkAbgB0AG8AcwBoACAASABEABIAWVVzZXJzL3JvYmVydGtlZW5leS9GUkMyMDE3L0ZSQyBTY291dCAyMDE3L2lPUy9JY29ucy9pT1MgQXBwIEljb24vQXBwSWNvbjc2eDc2QDJ4fmlwYWQucG5nAAATAAEvAAAVAAIAE///AAAAAAAAAAA=
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/AppIcon76x76@2x~ipad.png
+		PartialPath = Icons\iOS App Icon\AppIcon76x76@2x~ipad.png
+		#tag ImageSpecification
+			Comment = App\niOS 7-10
+			Device = 2
+			HSize = 76.00
+			Orientation = Any
+			Platform = 1
+			PPI = 144
+			VSize = 76.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAH8AAAAAAH8AAIAAAxNYWNpbnRvc2ggSEQAAAAAAAAAAAAAAAAAAADUY1EhSCsAAAAaMZETQXBwSWNvbjYweDYwQDN4LnBuZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoxmtS7ctwAAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAADGlPUyBBcHAgSWNvbgAQAAgAANRjpYEAAAARAAgAANS7xzwAAAABABwAGjGRABoxjgAWCcIAFgebABX+1QAGhroABjBbAAIAaE1hY2ludG9zaCBIRDpVc2VyczoAcm9iZXJ0a2VlbmV5OgBGUkMyMDE3OgBGUkMgU2NvdXQgMjAxNzoAaU9TOgBJY29uczoAaU9TIEFwcCBJY29uOgBBcHBJY29uNjB4NjBAM3gucG5nAA4AKAATAEEAcABwAEkAYwBvAG4ANgAwAHgANgAwAEAAMwB4AC4AcABuAGcADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBUVXNlcnMvcm9iZXJ0a2VlbmV5L0ZSQzIwMTcvRlJDIFNjb3V0IDIwMTcvaU9TL0ljb25zL2lPUyBBcHAgSWNvbi9BcHBJY29uNjB4NjBAM3gucG5nABMAAS8AABUAAgAT//8AAAAAAAAAAA==
+		FullPath = /Users/robertkeeney/FRC2017/FRC Scout 2017/iOS/Icons/iOS App Icon/AppIcon60x60@3x.png
+		PartialPath = Icons\iOS App Icon\AppIcon60x60@3x.png
+		#tag ImageSpecification
+			Comment = App\niOS 9-10
+			Device = 2
+			HSize = 83.50
+			Orientation = Any
+			Platform = 1
+			PPI = 144
+			VSize = 83.50
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+End Image
+#tag EndMultiImage
