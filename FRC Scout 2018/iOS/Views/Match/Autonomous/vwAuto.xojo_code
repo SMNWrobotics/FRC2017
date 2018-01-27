@@ -1,44 +1,59 @@
-#tag IOSContainerControl
-Begin iOSContainerControl ccAutonomous
-   AccessibilityHint=   ""
-   AccessibilityLabel=   ""
+#tag IOSView
+Begin iosView vwAuto
+   BackButtonTitle =   ""
    Compatibility   =   ""
-   Height          =   480.0
-   Left            =   0.0
-   Top             =   0.0
-   Visible         =   True
-   Width           =   320.0
+   Left            =   0
+   NavigationBarVisible=   False
+   TabIcon         =   ""
+   TabTitle        =   ""
+   Title           =   ""
+   Top             =   0
    Begin iOSTable tbl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   tbl, 4, <Parent>, 4, False, +1.00, 1, 1, 0, , True
-      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
-      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, , True
-      AutoLayout      =   tbl, 3, <Parent>, 3, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 46, , True
+      AutoLayout      =   tbl, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -6, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   480.0
+      Height          =   408.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
       SectionCount    =   0
-      Top             =   0
+      Top             =   66
       Visible         =   True
       Width           =   320.0
    End
+   Begin iOSButton btnDone
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   btnDone, 9, <Parent>, 9, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   btnDone, 7, , 0, False, +1.00, 4, 1, 100, , True
+      AutoLayout      =   btnDone, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   btnDone, 8, , 0, False, +1.00, 4, 1, 30, , True
+      Caption         =   "Done"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   110
+      LockedInPosition=   False
+      PanelIndex      =   -1
+      Parent          =   "nil"
+      Scope           =   2
+      TextColor       =   &c007AFF00
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   28
+      Visible         =   True
+      Width           =   100.0
+   End
 End
-#tag EndIOSContainerControl
+#tag EndIOSView
 
 #tag WindowCode
-	#tag Event
-		Sub Open()
-		  vwParent = GetView
-		End Sub
-	#tag EndEvent
-
-
 	#tag Method, Flags = &h0
 		Sub LoadList()
 		  tbl.RemoveAll
@@ -51,14 +66,16 @@ End
 		  dim cell as iOSTableCellData
 		  dim oBoolean as ccBoolean
 		  dim oLeftRight as ccLeftRight
+		  dim oStart as ccStartingPosition
 		  
-		  cell = tbl.CreateCell
-		  cell.text = "Starting Position"
+		  
+		  cell = tbl.CreateCustomCell(GetTypeInfo(ccStartingPosition))
+		  oStart = ccStartingPosition(cell.control)
 		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "StartingPosition")
+		  oStart.SetGame(oGame)
 		  cell.Tag = oGame
-		  Cell.DetailText = oGame.sValue
-		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, cell)
+		  
 		  
 		  cell = tbl.CreateCustomCell(GetTypeInfo(ccLeftRight))
 		  oLeftRight = ccLeftRight(cell.control)
@@ -131,7 +148,7 @@ End
 		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "AutoNotes")
 		  cell.Tag = oGame
 		  if oGame.sValue <> "" then
-		    Cell.DetailText = "Has Notes"
+		    Cell.DetailText = oGame.sValue.left(20)
 		  end
 		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, cell)
@@ -164,37 +181,8 @@ End
 		  m_sMatchKey = sMatchKey
 		  m_sTeamNumber = sTeamNumber
 		  LoadLIst
-		  
-		  ' ' ObjC Declare to get a ref to a class by its name
-		  ' Declare Function objc_getClass Lib "/usr/lib/libobjc.dylib" (aClassName As CString) As Ptr
-		  ' ' Here is the corresponding Xojo call
-		  ' Dim theUIColorClassRef As Ptr =  objc_getClass("UIColor")
-		  ' 
-		  ' ' UIKit Declare to create a color object
-		  ' Declare Function decl_GetColorWithRGBA Lib "UIKit" selector "colorWithRed:green:blue:alpha:" (UIColorClassRef As Ptr, red As Single, green As Single, blue As Single, alpha As Single) As Ptr
-		  ' ' Here is the corresponding Xojo call, where we create a flashy green color
-		  ' Dim myUIColorObject As ptr 
-		  ' If sAlliance = "Blue" Then
-		  ' myUIColorObject= decl_GetColorWithRGBA(theUIColorClassRef, (206 / 255), (207/ 255), (254 / 255), 1.0)
-		  ' Else
-		  ' myUIColorObject= decl_GetColorWithRGBA(theUIColorClassRef, (253 / 255), (185/ 255), (181 / 255), 1.0)
-		  ' End
-		  ' ' UIKit Declare to get a reference to a View from its ViewController
-		  ' Declare Function decl_GetView Lib "UIKit" selector "view" (aUIViewController As Ptr) As Ptr
-		  ' ' Here is the corresponding Xojo call (View.Self returns a ViewController)
-		  ' Dim myViewPtr As Ptr = decl_GetView(Self.Handle)
-		  ' 
-		  ' ' UIKit Declare to set the backgound color of a View
-		  ' Declare Sub decl_SetBackgroundColor Lib "UIKit" selector "setBackgroundColor:" (aUIView As Ptr, aUIColor As Ptr)
-		  ' ' Here is the corresponding Xojo call
-		  ' decl_SetBackgroundColor(myViewPtr, myUIColorObject)
 		End Sub
 	#tag EndMethod
-
-
-	#tag Hook, Flags = &h0
-		Event GetView() As iOSView
-	#tag EndHook
 
 
 	#tag Property, Flags = &h0
@@ -213,10 +201,6 @@ End
 		oCell As iOSTableCellData
 	#tag EndProperty
 
-	#tag Property, Flags = &h0
-		vwParent As iOSView
-	#tag EndProperty
-
 
 #tag EndWindowCode
 
@@ -227,60 +211,43 @@ End
 		  
 		  select case oCell.text
 		    
-		  case "Starting Position"
-		    iRow = row
-		    
-		    dim vw as new vwStartingPosition
-		    vw.LoadStartingPosition( oCell.tag)
-		    
-		    self.vwParent.pushto(vw)
-		    
 		  case "Notes"
 		    dim vw as new vwNotes
 		    vw.LoadNotes( oCell.tag)
 		    
-		    self.vwParent.pushto(vw)
+		    self.pushto(vw)
 		    
 		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events btnDone
+	#tag Event
+		Sub Action()
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
-		Name="AccessibilityHint"
+		Name="BackButtonTitle"
 		Group="Behavior"
 		Type="Text"
+		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="AccessibilityLabel"
-		Group="Behavior"
-		Type="Text"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Height"
-		InitialValue="480"
-		Type="Double"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="iRow"
-		Group="Behavior"
+		Name="Index"
+		Visible=true
+		Group="ID"
+		InitialValue="-2147483648"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"
 		Visible=true
 		Group="Position"
+		InitialValue="0"
 		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="m_sMatchKey"
-		Group="Behavior"
-		Type="text"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="m_sTeamNumber"
-		Group="Behavior"
-		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"
@@ -289,27 +256,37 @@ End
 		Type="String"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="NavigationBarVisible"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Super"
 		Visible=true
 		Group="ID"
 		Type="String"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="TabIcon"
+		Group="Behavior"
+		Type="iOSImage"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TabTitle"
+		Group="Behavior"
+		Type="Text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Group="Behavior"
+		Type="Text"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Top"
 		Visible=true
 		Group="Position"
+		InitialValue="0"
 		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Visible"
-		Visible=true
-		Group="Behavior"
-		InitialValue="True"
-		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Width"
-		InitialValue="320"
-		Type="Double"
 	#tag EndViewProperty
 #tag EndViewBehavior

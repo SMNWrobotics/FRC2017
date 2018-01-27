@@ -11,10 +11,10 @@ Begin iosView vwGameScouting
    Begin iOSSegmentedControl seg
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   seg, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   seg, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
-      AutoLayout      =   seg, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
       AutoLayout      =   seg, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   seg, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   seg, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   seg, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0

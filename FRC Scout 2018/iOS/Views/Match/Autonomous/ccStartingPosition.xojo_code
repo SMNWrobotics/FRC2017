@@ -1,5 +1,5 @@
 #tag IOSContainerControl
-Begin iOSCustomTableCell gearAttempts
+Begin iOSCustomTableCell ccStartingPosition
    AccessibilityHint=   ""
    AccessibilityLabel=   ""
    Compatibility   =   ""
@@ -11,29 +11,29 @@ Begin iOSCustomTableCell gearAttempts
    Begin iOSSegmentedControl SegmentedControl1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   SegmentedControl1, 4, <Parent>, 4, False, +1.00, 1, 1, -12, 
-      AutoLayout      =   SegmentedControl1, 8, , 0, True, +1.00, 1, 1, 29, 
-      AutoLayout      =   SegmentedControl1, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   SegmentedControl1, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
+      AutoLayout      =   SegmentedControl1, 4, <Parent>, 4, False, +1.00, 1, 1, -12, , True
+      AutoLayout      =   SegmentedControl1, 8, , 0, True, +1.00, 1, 1, 29, , True
+      AutoLayout      =   SegmentedControl1, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   SegmentedControl1, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
       Left            =   20
       LockedInPosition=   False
       Scope           =   0
-      Segments        =   "Not Attempted\n\nTrue\rAttempted\n\nFalse\rMade\n\nFalse"
+      Segments        =   "Left\n\nFalse\rCenter\n\nFalse\rRight\n\nFalse"
       Top             =   43
-      Value           =   0
+      Value           =   -1
       Visible         =   True
       Width           =   280.0
    End
    Begin iOSLabel lblTitle
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblTitle, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 281, 
-      AutoLayout      =   lblTitle, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   lblTitle, 4, SegmentedControl1, 3, False, +1.00, 1, 1, -*kStdControlGapV, 
+      AutoLayout      =   lblTitle, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 281, , True
+      AutoLayout      =   lblTitle, 8, , 0, False, +1.00, 1, 1, 30, , True
+      AutoLayout      =   lblTitle, 4, SegmentedControl1, 3, False, +1.00, 1, 1, -*kStdControlGapV, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   20
@@ -56,12 +56,12 @@ End
 	#tag Method, Flags = &h0
 		Sub Load()
 		  select case m_oGame.sValue
-		  case "Not Attempted", ""
-		    SegmentedControl1.value = 0
-		  case "Attempted"
-		    SegmentedControl1.value = 1
-		  case "Made"
-		    SegmentedControl1.value = 2
+		  case "A", ""
+		    SegmentedControl1.item(0).Selected = true
+		  case "B"
+		    SegmentedControl1.item(1).Selected = true
+		  case "C"
+		    SegmentedControl1.item(2).Selected = true
 		  case else
 		    break
 		  end
@@ -73,11 +73,11 @@ End
 		Sub Save()
 		  select case SegmentedControl1.value
 		  case 0
-		    m_oGame.sValue = "Not Attempted"
+		    m_oGame.sValue = "A"
 		  case 1
-		    m_oGame.sValue = "Attempted"
+		    m_oGame.sValue = "B"
 		  case 2
-		    m_oGame.sValue = "Made"
+		    m_oGame.sValue = "C"
 		  case else
 		    break
 		  end
@@ -89,14 +89,7 @@ End
 		Sub SetGame(oGame as DataFile.T_Game)
 		  m_oGame = oGame
 		  
-		  select case m_oGame.sVariable
-		  case "Gear1"
-		    lblTitle.text = "Gear 1 (Left)"
-		  case "Gear2"
-		    lblTitle.text = "Gear 2 (Middle)"
-		  case "Gear3"
-		    lblTitle.text = "Gear 3 (Right)"
-		  end
+		  lblTitle.text = m_oGame.sVariable
 		  
 		  Load
 		End Sub
@@ -132,13 +125,6 @@ End
 		Name="Height"
 		InitialValue="480"
 		Type="Double"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Index"
-		Visible=true
-		Group="ID"
-		InitialValue="-2147483648"
-		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"

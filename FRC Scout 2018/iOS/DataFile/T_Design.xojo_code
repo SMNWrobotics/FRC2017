@@ -1,7 +1,7 @@
 #tag Class
 Protected Class T_Design
 	#tag Method, Flags = &h0
-		Shared Function BaseSQL(bAsCount as Boolean = false) as Text
+		Shared Function BaseSQL(bAsCount as Boolean = false) As Text
 		  dim ars() as Text
 		  
 		  ars.Append "select "
@@ -195,6 +195,18 @@ Protected Class T_Design
 		  
 		  
 		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Shared Function TeamHasValues(TeamNumber as Text) As boolean
+		  dim oValue as new DataFile.T_Design
+		  
+		  //Let's try and load it from the database
+		  dim s as Text = "Select Count(*) from T_Design where Team_Number = " + TeamNumber.SQLizeText + " AND Value <> '';"
+		  dim rs as iOSSQLiteRecordSet = gdb.SQLSelect(s)
+		  
+		  return rs.IdxField(0).IntegerValue > 0
+		End Function
 	#tag EndMethod
 
 

@@ -11,10 +11,10 @@ Begin iosView vwRobotDesignTeamList
    Begin iOSTable tbl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   tbl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   tbl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
@@ -60,10 +60,16 @@ End
 		  
 		  for each oteam as DataFile.t_team in app.oSelectedEvent.GetTeams
 		    cell = tbl.CreateCell
-		    cell.Text = oTeam.sTeam_Number
-		    cell.DetailText = oTeam.sNickName + " - " + oTeam.sLocality
+		    cell.Text = oTeam.sTeam_Number + " - " + oTeam.sNickName
+		    if DataFile.T_Design.TeamHasValues(oTeam.sTeam_Number) then
+		      cell.DetailText = "DONE"
+		      cell.AccessoryType = iOSTableCellData.AccessoryTypes.Checkmark
+		    else
+		      cell.DetailText = ""
+		      cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
+		    end
 		    cell.tag = oTeam
-		    cell.AccessoryType = iOSTableCellData.AccessoryTypes.Detail
+		    '
 		    
 		    tbl.AddRow 0, cell
 		  next

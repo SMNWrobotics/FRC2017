@@ -258,8 +258,24 @@ End
 		  Else
 		    sAlliance = "Red"
 		  end
-		  dim vw as new vwGameScouting(oMatch.skey, oTeam.sTeam_Number, sAlliance)
-		  self.PushTo(vw)
+		  
+		  //Swich Screen?
+		  
+		  'dim vw as new vwGameScouting(oMatch.skey, oTeam.sTeam_Number, sAlliance)
+		  'self.PushTo(vw)
+		  
+		  Dim tab As New iOSTabBar
+		  
+		  Dim mv As New vwAuto
+		  mv.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
+		  mv.Title = "Auto"
+		  tab.AddTab(mv)
+		  
+		  Dim v2 As New vwTeleop
+		  v2.Title = "Telop"
+		  tab.AddTab(v2)
+		  
+		  App.CurrentScreen.Content = tab
 		End Sub
 	#tag EndEvent
 #tag EndEvents
