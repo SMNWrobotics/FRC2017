@@ -795,11 +795,12 @@ End
 		Sub Action()
 		  iSeconds = iSeconds + 1
 		  
-		  dim iMinutes as integer = iSeconds\60
-		  dim iLeft as integer = iSeconds - (iMinutes*60)
-		  
-		  dim s as string = str(iMinutes) + ":" + Format(iLeft, "00")
-		  lblTime.text = s
+		  ' dim iMinutes as integer = iSeconds\60
+		  ' dim iLeft as integer = iSeconds - (iMinutes*60)
+		  ' 
+		  ' Dim s As String = Str(iMinutes) + ":" + Format(iLeft, "00")
+		  dim s as string = str(iSeconds)
+		  lblTime.Text = s
 		End Sub
 	#tag EndEvent
 #tag EndEvents

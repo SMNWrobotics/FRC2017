@@ -133,6 +133,7 @@ Class=sbCSVLine;Classes/CSV/sbCSVLine.xojo_code;&h000000002E0BF7FF;&h000000001C3
 Class=sbCSVOut;Classes/CSV/sbCSVOut.xojo_code;&h0000000045F4D7FF;&h000000001C3527FF;false
 Class=sbMassageText;Classes/CSV/sbMassageText.xojo_code;&h0000000047D637FF;&h000000001C3527FF;false
 MultiImage=picTimer;Images/picTimer.xojo_image;&h000000007828BFFF;&h000000007DC5FFFF;false
+Window=winPleaseWait;Windows/winPleaseWait.xojo_window;&h0000000055728FFF;&h000000007A8BA7FF;false
 DefaultWindow=winSplash
 AppMenuBar=MainMenuBar
 MajorVersion=2018

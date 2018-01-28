@@ -595,7 +595,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub LoadAll()
-		  dim arsWidths() as string
+		  Dim arsWidths() As String
 		  
 		  lstall.Visible = false
 		  lstall.DeleteAllRows
@@ -643,26 +643,31 @@ End
 		  next
 		  
 		  
+		  Dim sLastTeam As String
 		  
 		  //Load all the teams
 		  for i as integer = 0 to dictteams.count - 1
 		    dim sTeamNumber as string = dictTeams.key(i)
-		    if dictTeams.value(sTeamNumber) then
+		    If dictTeams.value(sTeamNumber) = True Then
 		      lstall.AddRow sTeamNumber
 		      
-		      Dim iRow As Integer = lstAll.LastIndex
+		      Dim iLastRow As Integer = lstAll.LastIndex
 		      
-		      //Get averages
+		      //Get Values
 		      For icol As Integer = 1 To lstAll.ColumnCount-1
 		        Dim sVariable As String = lstAll.heading(iCol)
-		        Dim d As Double = Data.T_Game.AverageForVariable(sTeamNumber, sVariable)
-		        if d <> 0.0 then
-		          lstAll.Cell(iRow, iCol) = Format(d, "###.0")
-		          lstAll.CellTag(iRow, iCol) = d
+		        Dim s As String = Data.T_Game.AverageForVariable(sTeamNumber, sVariable)
+		        If s <> "" Then
+		          ' If sTeamNumber <> sLastTeam Then
+		          ' Break
+		          ' sLastTeam = sTeamNumber
+		          ' End
+		          lstAll.Cell(iLastRow, iCol) = s
+		          lstAll.CellTag(iLastRow, iCol) = s
 		        end
 		      next
 		    end
-		  next
+		  Next
 		  
 		  lstall.ColumnWidths = join(arsWidths, ",")
 		  

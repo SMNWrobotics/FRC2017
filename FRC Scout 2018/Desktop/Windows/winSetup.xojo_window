@@ -705,7 +705,10 @@ End
 		  if lst.ListIndex = -1 then 
 		    msgbox "You've not selected an event to import."
 		    return
-		  end
+		  End
+		  
+		  Dim w As New winPleaseWait
+		  w.show
 		  
 		  dim oEvent as Data.t_event = lst.RowTag(lst.ListIndex)
 		  
@@ -860,7 +863,7 @@ End
 	#tag EndEvent
 	#tag Event
 		Sub PageReceived(URL as Text, HTTPStatus as Integer, Content as xojo.Core.MemoryBlock)
-		  dim t as text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
+		  Dim t As Text = Xojo.Core.TextEncoding.UTF8.ConvertDataToText(content)
 		  dim s as string = t
 		  
 		  dim oJSON as New JSONItem(s)
@@ -915,11 +918,19 @@ End
 		      oRecord.save
 		      
 		    end
-		  next
+		  Next
+		  
+		  For i As Integer = 0 To WindowCount-1
+		    If Window(i) IsA winPleaseWait Then
+		      Window(i).close
+		    end
+		  Next
 		  
 		  msgbox "All Data Imported from Blue Alliance"
 		  
-		  for i as integer = 0 to WindowCount-1
+		  
+		  
+		  For i As Integer = 0 To WindowCount-1
 		    if window(i) isa winStartup then
 		      winStartup(window(i)).Init
 		      exit

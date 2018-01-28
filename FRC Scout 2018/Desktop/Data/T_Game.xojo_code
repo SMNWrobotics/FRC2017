@@ -16,57 +16,57 @@ Inherits Data.ActiveRecordBase
 
 
 	#tag Method, Flags = &h0
-		Shared Function AverageForVariable(TeamNumber as string, Variable as String) As double
+		Shared Function AverageForVariable(TeamNumber as string, Variable as String) As string
+		  
 		  Dim sql As String
 		  
-		  sql = "Select * from T_Game WHERE TeamNumber = " + TeamNumber.SQLizeText + " AND Variable = " + Variable.SQLizeText 
+		  sql = "Select * from T_Game WHERE TeamNumber = " + TeamNumber.SQLizeText + " AND Variable = " + Variable.SQLizeText  + " AND Value <> '';"
 		  
 		  Dim rs As RecordSet = gDB.SQLSelectRaiseOnError(sql)
 		  
 		  Dim iCnt As Integer
-		  dim dTotal as double
+		  Dim dTotal As Double
+		  
+		  Dim arsCount() As String = Array("BaseLine", "AutoSwitchAttempted", "AutoSwitchMade", "AutoScaleAttempted", "AutoScaleMade", "AutoScalePosition", "AutoSwitchPosition", _
+		  "BoostOne", "BoostTwo", "BoostThree", "BoostUsedCount", "ForceOne", "ForceTwo", "ForceThree", "ForceUsedCount", _
+		  "LevitateOne", "LevitateTwo", "LevitateThree", "Parked", "ClimbingAttemptedRobot", "ClimbingAttemptedRung", "ClimbingMade", "DefensePlayed", _
+		  "CountOpponentSwitch", "CountPortalIntake", "CountScale", "CountYourSwitch", "CubesFromFloor", "CubesFromOpponent", "CubesFromPortal", _
+		  "CubesFromPyramid", "CubesFromYou", "CubesLost", "CubeFromRobot", "CycleCount")
+		  
+		  Dim arsAverage() As String = Array("BoostUsedTime", "ForceUsedTime", "LevitateUsedTime", "CycleTotalTime", "CycleAverageTime")
+		  
+		  Dim arstemp() As String
 		  
 		  While rs.eof = False
-		    iCnt = iCnt + 1
-		    'Select Case Variable
-		    'Case "BaseLine", "Gear1", "Gear2", "Gear3"
-		    'If rs.field("Value").StringValue  = "Made" Then
-		    'iCnt = iCnt + 1
-		    'End
-		    'Case "HighGoal"
-		    'If rs.field("Value").StringValue  = "Attempted" Then
-		    'iCnt = iCnt + 1
-		    'End
-		    'Case "ClimbingAttempted", "ClimbingMade"
-		    'If rs.field("Value").StringValue  = "True" Then
-		    'iCnt = iCnt + 1
-		    'End
-		    '
-		    'Case "GearsAcquired", "GearsMade", "GearCycleAverage", "GearCycleCount", "GearCycleTotalTime"
-		    'dTotal = dTotal + rs.Field("Value").StringValue.val
-		    '
-		    'Case Else
-		    'Break
-		    'end
-		    
+		    If arsCount.IndexOf(Variable) > -1 Then
+		      If rs.field("Value").StringValue  = "Yes" Then
+		        iCnt = iCnt + 1
+		      End
+		    Elseif arsAverage.IndexOf(Variable) > -1 Then
+		      dTotal = dTotal + rs.Field("Value").StringValue.Val
+		    Else
+		      arstemp.Append rs.Field("Value").StringValue
+		    End
 		    
 		    rs.MoveNext
 		  Wend
 		  
-		  'If rs.RecordCount = 0 Then
-		  'Return 0
-		  'else
-		  'Select Case Variable
-		  'Case "BaseLine", "Gear1", "Gear2", "Gear3", "HighGoal", "ClimbingAttempted", "ClimbingMade"
-		  'Return icnt/rs.RecordCount * 100
-		  '
-		  'Case "GearsAcquired", "GearsMade", "GearCycleAverage", "GearCycleCount", "GearCycleTotalTime"
-		  'Return dTotal/rs.RecordCount
-		  '
-		  'Case Else
-		  'Break
-		  'End
-		  'End
+		  If rs.RecordCount = 0 Then
+		    Return ""
+		  Else
+		    
+		    ' If Variable = "Baseline" Then
+		    ' Break
+		    ' End
+		    
+		    If arsCount.IndexOf(Variable) > -1 Then
+		      Return Format(icnt/rs.RecordCount * 100, "###.0")+ "%"
+		    Elseif arsAverage.IndexOf(Variable) > -1 Then
+		      Return Format(dTotal/rs.RecordCount, "###")
+		    Else
+		      return Join(arstemp, ", ")
+		    End
+		  End
 		  
 		End Function
 	#tag EndMethod

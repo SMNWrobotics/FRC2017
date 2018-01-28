@@ -3025,7 +3025,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Save()
-		  oParked.svalue = str(chkParked.value)
+		  oParked.svalue = Str(chkParked.value)
 		  oClimbingAttemptedRung.svalue = str(chkClimbingAttemptedRung.value)
 		  oClimbingAttemptedRobot.svalue = str(chkClimbingAttemptedRobot.value)
 		  oClimbingMade.sValue = str(chkClimbingMade.value )
@@ -3106,7 +3106,22 @@ End
 		  oNotes.save
 		  
 		  
+		  oCountOpponentSwitch.save
+		  oCountPortalIntake.save
+		  oCountScale.save
+		  oCountYourSwitch.save
+		  oCubesFromFloor.save
+		  oCubesFromOpponent.save
+		  oCubesFromPortal.save
+		  oCubesFromPyramid.save
+		  oCubesFromYou.save
+		  oCubesLost.save
+		  oCubeFromRobot.save
 		  
+		  
+		  oCycleCount.save
+		  oCycleTotalTime.save
+		  oCycleAverageTime.save
 		  
 		  
 		End Sub
@@ -3478,7 +3493,7 @@ End
 #tag Events btnCubePile
 	#tag Event
 		Sub Action()
-		  dim iCnt as integer = oCubesFromPyramid.sValue.val
+		  Dim iCnt As Integer = oCubesFromPyramid.sValue.Val
 		  iCnt = iCnt + 1
 		  icnt = Min(iCnt, 10)
 		  oCubesFromPyramid.sValue  = iCnt.ToString
