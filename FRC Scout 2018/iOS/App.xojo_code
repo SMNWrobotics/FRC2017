@@ -23,6 +23,10 @@ Inherits IOSApplication
 
 
 	#tag Property, Flags = &h0
+		oOldContent As iOSScreenContent
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		oSelectedEvent As DataFile.t_event
 	#tag EndProperty
 

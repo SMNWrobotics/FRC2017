@@ -11,10 +11,10 @@ Begin iOSCustomTableCell cellMadeBaseline
    Begin iOSLabel lblTitle
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblTitle, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 221, 
-      AutoLayout      =   lblTitle, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   lblTitle, 3, chkData, 3, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   lblTitle, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblTitle, 7, , 0, False, +1.00, 1, 1, 221, , True
+      AutoLayout      =   lblTitle, 8, , 0, False, +1.00, 1, 1, 30, , True
+      AutoLayout      =   lblTitle, 3, chkData, 3, False, +1.00, 1, 1, 0, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   20
@@ -33,10 +33,10 @@ Begin iOSCustomTableCell cellMadeBaseline
    Begin iOSSwitch chkData
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   chkData, 8, , 0, True, +1.00, 1, 1, 31, 
-      AutoLayout      =   chkData, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   chkData, 3, <Parent>, 3, False, +1.00, 1, 1, 10, 
-      AutoLayout      =   chkData, 7, , 0, True, +1.00, 1, 1, 51, 
+      AutoLayout      =   chkData, 8, , 0, True, +1.00, 1, 1, 31, , True
+      AutoLayout      =   chkData, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   chkData, 3, <Parent>, 3, False, +1.00, 1, 1, 10, , True
+      AutoLayout      =   chkData, 7, , 0, True, +1.00, 1, 1, 51, , True
       Enabled         =   True
       Height          =   31.0
       Left            =   249
@@ -104,13 +104,6 @@ End
 		Name="Height"
 		InitialValue="480"
 		Type="Double"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="Index"
-		Visible=true
-		Group="ID"
-		InitialValue="-2147483648"
-		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Left"

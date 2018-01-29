@@ -14,12 +14,12 @@ Begin iosView vwAuto
       AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 46, , True
-      AutoLayout      =   tbl, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -6, , True
+      AutoLayout      =   tbl, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -100, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   408.0
+      Height          =   314.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
@@ -40,8 +40,6 @@ Begin iosView vwAuto
       Height          =   30.0
       Left            =   110
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
@@ -49,6 +47,65 @@ Begin iosView vwAuto
       Top             =   28
       Visible         =   True
       Width           =   100.0
+   End
+   Begin iOSButton btnTimer
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   btnTimer, 7, , 0, False, +1.00, 4, 1, 60, , True
+      AutoLayout      =   btnTimer, 2, lblTimer, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
+      AutoLayout      =   btnTimer, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   btnTimer, 3, tbl, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      Caption         =   "Timer"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   97
+      LockedInPosition=   False
+      Scope           =   2
+      TextColor       =   &c007AFF00
+      TextFont        =   ""
+      TextSize        =   0
+      Top             =   388
+      Visible         =   True
+      Width           =   60.0
+   End
+   Begin iOSLabel lblTimer
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   lblTimer, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblTimer, 1, <Parent>, 1, False, +1.00, 4, 1, 165, , True
+      AutoLayout      =   lblTimer, 3, btnTimer, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblTimer, 7, , 0, False, +1.00, 4, 1, 69, , True
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   165
+      LineBreakMode   =   "0"
+      LockedInPosition=   False
+      Scope           =   2
+      Text            =   "0"
+      TextAlignment   =   "0"
+      TextColor       =   &c00000000
+      TextFont        =   "System Bold		"
+      TextSize        =   0
+      Top             =   388
+      Visible         =   True
+      Width           =   69.0
+   End
+   Begin Xojo.Core.Timer tmrGame
+      Height          =   32
+      Height          =   "32"
+      Left            =   100
+      Left            =   100
+      LockedInPosition=   False
+      Mode            =   "0"
+      PanelIndex      =   -1
+      Parent          =   ""
+      Period          =   1000
+      Scope           =   2
+      Tolerance       =   0
+      Top             =   100
+      Top             =   100
+      Width           =   32
+      Width           =   "32"
    End
 End
 #tag EndIOSView
@@ -190,6 +247,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		iSeconds As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		m_sMatchKey As text
 	#tag EndProperty
 
@@ -225,6 +286,28 @@ End
 	#tag Event
 		Sub Action()
 		  
+		  App.CurrentScreen.Content = app.oOldContent
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnTimer
+	#tag Event
+		Sub Action()
+		  If tmrGame.Mode = xojo.core.timer.Modes.Multiple Then
+		    tmrGame.Mode = xojo.core.timer.Modes.Off
+		    iSeconds = 0
+		  Else
+		    tmrGame.Mode = xojo.core.timer.Modes.Multiple
+		    iSeconds = 0
+		  End
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events tmrGame
+	#tag Event
+		Sub Action()
+		  iSeconds = iSeconds + 1
+		  lblTimer.Text = iSeconds.ToText
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -243,11 +326,26 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="iRow"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Left"
 		Visible=true
 		Group="Position"
 		InitialValue="0"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_sMatchKey"
+		Group="Behavior"
+		Type="text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="m_sTeamNumber"
+		Group="Behavior"
+		Type="text"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Name"

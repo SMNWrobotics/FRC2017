@@ -239,7 +239,7 @@ End
 #tag Events btnStart
 	#tag Event
 		Sub Action()
-		  if Alliance = "" or level = "" or MatchKey = "" or Team = "" then
+		  If Alliance = "" Or level = "" Or MatchKey = "" Or Team = "" Then
 		    msgbox "Fill out all values before starting."
 		    return
 		  end
@@ -259,6 +259,7 @@ End
 		    sAlliance = "Red"
 		  end
 		  
+		  App.oOldContent = app.CurrentScreen.Content
 		  //Swich Screen?
 		  
 		  'dim vw as new vwGameScouting(oMatch.skey, oTeam.sTeam_Number, sAlliance)
