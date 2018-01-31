@@ -267,14 +267,15 @@ End
 		  
 		  Dim tab As New iOSTabBar
 		  
-		  Dim mv As New vwAuto
-		  mv.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
-		  mv.Title = "Auto"
-		  tab.AddTab(mv)
+		  Dim vAuto As New vwAuto
+		  vAuto.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
+		  vAuto.Title = "Auto"
+		  tab.AddTab(vAuto)
 		  
-		  Dim v2 As New vwTeleop
-		  v2.Title = "Telop"
-		  tab.AddTab(v2)
+		  Dim vTel As New vwTeleop
+		  vTel.Title = "Telop"
+		  vTel.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
+		  tab.AddTab(vTel)
 		  
 		  App.CurrentScreen.Content = tab
 		End Sub

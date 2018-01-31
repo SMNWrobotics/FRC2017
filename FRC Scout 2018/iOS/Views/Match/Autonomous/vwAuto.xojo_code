@@ -13,40 +13,20 @@ Begin iosView vwAuto
       AccessibilityLabel=   ""
       AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 46, , True
+      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   tbl, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -100, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   314.0
+      Height          =   360.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
       SectionCount    =   0
-      Top             =   66
+      Top             =   20
       Visible         =   True
       Width           =   320.0
-   End
-   Begin iOSButton btnDone
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   btnDone, 9, <Parent>, 9, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   btnDone, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   btnDone, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
-      AutoLayout      =   btnDone, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Done"
-      Enabled         =   True
-      Height          =   30.0
-      Left            =   110
-      LockedInPosition=   False
-      Scope           =   2
-      TextColor       =   &c007AFF00
-      TextFont        =   ""
-      TextSize        =   0
-      Top             =   28
-      Visible         =   True
-      Width           =   100.0
    End
    Begin iOSButton btnTimer
       AccessibilityHint=   ""
@@ -91,10 +71,7 @@ Begin iosView vwAuto
       Width           =   69.0
    End
    Begin Xojo.Core.Timer tmrGame
-      Height          =   32
-      Height          =   "32"
-      Left            =   100
-      Left            =   100
+      Left            =   0
       LockedInPosition=   False
       Mode            =   "0"
       PanelIndex      =   -1
@@ -102,15 +79,45 @@ Begin iosView vwAuto
       Period          =   1000
       Scope           =   2
       Tolerance       =   0
-      Top             =   100
-      Top             =   100
-      Width           =   32
-      Width           =   "32"
+      Top             =   0
+   End
+   Begin iOSToolButton Button1
+      Caption         =   "Untitled"
+      Enabled         =   True
+      Height          =   22
+      Image           =   "0"
+      Image           =   "0"
+      Left            =   270
+      LockedInPosition=   False
+      Scope           =   0
+      Top             =   446
+      Type            =   "0"
+      Width           =   42.0
+   End
+   Begin iOSToolButton Button2
+      Caption         =   "Untitled"
+      Enabled         =   True
+      Height          =   22
+      Image           =   "0"
+      Image           =   "0"
+      Left            =   8
+      LockedInPosition=   False
+      Scope           =   0
+      Top             =   446
+      Type            =   "5"
+      Width           =   253.0
    End
 End
 #tag EndIOSView
 
 #tag WindowCode
+	#tag Event
+		Sub ToolbarPressed(button As iOSToolButton)
+		  App.CurrentScreen.Content = app.oOldContent
+		End Sub
+	#tag EndEvent
+
+
 	#tag Method, Flags = &h0
 		Sub LoadList()
 		  tbl.RemoveAll
@@ -282,14 +289,6 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events btnDone
-	#tag Event
-		Sub Action()
-		  
-		  App.CurrentScreen.Content = app.oOldContent
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events btnTimer
 	#tag Event
 		Sub Action()
@@ -327,6 +326,11 @@ End
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="iRow"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="iSeconds"
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty

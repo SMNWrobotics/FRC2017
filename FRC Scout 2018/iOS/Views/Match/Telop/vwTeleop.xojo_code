@@ -8,33 +8,13 @@ Begin iosView vwTeleop
    TabTitle        =   ""
    Title           =   ""
    Top             =   0
-   Begin iOSButton btnDone
-      AccessibilityHint=   ""
-      AccessibilityLabel=   ""
-      AutoLayout      =   btnDone, 9, <Parent>, 9, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   btnDone, 7, , 0, False, +1.00, 4, 1, 100, , True
-      AutoLayout      =   btnDone, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
-      AutoLayout      =   btnDone, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Done"
-      Enabled         =   True
-      Height          =   30.0
-      Left            =   110
-      LockedInPosition=   False
-      Scope           =   2
-      TextColor       =   &c007AFF00
-      TextFont        =   ""
-      TextSize        =   0
-      Top             =   28
-      Visible         =   True
-      Width           =   100.0
-   End
    Begin iOSSegmentedControl SegmentedControl1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   SegmentedControl1, 8, , 0, True, +1.00, 4, 1, 29, , True
       AutoLayout      =   SegmentedControl1, 1, <Parent>, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   SegmentedControl1, 2, <Parent>, 2, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   SegmentedControl1, 8, , 0, True, +1.00, 4, 1, 29, , True
-      AutoLayout      =   SegmentedControl1, 4, <Parent>, 4, False, +1.00, 4, 1, -63, , True
+      AutoLayout      =   SegmentedControl1, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 0, , True
       Caption         =   ""
       Enabled         =   True
       Height          =   29.0
@@ -42,7 +22,7 @@ Begin iosView vwTeleop
       LockedInPosition=   False
       Scope           =   2
       Segments        =   "Cubes\n\nTrue\rPowerups\n\nFalse\rMisc\n\nFalse"
-      Top             =   388
+      Top             =   20
       Value           =   0
       Visible         =   True
       Width           =   320.0
@@ -50,51 +30,74 @@ Begin iosView vwTeleop
    Begin ccCubes ccCubes1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   ccCubes1, 4, SegmentedControl1, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccCubes1, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -40, , True
       AutoLayout      =   ccCubes1, 1, SegmentedControl1, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   ccCubes1, 2, SegmentedControl1, 2, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   ccCubes1, 3, btnDone, 4, False, +1.00, 4, 1, 0, , True
-      Height          =   330.0
+      AutoLayout      =   ccCubes1, 3, SegmentedControl1, 4, False, +1.00, 4, 1, 0, , True
+      bDestination    =   False
+      Height          =   391.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   58
+      Top             =   49
       Visible         =   True
       Width           =   320.0
    End
    Begin ccPowerup ccPowerup1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   ccPowerup1, 1, <Parent>, 1, False, +1.00, 4, 1, -11, , True
-      AutoLayout      =   ccPowerup1, 7, , 0, False, +1.00, 4, 1, 3.2e+2, , True
-      AutoLayout      =   ccPowerup1, 3, <Parent>, 3, False, +1.00, 4, 1, 58, , True
-      AutoLayout      =   ccPowerup1, 4, <Parent>, 4, False, +1.00, 4, 1, -92, , True
-      Height          =   330.0
-      Left            =   -11
+      AutoLayout      =   ccPowerup1, 4, ccCubes1, 4, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccPowerup1, 1, ccCubes1, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccPowerup1, 3, ccCubes1, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccPowerup1, 7, ccCubes1, 7, False, +1.00, 4, 1, 0, , True
+      Height          =   391.0
+      Left            =   0
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   2
-      Top             =   58
+      Top             =   49
       Visible         =   True
       Width           =   320.0
    End
    Begin ccMisc ccMisc1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   ccMisc1, 1, <Parent>, 1, False, +1.00, 4, 1, 10, , True
-      AutoLayout      =   ccMisc1, 7, , 0, False, +1.00, 4, 1, 3.2e+2, , True
-      AutoLayout      =   ccMisc1, 3, <Parent>, 3, False, +1.00, 4, 1, 58, , True
-      AutoLayout      =   ccMisc1, 4, <Parent>, 4, False, +1.00, 4, 1, -92, , True
-      Height          =   330.0
-      Left            =   10
+      AutoLayout      =   ccMisc1, 4, ccCubes1, 4, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccMisc1, 1, ccCubes1, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccMisc1, 3, ccCubes1, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ccMisc1, 7, ccCubes1, 7, False, +1.00, 4, 1, 0, , True
+      Height          =   391.0
+      Left            =   0
       LockedInPosition=   False
-      PanelIndex      =   -1
-      Parent          =   "nil"
       Scope           =   2
-      Top             =   58
+      Top             =   49
       Visible         =   True
       Width           =   320.0
+   End
+   Begin iOSToolButton Button1
+      Caption         =   "Untitled"
+      Enabled         =   True
+      Height          =   22
+      Image           =   "0"
+      Image           =   "0"
+      Left            =   8
+      LockedInPosition=   False
+      Scope           =   0
+      Top             =   446
+      Type            =   "5"
+      Width           =   253.0
+   End
+   Begin iOSToolButton Button2
+      Caption         =   "Untitled"
+      Enabled         =   True
+      Height          =   22
+      Image           =   "0"
+      Image           =   "0"
+      Left            =   270
+      LockedInPosition=   False
+      Scope           =   0
+      Top             =   446
+      Type            =   "0"
+      Width           =   42.0
    End
 End
 #tag EndIOSView
@@ -112,16 +115,34 @@ End
 		End Sub
 	#tag EndEvent
 
-
-#tag EndWindowCode
-
-#tag Events btnDone
 	#tag Event
-		Sub Action()
+		Sub ToolbarPressed(button As iOSToolButton)
 		  App.CurrentScreen.Content = app.oOldContent
 		End Sub
 	#tag EndEvent
-#tag EndEvents
+
+
+	#tag Method, Flags = &h0
+		Sub SetGame(sMatchKey as text, sTeamNumber as text, sAlliance as text)
+		  m_sMatchKey = sMatchKey
+		  m_sTeamNumber = sTeamNumber
+		  
+		  ccCubes1.SetGame(m_sMatchKey, m_sTeamNumber)
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h21
+		Private m_sMatchKey As text
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private m_sTeamNumber As Text
+	#tag EndProperty
+
+
+#tag EndWindowCode
+
 #tag Events SegmentedControl1
 	#tag Event
 		Sub ValueChanged()
@@ -142,9 +163,65 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events ccCubes1
-#tag EndEvents
-#tag Events ccPowerup1
-#tag EndEvents
-#tag Events ccMisc1
-#tag EndEvents
+#tag ViewBehavior
+	#tag ViewProperty
+		Name="BackButtonTitle"
+		Group="Behavior"
+		Type="Text"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Index"
+		Visible=true
+		Group="ID"
+		InitialValue="-2147483648"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Left"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Name"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="NavigationBarVisible"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Super"
+		Visible=true
+		Group="ID"
+		Type="String"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TabIcon"
+		Group="Behavior"
+		Type="iOSImage"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="TabTitle"
+		Group="Behavior"
+		Type="Text"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Title"
+		Group="Behavior"
+		Type="Text"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="Top"
+		Visible=true
+		Group="Position"
+		InitialValue="0"
+		Type="Integer"
+	#tag EndViewProperty
+#tag EndViewBehavior
