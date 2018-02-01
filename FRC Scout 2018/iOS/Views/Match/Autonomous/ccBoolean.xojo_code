@@ -92,6 +92,13 @@ End
 
 #tag EndWindowCode
 
+#tag Events Switch1
+	#tag Event
+		Sub ValueChanged()
+		  Save
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="AccessibilityHint"

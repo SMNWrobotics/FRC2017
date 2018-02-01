@@ -126,9 +126,9 @@ End
 		  
 		  tbl.AddSection ""
 		  
-		  dim oGame as DataFile.T_Game
-		  dim cell as iOSTableCellData
-		  dim oBoolean as ccBoolean
+		  Dim oGame As DataFile.T_Game
+		  Dim cell As iOSTableCellData
+		  Dim oBoolean As ccBoolean
 		  dim oLeftRight as ccLeftRight
 		  dim oStart as ccStartingPosition
 		  
@@ -212,7 +212,7 @@ End
 		  oGame = DataFile.T_Game.LoadMatchValue(m_sMatchKey, m_sTeamNumber, "AutoNotes")
 		  cell.Tag = oGame
 		  if oGame.sValue <> "" then
-		    Cell.DetailText = oGame.sValue.left(20)
+		    Cell.DetailText = oGame.sValue.Left(Min(oGame.sValue.Length, 20))
 		  end
 		  cell.AccessoryType = iOSTableCellData.AccessoryTypes.Disclosure
 		  tbl.AddRow(0, cell)
@@ -271,11 +271,11 @@ End
 #tag Events tbl
 	#tag Event
 		Sub Action(section As Integer, row As Integer)
-		  oCell = me.RowData(section, row)
+		  oCell = Me.RowData(section, row)
 		  
 		  select case oCell.text
 		    
-		  case "Notes"
+		  Case "Notes"
 		    dim vw as new vwNotes
 		    vw.LoadNotes( oCell.tag)
 		    

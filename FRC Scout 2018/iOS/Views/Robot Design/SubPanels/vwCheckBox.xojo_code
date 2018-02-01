@@ -11,10 +11,10 @@ Begin iosView vwCheckBox
    Begin iOSLabel lblVariableName
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblVariableName, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   lblVariableName, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   lblVariableName, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   lblVariableName, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   lblVariableName, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblVariableName, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   lblVariableName, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblVariableName, 8, , 0, False, +1.00, 1, 1, 30, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   20
@@ -33,10 +33,10 @@ Begin iosView vwCheckBox
    Begin iOSSwitch chkValue
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   chkValue, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   chkValue, 7, , 0, True, +1.00, 1, 1, 51, 
-      AutoLayout      =   chkValue, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   chkValue, 8, , 0, True, +1.00, 1, 1, 31, 
+      AutoLayout      =   chkValue, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   chkValue, 7, , 0, True, +1.00, 1, 1, 51, , True
+      AutoLayout      =   chkValue, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      AutoLayout      =   chkValue, 8, , 0, True, +1.00, 1, 1, 31, , True
       Enabled         =   True
       Height          =   31.0
       Left            =   249
@@ -97,11 +97,6 @@ End
 		Visible=true
 		Group="Position"
 		InitialValue="0"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="m_oDesign"
-		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty

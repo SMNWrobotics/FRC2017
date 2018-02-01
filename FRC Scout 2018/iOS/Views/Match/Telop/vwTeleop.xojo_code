@@ -88,7 +88,7 @@ Begin iosView vwTeleop
       Width           =   253.0
    End
    Begin iOSToolButton Button2
-      Caption         =   "Untitled"
+      Caption         =   "Match Complete"
       Enabled         =   True
       Height          =   22
       Image           =   "0"
@@ -97,8 +97,8 @@ Begin iosView vwTeleop
       LockedInPosition=   False
       Scope           =   0
       Top             =   446
-      Type            =   "0"
-      Width           =   42.0
+      Type            =   "1003"
+      Width           =   113.0
    End
 End
 #tag EndIOSView
@@ -130,6 +130,8 @@ End
 		  
 		  ccCubes1.SetGame(m_sMatchKey, m_sTeamNumber)
 		  ccPowerup1.SetGame(m_sMatchKey, m_sTeamNumber)
+		  ccMisc1.SetGame(m_sMatchKey, m_sTeamNumber)
+		  ccMisc1.oParent = Self
 		End Sub
 	#tag EndMethod
 

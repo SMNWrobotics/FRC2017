@@ -270,10 +270,12 @@ End
 		  Dim vAuto As New vwAuto
 		  vAuto.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
 		  vAuto.Title = "Auto"
+		  vAuto.TabIcon = picAuto
 		  tab.AddTab(vAuto)
 		  
 		  Dim vTel As New vwTeleop
 		  vTel.Title = "Telop"
+		  vTel.TabIcon = picTeleop
 		  vTel.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
 		  tab.AddTab(vTel)
 		  

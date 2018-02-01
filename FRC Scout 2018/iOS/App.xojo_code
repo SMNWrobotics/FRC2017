@@ -4,7 +4,7 @@ Inherits IOSApplication
 	#tag CompatibilityFlags = TargetIOS
 	#tag Event
 		Sub Open()
-		  dim f as xojo.IO.FolderItem = SpecialFolder.Documents.child("frc 2018 DataFile.sqlite")
+		  Dim f As xojo.IO.FolderItem = SpecialFolder.Documents.child("frc 2018 DataFile.sqlite")
 		  
 		  if DataFile.OpenDB(f) = false then
 		    msgbox "Can't open the data file."
