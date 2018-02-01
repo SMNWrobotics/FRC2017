@@ -34,6 +34,11 @@ Protected Module modGlobals
 	#tag EndMethod
 
 
+	#tag Property, Flags = &h0
+		iCurrentGameSeconds As Integer
+	#tag EndProperty
+
+
 	#tag ViewBehavior
 		#tag ViewProperty
 			Name="Index"

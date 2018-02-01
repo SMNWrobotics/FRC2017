@@ -36,6 +36,7 @@ Begin iosView vwTeleop
       AutoLayout      =   ccCubes1, 3, SegmentedControl1, 4, False, +1.00, 4, 1, 0, , True
       bDestination    =   False
       Height          =   391.0
+      iSeconds        =   0
       Left            =   0
       LockedInPosition=   False
       Scope           =   2
@@ -128,6 +129,7 @@ End
 		  m_sTeamNumber = sTeamNumber
 		  
 		  ccCubes1.SetGame(m_sMatchKey, m_sTeamNumber)
+		  ccPowerup1.SetGame(m_sMatchKey, m_sTeamNumber)
 		End Sub
 	#tag EndMethod
 

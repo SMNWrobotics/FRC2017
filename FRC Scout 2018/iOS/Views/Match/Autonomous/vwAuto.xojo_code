@@ -254,10 +254,6 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		iSeconds As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		m_sMatchKey As text
 	#tag EndProperty
 
@@ -294,10 +290,10 @@ End
 		Sub Action()
 		  If tmrGame.Mode = xojo.core.timer.Modes.Multiple Then
 		    tmrGame.Mode = xojo.core.timer.Modes.Off
-		    iSeconds = 0
+		    iCurrentGameSeconds = 0
 		  Else
 		    tmrGame.Mode = xojo.core.timer.Modes.Multiple
-		    iSeconds = 0
+		    iCurrentGameSeconds = 0
 		  End
 		End Sub
 	#tag EndEvent
@@ -305,8 +301,8 @@ End
 #tag Events tmrGame
 	#tag Event
 		Sub Action()
-		  iSeconds = iSeconds + 1
-		  lblTimer.Text = iSeconds.ToText
+		  iCurrentGameSeconds = iCurrentGameSeconds + 1
+		  lblTimer.Text = iCurrentGameSeconds.ToText
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -298,9 +298,9 @@ Begin iOSContainerControl ccPowerup
       AccessibilityLabel=   ""
       AutoLayout      =   btnLevitateUsed, 1, <Parent>, 1, False, +1.00, 4, 1, 38, , True
       AutoLayout      =   btnLevitateUsed, 2, swLevitate1, 2, False, +1.00, 4, 1, 11, , True
-      AutoLayout      =   btnLevitateUsed, 3, <Parent>, 3, False, +1.00, 4, 1, 215, , True
+      AutoLayout      =   btnLevitateUsed, 3, <Parent>, 3, False, +1.00, 4, 1, 246, , True
       AutoLayout      =   btnLevitateUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Used"
+      Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
       Left            =   38
@@ -309,18 +309,18 @@ Begin iOSContainerControl ccPowerup
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   215
+      Top             =   246
       Visible         =   True
       Width           =   73.0
    End
    Begin iOSButton btnBoostUsed
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnBoostUsed, 2, Label3, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
       AutoLayout      =   btnBoostUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
-      AutoLayout      =   btnBoostUsed, 11, btnLevitateUsed, 11, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   btnBoostUsed, 2, Label3, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
       AutoLayout      =   btnBoostUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Used"
+      AutoLayout      =   btnBoostUsed, 3, , 0, False, +1.00, 4, 1, 246, , True
+      Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
       Left            =   135
@@ -329,18 +329,18 @@ Begin iOSContainerControl ccPowerup
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   215
+      Top             =   246
       Visible         =   True
       Width           =   73.0
    End
    Begin iOSButton btnForceUsed
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnForceUsed, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   btnForceUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
-      AutoLayout      =   btnForceUsed, 11, btnLevitateUsed, 11, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   btnForceUsed, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   btnForceUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
-      Caption         =   "Used"
+      AutoLayout      =   btnForceUsed, 3, , 0, False, +1.00, 4, 1, 246, , True
+      Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
       Left            =   227
@@ -349,7 +349,7 @@ Begin iOSContainerControl ccPowerup
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   215
+      Top             =   246
       Visible         =   True
       Width           =   73.0
    End
@@ -371,7 +371,7 @@ Begin iOSContainerControl ccPowerup
       TextColor       =   &c00000000
       TextFont        =   "System Bold		"
       TextSize        =   0
-      Top             =   253
+      Top             =   284
       Visible         =   True
       Width           =   73.0
    End
@@ -380,8 +380,8 @@ Begin iOSContainerControl ccPowerup
       AccessibilityLabel=   ""
       AutoLayout      =   lblBoostTime, 1, btnBoostUsed, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lblBoostTime, 7, , 0, False, +1.00, 4, 1, 73, , True
-      AutoLayout      =   lblBoostTime, 11, lblLevitateTime, 11, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lblBoostTime, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblBoostTime, 3, , 0, False, +1.00, 4, 1, 284, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   135
@@ -393,7 +393,7 @@ Begin iOSContainerControl ccPowerup
       TextColor       =   &c00000000
       TextFont        =   "System Bold		"
       TextSize        =   0
-      Top             =   253
+      Top             =   284
       Visible         =   True
       Width           =   73.0
    End
@@ -402,8 +402,8 @@ Begin iOSContainerControl ccPowerup
       AccessibilityLabel=   ""
       AutoLayout      =   lblForceTime, 1, btnForceUsed, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lblForceTime, 7, , 0, False, +1.00, 4, 1, 73, , True
-      AutoLayout      =   lblForceTime, 11, lblLevitateTime, 11, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lblForceTime, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblForceTime, 3, , 0, False, +1.00, 4, 1, 284, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   227
@@ -415,7 +415,51 @@ Begin iOSContainerControl ccPowerup
       TextColor       =   &c00000000
       TextFont        =   "System Bold		"
       TextSize        =   0
-      Top             =   253
+      Top             =   284
+      Visible         =   True
+      Width           =   73.0
+   End
+   Begin iOSLabel lblBoostCount
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   lblBoostCount, 1, lblBoostTime, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblBoostCount, 7, , 0, False, +1.00, 4, 1, 73, , True
+      AutoLayout      =   lblBoostCount, 11, lblForceCount, 11, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblBoostCount, 8, , 0, False, +1.00, 4, 1, 30, , True
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   135
+      LineBreakMode   =   "0"
+      LockedInPosition=   False
+      Scope           =   2
+      Text            =   "-"
+      TextAlignment   =   "1"
+      TextColor       =   &c00000000
+      TextFont        =   "System Bold		"
+      TextSize        =   0
+      Top             =   203
+      Visible         =   True
+      Width           =   73.0
+   End
+   Begin iOSLabel lblForceCount
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   lblForceCount, 1, lblForceTime, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblForceCount, 7, , 0, False, +1.00, 4, 1, 73, , True
+      AutoLayout      =   lblForceCount, 3, swForce1, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblForceCount, 8, , 0, False, +1.00, 4, 1, 30, , True
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   227
+      LineBreakMode   =   "0"
+      LockedInPosition=   False
+      Scope           =   2
+      Text            =   "-"
+      TextAlignment   =   "1"
+      TextColor       =   &c00000000
+      TextFont        =   "System Bold		"
+      TextSize        =   0
+      Top             =   203
       Visible         =   True
       Width           =   73.0
    End
@@ -423,6 +467,58 @@ End
 #tag EndIOSContainerControl
 
 #tag WindowCode
+	#tag Method, Flags = &h21
+		Private Sub LoadData()
+		  oBoostOne = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostOne")
+		  oBoostTwo = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostTwo")
+		  oBoostThree = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostThree")
+		  oBoostUsedCount = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostUsedCount")
+		  oBoostUsedTime = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "BoostUsedTime")
+		  
+		  
+		  oForceOne = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceOne")
+		  oForceTwo = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceTwo")
+		  oForceThree = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceThree")
+		  oForceUsedCount = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceUsedCount")
+		  oForceUsedTime = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "ForceUsedTime")
+		  
+		  
+		  oLevitateOne = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateOne")
+		  oLevitateTwo = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateTwo")
+		  oLevitateThree = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateThree")
+		  oLevitateUsedTime = DataFile.T_Game.LoadMatchValue(msMatchKey, msTeamNumber, "LevitateUsedTime")
+		  
+		  
+		  
+		  swBoost1.value = cBool(oBoostOne.sValue)
+		  swBoost2.value = cBool(oBoostTwo.sValue)
+		  swBoost3.value = cBool(oBoostThree.sValue)
+		  lblBoostTime.Text = oBoostUsedTime.sValue
+		  lblBoostCount.Text = oBoostUsedCount.sValue
+		  
+		  swForce1.value = cBool(oForceOne.sValue)
+		  swForce2.value = cBool(oForceTwo.sValue)
+		  swForce3.value = cBool(oForceThree.sValue)
+		  lblForceTime.Text = oForceUsedTime.sValue
+		  lblForceCount.Text = oForceUsedCount.sValue
+		  
+		  swLevitate1.value = cBool(oLevitateOne.sValue)
+		  swLevitate2.value = cBool(oLevitateTwo.sValue)
+		  swLevitate3.value = cBool(oLevitateThree.sValue)
+		  lblLevitateTime.Text = oLevitateUsedTime.sValue
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub SetGame(sMatchKey as text, sTeamNumber as text)
+		  msMatchKey = sMatchKey
+		  msTeamNumber = sTeamNumber
+		  
+		  LoadData
+		  
+		End Sub
+	#tag EndMethod
+
 	#tag Method, Flags = &h21
 		Private Sub UpdateBoostSwitches()
 		  swBoost2.Enabled = swBoost1.value
@@ -445,12 +541,80 @@ End
 	#tag EndMethod
 
 
+	#tag Property, Flags = &h21
+		Private msMatchKey As Text
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private msTeamNumber As Text
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oBoostOne As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oBoostThree As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oBoostTwo As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oBoostUsedCount As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oBoostUsedTime As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oForceOne As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oForceThree As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oForceTwo As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oForceUsedCount As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oForceUsedTime As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oLevitateOne As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oLevitateThree As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oLevitateTwo As DataFile.T_Game
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		oLevitateUsedTime As DataFile.T_Game
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
 #tag Events swLevitate3
 	#tag Event
 		Sub ValueChanged()
 		  UpdateLevitateSwitches
+		  
+		  oLevitateThree.sValue = Me.value.BoolToText
+		  oLevitateThree.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -458,6 +622,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateLevitateSwitches
+		  
+		  oLevitateTwo.sValue = Me.value.BoolToText
+		  oLevitateTwo.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -465,6 +632,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateLevitateSwitches
+		  
+		  oLevitateOne.sValue = Me.value.BoolToText
+		  oLevitateOne.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -472,6 +642,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateBoostSwitches
+		  
+		  oBoostThree.sValue = Me.value.BoolToText
+		  oBoostThree.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -479,6 +652,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateBoostSwitches
+		  
+		  oBoostTwo.sValue = Me.value.BoolToText
+		  oBoostTwo.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -486,6 +662,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateBoostSwitches
+		  
+		  oBoostOne.sValue = Me.value.BoolToText
+		  oBoostOne.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -493,6 +672,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateForceSwitches
+		  
+		  oForceThree.sValue = Me.value.BoolToText
+		  oForceThree.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -500,6 +682,9 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateForceSwitches
+		  
+		  oForceTwo.sValue = Me.value.BoolToText
+		  oForceTwo.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -507,6 +692,101 @@ End
 	#tag Event
 		Sub ValueChanged()
 		  UpdateForceSwitches
+		  
+		  oForceOne.sValue = Me.value.BoolToText
+		  oForceOne.save
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnLevitateUsed
+	#tag Event
+		Sub Action()
+		  Dim icnt As Integer
+		  
+		  If swLevitate1.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If swLevitate2.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If swLevitate3.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If iCnt = 0 Then 
+		    Return
+		  End
+		  
+		  lblLevitateTime.Text = iCurrentGameSeconds.ToText
+		  
+		  oLevitateUsedTime.sValue = lblForceTime.Text
+		  oLevitateUsedTime.save
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnBoostUsed
+	#tag Event
+		Sub Action()
+		  Dim icnt As Integer
+		  
+		  If swBoost1.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If swBoost2.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If swBoost3.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If iCnt = 0 Then 
+		    Return
+		  End
+		  
+		  lblBoostCount.Text = iCnt.ToText
+		  lblBoostTime.Text = iCurrentGameSeconds.ToText
+		  
+		  oBoostUsedCount.svalue = lblBoostCount.Text
+		  oBoostUsedCount.save
+		  
+		  oBoostUsedTime.sValue = lblBoostTime.Text
+		  oBoostUsedTime.save
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnForceUsed
+	#tag Event
+		Sub Action()
+		  Dim icnt As Integer
+		  
+		  If swForce1.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If swForce2.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If swForce3.value Then
+		    iCnt = iCnt + 1
+		  End
+		  
+		  If iCnt = 0 Then 
+		    Return
+		  End
+		  
+		  lblForceCount.Text = iCnt.ToText
+		  lblForceTime.Text = iCurrentGameSeconds.ToText
+		  
+		  oForceUsedCount.svalue = lblForceCount.Text
+		  oForceUsedCount.save
+		  
+		  oForceUsedTime.sValue = lblForceTime.Text
+		  oForceUsedTime.save
 		End Sub
 	#tag EndEvent
 #tag EndEvents
