@@ -11,10 +11,10 @@ Begin iosView vwPopup
    Begin iOSLabel lblVariableName
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblVariableName, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   lblVariableName, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   lblVariableName, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   lblVariableName, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   lblVariableName, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblVariableName, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   lblVariableName, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblVariableName, 8, , 0, False, +1.00, 1, 1, 30, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   20
@@ -33,10 +33,10 @@ Begin iosView vwPopup
    Begin Extensions.PickerView oPicker
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   oPicker, 1, lblVariableName, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   oPicker, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   oPicker, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   oPicker, 8, , 0, False, +1.00, 1, 1, 96, 
+      AutoLayout      =   oPicker, 1, lblVariableName, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   oPicker, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   oPicker, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      AutoLayout      =   oPicker, 8, , 0, False, +1.00, 1, 1, 96, , True
       Height          =   96.0
       Left            =   20
       LockedInPosition=   False

@@ -76,43 +76,45 @@ Begin iosView vwSetup
       Visible         =   True
       Width           =   58.0
    End
-   Begin iOSButton btnSave
+   Begin iOSButton_BKS btnSave
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnSave, 7, , 0, False, +1.00, 1, 1, 100, , True
       AutoLayout      =   btnSave, 9, <Parent>, 9, False, +1.00, 1, 1, 0, , True
       AutoLayout      =   btnSave, 3, txtName, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
       AutoLayout      =   btnSave, 8, , 0, False, +1.00, 1, 1, 30, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Save"
       Enabled         =   True
       Height          =   30.0
-      Left            =   110
+      Left            =   110.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   202
+      Top             =   202.0
       Visible         =   True
       Width           =   100.0
    End
-   Begin iOSButton btnIMport
+   Begin iOSButton_BKS btnIMport
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnIMport, 7, , 0, False, +1.00, 1, 1, 100, , True
       AutoLayout      =   btnIMport, 9, <Parent>, 9, False, +1.00, 1, 1, 0, , True
       AutoLayout      =   btnIMport, 3, <Parent>, 3, False, +1.00, 1, 1, 379, , True
       AutoLayout      =   btnIMport, 8, , 0, False, +1.00, 1, 1, 30, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Import Data"
       Enabled         =   True
       Height          =   30.0
-      Left            =   110
+      Left            =   110.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   379
+      Top             =   379.0
       Visible         =   True
       Width           =   100.0
    End

@@ -146,23 +146,24 @@ Begin iosView vwAddTeam
       Visible         =   True
       Width           =   280.0
    End
-   Begin iOSButton btnSave
+   Begin iOSButton_BKS btnSave
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnSave, 7, , 0, False, +1.00, 1, 1, 100, , True
       AutoLayout      =   btnSave, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   btnSave, 3, txtName, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
       AutoLayout      =   btnSave, 8, , 0, False, +1.00, 1, 1, 30, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Save"
       Enabled         =   True
       Height          =   30.0
-      Left            =   200
+      Left            =   200.0
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c00000000
       TextFont        =   ""
       TextSize        =   0
-      Top             =   296
+      Top             =   296.0
       Visible         =   True
       Width           =   100.0
    End

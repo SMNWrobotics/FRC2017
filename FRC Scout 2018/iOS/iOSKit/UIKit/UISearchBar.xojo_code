@@ -853,24 +853,11 @@ Inherits iOSUserControl
 			Name="autocapitalizationType"
 			Group="Behavior"
 			Type="UIKit.UISearchbar.UITextAutocapitalizationType"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - None"
-				"1 - Words"
-				"2 - Sentences"
-				"3 - AllCharacters"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="autocorrectionType"
 			Group="Behavior"
 			Type="UIKit.UISearchbar.UITextAutocorrectionType"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - Default"
-				"1 - No"
-				"2 - Yes"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="backgroundImage"
@@ -881,11 +868,6 @@ Inherits iOSUserControl
 			Name="barStyle"
 			Group="Behavior"
 			Type="UIKit.UISearchbar.UIBarStyle"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - Default"
-				"1 - Black"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Height"
@@ -904,20 +886,6 @@ Inherits iOSUserControl
 			Name="keyboardType"
 			Group="Behavior"
 			Type="UIKit.UISearchbar.UIKeyboardType"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - Default"
-				"1 - ASCIICapable"
-				"2 - NumbersAndPunctuation"
-				"3 - URL"
-				"4 - NumberPad"
-				"5 - PhonePad"
-				"6 - NamePhonePad"
-				"7 - EmailAddress"
-				"8 - DecimalPad"
-				"9 - Twitter"
-				"10 - WebSearch"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -953,12 +921,6 @@ Inherits iOSUserControl
 			Name="searchBarStyle"
 			Group="Behavior"
 			Type="UIKit.UISearchbar.UISearchBarStyle"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - Default"
-				"1 - Prominent"
-				"2 - Minimal"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="searchResultsButtonSelected"
@@ -998,12 +960,6 @@ Inherits iOSUserControl
 			Name="spellCheckingType"
 			Group="Behavior"
 			Type="UIKit.UISearchbar.UITextSpellCheckingType"
-			EditorType="Enum"
-			#tag EnumValues
-				"0 - Default"
-				"1 - No"
-				"2 - Yes"
-			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Super"

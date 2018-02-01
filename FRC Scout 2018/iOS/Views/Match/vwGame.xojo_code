@@ -28,23 +28,24 @@ Begin iosView vwGame
       Visible         =   True
       Width           =   280.0
    End
-   Begin iOSButton btnStart
+   Begin iOSButton_BKS btnStart
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnStart, 9, <Parent>, 9, False, +1.00, 1, 1, 0, , True
       AutoLayout      =   btnStart, 7, , 0, False, +1.00, 1, 1, 100, , True
       AutoLayout      =   btnStart, 3, tbl, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
       AutoLayout      =   btnStart, 8, , 0, False, +1.00, 1, 1, 30, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Start"
       Enabled         =   True
       Height          =   30.0
-      Left            =   110
+      Left            =   110.0
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c0080FF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   420
+      Top             =   420.0
       Visible         =   True
       Width           =   100.0
    End

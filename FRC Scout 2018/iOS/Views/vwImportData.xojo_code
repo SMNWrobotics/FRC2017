@@ -52,23 +52,24 @@ Begin iosView vwImportData
       Visible         =   True
       Width           =   320.0
    End
-   Begin iOSButton btnImport
+   Begin iOSButton_BKS btnImport
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnImport, 7, , 0, False, +1.00, 1, 1, 119, , True
       AutoLayout      =   btnImport, 9, <Parent>, 9, False, +1.00, 1, 1, 0, , True
       AutoLayout      =   btnImport, 8, , 0, False, +1.00, 1, 1, 30, , True
       AutoLayout      =   btnImport, 3, tbl, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Import Event"
       Enabled         =   True
       Height          =   30.0
-      Left            =   100
+      Left            =   100.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c0080FF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   399
+      Top             =   399.0
       Visible         =   False
       Width           =   119.0
    End
@@ -126,23 +127,24 @@ Begin iosView vwImportData
       Visible         =   True
       Width           =   168.0
    End
-   Begin iOSButton btnRefresh
+   Begin iOSButton_BKS btnRefresh
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnRefresh, 2, tbl, 2, False, +1.00, 1, 1, 0, , True
       AutoLayout      =   btnRefresh, 7, , 0, False, +1.00, 1, 1, 134, , True
       AutoLayout      =   btnRefresh, 8, , 0, False, +1.00, 1, 1, 30, , True
       AutoLayout      =   btnRefresh, 11, txtSearch, 11, False, +1.00, 1, 1, 0, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Query Blue Alliance"
       Enabled         =   True
       Height          =   30.0
-      Left            =   186
+      Left            =   186.0
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   112
+      Top             =   112.0
       Visible         =   True
       Width           =   134.0
    End

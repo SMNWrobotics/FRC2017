@@ -293,63 +293,66 @@ Begin iOSContainerControl ccPowerup
       Visible         =   True
       Width           =   41.0
    End
-   Begin iOSButton btnLevitateUsed
+   Begin iOSButton_BKS btnLevitateUsed
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnLevitateUsed, 1, <Parent>, 1, False, +1.00, 4, 1, 38, , True
       AutoLayout      =   btnLevitateUsed, 2, swLevitate1, 2, False, +1.00, 4, 1, 11, , True
       AutoLayout      =   btnLevitateUsed, 3, <Parent>, 3, False, +1.00, 4, 1, 246, , True
       AutoLayout      =   btnLevitateUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
-      Left            =   38
+      Left            =   38.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   246
+      Top             =   246.0
       Visible         =   True
       Width           =   73.0
    End
-   Begin iOSButton btnBoostUsed
+   Begin iOSButton_BKS btnBoostUsed
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnBoostUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
       AutoLayout      =   btnBoostUsed, 2, Label3, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
       AutoLayout      =   btnBoostUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   btnBoostUsed, 3, , 0, False, +1.00, 4, 1, 246, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
-      Left            =   135
+      Left            =   135.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   246
+      Top             =   246.0
       Visible         =   True
       Width           =   73.0
    End
-   Begin iOSButton btnForceUsed
+   Begin iOSButton_BKS btnForceUsed
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnForceUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
       AutoLayout      =   btnForceUsed, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   btnForceUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   btnForceUsed, 3, , 0, False, +1.00, 4, 1, 246, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
-      Left            =   227
+      Left            =   227.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   246
+      Top             =   246.0
       Visible         =   True
       Width           =   73.0
    End

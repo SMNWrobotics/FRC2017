@@ -11,10 +11,10 @@ Begin iosView vwImage
    Begin iOSLabel lblVariableName
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblVariableName, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, 
-      AutoLayout      =   lblVariableName, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, 
-      AutoLayout      =   lblVariableName, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   lblVariableName, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   lblVariableName, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   lblVariableName, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   lblVariableName, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblVariableName, 8, , 0, False, +1.00, 1, 1, 30, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   20
@@ -33,10 +33,10 @@ Begin iosView vwImage
    Begin iOSImageView ImageView1
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   ImageView1, 1, lblVariableName, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   ImageView1, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   ImageView1, 3, <Parent>, 3, False, +1.00, 1, 1, 155, 
-      AutoLayout      =   ImageView1, 8, , 0, False, +1.00, 1, 1, 305, 
+      AutoLayout      =   ImageView1, 1, lblVariableName, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   ImageView1, 2, lblVariableName, 2, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   ImageView1, 3, <Parent>, 3, False, +1.00, 1, 1, 155, , True
+      AutoLayout      =   ImageView1, 8, , 0, False, +1.00, 1, 1, 305, , True
       ContentMode     =   "2"
       Height          =   305.0
       Image           =   "0"
@@ -48,56 +48,63 @@ Begin iosView vwImage
       Visible         =   True
       Width           =   280.0
    End
-   Begin iOSButton btnTakeImage
+   Begin iOSButton_BKS btnTakeImage
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnTakeImage, 1, ImageView1, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnTakeImage, 7, , 0, False, +1.00, 1, 1, 110, 
-      AutoLayout      =   btnTakeImage, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, 
-      AutoLayout      =   btnTakeImage, 8, , 0, False, +1.00, 1, 1, 30, 
+      AutoLayout      =   btnTakeImage, 1, ImageView1, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   btnTakeImage, 7, , 0, False, +1.00, 1, 1, 110, , True
+      AutoLayout      =   btnTakeImage, 3, lblVariableName, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
+      AutoLayout      =   btnTakeImage, 8, , 0, False, +1.00, 1, 1, 30, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Choose Image"
       Enabled         =   True
       Height          =   30.0
-      Left            =   20
+      Left            =   20.0
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   111
+      Top             =   111.0
       Visible         =   True
       Width           =   110.0
    End
-   Begin Extensions.Camera oCamera
-      editedImage     =   ""
-      Left            =   0
-      LockedInPosition=   False
-      originalImage   =   ""
-      PanelIndex      =   -1
-      Parent          =   ""
-      Scope           =   1
-      SourceType      =   "1"
-      Top             =   0
-   End
-   Begin iOSButton btnSaveImage
+   Begin iOSButton_BKS btnSaveImage
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnSaveImage, 2, ImageView1, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   btnSaveImage, 7, , 0, False, +1.00, 1, 1, 68, 
-      AutoLayout      =   btnSaveImage, 8, , 0, False, +1.00, 1, 1, 30, 
-      AutoLayout      =   btnSaveImage, 11, btnTakeImage, 11, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   btnSaveImage, 2, ImageView1, 2, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   btnSaveImage, 7, , 0, False, +1.00, 1, 1, 68, , True
+      AutoLayout      =   btnSaveImage, 8, , 0, False, +1.00, 1, 1, 30, , True
+      AutoLayout      =   btnSaveImage, 11, btnTakeImage, 11, False, +1.00, 1, 1, 0, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Save"
       Enabled         =   True
       Height          =   30.0
-      Left            =   232
+      Left            =   232.0
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   111
+      Top             =   111.0
       Visible         =   True
       Width           =   68.0
+   End
+   Begin iOSPicturePicker PicturePicker1
+      Editable        =   False
+      Height          =   32
+      Height          =   "32"
+      Left            =   60
+      Left            =   60
+      LockedInPosition=   False
+      PanelIndex      =   -1
+      Parent          =   ""
+      Scope           =   2
+      Source          =   ""
+      Top             =   60
+      Top             =   60
+      Width           =   32
+      Width           =   "32"
    End
 End
 #tag EndIOSView
@@ -117,9 +124,9 @@ End
 		    
 		    dim mb as xojo.Core.MemoryBlock = M_Text.DecodeBase64(sText)
 		    
-		    pic = iOSImage.FromData(mb)
+		    mpic = iOSImage.FromData(mb)
 		    
-		    ImageView1.Image = pic
+		    ImageView1.Image = mpic
 		    imageview1.Invalidate
 		  end
 		End Sub
@@ -127,12 +134,12 @@ End
 
 	#tag Method, Flags = &h0
 		Sub Save()
-		  if pic = nil then
+		  If mpic = Nil Then
 		    msgbox "Can't Save", "No image to save."
-		    return
+		    Return
 		  end
 		  
-		  dim mb as xojo.Core.MemoryBlock = pic.ToDataMB
+		  Dim mb As xojo.Core.MemoryBlock = mpic.ToDataMB
 		  
 		  dim sEncode as text = M_Text.EncodeBase64(mb)
 		  
@@ -145,11 +152,11 @@ End
 
 
 	#tag Property, Flags = &h0
-		m_oDesign As DataFile.T_Design
+		mPic As iOSImage
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		pic As iOSImage
+		m_oDesign As DataFile.T_Design
 	#tag EndProperty
 
 
@@ -158,16 +165,7 @@ End
 #tag Events btnTakeImage
 	#tag Event
 		Sub Action()
-		  oCamera.show(Self)
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events oCamera
-	#tag Event
-		Sub PictureTaken()
-		  pic = me.originalImage
-		  ImageView1.image = pic
-		  
+		  PicturePicker1.Show(self)
 		  
 		End Sub
 	#tag EndEvent
@@ -176,6 +174,19 @@ End
 	#tag Event
 		Sub Action()
 		  Save
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events PicturePicker1
+	#tag Event
+		Sub Selected(pic as iOSImage)
+		  mPic = pic
+		  ImageView1.image = mPic
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Cancelled()
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -201,6 +212,11 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
+		Name="mPic"
+		Group="Behavior"
+		Type="iOSImage"
+	#tag EndViewProperty
+	#tag ViewProperty
 		Name="Name"
 		Visible=true
 		Group="ID"
@@ -210,11 +226,6 @@ End
 		Name="NavigationBarVisible"
 		Group="Behavior"
 		Type="Boolean"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="pic"
-		Group="Behavior"
-		Type="iOSImage"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Super"

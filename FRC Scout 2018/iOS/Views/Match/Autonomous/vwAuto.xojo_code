@@ -28,23 +28,24 @@ Begin iosView vwAuto
       Visible         =   True
       Width           =   320.0
    End
-   Begin iOSButton btnTimer
+   Begin iOSButton_BKS btnTimer
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnTimer, 7, , 0, False, +1.00, 4, 1, 60, , True
       AutoLayout      =   btnTimer, 2, lblTimer, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
       AutoLayout      =   btnTimer, 8, , 0, False, +1.00, 4, 1, 30, , True
       AutoLayout      =   btnTimer, 3, tbl, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      BackColor       =   &cCCCCCC00
       Caption         =   "Timer"
       Enabled         =   True
       Height          =   30.0
-      Left            =   97
+      Left            =   97.0
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   388
+      Top             =   388.0
       Visible         =   True
       Width           =   60.0
    End
@@ -241,10 +242,46 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub SetBackcolor(newColor as color)
+		  ' ' ObjC Declare to get a ref to a class by its name
+		  ' Declare Function objc_getClass Lib "/usr/lib/libobjc.dylib" (aClassName As CString) As Ptr
+		  ' ' Here is the corresponding Xojo call
+		  ' Dim theUIColorClassRef As Ptr =  objc_getClass("UIColor")
+		  ' 
+		  ' ' UIKit Declare to create a color object
+		  ' Declare Function decl_GetColorWithRGBA Lib "UIKit" selector "colorWithRed:green:blue:alpha:" (UIColorClassRef As Ptr, red As Single, green As Single, blue As Single, alpha As Single) As Ptr
+		  ' 
+		  ' ' Here is the corresponding Xojo call, where we create a flashy green color
+		  ' Dim r As Integer = newColor.red
+		  ' Dim g As Integer = newColor.Green
+		  ' Dim b As Integer  = newColor.Blue
+		  ' Dim myUIColorObject As ptr = decl_GetColorWithRGBA(theUIColorClassRef, (r/255.0), (g/255.0), (b/255.0), 1.0)
+		  ' 
+		  ' ' UIKit Declare to get a reference to a View from its ViewController
+		  ' Declare Function decl_GetView Lib "UIKit" selector "view" (aUIViewController As Ptr) As Ptr
+		  ' 
+		  ' ' Here is the corresponding Xojo call (View.Self returns a ViewController)
+		  ' Dim myViewPtr As Ptr = decl_GetView(Self.Handle)
+		  ' 
+		  ' ' UIKit Declare to set the backgound color of a View
+		  ' Declare Sub decl_SetBackgroundColor Lib "UIKit" selector "setBackgroundColor:" (aUIView As Ptr, aUIColor As Ptr)
+		  ' ' Here is the corresponding Xojo call
+		  ' decl_SetBackgroundColor(myViewPtr, myUIColorObject)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub SetGame(sMatchKey as text, sTeamNumber as text, sAlliance as text)
 		  m_sMatchKey = sMatchKey
 		  m_sTeamNumber = sTeamNumber
 		  LoadLIst
+		  
+		  If sAlliance = "Red" Then
+		    SetBackcolor &cFDCED0
+		  Else
+		    SetBackcolor &cD0D6FE
+		  End
 		End Sub
 	#tag EndMethod
 
@@ -322,11 +359,6 @@ End
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="iRow"
-		Group="Behavior"
-		Type="Integer"
-	#tag EndViewProperty
-	#tag ViewProperty
-		Name="iSeconds"
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
