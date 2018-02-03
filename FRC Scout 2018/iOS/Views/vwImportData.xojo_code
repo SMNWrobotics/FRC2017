@@ -63,13 +63,13 @@ Begin iosView vwImportData
       Caption         =   "Import Event"
       Enabled         =   True
       Height          =   30.0
-      Left            =   100.0
+      Left            =   100
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c0080FF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   399.0
+      TextSize        =   "0"
+      Top             =   399
       Visible         =   False
       Width           =   119.0
    End
@@ -138,13 +138,13 @@ Begin iosView vwImportData
       Caption         =   "Query Blue Alliance"
       Enabled         =   True
       Height          =   30.0
-      Left            =   186.0
+      Left            =   186
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   112.0
+      TextSize        =   "0"
+      Top             =   112
       Visible         =   True
       Width           =   134.0
    End
@@ -331,6 +331,7 @@ End
 		  
 		  
 		  
+		  app.oSelectedEvent = DataFile.t_event.FindByKey(oEvent.sKey)
 		  
 		End Sub
 	#tag EndEvent

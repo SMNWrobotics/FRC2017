@@ -3,62 +3,62 @@ Begin iosView vwAuto
    BackButtonTitle =   ""
    Compatibility   =   ""
    Left            =   0
-   NavigationBarVisible=   False
+   NavigationBarVisible=   True
    TabIcon         =   ""
    TabTitle        =   ""
-   Title           =   ""
+   Title           =   "Auto"
    Top             =   0
    Begin iOSTable tbl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
+      AutoLayout      =   tbl, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -25, , True
       AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   tbl, 4, BottomLayoutGuide, 3, False, +1.00, 4, 1, -100, , True
+      AutoLayout      =   tbl, 3, btnTimer, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   360.0
+      Height          =   344.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   0
       SectionCount    =   0
-      Top             =   20
+      Top             =   111
       Visible         =   True
       Width           =   320.0
    End
    Begin iOSButton_BKS btnTimer
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnTimer, 7, , 0, False, +1.00, 4, 1, 60, , True
       AutoLayout      =   btnTimer, 2, lblTimer, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
+      AutoLayout      =   btnTimer, 7, , 0, False, +1.00, 4, 1, 60, , True
+      AutoLayout      =   btnTimer, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   btnTimer, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   btnTimer, 3, tbl, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       BackColor       =   &cCCCCCC00
       Caption         =   "Timer"
       Enabled         =   True
       Height          =   30.0
-      Left            =   97.0
+      Left            =   91
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   388.0
+      TextSize        =   "0"
+      Top             =   73
       Visible         =   True
       Width           =   60.0
    End
    Begin iOSLabel lblTimer
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblTimer, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   lblTimer, 1, <Parent>, 1, False, +1.00, 4, 1, 165, , True
-      AutoLayout      =   lblTimer, 3, btnTimer, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblTimer, 9, <Parent>, 9, False, +1.00, 4, 1, 34, , True
       AutoLayout      =   lblTimer, 7, , 0, False, +1.00, 4, 1, 69, , True
+      AutoLayout      =   lblTimer, 3, btnTimer, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblTimer, 8, , 0, False, +1.00, 4, 1, 30, , True
       Enabled         =   True
       Height          =   30.0
-      Left            =   165
+      Left            =   159
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   2
@@ -67,7 +67,7 @@ Begin iosView vwAuto
       TextColor       =   &c00000000
       TextFont        =   "System Bold		"
       TextSize        =   0
-      Top             =   388
+      Top             =   73
       Visible         =   True
       Width           =   69.0
    End

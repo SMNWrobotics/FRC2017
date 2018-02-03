@@ -87,13 +87,13 @@ Begin iosView vwSetup
       Caption         =   "Save"
       Enabled         =   True
       Height          =   30.0
-      Left            =   110.0
+      Left            =   110
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   202.0
+      TextSize        =   "0"
+      Top             =   202
       Visible         =   True
       Width           =   100.0
    End
@@ -108,13 +108,13 @@ Begin iosView vwSetup
       Caption         =   "Import Data"
       Enabled         =   True
       Height          =   30.0
-      Left            =   110.0
+      Left            =   110
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   379.0
+      TextSize        =   "0"
+      Top             =   379
       Visible         =   True
       Width           =   100.0
    End

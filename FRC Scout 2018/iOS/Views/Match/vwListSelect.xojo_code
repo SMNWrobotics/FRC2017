@@ -179,7 +179,7 @@ End
 
 
 	#tag Hook, Flags = &h0
-		Event Action(sType as text, sValue as Text, sTag as Text)
+		Event Action(sType as text, sValue as Text, sTag as Text, a as auto)
 	#tag EndHook
 
 
@@ -205,8 +205,13 @@ End
 		    sTag = oCell.tag
 		  end
 		  
-		  Raiseevent Action(sType, oCell.Text, sTag)
+		  Raiseevent Action(sType, oCell.Text, sTag, nil)
 		  
+		  
+		  
+		  if sType = "Team" then
+		    iTeamIndex = row
+		  end
 		End Sub
 	#tag EndEvent
 #tag EndEvents

@@ -3,10 +3,10 @@ Begin iosView vwTeleop
    BackButtonTitle =   ""
    Compatibility   =   ""
    Left            =   0
-   NavigationBarVisible=   False
+   NavigationBarVisible=   True
    TabIcon         =   ""
    TabTitle        =   ""
-   Title           =   ""
+   Title           =   "Telop"
    Top             =   0
    Begin iOSSegmentedControl SegmentedControl1
       AccessibilityHint=   ""
@@ -22,7 +22,7 @@ Begin iosView vwTeleop
       LockedInPosition=   False
       Scope           =   2
       Segments        =   "Cubes\n\nTrue\rPowerups\n\nFalse\rMisc\n\nFalse"
-      Top             =   20
+      Top             =   65
       Value           =   0
       Visible         =   True
       Width           =   320.0
@@ -35,12 +35,12 @@ Begin iosView vwTeleop
       AutoLayout      =   ccCubes1, 2, SegmentedControl1, 2, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   ccCubes1, 3, SegmentedControl1, 4, False, +1.00, 4, 1, 0, , True
       bDestination    =   False
-      Height          =   391.0
+      Height          =   346.0
       iSeconds        =   0
       Left            =   0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   49
+      Top             =   94
       Visible         =   True
       Width           =   320.0
    End
@@ -51,11 +51,11 @@ Begin iosView vwTeleop
       AutoLayout      =   ccPowerup1, 1, ccCubes1, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   ccPowerup1, 3, ccCubes1, 3, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   ccPowerup1, 7, ccCubes1, 7, False, +1.00, 4, 1, 0, , True
-      Height          =   391.0
+      Height          =   346.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   49
+      Top             =   94
       Visible         =   True
       Width           =   320.0
    End
@@ -66,11 +66,11 @@ Begin iosView vwTeleop
       AutoLayout      =   ccMisc1, 1, ccCubes1, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   ccMisc1, 3, ccCubes1, 3, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   ccMisc1, 7, ccCubes1, 7, False, +1.00, 4, 1, 0, , True
-      Height          =   391.0
+      Height          =   346.0
       Left            =   0
       LockedInPosition=   False
       Scope           =   2
-      Top             =   49
+      Top             =   94
       Visible         =   True
       Width           =   320.0
    End
@@ -85,7 +85,7 @@ Begin iosView vwTeleop
       Scope           =   0
       Top             =   446
       Type            =   "5"
-      Width           =   253.0
+      Width           =   182.0
    End
    Begin iOSToolButton Button2
       Caption         =   "Match Complete"

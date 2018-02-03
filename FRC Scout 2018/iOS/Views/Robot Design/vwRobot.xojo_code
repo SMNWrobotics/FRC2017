@@ -11,10 +11,10 @@ Begin iosView vwRobot
    Begin iOSTable tbl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, 
-      AutoLayout      =   tbl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, 
+      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 4, BottomLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
@@ -244,10 +244,10 @@ End
 		    end
 		    
 		  case "Image"
-		    #if DebugBuild
-		      msgbox "Camera only works on real device."
-		      return
-		    #Endif
+		    '#if DebugBuild
+		    'msgbox "Camera only works on real device."
+		    'return
+		    '#Endif
 		    
 		    dim vwImg as new vwImage(oData)
 		    self.PushTo(vwImg)

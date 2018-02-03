@@ -304,13 +304,13 @@ Begin iOSContainerControl ccPowerup
       Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
-      Left            =   38.0
+      Left            =   38
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   246.0
+      TextSize        =   "0"
+      Top             =   246
       Visible         =   True
       Width           =   73.0
    End
@@ -320,39 +320,39 @@ Begin iOSContainerControl ccPowerup
       AutoLayout      =   btnBoostUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
       AutoLayout      =   btnBoostUsed, 2, Label3, 1, False, +1.00, 4, 1, -*kStdControlGapH, , True
       AutoLayout      =   btnBoostUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   btnBoostUsed, 3, , 0, False, +1.00, 4, 1, 246, , True
+      AutoLayout      =   btnBoostUsed, 3, <Parent>, 3, False, +1.00, 4, 1, 246, , True
       BackColor       =   &cCCCCCC00
       Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
-      Left            =   135.0
+      Left            =   135
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   246.0
+      TextSize        =   "0"
+      Top             =   246
       Visible         =   True
       Width           =   73.0
    End
    Begin iOSButton_BKS btnForceUsed
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   btnForceUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
-      AutoLayout      =   btnForceUsed, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
       AutoLayout      =   btnForceUsed, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   btnForceUsed, 3, , 0, False, +1.00, 4, 1, 246, , True
+      AutoLayout      =   btnForceUsed, 1, lblForceCount, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   btnForceUsed, 3, <Parent>, 3, False, +1.00, 4, 1, 246, , True
+      AutoLayout      =   btnForceUsed, 7, , 0, False, +1.00, 4, 1, 73, , True
       BackColor       =   &cCCCCCC00
       Caption         =   "Activated"
       Enabled         =   True
       Height          =   30.0
-      Left            =   227.0
+      Left            =   216
       LockedInPosition=   False
       Scope           =   2
       TextColor       =   &c007AFF00
       TextFont        =   ""
-      TextSize        =   0
-      Top             =   246.0
+      TextSize        =   "0"
+      Top             =   246
       Visible         =   True
       Width           =   73.0
    End
@@ -384,7 +384,7 @@ Begin iOSContainerControl ccPowerup
       AutoLayout      =   lblBoostTime, 1, btnBoostUsed, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lblBoostTime, 7, , 0, False, +1.00, 4, 1, 73, , True
       AutoLayout      =   lblBoostTime, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   lblBoostTime, 3, , 0, False, +1.00, 4, 1, 284, , True
+      AutoLayout      =   lblBoostTime, 3, <Parent>, 3, False, +1.00, 4, 1, 284, , True
       Enabled         =   True
       Height          =   30.0
       Left            =   135
@@ -406,10 +406,10 @@ Begin iOSContainerControl ccPowerup
       AutoLayout      =   lblForceTime, 1, btnForceUsed, 1, False, +1.00, 4, 1, 0, , True
       AutoLayout      =   lblForceTime, 7, , 0, False, +1.00, 4, 1, 73, , True
       AutoLayout      =   lblForceTime, 8, , 0, False, +1.00, 4, 1, 30, , True
-      AutoLayout      =   lblForceTime, 3, , 0, False, +1.00, 4, 1, 284, , True
+      AutoLayout      =   lblForceTime, 3, <Parent>, 3, False, +1.00, 4, 1, 284, , True
       Enabled         =   True
       Height          =   30.0
-      Left            =   227
+      Left            =   216
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   2
@@ -447,13 +447,13 @@ Begin iOSContainerControl ccPowerup
    Begin iOSLabel lblForceCount
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   lblForceCount, 1, lblForceTime, 1, False, +1.00, 4, 1, 0, , True
-      AutoLayout      =   lblForceCount, 7, , 0, False, +1.00, 4, 1, 73, , True
-      AutoLayout      =   lblForceCount, 3, swForce1, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
       AutoLayout      =   lblForceCount, 8, , 0, False, +1.00, 4, 1, 30, , True
+      AutoLayout      =   lblForceCount, 1, Label3, 1, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   lblForceCount, 3, swForce1, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   lblForceCount, 7, , 0, False, +1.00, 4, 1, 73, , True
       Enabled         =   True
       Height          =   30.0
-      Left            =   227
+      Left            =   216
       LineBreakMode   =   "0"
       LockedInPosition=   False
       Scope           =   2

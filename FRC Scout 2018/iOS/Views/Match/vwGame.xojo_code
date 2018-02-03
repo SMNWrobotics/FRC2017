@@ -11,15 +11,15 @@ Begin iosView vwGame
    Begin iOSTable tbl
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
-      AutoLayout      =   tbl, 8, , 0, False, +1.00, 1, 1, 347, , True
-      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 1, 1, *kStdGapCtlToViewH, , True
-      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 1, 1, -*kStdGapCtlToViewH, , True
-      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 1, 1, 0, , True
+      AutoLayout      =   tbl, 8, , 0, False, +1.00, 4, 1, 201, , True
+      AutoLayout      =   tbl, 1, <Parent>, 1, False, +1.00, 4, 1, *kStdGapCtlToViewH, , True
+      AutoLayout      =   tbl, 2, <Parent>, 2, False, +1.00, 4, 1, -*kStdGapCtlToViewH, , True
+      AutoLayout      =   tbl, 3, TopLayoutGuide, 4, False, +1.00, 4, 1, 0, , True
       EditingEnabled  =   False
       EditingEnabled  =   False
       EstimatedRowHeight=   -1
       Format          =   "0"
-      Height          =   347.0
+      Height          =   201.0
       Left            =   20
       LockedInPosition=   False
       Scope           =   0
@@ -32,22 +32,43 @@ Begin iosView vwGame
       AccessibilityHint=   ""
       AccessibilityLabel=   ""
       AutoLayout      =   btnStart, 9, <Parent>, 9, False, +1.00, 1, 1, 0, , True
-      AutoLayout      =   btnStart, 7, , 0, False, +1.00, 1, 1, 100, , True
-      AutoLayout      =   btnStart, 3, tbl, 4, False, +1.00, 1, 1, *kStdControlGapV, , True
       AutoLayout      =   btnStart, 8, , 0, False, +1.00, 1, 1, 30, , True
+      AutoLayout      =   btnStart, 3, tbl, 4, False, +1.00, 4, 1, 80, , True
+      AutoLayout      =   btnStart, 7, , 0, False, +1.00, 1, 1, 100, , True
       BackColor       =   &cCCCCCC00
       Caption         =   "Start"
       Enabled         =   True
       Height          =   30.0
-      Left            =   110.0
+      Left            =   110
+      LockedInPosition=   False
+      Scope           =   0
+      TextColor       =   &c0080FF00
+      TextFont        =   ""
+      TextSize        =   "0"
+      Top             =   346
+      Visible         =   True
+      Width           =   100.0
+   End
+   Begin iOSButton_BKS btnIncrement
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   btnIncrement, 9, <Parent>, 9, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   btnIncrement, 7, , 0, False, +1.00, 4, 1, 132, , True
+      AutoLayout      =   btnIncrement, 3, tbl, 4, False, +1.00, 4, 1, *kStdControlGapV, , True
+      AutoLayout      =   btnIncrement, 8, , 0, False, +1.00, 4, 1, 30, , True
+      BackColor       =   &cCCCCCC00
+      Caption         =   "Increment Match"
+      Enabled         =   True
+      Height          =   30.0
+      Left            =   94
       LockedInPosition=   False
       Scope           =   0
       TextColor       =   &c0080FF00
       TextFont        =   ""
       TextSize        =   0
-      Top             =   420.0
+      Top             =   274
       Visible         =   True
-      Width           =   100.0
+      Width           =   132.0
    End
 End
 #tag EndIOSView
@@ -108,7 +129,7 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub ReturnValue(oInstance as vwListSelect, sType as text, sValue as Text, sTag as Text)
+		Sub ReturnValue(oInstance as vwListSelect, sType as text, sValue as Text, sTag as Text, a as auto)
 		  RemoveHandler oInstance.Action, AddressOf ReturnValue
 		  
 		  
@@ -240,6 +261,10 @@ End
 #tag Events btnStart
 	#tag Event
 		Sub Action()
+		  //Pull the match number from the table
+		  dim oRow as iOSTableCellData = tbl.RowData(0, 1)
+		  dim sMatch as Text = oRow.DetailText
+		  
 		  If Alliance = "" Or level = "" Or MatchKey = "" Or Team = "" Then
 		    msgbox "Fill out all values before starting."
 		    return
@@ -252,9 +277,9 @@ End
 		  dim oTeam as DataFile.t_team = DataFile.t_team.FindByKey(Team)
 		  
 		  dim sAlliance as text
-		  If oTeam.sTeam_Number = oMatch.sBlue_Team_1 Or _
-		    oTeam.sTeam_Number = oMatch.sBlue_Team_2 Or _
-		    oTeam.sTeam_Number = oMatch.sBlue_Team_3 Then
+		  If oTeam.sKey = oMatch.sBlue_Team_1 Or _
+		    oTeam.sKey = oMatch.sBlue_Team_2 Or _
+		    oTeam.sKey = oMatch.sBlue_Team_3 Then
 		    sAlliance = "Blue"
 		  Else
 		    sAlliance = "Red"
@@ -272,15 +297,86 @@ End
 		  vAuto.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
 		  vAuto.Title = "Auto"
 		  vAuto.TabIcon = picAuto
+		  vAuto.Title = "Match: " + sMatch + " Team: " + Team.ReplaceAll("frc", "")
 		  tab.AddTab(vAuto)
+		  
 		  
 		  Dim vTel As New vwTeleop
 		  vTel.Title = "Telop"
 		  vTel.TabIcon = picTeleop
 		  vTel.SetGame(oMatch.skey, oTeam.sTeam_Number, sAlliance)
+		  vTel.Title = vAuto.Title
 		  tab.AddTab(vTel)
 		  
 		  App.CurrentScreen.Content = tab
+		  
+		  if sAlliance = "Red" then
+		    setNavBarColor(vAuto, &cFB010600,&cE6E6E600 )
+		    setNavBarColor(vTel, &cFB010600, &cE6E6E600)
+		  else
+		    setNavBarColor(vAuto, &c0000FE00, &cE6E6E600)
+		    setNavBarColor(vTel, &c0000FE00, &cE6E6E600)
+		  end
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events btnIncrement
+	#tag Event
+		Sub Action()
+		  dim oRow as iOSTableCellData
+		  
+		  //Get the Alliance
+		  oRow = tbl.RowData(0, 2)
+		  dim sAlliance as text = oRow.DetailText
+		  
+		  //Pull the match number from the table
+		  oRow = tbl.RowData(0, 1)
+		  
+		  
+		  dim sMatch as Text = oRow.DetailText
+		  dim iMatch as integer = integer.Parse(sMatch)
+		  iMatch = iMatch + 1
+		  
+		  oRow.DetailText = iMatch.ToText
+		  
+		  
+		  //Now calculate the team
+		  oRow = tbl.RowData(0, 3)
+		  for each oMatch as DataFile.t_matches in DataFile.t_matches.ListByEventTag(app.oSelectedEvent.skey, Level)
+		    
+		    if oMatch.imatch_number = iMatch then
+		      MatchKey = oMatch.skey
+		      if sAlliance = "Red" then
+		        select case modGlobals.iTeamIndex
+		        case 0
+		          oRow.DetailText = oMatch.sRed_Team_1
+		          Team =  oMatch.sRed_Team_1
+		        case 1
+		          oRow.DetailText = oMatch.sRed_Team_2        
+		          Team =  oMatch.sRed_Team_2
+		        case 2
+		          oRow.DetailText = oMatch.sRed_Team_3        
+		          Team =  oMatch.sRed_Team_3
+		        end
+		      else
+		        select case modGlobals.iTeamIndex
+		        case 0
+		          oRow.DetailText = oMatch.sBlue_Team_1           
+		          Team =  oMatch.sBlue_Team_1
+		        case 1
+		          oRow.DetailText = oMatch.sBlue_Team_2              
+		          Team =  oMatch.sBlue_Team_2
+		        case 2
+		          oRow.DetailText = oMatch.sBlue_Team_3              
+		          Team =  oMatch.sBlue_Team_3
+		        end
+		      end
+		      
+		    end
+		    
+		  next
+		  
+		  tbl.ReloadData
 		End Sub
 	#tag EndEvent
 #tag EndEvents
