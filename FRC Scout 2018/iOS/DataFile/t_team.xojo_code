@@ -192,6 +192,7 @@ Protected Class t_team
 
 	#tag Method, Flags = &h0
 		Sub ReadRecord(rs as iOSSQLiteRecordSet)
+		  iTeam_ID = rs.Field("team_id").IntegerValue
 		  iEvent_ID = rs.Field("event_id").IntegerValue
 		  iRookie_Year = rs.Field("rookie_year").IntegerValue
 		  skey = rs.Field("key").TextValue
@@ -258,7 +259,7 @@ Protected Class t_team
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function TotalGames() as Text
+		Function TotalGames() As Text
 		  //Get the total number of games
 		  dim s as Text
 		  

@@ -164,6 +164,22 @@ Begin iosView vwImportData
       Visible         =   False
       Width           =   24.0
    End
+   Begin iOSProgressWheel ProgressWheel2
+      AccessibilityHint=   ""
+      AccessibilityLabel=   ""
+      AutoLayout      =   ProgressWheel2, 1, btnImport, 2, False, +1.00, 4, 1, *kStdControlGapH, , True
+      AutoLayout      =   ProgressWheel2, 7, , 0, True, +1.00, 4, 1, 24, , True
+      AutoLayout      =   ProgressWheel2, 3, btnImport, 3, False, +1.00, 4, 1, 0, , True
+      AutoLayout      =   ProgressWheel2, 8, , 0, True, +1.00, 4, 1, 24, , True
+      Height          =   24.0
+      Left            =   227
+      LockedInPosition=   False
+      Scope           =   0
+      Shade           =   "0"
+      Top             =   399
+      Visible         =   False
+      Width           =   24.0
+   End
 End
 #tag EndIOSView
 
@@ -333,6 +349,8 @@ End
 		  
 		  app.oSelectedEvent = DataFile.t_event.FindByKey(oEvent.sKey)
 		  
+		  btnImport.Visible = false
+		  ProgressWheel2.Visible = true
 		End Sub
 	#tag EndEvent
 #tag EndEvents
