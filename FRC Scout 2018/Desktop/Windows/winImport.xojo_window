@@ -27,6 +27,7 @@ Begin Window winImport
    Visible         =   True
    Width           =   600
    Begin BKS_Thread Thread1
+      Enabled         =   True
       Index           =   -2147483648
       LockedInPosition=   False
       Priority        =   5
@@ -56,6 +57,7 @@ Begin Window winImport
       Selectable      =   False
       TabIndex        =   3
       TabPanelIndex   =   0
+      TabStop         =   True
       Text            =   "Event Data To Import:"
       TextAlign       =   0
       TextColor       =   &c00000000
@@ -446,7 +448,9 @@ End
 #tag Events pmEvents
 	#tag Event
 		Sub Change()
-		  btnImport.Enabled = me.ListIndex <> -1
+		  btnImport.Enabled = Me.ListIndex <> -1
+		  
+		  if me.ListIndex = -1 then return
 		  
 		  sEventKey = me.RowTag(me.ListIndex)
 		End Sub

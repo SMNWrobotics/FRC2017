@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "FRC Scout 2018"
-#define MyAppVersion "2018.1"
+#define MyAppVersion "1.0.2"
 #define MyAppPublisher "BKeeney Software Inc."
 #define MyAppURL "http://www.bkeeney.com/"
 #define MyAppExeName "FRC 2018 Scouting Application.exe"
